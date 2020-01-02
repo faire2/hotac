@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import {Ships} from "./data/Ships";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
+import Select from 'react-select';
+import {AiShipsComponents} from "./components/ai/AiShips";
+
+
+/*tady bude muset byt .map generujici ze state jednotlive lode*/
+
+/*state lodi budou muset byt objekty vytvarene konstruktorem*/
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [aiShips, setAiShips] = useState([]);
+
+    const newShipOptions = [
+        {value: Ships.TIELN.id, label: Ships.TIELN.name},
+        {value: Ships.TIEIN.id, label: Ships.TIEIN.name},
+        {value: Ships.TIESA.id, label: Ships.TIESA.name},
+        {value: Ships.VT49.id, label: Ships.VT49.name},
+    ];
+
+    function handleNewShipSelection(e) {
+        const tAiShips = aiShips;
+        tAiShips.push(e.value);
+        setAiShips([...tAiShips]);
+        console.log("Current ships state: ");
+        console.log(aiShips);
+    }
+
+    return (
+        <div className="App">
+            <Button> BUTTON </Button>
+            <Select options={newShipOptions} onChange={e => handleNewShipSelection(e)}/>
+            <AiShipsComponents aiShips={aiShips}/>
+        </div>
+    );
+}
+
+function createNewShip(shipId) {
+    console.log(Ships["TIELN"]);
+    console.log("ship: " + Ships[shipId]["name"]);
+    return Ships[shipId];
 }
 
 export default App;
