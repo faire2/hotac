@@ -31,7 +31,7 @@ export const Ships = Object.freeze({
         selTarget: ["Locked enemy ship at range 1-3", "Nearest enemy ship in your firing arc.", "Nearest enemy ship."]
     },
     VT49: {
-        name: "Tie-Bomber",
+        name: "VT-49",
         initiative: 2,
         shields: 4,
         hull: 12,
@@ -39,7 +39,6 @@ export const Ships = Object.freeze({
         agility: 0,
         id: "VT49",
         selTarget: ["Nearest enemy ship."]
-
     },
 });
 
