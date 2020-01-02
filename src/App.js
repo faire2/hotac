@@ -1,10 +1,16 @@
 import React, {useState} from 'react';
+
 import './App.css';
-import {Ships} from "./data/Ships";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './fonts/xwing-miniatures.css';
+import './fonts/xwing-miniatures.ttf';
+import './fonts/xwing-miniatures-ships.ttf'
+
 import Button from 'react-bootstrap/Button';
 import Select from 'react-select';
+
 import {AiShipsComponents} from "./components/ai/AiShips";
+import {Ships} from "./data/Ships";
 
 
 /*tady bude muset byt .map generujici ze state jednotlive lode*/
