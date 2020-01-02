@@ -2,11 +2,9 @@ import React from 'react';
 import {InnerShip} from "./AiShip";
 
 export const AiShipsComponents = props => (
-    <div>
-        {console.log("Ai ships mapping:")}
-        {console.log(props.aiShips)}
+    <div className="row">
         {props.aiShips.map(function (shipId) {
-            return InnerShip(shipId)
+            return <div className="col-xl-6"> {InnerShip(shipId)}</div>
         })}
     </div>
 );
