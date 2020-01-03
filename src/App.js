@@ -12,11 +12,6 @@ import Select from 'react-select';
 import {AiShipsComponents} from "./components/ai/AiShips";
 import {Ships} from "./data/Ships";
 
-
-/*tady bude muset byt .map generujici ze state jednotlive lode*/
-
-/*state lodi budou muset byt objekty vytvarene konstruktorem*/
-
 function App() {
     const [aiShips, setAiShips] = useState([]);
 
