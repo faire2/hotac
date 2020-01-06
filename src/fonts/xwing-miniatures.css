@@ -6,516 +6,516 @@
   font-family: XWing;
   src: url("xwing-miniatures.ttf"); }
 
-i.xwing-miniatures-font {
+i.xwf {
   font-family: XWing;
   font-style: normal;
-  font-size: 1.5em; }
+  font-size: 1.2em; }
 
-i.xwing-miniatures-font-agility:before {
+i.x-agility:before {
   content: "^"; }
 
-i.xwing-miniatures-font-astromech:before {
+i.x-astromech:before {
   content: "A"; }
 
-i.xwing-miniatures-font-attack:before {
+i.x-attack:before {
   content: "%"; }
 
-i.xwing-miniatures-font-bankleft:before {
+i.x-bankleft:before {
   content: "7"; }
 
-i.xwing-miniatures-font-bankright:before {
+i.x-bankright:before {
   content: "9"; }
 
-i.xwing-miniatures-font-barrelroll:before {
+i.x-barrelroll:before {
   content: "r"; }
 
-i.xwing-miniatures-font-base-all:before {
+i.x-base-all:before {
   content: "À"; }
 
-i.xwing-miniatures-font-base-small:before {
+i.x-base-small:before {
   content: "Á"; }
 
-i.xwing-miniatures-font-base-medium:before {
+i.x-base-medium:before {
   content: "Â"; }
 
-i.xwing-miniatures-font-base-large:before {
+i.x-base-large:before {
   content: "Ã"; }
 
-i.xwing-miniatures-font-boost:before {
+i.x-boost:before {
   content: "b"; }
 
-i.xwing-miniatures-font-bullseyearc:before {
+i.x-bullseyearc:before {
   content: "}"; }
 
-i.xwing-miniatures-font-calculate:before {
+i.x-calculate:before {
   content: "a"; }
 
-i.xwing-miniatures-font-cannon:before {
+i.x-cannon:before {
   content: "C"; }
 
-i.xwing-miniatures-font-cargo:before {
+i.x-cargo:before {
   content: "G"; }
 
-i.xwing-miniatures-font-charge:before {
+i.x-charge:before {
   content: "g"; }
 
-i.xwing-miniatures-font-cloak:before {
+i.x-cloak:before {
   content: "k"; }
 
-i.xwing-miniatures-font-condition-outline:before {
+i.x-condition-outline:before {
   content: "Æ"; }
 
-i.xwing-miniatures-font-condition:before {
+i.x-condition:before {
   content: "°"; }
 
-i.xwing-miniatures-font-config:before {
+i.x-config:before {
   content: "n"; }
 
-i.xwing-miniatures-font-coordinate:before {
+i.x-coordinate:before {
   content: "o"; }
 
-i.xwing-miniatures-font-crew:before {
+i.x-crew:before {
   content: "W"; }
 
-i.xwing-miniatures-font-crit:before {
+i.x-crit:before {
   content: "c"; }
 
-i.xwing-miniatures-font-dalan-bankleft:before {
+i.x-dalan-bankleft:before {
   content: "["; }
 
-i.xwing-miniatures-font-dalan-bankright:before {
+i.x-dalan-bankright:before {
   content: "]"; }
 
-i.xwing-miniatures-font-device:before {
+i.x-device:before {
   content: "B"; }
 
-i.xwing-miniatures-font-doublerecurring:before {
+i.x-doublerecurring:before {
   content: "_"; }
 
-i.xwing-miniatures-font-doubleturretarc:before {
+i.x-doubleturretarc:before {
   content: "q"; }
 
-i.xwing-miniatures-font-empire:before {
+i.x-empire:before {
   content: "@"; }
 
-i.xwing-miniatures-font-energy:before {
+i.x-energy:before {
   content: "("; }
 
-i.xwing-miniatures-font-epic:before {
+i.x-epic:before {
   content: ")"; }
 
-i.xwing-miniatures-font-evade:before {
+i.x-evade:before {
   content: "e"; }
 
-i.xwing-miniatures-font-firstorder:before {
+i.x-firstorder:before {
   content: "+"; }
 
-i.xwing-miniatures-font-focus:before {
+i.x-focus:before {
   content: "f"; }
 
-i.xwing-miniatures-font-forcecharge:before {
+i.x-forcecharge:before {
   content: "h"; }
 
-i.xwing-miniatures-font-forcepower:before {
+i.x-forcepower:before {
   content: "F"; }
 
-i.xwing-miniatures-font-frontarc:before {
+i.x-frontarc:before {
   content: "{"; }
 
-i.xwing-miniatures-font-fullfrontarc:before {
+i.x-fullfrontarc:before {
   content: "~"; }
 
-i.xwing-miniatures-font-fullreararc:before {
+i.x-fullreararc:before {
   content: "¡"; }
 
-i.xwing-miniatures-font-fuse:before {
+i.x-fuse:before {
   content: ","; }
 
-i.xwing-miniatures-font-gunner:before {
+i.x-gunner:before {
   content: "Y"; }
 
-i.xwing-miniatures-font-hardpoint:before {
+i.x-hardpoint:before {
   content: "H"; }
 
-i.xwing-miniatures-font-helmet-imperial:before {
+i.x-helmet-imperial:before {
   content: "y"; }
 
-i.xwing-miniatures-font-helmet-rebel:before {
+i.x-helmet-rebel:before {
   content: "x"; }
 
-i.xwing-miniatures-font-helmet-scum:before {
+i.x-helmet-scum:before {
   content: "z"; }
 
-i.xwing-miniatures-font-hit:before {
+i.x-hit:before {
   content: "d"; }
 
-i.xwing-miniatures-font-hull:before {
+i.x-hull:before {
   content: "&"; }
 
-i.xwing-miniatures-font-ig88d-sloopleft:before {
+i.x-ig88d-sloopleft:before {
   content: '"'; }
 
-i.xwing-miniatures-font-ig88d-sloopright:before {
+i.x-ig88d-sloopright:before {
   content: "'"; }
 
-i.xwing-miniatures-font-illicit:before {
+i.x-illicit:before {
   content: "I"; }
 
-i.xwing-miniatures-font-jam:before {
+i.x-jam:before {
   content: "j"; }
 
-i.xwing-miniatures-font-kturn:before {
+i.x-kturn:before {
   content: "2"; }
 
-i.xwing-miniatures-font-leftarc:before {
+i.x-leftarc:before {
   content: "£"; }
 
-i.xwing-miniatures-font-linked:before {
+i.x-linked:before {
   content: ">"; }
 
-i.xwing-miniatures-font-lock:before {
+i.x-lock:before {
   content: "l"; }
 
-i.xwing-miniatures-font-missile:before {
+i.x-missile:before {
   content: "M"; }
 
-i.xwing-miniatures-font-modification:before {
+i.x-modification:before {
   content: "m"; }
 
-i.xwing-miniatures-font-obstacle-core2asteroid0-outline:before {
+i.x-obstacle-core2asteroid0-outline:before {
   content: "ĉ"; }
 
-i.xwing-miniatures-font-obstacle-core2asteroid0:before {
+i.x-obstacle-core2asteroid0:before {
   content: "ĥ"; }
 
-i.xwing-miniatures-font-obstacle-core2asteroid1-outline:before {
+i.x-obstacle-core2asteroid1-outline:before {
   content: "Č"; }
 
-i.xwing-miniatures-font-obstacle-core2asteroid1:before {
+i.x-obstacle-core2asteroid1:before {
   content: "Ĩ"; }
 
-i.xwing-miniatures-font-obstacle-core2asteroid2-outline:before {
+i.x-obstacle-core2asteroid2-outline:before {
   content: "Ċ"; }
 
-i.xwing-miniatures-font-obstacle-core2asteroid2:before {
+i.x-obstacle-core2asteroid2:before {
   content: "Ħ"; }
 
-i.xwing-miniatures-font-obstacle-core2asteroid3-outline:before {
+i.x-obstacle-core2asteroid3-outline:before {
   content: "ċ"; }
 
-i.xwing-miniatures-font-obstacle-core2asteroid3:before {
+i.x-obstacle-core2asteroid3:before {
   content: "ħ"; }
 
-i.xwing-miniatures-font-obstacle-core2asteroid4-outline:before {
+i.x-obstacle-core2asteroid4-outline:before {
   content: "č"; }
 
-i.xwing-miniatures-font-obstacle-core2asteroid4:before {
+i.x-obstacle-core2asteroid4:before {
   content: "ĩ"; }
 
-i.xwing-miniatures-font-obstacle-core2asteroid5-outline:before {
+i.x-obstacle-core2asteroid5-outline:before {
   content: "Ď"; }
 
-i.xwing-miniatures-font-obstacle-core2asteroid5:before {
+i.x-obstacle-core2asteroid5:before {
   content: "Ī"; }
 
-i.xwing-miniatures-font-obstacle-coreasteroid0-outline:before {
+i.x-obstacle-coreasteroid0-outline:before {
   content: "Ă"; }
 
-i.xwing-miniatures-font-obstacle-coreasteroid0:before {
+i.x-obstacle-coreasteroid0:before {
   content: "Ğ"; }
 
-i.xwing-miniatures-font-obstacle-coreasteroid1-outline:before {
+i.x-obstacle-coreasteroid1-outline:before {
   content: "ă"; }
 
-i.xwing-miniatures-font-obstacle-coreasteroid1:before {
+i.x-obstacle-coreasteroid1:before {
   content: "ğ"; }
 
-i.xwing-miniatures-font-obstacle-coreasteroid2-outline:before {
+i.x-obstacle-coreasteroid2-outline:before {
   content: "ā"; }
 
-i.xwing-miniatures-font-obstacle-coreasteroid2:before {
+i.x-obstacle-coreasteroid2:before {
   content: "ĝ"; }
 
-i.xwing-miniatures-font-obstacle-coreasteroid3-outline:before {
+i.x-obstacle-coreasteroid3-outline:before {
   content: "ą"; }
 
-i.xwing-miniatures-font-obstacle-coreasteroid3:before {
+i.x-obstacle-coreasteroid3:before {
   content: "ġ"; }
 
-i.xwing-miniatures-font-obstacle-coreasteroid4-outline:before {
+i.x-obstacle-coreasteroid4-outline:before {
   content: "Ą"; }
 
-i.xwing-miniatures-font-obstacle-coreasteroid4:before {
+i.x-obstacle-coreasteroid4:before {
   content: "Ġ"; }
 
-i.xwing-miniatures-font-obstacle-coreasteroid5-outline:before {
+i.x-obstacle-coreasteroid5-outline:before {
   content: "Ā"; }
 
-i.xwing-miniatures-font-obstacle-coreasteroid5:before {
+i.x-obstacle-coreasteroid5:before {
   content: "Ĝ"; }
 
-i.xwing-miniatures-font-obstacle-vt49decimatordebris0-outline:before {
+i.x-obstacle-vt49decimatordebris0-outline:before {
   content: "Đ"; }
 
-i.xwing-miniatures-font-obstacle-vt49decimatordebris0:before {
+i.x-obstacle-vt49decimatordebris0:before {
   content: "Ĭ"; }
 
-i.xwing-miniatures-font-obstacle-vt49decimatordebris1-outline:before {
+i.x-obstacle-vt49decimatordebris1-outline:before {
   content: "đ"; }
 
-i.xwing-miniatures-font-obstacle-vt49decimatordebris1:before {
+i.x-obstacle-vt49decimatordebris1:before {
   content: "ĭ"; }
 
-i.xwing-miniatures-font-obstacle-vt49decimatordebris2-outline:before {
+i.x-obstacle-vt49decimatordebris2-outline:before {
   content: "ć"; }
 
-i.xwing-miniatures-font-obstacle-vt49decimatordebris2:before {
+i.x-obstacle-vt49decimatordebris2:before {
   content: "ģ"; }
 
-i.xwing-miniatures-font-obstacle-yt2400debris0-outline:before {
+i.x-obstacle-yt2400debris0-outline:before {
   content: "ď"; }
 
-i.xwing-miniatures-font-obstacle-yt2400debris0:before {
+i.x-obstacle-yt2400debris0:before {
   content: "ī"; }
 
-i.xwing-miniatures-font-obstacle-yt2400debris1-outline:before {
+i.x-obstacle-yt2400debris1-outline:before {
   content: "Ĉ"; }
 
-i.xwing-miniatures-font-obstacle-yt2400debris1:before {
+i.x-obstacle-yt2400debris1:before {
   content: "Ĥ"; }
 
-i.xwing-miniatures-font-obstacle-yt2400debris2-outline:before {
+i.x-obstacle-yt2400debris2-outline:before {
   content: "Ć"; }
 
-i.xwing-miniatures-font-obstacle-yt2400debris2:before {
+i.x-obstacle-yt2400debris2:before {
   content: "Ģ"; }
 
-i.xwing-miniatures-font-obstacle-gascloud1:before {
+i.x-obstacle-gascloud1:before {
   content: "Į"; }
 
-i.xwing-miniatures-font-obstacle-gascloud1-outline:before {
+i.x-obstacle-gascloud1-outline:before {
   content: "Ē"; }
 
-i.xwing-miniatures-font-obstacle-gascloud2:before {
+i.x-obstacle-gascloud2:before {
   content: "į"; }
 
-i.xwing-miniatures-font-obstacle-gascloud2-outline:before {
+i.x-obstacle-gascloud2-outline:before {
   content: "ē"; }
 
-i.xwing-miniatures-font-obstacle-gascloud3:before {
+i.x-obstacle-gascloud3:before {
   content: "İ"; }
 
-i.xwing-miniatures-font-obstacle-gascloud3-outline:before {
+i.x-obstacle-gascloud3-outline:before {
   content: "Ĕ"; }
 
-i.xwing-miniatures-font-rangebonusindicator:before {
+i.x-rangebonusindicator:before {
   content: "?"; }
 
-i.xwing-miniatures-font-reararc:before {
+i.x-reararc:before {
   content: "|"; }
 
-i.xwing-miniatures-font-rebel-outline:before {
+i.x-rebel-outline:before {
   content: "-"; }
 
-i.xwing-miniatures-font-rebel:before {
+i.x-rebel:before {
   content: "!"; }
 
-i.xwing-miniatures-font-recover:before {
+i.x-recover:before {
   content: "v"; }
 
-i.xwing-miniatures-font-recurring:before {
+i.x-recurring:before {
   content: "`"; }
 
-i.xwing-miniatures-font-reinforce:before {
+i.x-reinforce:before {
   content: "i"; }
 
-i.xwing-miniatures-font-reload:before {
+i.x-reload:before {
   content: "="; }
 
-i.xwing-miniatures-font-republic:before {
+i.x-republic:before {
   content: "/"; }
 
-i.xwing-miniatures-font-reversebankleft:before {
+i.x-reversebankleft:before {
   content: "J"; }
 
-i.xwing-miniatures-font-reversebankright:before {
+i.x-reversebankright:before {
   content: "L"; }
 
-i.xwing-miniatures-font-reversestraight:before {
+i.x-reversestraight:before {
   content: "K"; }
 
-i.xwing-miniatures-font-rightarc:before {
+i.x-rightarc:before {
   content: "¢"; }
 
-i.xwing-miniatures-font-rotatearc:before {
+i.x-rotatearc:before {
   content: "R"; }
 
-i.xwing-miniatures-font-scum:before {
+i.x-scum:before {
   content: "#"; }
 
-i.xwing-miniatures-font-separatists:before {
+i.x-separatists:before {
   content: "."; }
 
-i.xwing-miniatures-font-sensor:before {
+i.x-sensor:before {
   content: "S"; }
 
-i.xwing-miniatures-font-shield:before {
+i.x-shield:before {
   content: "*"; }
 
-i.xwing-miniatures-font-singleturretarc:before {
+i.x-singleturretarc:before {
   content: "p"; }
 
-i.xwing-miniatures-font-slam:before {
+i.x-slam:before {
   content: "s"; }
 
-i.xwing-miniatures-font-sloopleft:before {
+i.x-sloopleft:before {
   content: "1"; }
 
-i.xwing-miniatures-font-sloopright:before {
+i.x-sloopright:before {
   content: "3"; }
 
-i.xwing-miniatures-font-squad-point-cost:before {
+i.x-squad-point-cost:before {
   content: "0"; }
 
-i.xwing-miniatures-font-stop:before {
+i.x-stop:before {
   content: "5"; }
 
-i.xwing-miniatures-font-straight:before {
+i.x-straight:before {
   content: "8"; }
 
-i.xwing-miniatures-font-tacticalrelay:before {
+i.x-tacticalrelay:before {
   content: "Z"; }
 
-i.xwing-miniatures-font-talent:before {
+i.x-talent:before {
   content: "E"; }
 
-i.xwing-miniatures-font-team:before {
+i.x-team:before {
   content: "T"; }
 
-i.xwing-miniatures-font-tech:before {
+i.x-tech:before {
   content: "X"; }
 
-i.xwing-miniatures-font-title:before {
+i.x-title:before {
   content: "t"; }
 
-i.xwing-miniatures-font-token-calculate-outline:before {
+i.x-token-calculate-outline:before {
   content: "Ë"; }
 
-i.xwing-miniatures-font-token-calculate:before {
+i.x-token-calculate:before {
   content: "Ê"; }
 
-i.xwing-miniatures-font-token-charge-outline:before {
+i.x-token-charge-outline:before {
   content: "Ó"; }
 
-i.xwing-miniatures-font-token-charge:before {
+i.x-token-charge:before {
   content: "Ò"; }
 
-i.xwing-miniatures-font-token-crit-outline:before {
+i.x-token-crit-outline:before {
   content: "è"; }
 
-i.xwing-miniatures-font-token-crit:before {
+i.x-token-crit:before {
   content: "Ç"; }
 
-i.xwing-miniatures-font-token-cloak-outline:before {
+i.x-token-cloak-outline:before {
   content: "ô"; }
 
-i.xwing-miniatures-font-token-cloak:before {
+i.x-token-cloak:before {
   content: "å"; }
 
-i.xwing-miniatures-font-token-evade-outline:before {
+i.x-token-evade-outline:before {
   content: "é"; }
 
-i.xwing-miniatures-font-token-evade:before {
+i.x-token-evade:before {
   content: "Å"; }
 
-i.xwing-miniatures-font-token-focus-outline:before {
+i.x-token-focus-outline:before {
   content: "ç"; }
 
-i.xwing-miniatures-font-token-focus:before {
+i.x-token-focus:before {
   content: "Ä"; }
 
-i.xwing-miniatures-font-token-force-outline:before {
+i.x-token-force-outline:before {
   content: "Õ"; }
 
-i.xwing-miniatures-font-token-force:before {
+i.x-token-force:before {
   content: "Ô"; }
 
-i.xwing-miniatures-font-token-disarm-outline:before {
+i.x-token-disarm-outline:before {
   content: "í"; }
 
-i.xwing-miniatures-font-token-disarm:before {
+i.x-token-disarm:before {
   content: "Ö"; }
 
-i.xwing-miniatures-font-token-ion-outline:before {
+i.x-token-ion-outline:before {
   content: "ó"; }
 
-i.xwing-miniatures-font-token-ion:before {
+i.x-token-ion:before {
   content: "ä"; }
 
-i.xwing-miniatures-font-token-jam-outline:before {
+i.x-token-jam-outline:before {
   content: "ð"; }
 
-i.xwing-miniatures-font-token-jam:before {
+i.x-token-jam:before {
   content: "á"; }
 
-i.xwing-miniatures-font-token-lock-outline:before {
+i.x-token-lock-outline:before {
   content: "ò"; }
 
-i.xwing-miniatures-font-token-lock:before {
+i.x-token-lock:before {
   content: "ã"; }
 
-i.xwing-miniatures-font-token-reinforce-outline:before {
+i.x-token-reinforce-outline:before {
   content: "ì"; }
 
-i.xwing-miniatures-font-token-reinforce:before {
+i.x-token-reinforce:before {
   content: "Ü"; }
 
-i.xwing-miniatures-font-token-reinforceaft-outline:before {
+i.x-token-reinforceaft-outline:before {
   content: "î"; }
 
-i.xwing-miniatures-font-token-reinforceaft:before {
+i.x-token-reinforceaft:before {
   content: "Ý"; }
 
-i.xwing-miniatures-font-token-shield-outline:before {
+i.x-token-shield-outline:before {
   content: "ë"; }
 
-i.xwing-miniatures-font-token-shield:before {
+i.x-token-shield:before {
   content: "Ñ"; }
 
-i.xwing-miniatures-font-token-stress-outline:before {
+i.x-token-stress-outline:before {
   content: "ê"; }
 
-i.xwing-miniatures-font-token-stress:before {
+i.x-token-stress:before {
   content: "É"; }
 
-i.xwing-miniatures-font-token-tractor-outline:before {
+i.x-token-tractor-outline:before {
   content: "ï"; }
 
-i.xwing-miniatures-font-token-tractor:before {
+i.x-token-tractor:before {
   content: "à"; }
 
-i.xwing-miniatures-font-torpedo:before {
+i.x-torpedo:before {
   content: "P"; }
 
-i.xwing-miniatures-font-trollleft:before {
+i.x-trollleft:before {
   content: ":"; }
 
-i.xwing-miniatures-font-trollright:before {
+i.x-trollright:before {
   content: ";"; }
 
-i.xwing-miniatures-font-turnleft:before {
+i.x-turnleft:before {
   content: "4"; }
 
-i.xwing-miniatures-font-turnright:before {
+i.x-turnright:before {
   content: "6"; }
 
-i.xwing-miniatures-font-turret:before {
+i.x-turret:before {
   content: "U"; }
 
-i.xwing-miniatures-font-unique-outline:before {
+i.x-unique-outline:before {
   content: "•"; }
 
-i.xwing-miniatures-font-unique:before {
+i.x-unique:before {
   content: "u"; }
 
 /*

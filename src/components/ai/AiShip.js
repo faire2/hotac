@@ -3,6 +3,7 @@ import {Button} from "react-bootstrap";
 
 import {Abi, Ships} from "../../data/Ships";
 import ShipActions, {TIELN} from "../../data/ShipActions";
+import ShipTargetting from "../../data/ShipTargetting";
 
 export function InnerShip(props) {
     const shipId = props.shipId;
@@ -56,14 +57,13 @@ export function InnerShip(props) {
                     {currHull}
                     <Button onClick={e => handlePropertyIncrease(e, false)}> + </Button>
                 </div>
+
                 <h4>Select target:</h4>
-                <ol>
-                    {Ships[shipId][Abi.selTarget].map((instruction) =>
-                        <li>{instruction}</li>
-                    )}
-                </ol>
+                <ShipTargetting shipId={shipId}/>
+
                 <h4>Select and perform action:</h4>
                 <ShipActions shipId={shipId}/>
+
             </div>
             <div className="col-7">
                 IMAGE
