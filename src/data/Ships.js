@@ -7,8 +7,6 @@ export const Ships = Object.freeze({
         attack: 2,
         agility: 3,
         id: "TIELN",
-        selTarget: ["Nearest enemy ship in your firing arc.", "Nearest enemy ship."],
-        selAction: [""]
     },
     TIEIN: {
         name: "Tie-Interceptor",
@@ -18,7 +16,6 @@ export const Ships = Object.freeze({
         attack: 3,
         agility: 3,
         id: "TIEIN",
-        selTarget: ["Nearest enemy ship in your firing arc.", "Nearest enemy ship."]
     },
     TIESA: {
         name: "Tie-Bomber",
@@ -28,7 +25,6 @@ export const Ships = Object.freeze({
         attack: 2,
         agility: 2,
         id: "TIESA",
-        selTarget: ["Locked enemy ship at range 1-3", "Nearest enemy ship in your firing arc.", "Nearest enemy ship."]
     },
     VT49: {
         name: "VT-49",
@@ -38,7 +34,6 @@ export const Ships = Object.freeze({
         attack: 3,
         agility: 0,
         id: "VT49",
-        selTarget: ["Nearest enemy ship."]
     },
 });
 
