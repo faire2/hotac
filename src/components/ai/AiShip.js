@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Button} from "react-bootstrap";
 
 import {Abi, Ships} from "../../data/Ships";
-import ShipActions, {TIELN} from "../../data/ShipActions";
+import ShipActions from "../../data/ShipActions";
 import ShipTargetting from "../../data/ShipTargetting";
 
 export function InnerShip(props) {
@@ -46,16 +46,16 @@ export function InnerShip(props) {
                 <div>Attack: {Ships[shipId][Abi.attack]}</div>
                 <div>Agility: {Ships[shipId][Abi.agility]}</div>
                 <div id="shields">
-                    Shields:
-                    <Button onClick={e => handlePropertyDecrease(e, true)}> - </Button>
-                    {currShields}
-                    <Button onClick={e => handlePropertyIncrease(e, false)}> + </Button>
+                    <span>Shields: </span>
+                    <Button onClick={e => handlePropertyDecrease(e, true)} size="sm"> - </Button>
+                    <span className="value"> {currShields} </span>
+                    <Button onClick={e => handlePropertyIncrease(e, false)} size="sm"> + </Button>
                 </div>
                 <div id="hull">
-                    Hull:
-                    <Button onClick={e => handlePropertyDecrease(e, true)}> - </Button>
-                    {currHull}
-                    <Button onClick={e => handlePropertyIncrease(e, false)}> + </Button>
+                    <span>Hull: </span>
+                    <Button onClick={e => handlePropertyDecrease(e, true)} size="sm"> - </Button>
+                    <span className="value"> {currHull} </span>
+                    <Button onClick={e => handlePropertyIncrease(e, false)} size="sm"> + </Button>
                 </div>
 
                 <h4>Select target:</h4>
