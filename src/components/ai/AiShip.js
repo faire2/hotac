@@ -14,6 +14,7 @@ export function InnerShip(props) {
 
     const [currShields, setCurrShields] = useState(maxShields);
     const [currHull, setCurrHull] = useState(maxHull);
+    const [targetPosition, setTargetPosition] = useState("");
 
     function handlePropertyIncrease(e) {
         let property = e.target.parentNode.id;
@@ -70,7 +71,7 @@ export function InnerShip(props) {
             </div>
             <div className="col-6">
                 <ShipManeuverImages  shipId={shipId}/>
-                <TargetButtons />
+                <TargetButtons setTargetPosition={setTargetPosition}/>
             </div>
         </div>
     )
