@@ -4,11 +4,14 @@ import {Button} from "react-bootstrap";
 import {Abi, Ships} from "../../data/Ships";
 import ShipActions from "../../data/ShipActions";
 import ShipTargetting from "../../data/ShipTargetting";
+import ShipManeuverImages from "../../data/ShipManeuverImages";
+import {TargetButtons} from "./TargetButtons";
 
 export function InnerShip(props) {
     const shipId = props.shipId;
     const maxShields = Ships[shipId][Abi.shields];
     const maxHull = Ships[shipId][Abi.hull];
+
     const [currShields, setCurrShields] = useState(maxShields);
     const [currHull, setCurrHull] = useState(maxHull);
 
@@ -65,8 +68,9 @@ export function InnerShip(props) {
                 <ShipActions shipId={shipId}/>
 
             </div>
-            <div className="col-7">
-                IMAGE
+            <div className="col-6">
+                <ShipManeuverImages  shipId={shipId}/>
+                <TargetButtons />
             </div>
         </div>
     )
