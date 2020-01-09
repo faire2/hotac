@@ -1,6 +1,7 @@
 import React from "react";
 import {Button} from "react-bootstrap";
 
+/*todo: fix bug (last button returns non-def)*/
 export const TargetButtons = (props) =>
     <div>
         <Button variant="success" onClick={() => props.setTargetPosition(POSITIONS["FAR-FRONT"])}
@@ -18,7 +19,7 @@ export const TargetButtons = (props) =>
         <Button variant="danger" onClick={() => props.setTargetPosition(POSITIONS["NEAR-BACK"])}
                 className="d-button near-back"> target </Button>
         <Button variant="danger" onClick={() => props.setTargetPosition(POSITIONS["NEAR-BACK-SIDE"])}
-                className="d-button near-back-side"> target </Button> /*todo: fix bug (button returns non-def)*/
+                className="d-button near-back-side"> target </Button>
     </div>;
 
 export const POSITIONS = Object.freeze({
