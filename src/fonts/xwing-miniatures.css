@@ -11,6 +11,22 @@ i.xwf {
   font-style: normal;
   font-size: 1.2em; }
 
+/* NORMAL MANEUVERS */
+i.xwm {
+  font-family: XWing;
+  font-style: normal;
+  font-size: 1.1em;
+}
+
+/* RED MANEUVERS */
+i.xwmr {
+  font-family: XWing;
+  font-style: normal;
+  font-size: 1.1em;
+  color: crimson;
+}
+
+/* DIRECT INSERTION OF SYMBOLS */
 i.x-agility:before {
   content: "^"; }
 

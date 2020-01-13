@@ -6,6 +6,7 @@ import ShipActions from "../../data/ShipActions";
 import ShipTargetting from "../../data/ShipTargetting";
 import ShipManeuverImages from "../../data/ShipManeuverImages";
 import {TargetButtons} from "./TargetButtons";
+import Maneuver, {ManeuversEnum} from "../../data/Maneuvers";
 
 export function InnerShip(props) {
     const shipId = props.shipId;
@@ -42,10 +43,14 @@ export function InnerShip(props) {
         }
     }
 
+    function getManeuver() {
+
+    }
+
     return (
         <div className="row">
             <div className="col-5">
-                <h3>{Ships[shipId][Abi.name]}</h3>
+                <h3>{Ships[shipId][Abi.name]} <Maneuver maneuver={ManeuversEnum.STRAIGHT1}/></h3>
                 <div>Initiative: {Ships[shipId][Abi.initiative]}</div>
                 <div>Attack: {Ships[shipId][Abi.attack]}</div>
                 <div>Agility: {Ships[shipId][Abi.agility]}</div>
@@ -72,6 +77,8 @@ export function InnerShip(props) {
             <div className="col-6">
                 <ShipManeuverImages  shipId={shipId}/>
                 <TargetButtons setTargetPosition={setTargetPosition}/>
+                <Button>Generate maneuver: </Button><br/>
+                <i className="xwf">B</i>
             </div>
         </div>
     )
