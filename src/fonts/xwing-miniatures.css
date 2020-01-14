@@ -13,7 +13,8 @@ i.xwf {
   font-size: 1.2em; }
 
 /* MANEUVERS */
-span.xw-man {
+div.xw-man {
+  text-align: center;
   font-style: normal;
   font-size: 1.5em;
 }

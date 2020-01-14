@@ -37,7 +37,7 @@ export const Ships = Object.freeze({
     },
 });
 
-export const Abi = Object.freeze({
+export const Stats = Object.freeze({
     name: "name",
     initiative: "initiative",
     shields: "shields",

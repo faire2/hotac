@@ -1,14 +1,33 @@
-div {
-  margin: 5px;
+.App {
 }
 
-.App {
+h3 {
+  text-align: center;
+}
+
+h4 {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.shipStats {
+  padding-left: 25px;
+}
+
+.shipStats li {
+  margin-left: -25px;
+}
+
+.btnRemoveShip {
+  margin-top: 5px;
+  margin-left: 20px;
 }
 
 /* DIAL IMAGE AND BUTTONS */
 .man_dial_img {
+  float: left;
   max-width: 250px;
-  margin-top: 30px;
+  margin-top: 0px;
 }
 
 .d-button {
@@ -18,42 +37,42 @@ div {
 
 .far-front {
   left: 50px;
-  top: 70px;
+  top: 170px;
 }
 
 .far-front-side {
   left: 175px;
-  top: 180px;
+  top: 280px;
 }
 
 .far-back-side {
   left: 175px;
-  top: 340px;
+  top: 440px;
 }
 
 .far-back {
   left: 50px;
-  top: 455px;
+  top: 555px;
 }
 
 .near-front {
   left: 18px;
-  top: 160px;
+  top: 260px;
 }
 
 .near-front-side {
   left: 70px;
-  top: 225px;
+  top: 325px;
 }
 
 .near-back-side {
   left: 70px;
-  top: 300px;
+  top: 400px;
 }
 
 .near-back {
   left: 18px;
-  top: 365px;
+  top: 465px;
 }
 
 

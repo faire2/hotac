@@ -84,55 +84,55 @@ export default function Maneuvers(props) {
 
     switch (maneuver) {
         case MVRS.STRAIGHT1:
-            return <span className="xw-man">1<i className="xwm x-straight"/></span>;
+            return <div className="xw-man">1<i className="xwm x-straight"/></div>;
         case MVRS.STRAIGHT2:
-            return <span>2<i className="xwm x-straight"/></span>;
+            return <div className="xw-man">2<i className="xwm x-straight"/></div>;
         case MVRS.STRAIGHT3:
-            return <span className="xw-man">3<i className="xwm x-straight"/></span>;
+            return <div className="xw-man">3<i className="xwm x-straight"/></div>;
         case MVRS.STRAIGHT4:
-            return <span className="xw-man">4<i className="xwm x-straight"/></span>;
+            return <div className="xw-man">4<i className="xwm x-straight"/></div>;
         case MVRS.STRAIGHT5:
-            return <span className="xw-man">5<i className="xwm x-straight"/></span>;
+            return <div className="xw-man">5<i className="xwm x-straight"/></div>;
         case MVRS.BANK1:
-            return <span className="xw-man">1<i className="xwm x-bankright"/></span>;
+            return <div className="xw-man">1<i className="xwm x-bankright"/></div>;
         case MVRS.BANK2:
-            return <span className="xw-man">2<i className="xwm x-bankright"/></span>;
+            return <div className="xw-man">2<i className="xwm x-bankright"/></div>;
         case MVRS.BANK3:
-            return <span className="xw-man">3<i className="xwm x-bankright"/></span>;
+            return <div className="xw-man">3<i className="xwm x-bankright"/></div>;
         case MVRS.BANKOPPOSITE3:
-            return <span className="xw-man">3<i className="xwm x-bankleft"/></span>;
+            return <div className="xw-man">3<i className="xwm x-bankleft"/></div>;
         case MVRS.TURN1:
-            return <span className="xw-man">1<i className="xwm x-turnright"/></span>;
+            return <div className="xw-man">1<i className="xwm x-turnright"/></div>;
         case MVRS.TURNRED1:
-            return <span className="xw-man">1<i className="xwmr x-turnright"/></span>;
+            return <div className="xw-man">1<i className="xwmr x-turnright"/></div>;
         case MVRS.TURN2:
-            return <span className="xw-man">2<i className="xwm x-turnright"/></span>;
+            return <div className="xw-man">2<i className="xwm x-turnright"/></div>;
         case MVRS.TURN3:
-            return <span className="xw-man">3<i className="xwm x-turnright"/></span>;
+            return <div className="xw-man">3<i className="xwm x-turnright"/></div>;
         case MVRS.TURNOPPOSITE2:
-            return <span className="xw-man">2<i className="xwm x-turnleft"/> </span>;
+            return <div className="xw-man">2<i className="xwm x-turnleft"/> </div>;
         case MVRS.TURNOPPOSITE3:
-            return <span className="xw-man">3<i className="xwm x-turnleft"/> </span>;
+            return <div className="xw-man">3<i className="xwm x-turnleft"/> </div>;
         case MVRS.SEGNOR3:
-            return <span className="xw-man">3<i className="xwmr x-sloopright"/> </span>;
+            return <div className="xw-man">3<i className="xwmr x-sloopright"/> </div>;
         case MVRS.SEGNOROPPOSITE3:
-            return <span className="xw-man">3<i className="xwmr x-sloopleft"/> </span>
+            return <div className="xw-man">3<i className="xwmr x-sloopleft"/> </div>
         case MVRS.TALLON3:
-            return <span className="xw-man">3<i className="xwmr x-trollright"/> </span>;
+            return <div className="xw-man">3<i className="xwmr x-trollright"/> </div>;
         case MVRS.KOIOGRAN3:
-            return <span className="xw-man">3<i className="xwmr x-kturn"/> </span>;
+            return <div className="xw-man">3<i className="xwmr x-kturn"/> </div>;
         case MVRS.KOIOGRAN4:
-            return <span className="xw-man">4<i className="xwmr x-kturn"/> </span>;
+            return <div className="xw-man">4<i className="xwmr x-kturn"/> </div>;
         case MVRS.KOIOGRAN5:
-            return <span className="xw-man">5<i className="xwmr x-kturn"/> </span>;
+            return <div className="xw-man">5<i className="xwmr x-kturn"/> </div>;
         case MVRS.STATIONARY:
-            return <span className="xw-man"><i className="xwmr x-stop"/> </span>;
+            return <div className="xw-man"><i className="xwmr x-stop"/> </div>;
         case MVRS.REVERSESTRAIGHT1:
-            return <span className="xw-man">1<i className="xwmr x-reversestraight"/> </span>;
+            return <div className="xw-man">1<i className="xwmr x-reversestraight"/> </div>;
         case MVRS.REVERSEBANK1:
-            return <span className="xw-man">1<i className="xwmr x-reversebankright"/> </span>;
+            return <div className="xw-man">1<i className="xwmr x-reversebankright"/> </div>;
         case MVRS.REVERSEBANK2:
-            return <span className="xw-man">2<i className="xwmr x-reversebankright"/> </span>;
+            return <div className="xw-man">2<i className="xwmr x-reversebankright"/> </div>;
         default:
             console.log("Component Maneuvers didn't recognize maneuver: " + props.maneuver);
     }
