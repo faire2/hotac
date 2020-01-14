@@ -5,8 +5,8 @@ import {Abi, Ships} from "../../data/Ships";
 import ShipActions from "../../data/ShipActions";
 import ShipTargetting from "../../data/ShipTargetting";
 import ShipManeuverImages from "../../data/ShipManeuverImages";
-import {TargetButtons} from "./TargetButtons";
-import Maneuvers, {PSN} from "../../data/Maneuvers";
+import {PSN, TargetButtons} from "./TargetButtons";
+import Maneuvers from "../../data/Maneuvers";
 
 export function InnerShip(props) {
     const shipId = props.shipId;

@@ -1,17 +1,6 @@
 import React from "react";
 import {Ships} from "./Ships";
-
-
-export const PSN = Object.freeze({
-    FARFRONT: "FAR FRONT",
-    FARFRONTSIDE: "FAR FRONT SIDE",
-    FARREARSIDE: "FAR REAR SIDE",
-    FARREAR: "FAR REAR",
-    NEARFRONT: "NEAR FRONT",
-    NEAFRONTSIDE: "NEAR FRONT SIDE",
-    NEARREARSIDE: "NEAR REAR SIDE",
-    NEARREAR: "NEAR REAR",
-});
+import {PSN} from "../components/ai/TargetButtons";
 
 const MVRS = Object.freeze({
     STRAIGHT1: "STRAIGHT1",
