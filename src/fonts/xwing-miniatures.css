@@ -6,24 +6,33 @@
   font-family: XWing;
   src: url("xwing-miniatures.ttf"); }
 
+
 i.xwf {
   font-family: XWing;
   font-style: normal;
   font-size: 1.2em; }
 
+/* MANEUVERS */
+span.xw-man {
+  font-style: normal;
+  font-size: 1.5em;
+}
+
+
 /* NORMAL MANEUVERS */
 i.xwm {
   font-family: XWing;
   font-style: normal;
-  font-size: 1.1em;
+  font-size: 110%;
+  /* TODO: color should be white with black outline */
 }
 
 /* RED MANEUVERS */
 i.xwmr {
   font-family: XWing;
   font-style: normal;
-  font-size: 1.1em;
   color: crimson;
+  font-size: 110%;
 }
 
 /* DIRECT INSERTION OF SYMBOLS */
