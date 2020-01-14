@@ -2,7 +2,7 @@ import {Ships} from "./Ships";
 import React from "react";
 
 export default function ShipManeuverImages(props) {
-    switch (props.shipId) {
+    switch (props.shipType) {
         case Ships.TIEIN.id:
             return <TIEIN/>;
         case Ships.TIELN.id:
@@ -12,7 +12,7 @@ export default function ShipManeuverImages(props) {
         case Ships.VT49.id:
             return <VT49/>;
         default:
-            console.log("Component ShipActions didn't recognize shipId: " + props.shipId);
+            console.log("Component ShipActions didn't recognize shipType: " + props.shipType);
     }
 }
 

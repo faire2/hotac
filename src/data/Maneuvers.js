@@ -80,7 +80,7 @@ export default function Maneuvers(props) {
 
     /* generates random number between 0 - 5 */
     const randNum = Math.floor(Math.random() * 6);
-    const maneuver = ShipManeuvers[props.shipId][props.position][randNum];
+    const maneuver = ShipManeuvers[props.shipType][props.position][randNum];
 
     switch (maneuver) {
         case MVRS.STRAIGHT1:

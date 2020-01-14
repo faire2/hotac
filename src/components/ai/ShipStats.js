@@ -4,10 +4,10 @@ import React from "react";
 
 export const ShipStats = (props) =>
     <div>
-        <h3>{Ships[props.shipId][Abi.name]}</h3>
-        <div>Initiative: {Ships[props.shipId][Abi.initiative]}</div>
-        <div>Attack: {Ships[props.shipId][Abi.attack]}</div>
-        <div>Agility: {Ships[props.shipId][Abi.agility]}</div>
+        <h3>{Ships[props.shipType][Abi.name]}</h3>
+        <div>Initiative: {Ships[props.shipType][Abi.initiative]}</div>
+        <div>Attack: {Ships[props.shipType][Abi.attack]}</div>
+        <div>Agility: {Ships[props.shipType][Abi.agility]}</div>
         <div id="shields">
             <span>Shields: </span>
             <Button onClick={e => props.handlePropertyDecrease(e, true)} size="sm"> - </Button>

@@ -10,9 +10,10 @@ import Maneuvers from "../../data/Maneuvers";
 import {ShipStats} from "./ShipStats";
 
 export function InnerShip(props) {
+    const shipType = props.shipType;
+    const maxShields = Ships[shipType][Abi.shields];
+    const maxHull = Ships[shipType][Abi.hull];
     const shipId = props.shipId;
-    const maxShields = Ships[shipId][Abi.shields];
-    const maxHull = Ships[shipId][Abi.hull];
 
     const [currShields, setCurrShields] = useState(maxShields);
     const [currHull, setCurrHull] = useState(maxHull);
@@ -47,22 +48,23 @@ export function InnerShip(props) {
     return (
         <div className="row">
             <div className="col-5">
-                <ShipStats shipId={shipId} currShields={currShields} currHull={currHull}
+                <ShipStats shipType={shipType} currShields={currShields} currHull={currHull}
                            handlePropertyDecrease={handlePropertyDecrease}
                            handlePropertyIncrease={handlePropertyIncrease}/>
 
                 <h4>Select target:</h4>
-                <ShipTargetting shipId={shipId}/>
+                <ShipTargetting shipType={shipType}/>
 
                 <h4>Perform maneuver:</h4>
-                <Maneuvers shipId={shipId} position={targetPosition}/>
+                <Maneuvers shipType={shipType} position={targetPosition}/>
 
                 <h4>Select and perform action:</h4>
-                <ShipActions shipId={shipId}/>
+                <ShipActions shipType={shipType}/>
 
             </div>
             <div className="col-6">
-                <ShipManeuverImages shipId={shipId}/>
+                <Button onClick={e => props.handleShipRemoval(shipId)}>Remove ship</Button>
+                <ShipManeuverImages shipType={shipType}/>
                 <TargetButtons setTargetPosition={setTargetPosition}/>
             </div>
         </div>

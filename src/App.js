@@ -9,8 +9,9 @@ import './fonts/xwing-miniatures-ships.ttf'
 import Button from 'react-bootstrap/Button';
 import Select from 'react-select';
 
-import {AiShipsComponents} from "./components/ai/AiShips";
+
 import {Ships} from "./data/Ships";
+import AiShipsComponents from "./components/ai/AiShips";
 
 function App() {
     const [aiShips, setAiShips] = useState([]);
@@ -29,20 +30,22 @@ function App() {
         console.log("Current ships state: ");
         console.log(aiShips);
     }
+    
+    function handleShipRemoval(index) {
+        const tAiShips = aiShips;
+        tAiShips.splice(index, 1);
+        setAiShips([...tAiShips]);
+        console.log("Current ships state: ");
+        console.log(aiShips);
+    }
 
     return (
         <div className="App">
             <Button> BUTTON </Button>
             <Select options={newShipOptions} onChange={e => handleNewShipSelection(e)}/>
-            <AiShipsComponents aiShips={aiShips}/>
+            <AiShipsComponents aiShips={aiShips} handleShipRemoval={handleShipRemoval}/>
         </div>
     );
-}
-
-function createNewShip(shipId) {
-    console.log(Ships["TIELN"]);
-    console.log("ship: " + Ships[shipId]["name"]);
-    return Ships[shipId];
 }
 
 export default App;
