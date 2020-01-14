@@ -134,7 +134,7 @@ export default function Maneuvers(props) {
         case MVRS.REVERSEBANK2:
             return <span className="xw-man">2<i className="xwmr x-reversebankright"/> </span>;
         default:
-            console.log("Component ShipActions didn't recognize shipId: " + props.maneuver);
+            console.log("Component Maneuvers didn't recognize maneuver: " + props.maneuver);
     }
 }
 

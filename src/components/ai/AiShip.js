@@ -25,7 +25,7 @@ export function InnerShip(props) {
         } else if (property === Abi.hull && currHull < maxHull) {
             const tempCurrHull = currHull + 1;
             setCurrHull(tempCurrHull);
-        } else {
+        } else if (property !== Abi.hull && property !== Abi.shields) {
             console.log("Unknown ship property: " + property);
         }
     }
