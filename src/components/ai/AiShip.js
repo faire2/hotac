@@ -7,6 +7,7 @@ import ShipTargetting from "../../data/ShipTargetting";
 import ShipManeuverImages from "../../data/ShipManeuverImages";
 import {PSN, TargetButtons} from "./TargetButtons";
 import Maneuvers from "../../data/Maneuvers";
+import {ShipStats} from "./ShipStats";
 
 export function InnerShip(props) {
     const shipId = props.shipId;
@@ -38,7 +39,7 @@ export function InnerShip(props) {
         } else if (property === Abi.hull && currHull > 0) {
             const tempCurrHull = currHull - 1;
             setCurrHull(tempCurrHull);
-        } else {
+        } else if (property !== Abi.hull && property !== Abi.shields) {
             console.log("Unknown ship property: " + property);
         }
     }
@@ -46,22 +47,9 @@ export function InnerShip(props) {
     return (
         <div className="row">
             <div className="col-5">
-                <h3>{Ships[shipId][Abi.name]}</h3>
-                <div>Initiative: {Ships[shipId][Abi.initiative]}</div>
-                <div>Attack: {Ships[shipId][Abi.attack]}</div>
-                <div>Agility: {Ships[shipId][Abi.agility]}</div>
-                <div id="shields">
-                    <span>Shields: </span>
-                    <Button onClick={e => handlePropertyDecrease(e, true)} size="sm"> - </Button>
-                    <span className="value"> {currShields} </span>
-                    <Button onClick={e => handlePropertyIncrease(e, false)} size="sm"> + </Button>
-                </div>
-                <div id="hull">
-                    <span>Hull: </span>
-                    <Button onClick={e => handlePropertyDecrease(e, true)} size="sm"> - </Button>
-                    <span className="value"> {currHull} </span>
-                    <Button onClick={e => handlePropertyIncrease(e, false)} size="sm"> + </Button>
-                </div>
+                <ShipStats shipId={shipId} currShields={currShields} currHull={currHull}
+                           handlePropertyDecrease={handlePropertyDecrease}
+                           handlePropertyIncrease={handlePropertyIncrease}/>
 
                 <h4>Select target:</h4>
                 <ShipTargetting shipId={shipId}/>
@@ -74,7 +62,7 @@ export function InnerShip(props) {
 
             </div>
             <div className="col-6">
-                <ShipManeuverImages  shipId={shipId}/>
+                <ShipManeuverImages shipId={shipId}/>
                 <TargetButtons setTargetPosition={setTargetPosition}/>
             </div>
         </div>

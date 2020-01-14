@@ -1,5 +1,4 @@
 import React from 'react';
-import {} from "./AiShip";
 import {InnerShip} from "./AiShip";
 
 export const AiShipsComponents = props => (
