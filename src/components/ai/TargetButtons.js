@@ -3,7 +3,7 @@ import {Button} from "react-bootstrap";
 
 /*todo: fix bug (last button returns non-def)*/
 export const TargetButtons = (props) =>
-    <div>
+    <div className="d-button-container">
         <Button variant="success" onClick={() => props.setTargetPosition(PSN.FARFRONT)}
                 className="d-button far-front"> target </Button>
         <Button variant="success" onClick={() => props.setTargetPosition(PSN.FARFRONTSIDE)}

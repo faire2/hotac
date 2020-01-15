@@ -1,6 +1,10 @@
 .App {
 }
 
+.redBgr {
+  background-color: crimson;
+}
+
 h3 {
   text-align: center;
 }
@@ -24,7 +28,13 @@ h4 {
 /* DIAL IMAGE AND BUTTONS */
 .man_dial_img {
   max-width: 250px;
-  margin-top: 0px;
+  margin-top: 10px;
+}
+
+.d-button-container {
+  position: absolute;
+  margin-top: -630px;
+  margin-left: -15px;
 }
 
 .d-button {
