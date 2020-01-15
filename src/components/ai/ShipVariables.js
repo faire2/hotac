@@ -46,23 +46,15 @@ export default function ShipVariables(props) {
                 </div>
             </div>
             <div className="row">
-                <div className="col-1">
-                    <Button onClick={e => handlePropertyDecrease(e, true)} size="sm"> - </Button>
-                </div>
-                <div className="col-1">
+                <div id={Stats.shields} className="col-6">
+                    <button className="btn btn-primary btn-sm btn-increment" onClick={e => handlePropertyDecrease(e, true)} size="sm"> - </button>
                     <span className="value"> {currShields} </span>
+                    <button className="btn btn-primary btn-sm btn-increment"  onClick={e => handlePropertyIncrease(e, false)} size="sm"> + </button>
                 </div>
-                <div className="col-1">
-                    <Button onClick={e => handlePropertyIncrease(e, false)} size="sm"> + </Button>
-                </div>
-                <div className="col-1">
-                    <Button onClick={e => handlePropertyDecrease(e, true)} size="sm"> - </Button>
-                </div>
-                <div className="col-1">
+                <div id={Stats.hull} className="col-6">
+                    <button className="btn btn-primary btn-sm btn-increment"  onClick={e => handlePropertyDecrease(e, true)} size="sm"> - </button>
                     <span className="value"> {currHull} </span>
-                </div>
-                <div className="col-1">
-                    <Button onClick={e => handlePropertyIncrease(e, false)} size="sm"> + </Button>
+                    <button className="btn btn-primary btn-sm btn-increment"  onClick={e => handlePropertyIncrease(e, false)} size="sm"> + </button>
                 </div>
             </div>
         </div>

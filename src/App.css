@@ -25,6 +25,11 @@ h4 {
 .btnRemoveShip {
 }
 
+.btn-increment {
+  margin-top: -5px;
+  width: 30px;
+}
+
 /* DIAL IMAGE AND BUTTONS */
 .man_dial_img {
   max-width: 250px;
