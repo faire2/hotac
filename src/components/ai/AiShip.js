@@ -21,18 +21,18 @@ export function InnerShip(props) {
 
     return (
         <div>
-            <h3>{Ships[props.shipType][Stats.name]}</h3>
+            <h1>{Ships[props.shipType][Stats.name]}</h1>
             <div className="row">
                 <div className="col-6">
                     <ShipStats shipType={shipType}/>
                     <ShipVariables maxShields={maxShields} maxHull={maxHull}/>
-                    <h4>Select target:</h4>
+                    <h2>Select target:</h2>
                     <ShipTargetting shipType={shipType}/>
 
-                    <h4>Perform maneuver:</h4>
+                    <h2>Perform maneuver:</h2>
                     <Maneuvers shipType={shipType} position={targetPosition}/>
 
-                    <h4>Select and perform action:</h4>
+                    <h2>Select and perform action:</h2>
                     <ShipActions shipType={shipType}/>
                 </div>
                 <div className="col-5 position-relative">

@@ -5,16 +5,16 @@ export const ShipStats = (props) =>
     <div>
         <div className="row">
             <div className="col-4">
-                <div>Initiative:</div>
+                <h3>Initiative:</h3>
             </div>
             <div className="col-4">
-                <div>Attack:</div>
+                <h3>Attack:</h3>
             </div>
             <div className="col-4">
-                <div>Agility:</div>
+                <h3>Agility:</h3>
             </div>
         </div>
-        <div className="row">
+        <div className="row text-center">
             <div className="col-4">
                 <div>{Ships[props.shipType][Stats.initiative]}</div>
             </div>

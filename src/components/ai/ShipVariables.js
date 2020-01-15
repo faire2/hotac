@@ -52,15 +52,15 @@ export default function ShipVariables(props) {
 
     return (
         <div>
-            <div className="row">
+            <div className="row ">
                 <div className="col-4">
-                    <div>ID:</div>
+                    <h3>ID:</h3>
                 </div>
                 <div className="col-4">
-                    <div>Shields:</div>
+                    <h3>Shields:</h3>
                 </div>
                 <div className="col-4">
-                    <div>Hull:</div>
+                    <h3>Hull:</h3>
                 </div>
             </div>
             <div className="row">
@@ -68,14 +68,14 @@ export default function ShipVariables(props) {
                     <Select options={idOptions} onChange={e => setTokenId(e.value)}/>
                 </div>
                 <div id={Stats.shields} className="col-4">
-                    <button className="btn btn-primary btn-sm btn-increment" onClick={e => handlePropertyDecrease(e, true)} size="sm"> - </button>
+                    <button className="btn btn-primary btn-increment" onClick={e => handlePropertyDecrease(e, true)} size="sm"> - </button>
                     <span className="value"> {currShields} </span>
-                    <button className="btn btn-primary btn-sm btn-increment"  onClick={e => handlePropertyIncrease(e, false)} size="sm"> + </button>
+                    <button className="btn btn-primary btn-increment"  onClick={e => handlePropertyIncrease(e, false)} size="sm"> + </button>
                 </div>
                 <div id={Stats.hull} className="col-4">
-                    <button className="btn btn-primary btn-sm btn-increment"  onClick={e => handlePropertyDecrease(e, true)} size="sm"> - </button>
+                    <button className="btn btn-primary btn-increment"  onClick={e => handlePropertyDecrease(e, true)} size="sm"> - </button>
                     <span className="value"> {currHull} </span>
-                    <button className="btn btn-primary btn-sm btn-increment"  onClick={e => handlePropertyIncrease(e, false)} size="sm"> + </button>
+                    <button className="btn btn-primary btn-increment"  onClick={e => handlePropertyIncrease(e, false)} size="sm"> + </button>
                 </div>
             </div>
         </div>
