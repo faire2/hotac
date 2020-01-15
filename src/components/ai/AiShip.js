@@ -23,10 +23,12 @@ export function InnerShip(props) {
             <div className="row">
                 <div className="col-6">
                     <ShipStats shipType={shipType} maxShields={maxShields} maxHull={maxHull}/>
-                    <Button className="btnRemoveShip" variant="danger" size="sm" onClick={e => props.handleShipRemoval(shipId)}>Remove ship</Button>
-
                     <ShipManeuverImages shipType={shipType}/>
                     <TargetButtons setTargetPosition={setTargetPosition}/>
+                    <div className="d-flex flex-row">
+                        <Button className="btnRemoveShip" variant="danger" size="sm"
+                                onClick={e => props.handleShipRemoval(shipId)}>Remove ship</Button>
+                    </div>
 
                 </div>
                 <div className="col-5">

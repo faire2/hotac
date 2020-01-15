@@ -52,7 +52,7 @@ export default function ShipStats(props) {
                     </div>
                 </div>
             </div>
-            <div className="col-8">
+            <div className="col-6">
                 <div className="row">
                     <div className="col-6">
                         <p>Shields:</p>
