@@ -18,13 +18,19 @@ export function AiShip(props) {
     const squadId = props.squadId;
 
     const [targetPosition, setTargetPosition] = useState([PSN.FARFRONT]);
-    const [tokenIds, setTokenIds] = useState([3, 4]); //todo remove initial values
+    const [tokenIds, setTokenIds] = useState([0]); //todo remove initial values
 
     function handleTokenIdChange(value, index) {
         const tTokenIds = [...tokenIds];
         tTokenIds.splice(index, 1, value);
         setTokenIds(tTokenIds);
     };
+
+    function handleAddShip() {
+        const tTokenIds = [...tokenIds];
+        tTokenIds.push(0);
+        setTokenIds(tTokenIds);
+    }
 
 
     return (
@@ -51,7 +57,7 @@ export function AiShip(props) {
                                            handleTokenIdChange={handleTokenIdChange}/>)
                     }
                     <br/>
-                    <button className="btn btn-primary btn-sm">Add a ship</button>
+                    <button className="btn btn-primary btn-sm" onClick={handleAddShip}>Add a ship</button>
                     <h2>Select target:</h2>
                     <ShipTargetting shipType={shipType}/>
 
