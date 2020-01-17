@@ -37,7 +37,7 @@ export function ShipsVariables(props) {
             <ShipsHeader/>
             {
                 tokenIds.map((tokenId) =>
-                    <Variables key={tokenIds.indexOf(tokenId)} maxShields={props.maxShields} maxHull={props.maxHull}
+                    <Variables key={tokenIds.indexOf(tokenId)} maxShields={props.maxShield} maxHull={props.maxHull}
                                tokenIdIndex={tokenIds.indexOf(tokenId)}
                                handleTokenIdChange={handleTokenIdChange}/>)
             }
