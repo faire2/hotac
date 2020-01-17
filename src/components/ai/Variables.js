@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Stats} from "../../data/Ships";
 import Select from "react-select";
 
-export default function ShipVariables(props) {
+export default function Variables(props) {
     const maxShields = props.maxShields;
     const maxHull = props.maxHull;
 

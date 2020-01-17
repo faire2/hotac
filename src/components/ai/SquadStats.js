@@ -1,7 +1,7 @@
 import {Ships, Stats} from "../../data/Ships";
 import React from "react";
 
-export const ShipStats = (props) =>
+export const SquadStats = (props) =>
     <div>
         <div className="row">
             <div className="col-4">

@@ -8,29 +8,20 @@ import ShipManeuverImages from "../../data/ShipManeuverImages";
 import {PSN, TargetButtons} from "./TargetButtons";
 import Maneuvers from "../../data/Maneuvers";
 
-import ShipVariables from "./ShipVariables";
-import {ShipStats} from "./ShipStats";
+import Variables from "./Variables";
+import {ShipsVariables} from "./ShipsVariables"
+import {SquadStats} from "./SquadStats";
 
-export function AiShip(props) {
+export function Squad(props) {
     const shipType = props.shipType;
     const maxShields = Ships[shipType][Stats.shields];
     const maxHull = Ships[shipType][Stats.hull];
     const squadId = props.squadId;
 
     const [targetPosition, setTargetPosition] = useState([PSN.FARFRONT]);
-    const [tokenIds, setTokenIds] = useState([0]);
 
-    function handleTokenIdChange(value, index) {
-        const tTokenIds = [...tokenIds];
-        tTokenIds.splice(index, 1, value);
-        setTokenIds(tTokenIds);
-    };
 
-    function handleAddShip() {
-        const tTokenIds = [...tokenIds];
-        tTokenIds.push(0);
-        setTokenIds(tTokenIds);
-    }
+
 
 
     return (
@@ -38,26 +29,12 @@ export function AiShip(props) {
             <h1>{Ships[props.shipType][Stats.name]}</h1>
             <div className="row">
                 <div className="col-6">
-                    <ShipStats shipType={shipType}/>
-                    <div className="row ">
-                        <div className="col-4">
-                            <h3>ID:</h3>
-                        </div>
-                        <div className="col-4">
-                            <h3>Shields:</h3>
-                        </div>
-                        <div className="col-4">
-                            <h3>Hull:</h3>
-                        </div>
-                    </div>
-                    {
-                        tokenIds.map( (tokenId) =>
-                             <ShipVariables key={tokenIds.indexOf(tokenId)} maxShields={maxShields} maxHull={maxHull}
-                                           tokenIdIndex={tokenIds.indexOf(tokenId)}
-                                           handleTokenIdChange={handleTokenIdChange}/>)
-                    }
+                    <SquadStats shipType={shipType}/>
+                    <ShipsVariables maxHull={maxHull} maxShield={maxShields}/>
+
+
                     <br/>
-                    <button className="btn btn-primary btn-sm" onClick={handleAddShip}>Add a ship</button>
+
                     <h2>Select target:</h2>
                     <ShipTargetting shipType={shipType}/>
 

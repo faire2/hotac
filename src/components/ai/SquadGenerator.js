@@ -1,7 +1,7 @@
 import React from 'react';
-import {AiShip} from "./AiShip";
+import {Squad} from "./Squad";
 
-export default function AiShipsComponents(props) {
+export default function SquadGenerator(props) {
     let i = 0;
     let squadId = 0;
     return (
@@ -10,7 +10,7 @@ export default function AiShipsComponents(props) {
                 squadId = i;
                 i++;
                 return <div key={i} className="col-l-6">
-                    <AiShip shipType={shipType} squadId={squadId} handleShipRemoval={props.handleShipRemoval}/>
+                    <Squad shipType={shipType} squadId={squadId} handleShipRemoval={props.handleShipRemoval}/>
                 </div>;
             })
             }

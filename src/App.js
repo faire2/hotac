@@ -11,7 +11,7 @@ import Select from 'react-select';
 
 
 import {Ships} from "./data/Ships";
-import AiShipsComponents from "./components/ai/AiShips";
+import SquadGenerator from "./components/ai/SquadGenerator";
 
 function App() {
     const [aiShips, setAiShips] = useState([]);
@@ -43,7 +43,7 @@ function App() {
         <div className="App">
             <Button> BUTTON </Button>
             <Select options={newShipOptions} onChange={e => handleNewShipSelection(e)}/>
-            <AiShipsComponents aiShips={aiShips} handleShipRemoval={handleShipRemoval}/>
+            <SquadGenerator aiShips={aiShips} handleShipRemoval={handleShipRemoval}/>
         </div>
     );
 }
