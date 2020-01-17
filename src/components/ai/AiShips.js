@@ -9,7 +9,7 @@ export default function AiShipsComponents(props) {
             {props.aiShips.map(function (shipType) {
                 squadId = i;
                 i++;
-                return <div className="col-l-6">
+                return <div key={i} className="col-l-6">
                     <AiShip shipType={shipType} squadId={squadId} handleShipRemoval={props.handleShipRemoval}/>
                 </div>;
             })

@@ -8,7 +8,6 @@ export default function ShipVariables(props) {
 
     const [currShields, setCurrShields] = useState(maxShields);
     const [currHull, setCurrHull] = useState(maxHull);
-    const [tokenId, setTokenId] = useState();
 
     const idOptions = [
         {value: 0, label: 0},

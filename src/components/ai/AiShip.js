@@ -18,7 +18,7 @@ export function AiShip(props) {
     const squadId = props.squadId;
 
     const [targetPosition, setTargetPosition] = useState([PSN.FARFRONT]);
-    const [tokenIds, setTokenIds] = useState([0]); //todo remove initial values
+    const [tokenIds, setTokenIds] = useState([0]);
 
     function handleTokenIdChange(value, index) {
         const tTokenIds = [...tokenIds];
