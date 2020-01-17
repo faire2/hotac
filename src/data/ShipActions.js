@@ -2,7 +2,7 @@ import React from 'react';
 import {Ships} from "./Ships";
 
 export default function ShipActions(props) {
-    switch (props.shipId) {
+    switch (props.shipType) {
         case Ships.TIEIN.id:
             return <TIEIN/>;
         case Ships.TIELN.id:
@@ -12,7 +12,7 @@ export default function ShipActions(props) {
         case Ships.VT49.id:
             return <VT49/>;
         default:
-            console.log("Component ShipActions didn't recognize shipId: " + props.shipId);
+            console.log("Component ShipActions didn't recognize shipType: " + props.shipType);
     }
 }
 

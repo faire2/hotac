@@ -1,12 +1,101 @@
-div {
-  margin: 5px;
-}
-
 .App {
+}
 
+.redBgr {
+  background-color: crimson;
+}
+
+h1 {
+  text-align: center;
+  background-color: white;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.4em !important;
+  padding-top: 15px;
+}
+
+h3 {
+  font-size: 1.2em !important;
+  padding-top: 10px;
+}
+
+.shipStats {
+  padding-left: 25px;
+}
+
+.shipStats li {
+  margin-left: -25px;
+}
+
+.btnRemoveShip {
+}
+
+.btn-increment {
+  width: 40px;
+}
+
+/* DIAL IMAGE AND BUTTONS */
+.man_dial_img {
+  max-width: 250px;
+  margin-top: 10px;
+}
+
+.d-button-container {
+  position: absolute;
+  margin-top: -630px;
+  margin-left: -15px;
+}
+
+.d-button {
+  position: absolute;
+  cursor: pointer;
+}
+
+.far-front {
+  left: 50px;
+  top: 170px;
+}
+
+.far-front-side {
+  left: 175px;
+  top: 280px;
+}
+
+.far-back-side {
+  left: 175px;
+  top: 440px;
+}
+
+.far-back {
+  left: 50px;
+  top: 555px;
+}
+
+.near-front {
+  left: 18px;
+  top: 260px;
+}
+
+.near-front-side {
+  left: 70px;
+  top: 325px;
+}
+
+.near-back-side {
+  left: 70px;
+  top: 400px;
+}
+
+.near-back {
+  left: 18px;
+  top: 465px;
 }
 
 
+
+/* OTHER */
 
 .App-logo {
   height: 40vmin;
