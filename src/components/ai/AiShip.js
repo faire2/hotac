@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Button} from "react-bootstrap";
 
-import {Stats, Ships} from "../../data/Ships";
+import {Ships, Stats} from "../../data/Ships";
 import ShipActions from "../../data/ShipActions";
 import ShipTargetting from "../../data/ShipTargetting";
 import ShipManeuverImages from "../../data/ShipManeuverImages";
@@ -11,13 +11,21 @@ import Maneuvers from "../../data/Maneuvers";
 import ShipVariables from "./ShipVariables";
 import {ShipStats} from "./ShipStats";
 
-export function InnerShip(props) {
+export function AiShip(props) {
     const shipType = props.shipType;
     const maxShields = Ships[shipType][Stats.shields];
     const maxHull = Ships[shipType][Stats.hull];
-    const shipId = props.shipId;
+    const squadId = props.squadId;
 
     const [targetPosition, setTargetPosition] = useState([PSN.FARFRONT]);
+    const [tokenIds, setTokenIds] = useState([3, 4]); //todo remove initial values
+
+    function handleTokenIdChange(value, index) {
+        const tTokenIds = [...tokenIds];
+        tTokenIds.splice(index, 1, value);
+        setTokenIds(tTokenIds);
+    };
+
 
     return (
         <div>
@@ -25,7 +33,25 @@ export function InnerShip(props) {
             <div className="row">
                 <div className="col-6">
                     <ShipStats shipType={shipType}/>
-                    <ShipVariables maxShields={maxShields} maxHull={maxHull}/>
+                    <div className="row ">
+                        <div className="col-4">
+                            <h3>ID:</h3>
+                        </div>
+                        <div className="col-4">
+                            <h3>Shields:</h3>
+                        </div>
+                        <div className="col-4">
+                            <h3>Hull:</h3>
+                        </div>
+                    </div>
+                    {
+                        tokenIds.map( (tokenId) =>
+                             <ShipVariables key={tokenIds.indexOf(tokenId)} maxShields={maxShields} maxHull={maxHull}
+                                           tokenIdIndex={tokenIds.indexOf(tokenId)}
+                                           handleTokenIdChange={handleTokenIdChange}/>)
+                    }
+                    <br/>
+                    <button className="btn btn-primary btn-sm">Add a ship</button>
                     <h2>Select target:</h2>
                     <ShipTargetting shipType={shipType}/>
 
@@ -40,7 +66,7 @@ export function InnerShip(props) {
                     <TargetButtons setTargetPosition={setTargetPosition}/>
                     <div className="d-flex flex-row">
                         <Button className="btnRemoveShip" variant="danger" size="sm"
-                                onClick={e => props.handleShipRemoval(shipId)}>Remove ship</Button>
+                                onClick={e => props.handleShipRemoval(squadId)}>Remove ship</Button>
                     </div>
                 </div>
             </div>

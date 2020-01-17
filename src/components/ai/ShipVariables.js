@@ -52,20 +52,9 @@ export default function ShipVariables(props) {
 
     return (
         <div>
-            <div className="row ">
-                <div className="col-4">
-                    <h3>ID:</h3>
-                </div>
-                <div className="col-4">
-                    <h3>Shields:</h3>
-                </div>
-                <div className="col-4">
-                    <h3>Hull:</h3>
-                </div>
-            </div>
             <div className="row">
                 <div className="col-4">
-                    <Select options={idOptions} onChange={e => setTokenId(e.value)}/>
+                    <Select options={idOptions} onChange={e => props.handleTokenIdChange(e.value, props.tokenIdIndex)}/>
                 </div>
                 <div id={Stats.shields} className="col-4">
                     <button className="btn btn-primary btn-increment" onClick={e => handlePropertyDecrease(e, true)} size="sm"> - </button>
