@@ -32,6 +32,12 @@ export function ShipsVariables(props) {
         setTokenIds(tTokenIds);
     }
 
+    function handleRemoveShip(index) {
+        const tTokensId = [...tokenIds];
+        tTokensId.splice(index, 1);
+        setTokenIds(tTokensId);
+    }
+
     return (
         <div>
             <ShipsHeader/>
@@ -39,7 +45,7 @@ export function ShipsVariables(props) {
                 tokenIds.map((tokenId) =>
                     <Variables key={tokenIds.indexOf(tokenId)} maxShields={props.maxShield} maxHull={props.maxHull}
                                tokenIdIndex={tokenIds.indexOf(tokenId)}
-                               handleTokenIdChange={handleTokenIdChange}/>)
+                               handleTokenIdChange={handleTokenIdChange} handleRemoveShip={handleRemoveShip}/>)
             }
             <br/>
             <button className="btn btn-primary btn-sm" onClick={handleAddShip}>Add a ship</button>

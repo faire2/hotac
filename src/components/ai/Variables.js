@@ -52,18 +52,30 @@ export default function Variables(props) {
     return (
         <div>
             <div className="row">
-                <div className="col-4">
+                <div className="col-3">
                     <Select options={idOptions} onChange={e => props.handleTokenIdChange(e.value, props.tokenIdIndex)}/>
                 </div>
                 <div id={Stats.shields} className="col-4">
-                    <button className="btn btn-primary btn-increment" onClick={e => handlePropertyDecrease(e, true)} size="sm"> - </button>
+                    <button className="btn btn-primary btn-increment" onClick={e => handlePropertyDecrease(e, true)}
+                            size="sm"> -
+                    </button>
                     <span className="value"> {currShields} </span>
-                    <button className="btn btn-primary btn-increment"  onClick={e => handlePropertyIncrease(e, false)} size="sm"> + </button>
+                    <button className="btn btn-primary btn-increment" onClick={e => handlePropertyIncrease(e, false)}
+                            size="sm"> +
+                    </button>
                 </div>
                 <div id={Stats.hull} className="col-4">
-                    <button className="btn btn-primary btn-increment"  onClick={e => handlePropertyDecrease(e, true)} size="sm"> - </button>
+                    <button className="btn btn-primary btn-increment" onClick={e => handlePropertyDecrease(e, true)}
+                            size="sm"> -
+                    </button>
                     <span className="value"> {currHull} </span>
-                    <button className="btn btn-primary btn-increment"  onClick={e => handlePropertyIncrease(e, false)} size="sm"> + </button>
+                    <button className="btn btn-primary btn-increment" onClick={e => handlePropertyIncrease(e, false)}
+                            size="sm"> +
+                    </button>
+                </div>
+                <div className="col-1">
+                    <button className="btn btn-danger" onClick={e => props.handleRemoveShip(props.tokenIdIndex)}>x
+                    </button>
                 </div>
             </div>
         </div>
