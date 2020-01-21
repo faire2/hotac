@@ -33,7 +33,8 @@ export function Squad(props) {
                     <SquadActions shipType={shipType}/>
                 </div>
                 <div className="col-5 position-relative">
-                    <SquadTargetSelection squadId={props.squadId} shipType={shipType} setTargetPosition={setTargetPosition}/>
+                    <SquadTargetSelection shipType={shipType} setTargetPosition={setTargetPosition}
+                                          handleShipRemoval={props.handleShipRemoval}/>
                 </div>
             </div>
         </div>
