@@ -18,37 +18,41 @@ const ShipsHeader = () => (
 );
 
 export function ShipsVariables(props) {
-    const [tokenIds, setTokenIds] = useState([0]);
-
-    function handleTokenIdChange(value, index) {
-        const tTokenIds = [...tokenIds];
-        tTokenIds.splice(index, 1, value);
-        setTokenIds(tTokenIds);
-    };
+    const [ships, setShips] = useState([{
+        tokenId: 0,
+        hull: props.maxHull,
+        shields: props.maxShield
+    }]);
 
     function handleAddShip() {
-        const tTokenIds = [...tokenIds];
-        tTokenIds.push(0);
-        setTokenIds(tTokenIds);
+        const tShipVars = [...ships];
+        tShipVars.push({tokenId: 0, hull: props.maxHull, shields: props.maxShield});
+        setShips(tShipVars);
     }
 
     function handleRemoveShip(index) {
-        const tTokensId = [...tokenIds];
-        tTokensId.splice(index, 1);
-        setTokenIds(tTokensId);
+        const tShips = [...ships];
+        tShips.splice(index, 1);
+        setShips(tShips);
+    }
+
+    function handleShipChange(ship, index) {
+        const tShips = [...ships];
+        tShips.splice(index, 1, ship);
+        setShips(tShips);
     }
 
     return (
         <div>
             <ShipsHeader/>
             {
-                tokenIds.map((tokenId) =>
-                    <Variables key={tokenIds.indexOf(tokenId)} maxShields={props.maxShield} maxHull={props.maxHull}
-                               tokenIdIndex={tokenIds.indexOf(tokenId)}
-                               handleTokenIdChange={handleTokenIdChange} handleRemoveShip={handleRemoveShip}/>)
+                ships.map((ship, keyIndex) =>
+                    <Variables key={keyIndex} keyIndex={keyIndex} ship={ship} maxHull={props.maxHull}
+                               maxShield={props.maxShield}
+                               handleShipChange={handleShipChange} handleRemoveShip={handleRemoveShip}/>)
             }
             <br/>
-            <button className="btn btn-primary btn-sm" onClick={handleAddShip}>Add a ship</button>
+            <button className="btn btn-primary btn-sm" onClick={handleAddShip}>Add a ship to this squadron</button>
         </div>
     )
 };
