@@ -46,4 +46,5 @@ export const Stats = Object.freeze({
     agility: "agility",
     id: "id",
     selTarget: "selTarget",
+    tokenId: "token Id",
 });

@@ -1,13 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import {Stats} from "../../data/Ships";
 import Select from "react-select";
 
 export default function Variables(props) {
-    const maxShields = props.maxShields;
-    const maxHull = props.maxHull;
-
-    const [currShields, setCurrShields] = useState(maxShields);
-    const [currHull, setCurrHull] = useState(maxHull);
+    let ship = props.ship;
 
     const idOptions = [
         {value: 0, label: 0},
@@ -23,58 +19,60 @@ export default function Variables(props) {
 
     ];
 
-    function handlePropertyIncrease(e) {
-        let property = e.target.parentNode.id;
-        if (property === Stats.shields && currShields < maxShields) {
-            const tempCurrShields = currShields + 1;
-            setCurrShields(tempCurrShields);
-        } else if (property === Stats.hull && currHull < maxHull) {
-            const tempCurrHull = currHull + 1;
-            setCurrHull(tempCurrHull);
-        } else if (property !== Stats.hull && property !== Stats.shields) {
-            console.log("Unknown ship property: " + property);
-        }
-    }
+    function handleShipVarChange(variable, value) {
+        const tShip = {...props.ship};
 
-    function handlePropertyDecrease(e) {
-        let property = e.target.parentNode.id;
-        if (property === Stats.shields && currShields > 0) {
-            const tempCurrShields = currShields - 1;
-            setCurrShields(tempCurrShields);
-        } else if (property === Stats.hull && currHull > 0) {
-            const tempCurrHull = currHull - 1;
-            setCurrHull(tempCurrHull);
-        } else if (property !== Stats.hull && property !== Stats.shields) {
-            console.log("Unknown ship property: " + property);
+        switch (variable) {
+            case Stats.shields:
+                if (value >= 0 && value <= props.maxShield) {
+                    tShip.shields = value;
+                }
+                break;
+            case Stats.hull:
+                if (value >= 0 && value <= props.maxHull) {
+                    tShip.hull = value;
+                }
+                break;
+            case Stats.tokenId:
+                tShip.tokenId = value;
+                break;
+            default:
+                console.log("Function handleShipVarChange in Variables didn't recognize variable: " + variable);
         }
+        props.handleShipChange(tShip, props.keyIndex);
     }
 
     return (
         <div>
             <div className="row">
-                <div className="col-3">
-                    <Select options={idOptions} onChange={e => props.handleTokenIdChange(e.value, props.tokenIdIndex)}/>
+                <div className="col-3" >
+                    <Select options={idOptions} onChange={e => handleShipVarChange(Stats.tokenId, e.value)}
+                            value={{label: props.ship.tokenId, value: props.ship.tokenId}}/>
                 </div>
-                <div id={Stats.shields} className="col-4">
-                    <button className="btn btn-primary btn-increment" onClick={e => handlePropertyDecrease(e, true)}
+                <div className="col-4">
+                    <button className="btn btn-primary btn-increment"
+                            onClick={e => handleShipVarChange(Stats.shields, ship.shields - 1)}
                             size="sm"> -
                     </button>
-                    <span className="value"> {currShields} </span>
-                    <button className="btn btn-primary btn-increment" onClick={e => handlePropertyIncrease(e, false)}
+                    <span className="value"> {ship.shields} </span>
+                    <button className="btn btn-primary btn-increment"
+                            onClick={e => handleShipVarChange(Stats.shields, ship.shields + 1)}
                             size="sm"> +
                     </button>
                 </div>
-                <div id={Stats.hull} className="col-4">
-                    <button className="btn btn-primary btn-increment" onClick={e => handlePropertyDecrease(e, true)}
+                <div className="col-4">
+                    <button className="btn btn-primary btn-increment"
+                            onClick={e => handleShipVarChange(Stats.hull, ship.hull - 1)}
                             size="sm"> -
                     </button>
-                    <span className="value"> {currHull} </span>
-                    <button className="btn btn-primary btn-increment" onClick={e => handlePropertyIncrease(e, false)}
+                    <span className="value"> {ship.hull} </span>
+                    <button className="btn btn-primary btn-increment"
+                            onClick={e => handleShipVarChange(Stats.hull, ship.hull + 1)}
                             size="sm"> +
                     </button>
                 </div>
                 <div className="col-1">
-                    <button className="btn btn-danger" onClick={e => props.handleRemoveShip(props.tokenIdIndex)}>x
+                    <button className="btn btn-danger" onClick={() => props.handleRemoveShip(props.keyIndex)}>x
                     </button>
                 </div>
             </div>
