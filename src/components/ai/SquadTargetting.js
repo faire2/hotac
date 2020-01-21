@@ -8,7 +8,8 @@ export const SquadTargetSelection = (props) => (
         <TargetButtons setTargetPosition={props.setTargetPosition}/>
         <div className="d-flex flex-row">
             <button className="btn btn-danger btn-sm btnRemoveShip"
-                    onClick={() => props.handleShipRemoval(props.squadId)}>Remove ship
+                    onClick={() => props.handleShipRemoval(props.squadId)}>
+                <span>Remove squadron</span>
             </button>
         </div>
     </div>

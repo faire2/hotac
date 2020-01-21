@@ -4,6 +4,11 @@ import React from "react";
 export const SquadStats = (props) =>
     <div>
         <div className="row">
+            <div className="col-12">
+                <h3 className="text-left"> Ship type: {Ships[props.shipType][Stats.name]}</h3>
+            </div>
+        </div>
+        <div className="row">
             <div className="col-4">
                 <h3>Initiative:</h3>
             </div>

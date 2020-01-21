@@ -8,16 +8,27 @@ import {ShipsVariables} from "./ShipsVariables"
 import {SquadStats} from "./SquadStats";
 import {SquadTargetSelection} from "./SquadTargetting";
 import ShipTargetting from "../../data/ShipTargetting";
+import Select from "react-select";
 
 export function Squad(props) {
     const shipType = props.shipType;
-    const squadId = props.squadId;
-
     const [targetPosition, setTargetPosition] = useState([PSN.FARFRONT]);
+
+    const squadNames = [
+        {value: "Alpha", label: "Alpha"},
+        {value: "Beta", label: "Beta"},
+        {value: "Gamma", label: "Gamma"},
+        {value: "Delta", label: "Delta"},
+        {value: "Epsilon", label: "Epsilon"},
+        {value: "Omega", label: "Omega"},
+    ];
 
     return (
         <div>
-            <h1>{Ships[props.shipType][Stats.name]}</h1>
+            <div className="row">
+                <div className="col-5"><h2>Squadron designation:</h2></div>
+                <div className="col-5"><h3><Select options={squadNames} /></h3></div>
+            </div>
             <div className="row">
                 <div className="col-6">
                     <SquadStats shipType={shipType}/>
