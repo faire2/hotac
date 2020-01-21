@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0dc07eae.chunk.css",
+    "main.js": "/static/js/main.05fb88cc.chunk.js",
+    "main.js.map": "/static/js/main.05fb88cc.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.61d18be8.js",
+    "runtime-main.js.map": "/static/js/runtime-main.61d18be8.js.map",
+    "static/css/2.17e5ed98.chunk.css": "/static/css/2.17e5ed98.chunk.css",
+    "static/js/2.0d5f92bc.chunk.js": "/static/js/2.0d5f92bc.chunk.js",
+    "static/js/2.0d5f92bc.chunk.js.map": "/static/js/2.0d5f92bc.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.96e2a5d725b6aef0c3888eaeaa9a3f9f.js": "/precache-manifest.96e2a5d725b6aef0c3888eaeaa9a3f9f.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.17e5ed98.chunk.css.map": "/static/css/2.17e5ed98.chunk.css.map",
+    "static/css/main.0dc07eae.chunk.css.map": "/static/css/main.0dc07eae.chunk.css.map",
+    "static/js/2.0d5f92bc.chunk.js.LICENSE": "/static/js/2.0d5f92bc.chunk.js.LICENSE",
+    "static/media/tiein.png": "/static/media/tiein.63422f31.png",
+    "static/media/tieln.png": "/static/media/tieln.f68a954d.png",
+    "static/media/tiesa.png": "/static/media/tiesa.f90b0b0c.png",
+    "static/media/vt49.png": "/static/media/vt49.81c311ce.png",
+    "static/media/xwing-miniatures-ships.ttf": "/static/media/xwing-miniatures-ships.bc61cbdd.ttf",
+    "static/media/xwing-miniatures.ttf": "/static/media/xwing-miniatures.d229957f.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.61d18be8.js",
+    "static/css/2.17e5ed98.chunk.css",
+    "static/js/2.0d5f92bc.chunk.js",
+    "static/css/main.0dc07eae.chunk.css",
+    "static/js/main.05fb88cc.chunk.js"
+  ]
+}
