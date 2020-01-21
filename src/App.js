@@ -41,7 +41,7 @@ function App() {
 
     return (
         <div className="App">
-            <Button> BUTTON </Button>
+            <h3>Select a ship to generate a new squadron:</h3>
             <Select options={newShipOptions} onChange={e => handleNewShipSelection(e)}/>
             <SquadGenerator aiShips={aiShips} handleShipRemoval={handleShipRemoval}/>
         </div>
