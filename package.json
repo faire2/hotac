@@ -17,7 +17,7 @@
     "xwing-miniatures-font": "^2.6.4"
   },
   "scripts": {
-    "start": "node src/server/server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
