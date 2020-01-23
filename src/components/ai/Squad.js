@@ -52,7 +52,7 @@ export function Squad(props) {
                 </div>
                 <div className="col-5 position-relative">
                     <SquadTargetSelection shipType={shipType} setTargetPosition={handleSetTargetPosition}
-                                          handleShipRemoval={props.handleShipRemoval}/>
+                                          handleShipRemoval={props.handleShipRemoval} squadId={props.squadId}/>
                 </div>
             </div>
         </div>
