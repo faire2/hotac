@@ -13,6 +13,7 @@ import Select from "react-select";
 export function Squad(props) {
     const shipType = props.shipType;
     const [targetPosition, setTargetPosition] = useState([PSN.FARFRONT]);
+    const [randNum, setRandnum] = useState(1);
 
     const squadNames = [
         {value: "Alpha", label: "Alpha"},
@@ -22,6 +23,12 @@ export function Squad(props) {
         {value: "Epsilon", label: "Epsilon"},
         {value: "Omega", label: "Omega"},
     ];
+
+    // number is randomized here to ensure that re-render of SquadManeuvres will be triggered
+    function handleSetTargetPosition(position) {
+        setRandnum(Math.floor(Math.random() * 6));
+        setTargetPosition(position);
+    }
 
     return (
         <div>
@@ -38,14 +45,14 @@ export function Squad(props) {
                     <ShipTargetting shipType={shipType}/>
 
                     <h2>Perform maneuver:</h2>
-                    <SquadManeuvers shipType={shipType} position={targetPosition}/>
+                    <SquadManeuvers shipType={shipType} position={targetPosition} randNum={randNum}/>
 
                     <h2>Select and perform action:</h2>
                     <SquadActions shipType={shipType}/>
                 </div>
                 <div className="col-5 position-relative">
-                    <SquadTargetSelection shipType={shipType} setTargetPosition={setTargetPosition}
-                                          handleShipRemoval={props.handleShipRemoval}/>
+                    <SquadTargetSelection shipType={shipType} setTargetPosition={handleSetTargetPosition}
+                                          handleShipRemoval={props.handleShipRemoval} squadId={props.squadId}/>
                 </div>
             </div>
         </div>

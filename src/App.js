@@ -5,8 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './fonts/xwing-miniatures.css';
 import './fonts/xwing-miniatures.ttf';
 import './fonts/xwing-miniatures-ships.ttf'
-
-import Button from 'react-bootstrap/Button';
 import Select from 'react-select';
 
 
