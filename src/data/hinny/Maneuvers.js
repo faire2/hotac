@@ -1,6 +1,6 @@
 import React from "react";
-import {Ships} from "./Ships";
-import {PSN} from "../components/ai/TargetButtons";
+import {Ships} from "../Ships";
+import {PSN} from "../../components/ai/TargetButtons";
 
 const MVRS = Object.freeze({
     STRAIGHT1: "STRAIGHT1",

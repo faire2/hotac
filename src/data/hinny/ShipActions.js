@@ -1,5 +1,5 @@
 import React from 'react';
-import {Ships} from "./Ships";
+import {Ships} from "../Ships";
 
 export default function ShipActions(props) {
     switch (props.shipType) {

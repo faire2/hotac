@@ -1,5 +1,5 @@
 import React from 'react';
-import {Ships} from "./Ships";
+import {Ships} from "../Ships";
 
 export default function ShipTargetting(props) {
     switch (props.shipType) {

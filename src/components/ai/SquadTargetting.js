@@ -1,5 +1,5 @@
 import React from "react";
-import ShipManeuverImages from "../../data/ShipManeuverImages";
+import ShipManeuverImages from "../../data/hinny/ShipManeuverImages";
 import {TargetButtons} from "./TargetButtons";
 
 export const SquadTargetSelection = (props) => (

@@ -1,30 +1,35 @@
+//todo: distiguish between forms of attack (fire arcs, turrets...)
+//todo: note which AI can be used with the ship
 export const Ships = Object.freeze({
     TIELN: {
-        name: "Tie-Fighter",
+        name: "TIE/ln Starfighter",
         initiative: 2,
         shields: 0,
         hull: 3,
         attack: 2,
         agility: 3,
         id: "TIELN",
+        ai: [AI.HINNY, AI.COMM],
     },
     TIEIN: {
-        name: "Tie-Interceptor",
+        name: "TIE/in Interceptor",
         initiative: 2,
         shields: 0,
         hull: 3,
         attack: 3,
         agility: 3,
         id: "TIEIN",
+        ai: [AI.HINNY, AI.COMM],
     },
     TIESA: {
-        name: "Tie-Bomber",
+        name: "TIE/sa Bomber",
         initiative: 2,
         shields: 0,
         hull: 6,
         attack: 2,
         agility: 2,
         id: "TIESA",
+        ai: [AI.HINNY, AI.COMM],
     },
     VT49: {
         name: "VT-49",
@@ -34,6 +39,47 @@ export const Ships = Object.freeze({
         attack: 3,
         agility: 0,
         id: "VT49",
+        ai: [AI.HINNY, AI.COMM],
+    },
+    TIEADVX: {
+        name: "Tie Advanced x1",
+        initiative: 2,
+        shields: 2,
+        hull: 3,
+        attack: 2,
+        agility: 3,
+        id: "TIEADVX",
+        ai: [AI.COMM],
+    },
+    TIEDEF: {
+        name: "TIE/D Defender",
+        initiative: 2,
+        shields: 2,
+        hull: 3,
+        attack: 2,
+        agility: 3,
+        id: "TIEADVX",
+        ai: [AI.COMM],
+    },
+    TIEPH: {
+        name: "TIE/PH Phantom",
+        initiative: 2,
+        shields: 2,
+        hull: 3,
+        attack: 3,
+        agility: 2,
+        id: "TIEPH",
+        ai: [AI.COMM],
+    },
+    LAMBDA: {
+        name: "Lambda-class T-4A Shuttle",
+        initiative: 2,
+        shields: 4,
+        hull: 10,
+        attack: 3/2,
+        agility: 1,
+        id: "LAMBDA",
+        ai: [AI.COMM],
     },
 });
 
@@ -47,4 +93,10 @@ export const Stats = Object.freeze({
     id: "id",
     selTarget: "selTarget",
     tokenId: "token Id",
+    ai: "ship AI",
+});
+
+export const AI =  Object.freeze({
+    HINNY: "Hinny",
+    COMM: "Community version",
 });
