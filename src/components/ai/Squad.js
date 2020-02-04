@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 
-import {AI, Ships, Stats} from "../../data/Ships";
+import {AI, PSN, Ships, Stats} from "../../data/Ships";
 import SquadActions from "../../data/hinny/ShipActions";
-import {PSN} from "./TargetButtons";
 import {ShipsVariables} from "./ShipsVariables"
 import {SquadStats} from "./SquadStats";
 import {SquadTargetSelection} from "./SquadTargetting";
 import ShipTargetting from "../../data/hinny/ShipTargetting";
 import Select from "react-select";
+import SquadManeuver from "./SquadManeuver";
 
 export function Squad(props) {
     const shipType = props.shipType;
@@ -47,7 +47,7 @@ export function Squad(props) {
                     <ShipTargetting shipType={shipType}/>
 
                     <h2>Perform maneuver:</h2>
-                    <SquadManeuver aiEngine={} shipType={shipType} position={targetPosition} randNum={randNum}/>
+                    <SquadManeuver aiEngine={aiEngine} shipType={shipType} position={targetPosition} randNum={randNum}/>
 
                     <h2>Select and perform action:</h2>
                     <SquadActions shipType={shipType}/>

@@ -4,7 +4,7 @@ import {PSN} from "../../components/ai/TargetButtons";
 
 
 /* MANEUVERS are kept as arrays so that random number can be used as the array index */
-const ShipManeuvers = Object.freeze({
+export const communityManeuvers = Object.freeze({
     [Ships.TIELN.id]: {
         [PSN.R4BULL]: [MVRS.STRAIGHT4, MVRS.STRAIGHT5, MVRS.STRAIGHT5, MVRS.STRAIGHT5, MVRS.STRAIGHT5, MVRS.STRAIGHT5,],
         [PSN.R4FRONT]: [MVRS.STRAIGHT4, MVRS.STRAIGHT4, MVRS.BANK3, MVRS.BANK3, MVRS.BANK3, MVRS.BANK3],

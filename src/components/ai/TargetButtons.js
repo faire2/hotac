@@ -1,5 +1,6 @@
 import React from "react";
 import {Button} from "react-bootstrap";
+import {PSN} from "../../data/Ships";
 
 /*todo: fix bug (last button returns non-def)*/
 export const TargetButtons = (props) =>
