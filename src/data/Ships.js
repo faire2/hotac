@@ -13,7 +13,7 @@ export const Ships = Object.freeze({
         id: "TIELN",
         ai: [AI.HINNY, AI.COMM],
     },
-    TIEIN: {
+    TIEIN: { //todo create a new component for performing the attack - maybe a dice roller?
         name: "TIE/in Interceptor",
         initiative: 2,
         shields: 0,
@@ -33,7 +33,7 @@ export const Ships = Object.freeze({
         id: "TIESA",
         ai: [AI.HINNY, AI.COMM],
     },
-    VT49: {
+    VT49: { // todo has a turret, see the lambda
         name: "VT-49",
         initiative: 2,
         shields: 4,
@@ -63,7 +63,7 @@ export const Ships = Object.freeze({
         id: "TIEADVX",
         ai: [AI.COMM],
     },
-    TIEPH: {
+    TIEPH: { // todo has a system phase - it should be noted here and then rendered as an optional component
         name: "TIE/PH Phantom",
         initiative: 3,
         shields: 2,

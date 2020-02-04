@@ -3,12 +3,20 @@ import {Ships} from "../Ships";
 
 export default function ShipTargetting(props) {
     switch (props.shipType) {
-        case Ships.TIEIN.id:
-            return <TIEIN/>;
         case Ships.TIELN.id:
             return <TIELN/>;
+        case Ships.TIEIN.id:
+            return <TIEIN/>;
+        case Ships.TIEADVX:
+            return <TIEADVX/>;
         case Ships.TIESA.id:
             return <TIESA/>;
+        case Ships.TIEDEF.id:
+            return <TIEDEF/>;
+        case Ships.TIEPH.id:
+            return <TIEPH/>;
+        case Ships.LAMBDA.id:
+            return <LAMBDA/>;
         case Ships.VT49.id:
             return <VT49/>;
         default:
@@ -18,28 +26,66 @@ export default function ShipTargetting(props) {
 
 const TIELN = () => (
     <ol>
-        <li>Nearest enemy ship in your firing arc</li>
-        <li>Nearest enemy ship</li>
+        <li>Nearest enemy in arc</li>
+        <li>Nearest enemy</li>
     </ol>
 );
 
 const TIEIN = () => (
     <ol>
-        <li>Nearest enemy ship in your firing arc</li>
-        <li>Nearest enemy ship</li>
+        <li>Nearest enemy with lower initiative in arc</li>
+        <li>Nearest enemy in arc</li>
+        <li>Nearest enemy</li>
+    </ol>
+);
+
+const TIEADVX = () => (
+    <ol>
+        <li>Locked enemy</li>
+        <li>Nearest enemy with lower initiative in arc</li>
+        <li>Nearest enemy in arc</li>
+        <li>Nearest enemy</li>
     </ol>
 );
 
 const TIESA = () => (
     <ol>
-        <li>Locked enemy ship at range 1-3</li>
-        <li>Nearest enemy ship in your firing arc</li>
-        <li>Nearest enemy ship</li>
+        <li>Locked enemy</li>
+        <li>Nearest enemy with lower initiative in arc</li>
+        <li>Nearest enemy in arc</li>
+        <li>Nearest enemy</li>
+    </ol>
+);
+
+const TIEDEF = () => (
+    <ol>
+        <li>Locked enemy</li>
+        <li>Nearest enemy with lower initiative in arc</li>
+        <li>Nearest enemy in arc</li>
+        <li>Nearest enemy</li>
+    </ol>
+);
+
+const TIEPH = () => (
+    <ol>
+        <li>Nearest enemy with lower initiative in arc</li>
+        <li>Nearest enemy in arc</li>
+        <li>Nearest enemy</li>
+    </ol>
+);
+
+const LAMBDA = () => (
+    <ol>
+        <li>Nearest enemy in front arc</li>
+        <li>Nearest enemy</li>
     </ol>
 );
 
 const VT49 = () => (
     <ol>
-        <li>Nearest enemy ship</li>
+        <li>Locked enemy</li>
+        <li>Nearest enemy with lower initiative in arc</li>
+        <li>Nearest enemy in arc</li>
+        <li>Nearest enemy</li>
     </ol>
 );
