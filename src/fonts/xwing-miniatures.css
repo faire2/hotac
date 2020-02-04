@@ -36,6 +36,14 @@ i.xwmr {
   font-size: 110%;
 }
 
+/* BLUE MANEUVERS */
+i.xwmb {
+  font-family: XWing;
+  font-style: normal;
+  color: #007bff;
+  font-size: 110%;
+}
+
 /* DIRECT INSERTION OF SYMBOLS */
 i.x-agility:before {
   content: "^"; }
