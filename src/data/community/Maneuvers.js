@@ -1,6 +1,4 @@
-import React from "react";
-import {MVRS, Ships} from "../Ships";
-import {PSN} from "../../components/ai/TargetButtons";
+import {MVRS, PSN, Ships} from "../Ships";
 
 
 /* MANEUVERS are kept as arrays so that random number can be used as the array index */

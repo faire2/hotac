@@ -14,7 +14,6 @@ export function Squad(props) {
     const [targetPosition, setTargetPosition] = useState([PSN.R3FRONT]);
     const [randNum, setRandnum] = useState(1);
     // todo implement switching mechanism
-    const [aiEngine, setAiEngine] = useState(AI.COMM);
 
     const squadNames = [
         {value: "Alpha", label: "Alpha"},
@@ -47,7 +46,7 @@ export function Squad(props) {
                     <ShipTargetting shipType={shipType}/>
 
                     <h2>Perform maneuver:</h2>
-                    <SquadManeuver aiEngine={aiEngine} shipType={shipType} position={targetPosition} randNum={randNum}/>
+                    <SquadManeuver shipType={shipType} position={targetPosition} randNum={randNum}/>
 
                     <h2>Select and perform action:</h2>
                     <SquadActions shipType={shipType}/>

@@ -1,10 +1,9 @@
 //todo: distiguish between forms of attack (fire arcs, turrets...)
 //todo: note which AI can be used with the ship
-import React from "react";
 
 export const AI =  Object.freeze({
-    HINNY: "Hinny",
-    COMM: "Community version",
+    HINNY: "Hinny AI",
+    COMM: "Community version AI",
 });
 
 export const Ships = Object.freeze({

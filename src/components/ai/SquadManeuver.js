@@ -1,11 +1,13 @@
-import React from "react";
-import {AI, MVRS} from "../../data/Ships";
+import React, {useState} from "react";
+import {AI, MVRS, PSN, Ships, Stats} from "../../data/Ships";
 import {hinnyManeuvers} from "../../data/hinny/Maneuvers"
 import {communityManeuvers} from "../../data/community/Maneuvers"
 
 export default function SquadManeuver(props) {
+    const [aiEngine, setAiEngine] = useState(AI.COMM);
+
     let maneuvers;
-    switch (props.aiEngine) {
+    switch (aiEngine) {
         case AI.HINNY:
             maneuvers = hinnyManeuvers;
             break;
@@ -13,7 +15,12 @@ export default function SquadManeuver(props) {
             maneuvers = communityManeuvers;
             break;
         default:
-            console.log("Unknown AI engine in SquaManeuver: " + props.aiEngine)
+            console.log("Unknown AI engine in SquadManeuver: " + props.aiEngine)
+    }
+
+    let aiValues = [];
+    for (let ai in Ships[props.shipType][Stats.ai]) {
+        aiValues.push({value: ai, label: ai});
     }
 
     const maneuver = maneuvers[props.shipType][props.position][props.randNum];
