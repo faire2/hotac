@@ -98,8 +98,8 @@ export const Stats = Object.freeze({
     agility: "agility",
     id: "id",
     selTarget: "selTarget",
-    tokenId: "token Id",
-    ai: "ship AI",
+    tokenId: "tokenId",
+    ai: "ai",
 });
 
 export const PSN = Object.freeze({

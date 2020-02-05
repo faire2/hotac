@@ -7,7 +7,7 @@ export default function SquadManeuver(props) {
     const [aiEngine, setAiEngine] = useState(AI.COMM);
 
     let maneuvers;
-    switch (aiEngine) {
+    switch (props.aiEngine) {
         case AI.HINNY:
             maneuvers = hinnyManeuvers;
             break;
@@ -16,11 +16,6 @@ export default function SquadManeuver(props) {
             break;
         default:
             console.log("Unknown AI engine in SquadManeuver: " + props.aiEngine)
-    }
-
-    let aiValues = [];
-    for (let ai in Ships[props.shipType][Stats.ai]) {
-        aiValues.push({value: ai, label: ai});
     }
 
     const maneuver = maneuvers[props.shipType][props.position][props.randNum];

@@ -13,7 +13,13 @@ export function Squad(props) {
     const shipType = props.shipType;
     const [targetPosition, setTargetPosition] = useState([PSN.R3FRONT]);
     const [randNum, setRandnum] = useState(1);
+    const [aiEngine, setAiEngine] = useState(AI.COMM);
     // todo implement switching mechanism
+
+    let aiValues = [];
+    for (let ai of Ships[shipType][Stats.ai]) {
+        aiValues.push({value: ai, label: ai});
+    }
 
     const squadNames = [
         {value: "Alpha", label: "Alpha"},
@@ -35,7 +41,7 @@ export function Squad(props) {
         <div>
             <div className="row">
                 <div className="col-5"><h2>Squadron designation:</h2></div>
-                <div className="col-5"><h3><Select options={squadNames} /></h3></div>
+                <div className="col-5"><h3><Select options={squadNames}/></h3></div>
             </div>
             <div className="row">
                 <div className="col-6">
@@ -46,7 +52,9 @@ export function Squad(props) {
                     <ShipTargetting shipType={shipType}/>
 
                     <h2>Perform maneuver:</h2>
-                    <SquadManeuver shipType={shipType} position={targetPosition} randNum={randNum}/>
+                    <Select options={aiValues} defaultValue={{label: aiEngine, value: aiEngine}}
+                            onChange={e => setAiEngine(e.value)}/>
+                    <SquadManeuver shipType={shipType} position={targetPosition} randNum={randNum} aiEngine={aiEngine}/>
 
                     <h2>Select and perform action:</h2>
                     <SquadActions shipType={shipType}/>
