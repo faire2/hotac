@@ -1,18 +1,16 @@
 import React, {useState} from "react";
 import {AI, MVRS, PSN, Ships, Stats} from "../../data/Ships";
 import {hinnyManeuvers} from "../../data/hinny/Maneuvers"
-import {communityManeuvers} from "../../data/community/Maneuvers"
+import {fgaManeuvers} from "../../data/fga/Maneuvers"
 
 export default function SquadManeuver(props) {
-    const [aiEngine, setAiEngine] = useState(AI.COMM);
-
     let maneuvers;
     switch (props.aiEngine) {
         case AI.HINNY:
             maneuvers = hinnyManeuvers;
             break;
-        case AI.COMM:
-            maneuvers = communityManeuvers;
+        case AI.FGA:
+            maneuvers = fgaManeuvers;
             break;
         default:
             console.log("Unknown AI engine in SquadManeuver: " + props.aiEngine)

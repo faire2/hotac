@@ -1,9 +1,9 @@
 //todo: distiguish between forms of attack (fire arcs, turrets...)
-//todo: note which AI can be used with the ship
+//todo: each ship could count the stresses too...
 
 export const AI =  Object.freeze({
     HINNY: "Hinny AI",
-    COMM: "Community version AI",
+    FGA: "FGA version AI",
 });
 
 export const Ships = Object.freeze({
@@ -15,7 +15,7 @@ export const Ships = Object.freeze({
         attack: 2,
         agility: 3,
         id: "TIELN",
-        ai: [AI.HINNY, AI.COMM],
+        ai: [AI.HINNY, AI.FGA],
     },
     TIEIN: { //todo create a new component for performing the attack - maybe a dice roller?
         name: "TIE/in Interceptor",
@@ -25,7 +25,7 @@ export const Ships = Object.freeze({
         attack: 3,
         agility: 3,
         id: "TIEIN",
-        ai: [AI.HINNY, AI.COMM],
+        ai: [AI.HINNY, AI.FGA],
     },
     TIESA: {
         name: "TIE/sa Bomber",
@@ -35,7 +35,7 @@ export const Ships = Object.freeze({
         attack: 2,
         agility: 2,
         id: "TIESA",
-        ai: [AI.HINNY, AI.COMM],
+        ai: [AI.HINNY, AI.FGA],
     },
     VT49: { // todo has a turret, see the lambda
         name: "VT-49",
@@ -45,7 +45,7 @@ export const Ships = Object.freeze({
         attack: 3,
         agility: 0,
         id: "VT49",
-        ai: [AI.HINNY, AI.COMM],
+        ai: [AI.HINNY, AI.FGA],
     },
     TIEADVX: {
         name: "Tie Advanced x1",
@@ -55,7 +55,7 @@ export const Ships = Object.freeze({
         attack: 2,
         agility: 3,
         id: "TIEADVX",
-        ai: [AI.COMM],
+        ai: [AI.FGA],
     },
     TIEDEF: {
         name: "TIE/D Defender",
@@ -65,9 +65,9 @@ export const Ships = Object.freeze({
         attack: 2,
         agility: 3,
         id: "TIEADVX",
-        ai: [AI.COMM],
+        ai: [AI.FGA],
     },
-    TIEPH: { // todo has a system phase - it should be noted here and then rendered as an optional component
+    TIEPH: { // todo has a system phase and an end phase  - it should be noted here and then rendered as an optional component
         name: "TIE/PH Phantom",
         initiative: 3,
         shields: 2,
@@ -75,7 +75,7 @@ export const Ships = Object.freeze({
         attack: 3,
         agility: 2,
         id: "TIEPH",
-        ai: [AI.COMM],
+        ai: [AI.FGA],
     },
     LAMBDA: { // todo distinguish fire arcs (probably check for different attack possibilities)
         name: "Lambda-class T-4A Shuttle",
@@ -85,7 +85,7 @@ export const Ships = Object.freeze({
         attack: 3/2,
         agility: 1,
         id: "LAMBDA",
-        ai: [AI.COMM],
+        ai: [AI.FGA],
     },
 });
 

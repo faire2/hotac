@@ -1,19 +1,19 @@
 import React, {useState} from "react";
 
 import {AI, PSN, Ships, Stats} from "../../data/Ships";
-import SquadActions from "../../data/hinny/ShipActions";
 import {ShipsVariables} from "./ShipsVariables"
 import {SquadStats} from "./SquadStats";
 import {SquadTargetSelection} from "./SquadTargetting";
 import ShipTargetting from "../../data/hinny/ShipTargetting";
 import Select from "react-select";
 import SquadManeuver from "./SquadManeuver";
+import SquadActions from "./SquadActions";
 
 export function Squad(props) {
     const shipType = props.shipType;
     const [targetPosition, setTargetPosition] = useState([PSN.R3FRONT]);
     const [randNum, setRandnum] = useState(1);
-    const [aiEngine, setAiEngine] = useState(AI.COMM);
+    const [aiEngine, setAiEngine] = useState(AI.FGA);
     // todo implement switching mechanism
 
     let aiValues = [];
@@ -57,7 +57,7 @@ export function Squad(props) {
                     <SquadManeuver shipType={shipType} position={targetPosition} randNum={randNum} aiEngine={aiEngine}/>
 
                     <h2>Select and perform action:</h2>
-                    <SquadActions shipType={shipType}/>
+                    <SquadActions shipType={shipType} aiEngine={aiEngine}/>
                 </div>
                 <div className="col-5 position-relative">
                     <SquadTargetSelection shipType={shipType} setTargetPosition={handleSetTargetPosition}
