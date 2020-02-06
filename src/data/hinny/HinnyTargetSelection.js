@@ -1,7 +1,7 @@
 import React from 'react';
 import {Ships} from "../Ships";
 
-export default function ShipTargetting(props) {
+export default function hinnyTargetSelection(props) {
     switch (props.shipType) {
         case Ships.TIEIN.id:
             return <TIEIN/>;
@@ -12,7 +12,7 @@ export default function ShipTargetting(props) {
         case Ships.VT49.id:
             return <VT49/>;
         default:
-            console.log("Component ShipTargetting didn't recognize shipType: " + props.shipType);
+            console.log("Component TargetSelection didn't recognize shipType: " + props.shipType);
     }
 }
 

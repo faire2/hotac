@@ -3,11 +3,12 @@ import React, {useState} from "react";
 import {AI, PSN, Ships, Stats} from "../../data/Ships";
 import {ShipsVariables} from "./ShipsVariables"
 import {SquadStats} from "./SquadStats";
-import {SquadTargetSelection} from "./SquadTargetting";
-import ShipTargetting from "../../data/hinny/ShipTargetting";
+import {TargetSelection} from "./TargetSelection";
+import hinnyTargetSelection from "../../data/hinny/HinnyTargetSelection";
 import Select from "react-select";
 import SquadManeuver from "./SquadManeuver";
 import SquadActions from "./SquadActions";
+import SquadTargetSelection from "./SquadTargetSelection";
 
 export function Squad(props) {
     const shipType = props.shipType;
@@ -49,7 +50,7 @@ export function Squad(props) {
                     <ShipsVariables maxHull={Ships[shipType][Stats.hull]} maxShield={Ships[shipType][Stats.shields]}/>
 
                     <h2>Select target:</h2>
-                    <ShipTargetting shipType={shipType}/>
+                    <SquadTargetSelection shipType={shipType} aiEngine={aiEngine}/>
 
                     <h2>Perform maneuver:</h2>
                     <Select options={aiValues} defaultValue={{label: aiEngine, value: aiEngine}}
@@ -60,7 +61,7 @@ export function Squad(props) {
                     <SquadActions shipType={shipType} aiEngine={aiEngine}/>
                 </div>
                 <div className="col-5 position-relative">
-                    <SquadTargetSelection shipType={shipType} setTargetPosition={handleSetTargetPosition}
+                    <TargetSelection shipType={shipType} setTargetPosition={handleSetTargetPosition}
                                           handleShipRemoval={props.handleShipRemoval} squadId={props.squadId}/>
                 </div>
             </div>

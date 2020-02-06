@@ -1,7 +1,7 @@
 import React from 'react';
 import {Ships} from "../Ships";
 
-export default function ShipTargetting(props) {
+export default function fgaTargetSelection(props) {
     switch (props.shipType) {
         case Ships.TIELN.id:
             return <TIELN/>;
@@ -20,72 +20,68 @@ export default function ShipTargetting(props) {
         case Ships.VT49.id:
             return <VT49/>;
         default:
-            console.log("Component ShipTargetting didn't recognize shipType: " + props.shipType);
+            console.log("Component TargetSelection didn't recognize shipType: " + props.shipType);
     }
 }
 
 const TIELN = () => (
     <ol>
-        <li>Nearest enemy in arc</li>
+        <li>Nearest enemy in <i className="xwi x-frontarc"/></li>
         <li>Nearest enemy</li>
     </ol>
 );
 
 const TIEIN = () => (
     <ol>
-        <li>Nearest enemy with lower initiative in arc</li>
-        <li>Nearest enemy in arc</li>
+        <li>Nearest enemy in <i className="xwi x-frontarc"/></li>
         <li>Nearest enemy</li>
     </ol>
 );
 
 const TIEADVX = () => (
     <ol>
-        <li>Locked enemy</li>
-        <li>Nearest enemy with lower initiative in arc</li>
-        <li>Nearest enemy in arc</li>
+        <li>Locked enemy within range 3</li>
+        <li>Nearest enemy with lower initiative in <i className="xwi x-frontarc"/></li>
+        <li>Nearest enemy in <i className="xwi x-frontarc"/></li>
         <li>Nearest enemy</li>
     </ol>
 );
 
 const TIESA = () => (
     <ol>
-        <li>Locked enemy</li>
-        <li>Nearest enemy with lower initiative in arc</li>
-        <li>Nearest enemy in arc</li>
+        <li>Locked enemy within range 3</li>
+        <li>Nearest enemy in <i className="xwi x-frontarc"/></li>
         <li>Nearest enemy</li>
     </ol>
 );
 
 const TIEDEF = () => (
     <ol>
-        <li>Locked enemy</li>
-        <li>Nearest enemy with lower initiative in arc</li>
-        <li>Nearest enemy in arc</li>
+        <li>Locked enemy within range 3</li>
+        <li>Nearest enemy with lower initiative in <i className="xwi x-frontarc"/></li>
+        <li>Nearest enemy in <i className="xwi x-frontarc"/></li>
         <li>Nearest enemy</li>
     </ol>
 );
 
 const TIEPH = () => (
     <ol>
-        <li>Nearest enemy with lower initiative in arc</li>
-        <li>Nearest enemy in arc</li>
+        <li>Nearest enemy in <i className="xwi x-frontarc"/></li>
         <li>Nearest enemy</li>
     </ol>
 );
 
 const LAMBDA = () => (
     <ol>
-        <li>Nearest enemy in front arc</li>
+        <li>Nearest enemy in <i className="xwi x-frontarc"/></li>
         <li>Nearest enemy</li>
     </ol>
 );
 
 const VT49 = () => (
     <ol>
-        <li>Locked enemy</li>
-        <li>Nearest enemy with lower initiative in arc</li>
-        <li>Nearest enemy in arc</li>
+        <li>Locked enemy within range 3</li>
+        <li>Nearest enemy in <i className="xwi x-frontarc"/></li>
         <li>Nearest enemy</li>
     </ol>
 );

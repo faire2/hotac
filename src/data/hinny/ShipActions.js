@@ -1,7 +1,7 @@
 import React from 'react';
 import {Ships} from "../Ships";
 
-export default function HinnyShipActions(props) {
+export default function ShipActions(props) {
     switch (props.shipType) {
         case Ships.TIEIN.id:
             return <TIEIN/>;

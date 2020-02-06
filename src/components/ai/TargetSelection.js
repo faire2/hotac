@@ -2,7 +2,7 @@ import React from "react";
 import ShipManeuverImages from "../../data/hinny/ShipManeuverImages";
 import {TargetButtons} from "./TargetButtons";
 
-export const SquadTargetSelection = (props) => (
+export const TargetSelection = (props) => (
     <div>
         <ShipManeuverImages shipType={props.shipType}/>
         <TargetButtons setTargetPosition={props.setTargetPosition}/>
