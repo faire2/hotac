@@ -87,6 +87,8 @@ export default function SquadManeuver(props) {
             return <div className="xw-man">3<i className="xwmr x-trollleft"/> </div>;
         case MVRS.KOIOGRAN3RED:
             return <div className="xw-man">3<i className="xwmr x-kturn"/> </div>;
+        case MVRS.KOIOGRAN4:
+            return <div className="xw-man">4<i className="xwm x-kturn"/> </div>;
         case MVRS.KOIOGRAN4RED:
             return <div className="xw-man">4<i className="xwmr x-kturn"/> </div>;
         case MVRS.KOIOGRAN5RED:
