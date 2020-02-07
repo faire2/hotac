@@ -1,34 +1,39 @@
 import React from "react";
 import {Button} from "react-bootstrap";
+import {PSN} from "../../data/Ships";
 
-/*todo: fix bug (last button returns non-def)*/
 export const TargetButtons = (props) =>
     <div className="d-button-container">
-        <Button variant="success" onClick={() => props.setTargetPosition(PSN.FARFRONT)}
-                className="d-button far-front"> target </Button>
-        <Button variant="success" onClick={() => props.setTargetPosition(PSN.FARFRONTSIDE)}
-                className="d-button far-front-side"> target </Button>
-        <Button variant="success" onClick={() => props.setTargetPosition(PSN.FARREARSIDE)}
-                className="d-button far-back"> target </Button>
-        <Button variant="success" onClick={() => props.setTargetPosition(PSN.FARREAR)}
-                className="d-button far-back-side"> target </Button>
-        <Button variant="danger" onClick={() => props.setTargetPosition(PSN.NEARFRONT)}
-                className="d-button near-front"> target </Button>
-        <Button variant="danger" onClick={() => props.setTargetPosition(PSN.NEAFRONTSIDE)}
-                className="d-button near-front-side"> target </Button>
-        <Button variant="danger" onClick={() => props.setTargetPosition(PSN.NEARREARSIDE)}
-                className="d-button near-back"> target </Button>
-        <Button variant="danger" onClick={() => props.setTargetPosition(PSN.NEARREAR)}
-                className="d-button near-back-side"> target </Button>
-    </div>;
+        <Button variant="info" onClick={() => props.setTargetPosition(PSN.R4BULL)}
+                className="d-button r4-bull"> <i className="xwi x-token-lock-outline"/> </Button>
+        <Button variant="info" onClick={() => props.setTargetPosition(PSN.R4FRONT)}
+                className="d-button r4-front"> <i className="xwi x-token-lock-outline"/> </Button>
+        <Button variant="info" onClick={() => props.setTargetPosition(PSN.R4FRONTSIDE)}
+                className="d-button r4-front-side"> <i className="xwi x-token-lock-outline"/> </Button>
+        <Button variant="info" onClick={() => props.setTargetPosition(PSN.R4REARSIDE)}
+                className="d-button r4-rear"> <i className="xwi x-token-lock-outline"/> </Button>
+        <Button variant="info" onClick={() => props.setTargetPosition(PSN.R4REAR)}
+                className="d-button r4-rear-side"> <i className="xwi x-token-lock-outline"/> </Button>
 
-export const PSN = Object.freeze({
-        FARFRONT: "FAR FRONT",
-        FARFRONTSIDE: "FAR FRONT SIDE",
-        FARREARSIDE: "FAR REAR SIDE",
-        FARREAR: "FAR REAR",
-        NEARFRONT: "NEAR FRONT",
-        NEAFRONTSIDE: "NEAR FRONT SIDE",
-        NEARREARSIDE: "NEAR REAR SIDE",
-        NEARREAR: "NEAR REAR",
-});
+        <Button variant="success" onClick={() => props.setTargetPosition(PSN.R3BULL)}
+                className="d-button r3-bull"> <i className="xwi x-token-lock-outline"/> </Button>
+        <Button variant="success" onClick={() => props.setTargetPosition(PSN.R3FRONT)}
+                className="d-button r3-front"> <i className="xwi x-token-lock-outline"/> </Button>
+        <Button variant="success" onClick={() => props.setTargetPosition(PSN.R3FRONTSIDE)}
+                className="d-button r3-front-side"> <i className="xwi x-token-lock-outline"/> </Button>
+        <Button variant="success" onClick={() => props.setTargetPosition(PSN.R3REARSIDE)}
+                className="d-button r3-rear"> <i className="xwi x-token-lock-outline"/> </Button>
+        <Button variant="success" onClick={() => props.setTargetPosition(PSN.R3REAR)}
+                className="d-button r3-rear-side"> <i className="xwi x-token-lock-outline"/> </Button>
+
+        <Button variant="danger" onClick={() => props.setTargetPosition(PSN.R1BULL)}
+                className="d-button r1-bull"> <i className="xwi x-token-lock-outline"/> </Button>
+        <Button variant="danger" onClick={() => props.setTargetPosition(PSN.R1FRONT)}
+                className="d-button r1-front"> <i className="xwi x-token-lock-outline"/> </Button>
+        <Button variant="danger" onClick={() => props.setTargetPosition(PSN.R1FRONTSIDE)}
+                className="d-button r1-front-side"> <i className="xwi x-token-lock-outline"/> </Button>
+        <Button variant="danger" onClick={() => props.setTargetPosition(PSN.R1REARSIDE)}
+                className="d-button r1-rear"> <i className="xwi x-token-lock-outline"/> </Button>
+        <Button variant="danger" onClick={() => props.setTargetPosition(PSN.R1REAR)}
+                className="d-button r1-rear-side"> <i className="xwi x-token-lock-outline"/> </Button>
+    </div>;

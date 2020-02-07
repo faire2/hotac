@@ -6,8 +6,13 @@
   font-family: XWing;
   src: url("xwing-miniatures.ttf"); }
 
+i.xwi {
+  font-family: XWing;
+  font-style: normal;
+  font-size: 1.2em; }
 
-i.xwf {
+i.xwir {
+  color: crimson;
   font-family: XWing;
   font-style: normal;
   font-size: 1.2em; }
@@ -33,6 +38,14 @@ i.xwmr {
   font-family: XWing;
   font-style: normal;
   color: crimson;
+  font-size: 110%;
+}
+
+/* BLUE MANEUVERS */
+i.xwmb {
+  font-family: XWing;
+  font-style: normal;
+  color: #007bff;
   font-size: 110%;
 }
 

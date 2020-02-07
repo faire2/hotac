@@ -8,18 +8,16 @@ import './fonts/xwing-miniatures-ships.ttf'
 import Select from 'react-select';
 
 
-import {Ships} from "./data/Ships";
+import {Ships, Stats} from "./data/Ships";
 import SquadGenerator from "./components/ai/SquadGenerator";
 
 function App() {
     const [aiShips, setAiShips] = useState([]);
 
-    const newShipOptions = [
-        {value: Ships.TIELN.id, label: Ships.TIELN.name},
-        {value: Ships.TIEIN.id, label: Ships.TIEIN.name},
-        {value: Ships.TIESA.id, label: Ships.TIESA.name},
-        {value: Ships.VT49.id, label: Ships.VT49.name},
-    ];
+    let newShipOptions = [];
+    for (let ship of Object.keys(Ships)){
+        newShipOptions.push({value: Ships[ship][Stats.id], label: Ships[ship][Stats.name]})
+    }
 
     function handleNewShipSelection(e) {
         const tAiShips = aiShips;
