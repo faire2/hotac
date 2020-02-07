@@ -8,6 +8,7 @@ import Select from "react-select";
 import SquadManeuver from "./SquadManeuver";
 import SquadActions from "./SquadActions";
 import SquadTargetSelection from "./SquadTargetSelection";
+import SquadAttack from "./SquadAttack";
 
 export function Squad(props) {
     const shipType = props.shipType;
@@ -58,6 +59,9 @@ export function Squad(props) {
 
                     <h2>Select and perform action:</h2>
                     <SquadActions shipType={shipType} aiEngine={aiEngine}/>
+
+                    <h2>Select target and perform attack:</h2>
+                    <SquadAttack shipType={shipType} aiEngine={aiEngine} />
                 </div>
                 <div className="col-5 position-relative">
                     <TargetSelection shipType={shipType} setTargetPosition={handleSetTargetPosition}
