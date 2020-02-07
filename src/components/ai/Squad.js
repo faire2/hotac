@@ -4,7 +4,6 @@ import {AI, PSN, Ships, Stats} from "../../data/Ships";
 import {ShipsVariables} from "./ShipsVariables"
 import {SquadStats} from "./SquadStats";
 import {TargetSelection} from "./TargetSelection";
-import hinnyTargetSelection from "../../data/hinny/HinnyTargetSelection";
 import Select from "react-select";
 import SquadManeuver from "./SquadManeuver";
 import SquadActions from "./SquadActions";

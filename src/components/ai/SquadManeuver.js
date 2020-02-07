@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {AI, MVRS, PSN, Ships, Stats} from "../../data/Ships";
+import React from "react";
+import {AI, MVRS} from "../../data/Ships";
 import {hinnyManeuvers} from "../../data/hinny/Maneuvers"
 import {fgaManeuvers} from "../../data/fga/Maneuvers"
 

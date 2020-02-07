@@ -1,8 +1,8 @@
-import {Ships} from "../Ships";
 import React from "react";
 
 export default function ShipManeuverImages(props) {
-    switch (props.shipType) {
+    /* initially was used to select correct image with maneuvers*/
+    /*switch (props.shipType) {
         case Ships.TIEIN.id:
             return <TIEIN/>;
         case Ships.TIELN.id:
@@ -13,7 +13,8 @@ export default function ShipManeuverImages(props) {
             return <VT49/>;
         default:
             console.log("Component ShipActions didn't recognize shipType: " + props.shipType);
-    }
+    }*/
+return <TIEIN />
 }
 
 const TIELN = () => <img src={require('./ManeuverImages/tieln.png')} className="man_dial_img" alt="Tie-Fighter"/>;
