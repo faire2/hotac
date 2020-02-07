@@ -1,11 +1,11 @@
 import {AI} from "../../data/Ships";
-import ShipActions from "../../data/hinny/ShipActions";
+import hinnyShipActions from "../../data/hinny/HinnyShipActions";
 import fgaShipActions from "../../data/fga/FgaShipActions";
 
 export default function SquadActions(props) {
     switch (props.aiEngine) {
         case AI.HINNY:
-            return ShipActions(props);
+            return hinnyShipActions(props);
         case AI.FGA:
             return fgaShipActions(props);
         default:
