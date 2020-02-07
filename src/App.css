@@ -51,48 +51,85 @@ h3 {
 .d-button {
   position: absolute;
   cursor: pointer;
+  height: 50px;
+  width: 50px;
 }
 
-.far-front {
-  left: 50px;
-  top: 170px;
-}
 
-.far-front-side {
-  left: 175px;
+.r1-bull {
+  left: -10px;
   top: 280px;
 }
 
-.far-back-side {
-  left: 175px;
-  top: 440px;
+.r1-front {
+  left: 40px;
+  top: 240px;
 }
 
-.far-back {
-  left: 50px;
-  top: 555px;
-}
-
-.near-front {
-  left: 18px;
-  top: 260px;
-}
-
-.near-front-side {
+.r1-front-side {
   left: 70px;
   top: 325px;
 }
 
-.near-back-side {
+.r1-rear-side {
   left: 70px;
-  top: 400px;
+  top: 390px;
 }
 
-.near-back {
+.r1-rear {
   left: 18px;
   top: 465px;
 }
 
+.r3-bull {
+  left: -10px;
+  top: 180px;
+}
+
+.r3-front {
+  left: 60px;
+  top: 180px;
+}
+
+.r3-front-side {
+  left: 165px;
+  top: 280px;
+}
+
+.r3-rear-side {
+  left: 165px;
+  top: 440px;
+}
+
+.r3-rear {
+  left: 45px;
+  top: 540px;
+}
+
+.r4-bull {
+  left: -10px;
+  top: 120px;
+}
+
+.r4-front {
+  left: 75px;
+  top: 120px;
+}
+
+.r4-front-side {
+  left: 220px;
+  top: 250px;
+}
+
+.r4-rear-side {
+  left: 220px;
+  top: 470px;
+}
+
+.r4-rear {
+  left: 80px;
+  top: 605px;
+}
 
 
 /* OTHER */
