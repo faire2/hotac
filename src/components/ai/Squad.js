@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import {AI, ATTACKS, Ships, Stats} from "../../data/Ships";
+import {AI, Ships, Stats} from "../../data/Ships";
 import {ShipsVariables} from "./ShipsVariables"
 import {SquadStats} from "./SquadStats";
 import {TargetPosition} from "./TargetPosition";

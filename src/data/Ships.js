@@ -1,5 +1,4 @@
 import React from "react";
-//todo: distiguish between forms of attack (fire arcs, turrets...)
 
 export const AI = Object.freeze({
         HINNY: "Hinny AI",
@@ -25,7 +24,7 @@ export const Ships = Object.freeze({
         id: "TIELN",
         ai: [AI.HINNY, AI.FGA],
     },
-    TIEIN: { //todo create a new component for performing the attack - maybe a dice roller?
+    TIEIN: {
         name: "TIE/in Interceptor",
         initiative: 2,
         shields: 0,
@@ -85,7 +84,7 @@ export const Ships = Object.freeze({
         id: "TIEPH",
         ai: [AI.FGA],
     },
-    LAMBDA: { // todo distinguish fire arcs (probably check for different attack possibilities)
+    LAMBDA: {
         name: "Lambda-class T-4A Shuttle",
         initiative: 1,
         shields: 4,
