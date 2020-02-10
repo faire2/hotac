@@ -55,4 +55,4 @@ export function ShipsVariables(props) {
             <button className="btn btn-primary btn-sm" onClick={handleAddShip}>Add a ship to this squadron</button>
         </div>
     )
-};
+}

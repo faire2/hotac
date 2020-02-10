@@ -24,7 +24,10 @@ export const SquadStats = (props) =>
                 <div>{Ships[props.shipType][Stats.initiative]}</div>
             </div>
             <div className="col-4">
-                <div>{Ships[props.shipType][Stats.attack]}</div>
+                {Ships[props.shipType][Stats.attack].map((a, index) =>
+                    <span key={index}>
+                        {a.attack}{a.damage}
+                    </span>)}
             </div>
             <div className="col-4">
                 <div>{Ships[props.shipType][Stats.agility]}</div>
