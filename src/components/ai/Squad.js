@@ -33,12 +33,10 @@ export function Squad(props) {
 
     // number is randomized here to ensure that re-render of SquadManeuvres will be triggered
     function handleSetTargetPosition(position) {
-        // todo function will check used AI engine - if Hinny is used, it will use R3 templates for R4 positions
         setRandnum(Math.floor(Math.random() * 6));
         setTargetPosition(position);
     }
 
-    // todo doesnt work
     function handleStress(e) {
         setStressed(!stressed);
     }
