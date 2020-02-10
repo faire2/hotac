@@ -1,6 +1,6 @@
 import React from "react";
 import {Button} from "react-bootstrap";
-import {PSN} from "../../../data/Ships";
+import {PSN} from "../Maneuvers";
 
 export const FgaStressedPositionSelection = (props) =>
     <div className="d-button-container">

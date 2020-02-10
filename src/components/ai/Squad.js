@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import {AI, PSN, Ships, Stats} from "../../data/Ships";
+import {AI, Ships, Stats} from "../../data/Ships";
 import {ShipsVariables} from "./ShipsVariables"
 import {SquadStats} from "./SquadStats";
 import {TargetPosition} from "./TargetPosition";
@@ -9,6 +9,7 @@ import SquadManeuver from "./SquadManeuver";
 import SquadActions from "./SquadActions";
 import SquadTargetSelection from "./SquadTargetSelection";
 import SquadAttack from "./SquadAttack";
+import {PSN} from "../../data/Maneuvers";
 
 export function Squad(props) {
     const shipType = props.shipType;

@@ -1,9 +1,9 @@
 import React from "react";
 import ShipManeuverImages from "../../data/hinny/ShipManeuverImages";
-import {FgaPositionSelection} from "./targetPosition/FgaPositionSelection";
+import {FgaPositionSelection} from "../../data/fga/FgaPositionSelection";
 import {AI} from "../../data/Ships";
-import {FgaStressedPositionSelection} from "./targetPosition/FgaStressedPositionSelection";
-import {HinnyPositionSelection} from "./targetPosition/HinnyPositionSelection";
+import {FgaStressedPositionSelection} from "../../data/fga/FgaStressedPositionSelection";
+import {HinnyPositionSelection} from "../../data/hinny/HinnyPositionSelection";
 
 export function TargetPosition(props) {
     let targetPositionSelection;
