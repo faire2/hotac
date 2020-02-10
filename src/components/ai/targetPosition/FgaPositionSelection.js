@@ -1,8 +1,8 @@
 import React from "react";
 import {Button} from "react-bootstrap";
-import {PSN} from "../../data/Ships";
+import {PSN} from "../../../data/Ships";
 
-export const TargetButtons = (props) =>
+export const FgaPositionSelection = (props) =>
     <div className="d-button-container">
         <Button variant="info" onClick={() => props.setTargetPosition(PSN.R4BULL)}
                 className="d-button r4-bull"> <i className="xwi x-token-lock-outline"/> </Button>

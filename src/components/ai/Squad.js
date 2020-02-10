@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import {AI, PSN, Ships, Stats} from "../../data/Ships";
 import {ShipsVariables} from "./ShipsVariables"
 import {SquadStats} from "./SquadStats";
-import {TargetSelection} from "./TargetSelection";
+import {TargetPosition} from "./TargetPosition";
 import Select from "react-select";
 import SquadManeuver from "./SquadManeuver";
 import SquadActions from "./SquadActions";
@@ -15,7 +15,7 @@ export function Squad(props) {
     const [targetPosition, setTargetPosition] = useState([PSN.R3FRONT]);
     const [randNum, setRandnum] = useState(1);
     const [aiEngine, setAiEngine] = useState(AI.FGA);
-    // todo implement switching mechanism
+    const [stressed, setStressed] = useState(false);
 
     let aiValues = [];
     for (let ai of Ships[shipType][Stats.ai]) {
@@ -38,8 +38,13 @@ export function Squad(props) {
         setTargetPosition(position);
     }
 
+    // todo doesnt work
+    function handleStress(e) {
+        setStressed(!stressed);
+    }
+
     return (
-        <div>
+        <div>`
             <div className="row">
                 <div className="col-5"><h2>Squadron designation:</h2></div>
                 <div className="col-5"><h3><Select options={squadNames}/></h3></div>
@@ -53,19 +58,29 @@ export function Squad(props) {
                     <SquadTargetSelection shipType={shipType} aiEngine={aiEngine}/>
 
                     <h2>Perform maneuver:</h2>
-                    <Select options={aiValues} defaultValue={{label: aiEngine, value: aiEngine}}
-                            onChange={e => setAiEngine(e.value)}/>
-                    <SquadManeuver shipType={shipType} position={targetPosition} randNum={randNum} aiEngine={aiEngine}/>
+                    <span>
+                        <Select options={aiValues} defaultValue={{label: aiEngine, value: aiEngine}}
+                                onChange={e => setAiEngine(e.value)}/>
+                        {/*  Handles visibility according to selected Ai engine */
+                            aiEngine === AI.FGA &&
+                            <label>
+                                <input type="checkbox" value={stressed} onChange={e => handleStress(e)}/>
+                                Is ship stressed?
+                            </label>}
+                    </span>
+                    <SquadManeuver shipType={shipType} position={targetPosition} randNum={randNum} aiEngine={aiEngine}
+                                   stressed={stressed}/>
 
                     <h2>Select and perform action:</h2>
                     <SquadActions shipType={shipType} aiEngine={aiEngine}/>
 
                     <h2>Select target and perform attack:</h2>
-                    <SquadAttack shipType={shipType} aiEngine={aiEngine} />
+                    <SquadAttack shipType={shipType} aiEngine={aiEngine}/>
                 </div>
                 <div className="col-5 position-relative">
-                    <TargetSelection shipType={shipType} setTargetPosition={handleSetTargetPosition}
-                                          handleShipRemoval={props.handleShipRemoval} squadId={props.squadId}/>
+                    <TargetPosition shipType={shipType} setTargetPosition={handleSetTargetPosition}
+                                    handleShipRemoval={props.handleShipRemoval} squadId={props.squadId}
+                                    aiEngine={aiEngine} stressed={stressed}/>
                 </div>
             </div>
         </div>
