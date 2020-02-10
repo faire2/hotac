@@ -1,7 +1,8 @@
 import React from "react";
-import {AI, MVRS} from "../../data/Ships";
+import {AI} from "../../data/Ships";
 import {hinnyManeuvers} from "../../data/hinny/Maneuvers"
 import {fgaManeuvers} from "../../data/fga/Maneuvers"
+import {MVRS} from "../../data/Maneuvers";
 
 export default function SquadManeuver(props) {
     let maneuvers;

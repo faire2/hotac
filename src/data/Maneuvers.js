@@ -1,140 +1,67 @@
-import React from "react";
-import {Ships} from "./Ships";
-import {PSN} from "../components/ai/TargetButtons";
-
-const MVRS = Object.freeze({
-    STRAIGHT1: "STRAIGHT1",
-    STRAIGHT2: "STRAIGHT2",
-    STRAIGHT3: "STRAIGHT3",
-    STRAIGHT4: "STRAIGHT4",
-    STRAIGHT5: "STRAIGHT5",
-    BANK1: "BANK1",
-    BANK2: "BANK2",
-    BANK3: "BANK3",
-    BANKOPPOSITE3: "BANKOPPOSITE3",
-    TURN1: "TURN1",
-    TURNRED1: "TURNRED1",
-    TURN2: "TURN2",
-    TURN3: "TURN3",
-    TURNOPPOSITE2: "TURNOPPOSITE2",
-    TURNOPPOSITE3: "TURNOPPOSITE3",
-    SEGNOR3: "SEGNOR3",
-    SEGNOROPPOSITE3: "SEGNOROPPOSITE3",
-    TALLON3: "TALLON3",
-    KOIOGRAN3: "KOIOGRAN3",
-    KOIOGRAN4: "KOIOGRAN4",
-    KOIOGRAN5: "KOIOGRAN5",
-    STATIONARY: "STATIONARY",
-    REVERSESTRAIGHT1: "REVERSESTRAIGHT1",
-    REVERSEBANK1: "REVERSEBANK1",
-    REVERSEBANK2: "REVERSEBANK2",
+export const PSN = Object.freeze({
+    R4FRONT: "far front",
+    R4FRONTSIDE: "far front side",
+    R4REARSIDE: "far rear side",
+    R4REAR: "far rear",
+    R4BULL: "far bulls eye",
+    R3FRONT: "middle front",
+    R3FRONTSIDE: "middle front side",
+    R3REARSIDE: "middle rear side",
+    R3REAR: "middle rear",
+    R3BULL: "middle bulls eye",
+    R1FRONT: "close front",
+    R1FRONTSIDE: "close front side",
+    R1REARSIDE: "close rear side",
+    R1REAR: "close rear",
+    R1BULL: "close bulls eye",
+    STRSBULL: "stressed bulls-eye",
+    STRSFRONT: "stressed front",
+    STRSFRONTSIDE: "stressed front side",
+    STRSREARSIDE: "stressed rear side",
+    STRSREAR: "stressed rear"
 });
 
-
-/* MANEUVERS are kept as arrays so that random number can be used as the array index */
-const ShipManeuvers = Object.freeze({
-    [Ships.TIELN.id]: {
-        [PSN.FARFRONT]: [MVRS.STRAIGHT5, MVRS.STRAIGHT4, MVRS.STRAIGHT3, MVRS.BANK3, MVRS.BANK3, MVRS.BANK2],
-        [PSN.FARFRONTSIDE]: [MVRS.BANK3, MVRS.BANK3, MVRS.TURN3, MVRS.BANK2, MVRS.TURN2, MVRS.TURN1],
-        [PSN.FARREARSIDE]: [MVRS.KOIOGRAN3, MVRS.KOIOGRAN3, MVRS.TURN3, MVRS.TURN2, MVRS.TURN2, MVRS.TURN1],
-        [PSN.FARREAR]: [MVRS.KOIOGRAN3, MVRS.KOIOGRAN3, MVRS.KOIOGRAN3, MVRS.KOIOGRAN3, MVRS.TURN2, MVRS.TURN1],
-        [PSN.NEARFRONT]: [MVRS.KOIOGRAN4, MVRS.KOIOGRAN4, MVRS.STRAIGHT2, MVRS.BANK2, MVRS.BANK2, MVRS.TURN1],
-        [PSN.NEAFRONTSIDE]: [MVRS.KOIOGRAN4, MVRS.TURN2, MVRS.TURN2, MVRS.BANK2, MVRS.TURN1, MVRS.TURN1],
-        [PSN.NEARREARSIDE]: [MVRS.KOIOGRAN4, MVRS.TURN2, MVRS.TURN2, MVRS.BANK2, MVRS.TURN1, MVRS.TURN1],
-        [PSN.NEARREAR]: [MVRS.STRAIGHT5, MVRS.KOIOGRAN4, MVRS.KOIOGRAN4, MVRS.KOIOGRAN3, MVRS.KOIOGRAN3, MVRS.TURN3],
-    },
-    [Ships.TIEIN.id]: {
-        [PSN.FARFRONT]: [MVRS.STRAIGHT5, MVRS.STRAIGHT4, MVRS.STRAIGHT3, MVRS.BANK3, MVRS.BANK3, MVRS.BANK2],
-        [PSN.FARFRONTSIDE]: [MVRS.BANK3, MVRS.BANK3, MVRS.TURN3, MVRS.BANK2, MVRS.TURN2, MVRS.TURN1],
-        [PSN.FARREARSIDE]: [MVRS.KOIOGRAN4, MVRS.KOIOGRAN4, MVRS.TURN3, MVRS.TURN2, MVRS.TURN2, MVRS.TURN1],
-        [PSN.FARREAR]: [MVRS.KOIOGRAN4, MVRS.SEGNOROPPOSITE3, MVRS.SEGNOR3, MVRS.SEGNOR3, MVRS.TURN2, MVRS.TURN1],
-        [PSN.NEARFRONT]: [MVRS.KOIOGRAN4, MVRS.SEGNOROPPOSITE3, MVRS.STRAIGHT2, MVRS.BANK2, MVRS.BANK2, MVRS.TURN1],
-        [PSN.NEAFRONTSIDE]: [MVRS.SEGNOROPPOSITE3, MVRS.TURN2, MVRS.TURN2, MVRS.BANK2, MVRS.TURN1, MVRS.TURN1],
-        [PSN.NEARREARSIDE]: [MVRS.SEGNOR3, MVRS.TURN2, MVRS.TURN2, MVRS.BANK2, MVRS.TURN1, MVRS.TURN1],
-        [PSN.NEARREAR]: [MVRS.STRAIGHT5, MVRS.KOIOGRAN4, MVRS.KOIOGRAN4, MVRS.SEGNOROPPOSITE3, MVRS.SEGNOR3, MVRS.TURN3],
-    },
-    [Ships.TIESA.id]: {
-        [PSN.FARFRONT]: [MVRS.STRAIGHT4, MVRS.STRAIGHT4, MVRS.STRAIGHT3, MVRS.BANK3, MVRS.BANK3, MVRS.BANK2],
-        [PSN.FARFRONTSIDE]: [MVRS.BANK3, MVRS.BANK3, MVRS.TURN3, MVRS.TURN3, MVRS.BANK2, MVRS.TURN2],
-        [PSN.FARREARSIDE]: [MVRS.KOIOGRAN3, MVRS.KOIOGRAN3, MVRS.TURN3, MVRS.TURN3, MVRS.TURN2, MVRS.TURN2],
-        [PSN.FARREAR]: [MVRS.KOIOGRAN3, MVRS.KOIOGRAN3, MVRS.KOIOGRAN3, MVRS.KOIOGRAN3, MVRS.TURN3, MVRS.TURN2],
-        [PSN.NEARFRONT]: [MVRS.KOIOGRAN5, MVRS.STRAIGHT2, MVRS.STRAIGHT1, MVRS.STRAIGHT1, MVRS.BANK1, MVRS.BANK1],
-        [PSN.NEAFRONTSIDE]: [MVRS.KOIOGRAN5, MVRS.TURN2, MVRS.TURN2, MVRS.BANK2, MVRS.BANK1, MVRS.BANK1],
-        [PSN.NEARREARSIDE]: [MVRS.KOIOGRAN3, MVRS.TURN3, MVRS.TURN2, MVRS.TURN2, MVRS.TURN2, MVRS.BANK1],
-        [PSN.NEARREAR]: [MVRS.KOIOGRAN5, MVRS.KOIOGRAN3, MVRS.KOIOGRAN3, MVRS.KOIOGRAN3, MVRS.KOIOGRAN3, MVRS.TURN3],
-    },
-    [Ships.VT49.id]: {
-        [PSN.FARFRONT]: [MVRS.STRAIGHT4, MVRS.STRAIGHT3, MVRS.BANK3, MVRS.BANK3, MVRS.STRAIGHT2, MVRS.BANK2],
-        [PSN.FARFRONTSIDE]: [MVRS.BANK3, MVRS.BANK3, MVRS.TURN3, MVRS.TURN3, MVRS.BANK2, MVRS.TURN2],
-        [PSN.FARREARSIDE]: [MVRS.TURN3, MVRS.TURN3, MVRS.BANK2, MVRS.TURN2, MVRS.TURN2, MVRS.BANK1],
-        [PSN.FARREAR]: [MVRS.TURN3, MVRS.TURN3, MVRS.TURN2, MVRS.TURN2, MVRS.TURNOPPOSITE2, MVRS.BANK1],
-        [PSN.NEARFRONT]: [MVRS.STRAIGHT4, MVRS.TURN3, MVRS.TURN3, MVRS.TURNOPPOSITE3, MVRS.BANK3, MVRS.BANKOPPOSITE3],
-        [PSN.NEAFRONTSIDE]: [MVRS.TURN3, MVRS.BANK2, MVRS.TURNOPPOSITE2, MVRS.TURN2, MVRS.BANK1, MVRS.TURNRED1],
-        [PSN.NEARREARSIDE]: [MVRS.TURN3, MVRS.TURN2, MVRS.TURN2, MVRS.BANK1, MVRS.BANK1, MVRS.TURNRED1],
-        [PSN.NEARREAR]: [MVRS.TURNOPPOSITE3, MVRS.TURN3, MVRS.TURNOPPOSITE2, MVRS.TURN2, MVRS.BANK1, MVRS.TURNRED1],
-    },
-
+export const MVRS = Object.freeze({
+    STRAIGHT1: "straight 1",
+    STRAIGHT1BLUE: "blue straight 1",
+    STRAIGHT2: "straight 2",
+    STRAIGHT2BLUE: "blue straight 2",
+    STRAIGHT3: "straight 3",
+    STRAIGHT3BLUE: "blue straight 3",
+    STRAIGHT4: "straight 4",
+    STRAIGHT4BLUE: "blue straight 4",
+    STRAIGHT5: "straight 5",
+    STRAIGHT5BLUE: "blue straight 5",
+    BANK1: "bank 1",
+    BANK1OPPOSITE: "opposite bank 1",
+    BANK1BLUE: "blue bank 1",
+    BANK1BLUEOPPOSITE: "opposite blue bank 1",
+    BANK2: "bank 2",
+    BANK2OPPOSITE: "opposite bank 2",
+    BANK2BLUE: "blue bank 2",
+    BANK2BLUEOPPOSITE: "oppposite blue bank 2",
+    BANK3: "bank 3",
+    BANK3OPPOSITE: "opposite bank 3",
+    BANK3RED: "red bank 3",
+    TURN1: "turn 1",
+    TURN1RED: "turn 1 red",
+    TURN2: "turn 2",
+    TURN2RED: "red turn 2",
+    TURN2BLUE: "blue turn 2",
+    TURN2BLUEOPPOSITE: "opposite blue turn 2",
+    TURN3: "turn 3",
+    TURN2OPPOSITE: "opposite turn 2",
+    TURN3OPPOSITE: "opposite turn 3",
+    SEGNOR3RED: "segnor 3",
+    SEGNOR3REDOPPOSITE: "opposite segnor 3",
+    TALLON3RED: "tallon 3",
+    TALLON3REDOPPOSITE: "opposite tallon 3",
+    KOIOGRAN3RED: "red koiogran 3",
+    KOIOGRAN4: "koiogran 4",
+    KOIOGRAN4RED: "red koiogran 4",
+    KOIOGRAN5RED: "red koiogran 5",
+    STATIONARYRED: "stationary",
+    REVERSESTRAIGHT1RED: "reverse straight 1",
+    REVERSEBANK1RED: "reverse bank 1",
+    REVERSEBANK2RED: "reverse bank 2",
 });
-
-export default function Maneuvers(props) {
-
-    /* generates random number between 0 - 5 */
-    console.log("Mvr randomized");
-    const maneuver = ShipManeuvers[props.shipType][props.position][props.randNum];
-
-    switch (maneuver) {
-        case MVRS.STRAIGHT1:
-            return <div className="xw-man">1<i className="xwm x-straight"/></div>;
-        case MVRS.STRAIGHT2:
-            return <div className="xw-man">2<i className="xwm x-straight"/></div>;
-        case MVRS.STRAIGHT3:
-            return <div className="xw-man">3<i className="xwm x-straight"/></div>;
-        case MVRS.STRAIGHT4:
-            return <div className="xw-man">4<i className="xwm x-straight"/></div>;
-        case MVRS.STRAIGHT5:
-            return <div className="xw-man">5<i className="xwm x-straight"/></div>;
-        case MVRS.BANK1:
-            return <div className="xw-man">1<i className="xwm x-bankright"/></div>;
-        case MVRS.BANK2:
-            return <div className="xw-man">2<i className="xwm x-bankright"/></div>;
-        case MVRS.BANK3:
-            return <div className="xw-man">3<i className="xwm x-bankright"/></div>;
-        case MVRS.BANKOPPOSITE3:
-            return <div className="xw-man">3<i className="xwm x-bankleft"/></div>;
-        case MVRS.TURN1:
-            return <div className="xw-man">1<i className="xwm x-turnright"/></div>;
-        case MVRS.TURNRED1:
-            return <div className="xw-man">1<i className="xwmr x-turnright"/></div>;
-        case MVRS.TURN2:
-            return <div className="xw-man">2<i className="xwm x-turnright"/></div>;
-        case MVRS.TURN3:
-            return <div className="xw-man">3<i className="xwm x-turnright"/></div>;
-        case MVRS.TURNOPPOSITE2:
-            return <div className="xw-man">2<i className="xwm x-turnleft"/> </div>;
-        case MVRS.TURNOPPOSITE3:
-            return <div className="xw-man">3<i className="xwm x-turnleft"/> </div>;
-        case MVRS.SEGNOR3:
-            return <div className="xw-man">3<i className="xwmr x-sloopright"/> </div>;
-        case MVRS.SEGNOROPPOSITE3:
-            return <div className="xw-man">3<i className="xwmr x-sloopleft"/> </div>
-        case MVRS.TALLON3:
-            return <div className="xw-man">3<i className="xwmr x-trollright"/> </div>;
-        case MVRS.KOIOGRAN3:
-            return <div className="xw-man">3<i className="xwmr x-kturn"/> </div>;
-        case MVRS.KOIOGRAN4:
-            return <div className="xw-man">4<i className="xwmr x-kturn"/> </div>;
-        case MVRS.KOIOGRAN5:
-            return <div className="xw-man">5<i className="xwmr x-kturn"/> </div>;
-        case MVRS.STATIONARY:
-            return <div className="xw-man"><i className="xwmr x-stop"/> </div>;
-        case MVRS.REVERSESTRAIGHT1:
-            return <div className="xw-man">1<i className="xwmr x-reversestraight"/> </div>;
-        case MVRS.REVERSEBANK1:
-            return <div className="xw-man">1<i className="xwmr x-reversebankright"/> </div>;
-        case MVRS.REVERSEBANK2:
-            return <div className="xw-man">2<i className="xwmr x-reversebankright"/> </div>;
-        default:
-            console.log("Component Maneuvers didn't recognize maneuver: " + props.maneuver);
-    }
-}
-

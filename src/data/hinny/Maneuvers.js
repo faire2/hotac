@@ -1,4 +1,5 @@
-import {MVRS, PSN, Ships} from "../Ships";
+import {Ships} from "../Ships";
+import {MVRS, PSN} from "../Maneuvers";
 
 
 /* MANEUVERS are kept as arrays so that random number can be used as the array index */
