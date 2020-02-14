@@ -12,7 +12,7 @@ import {Ships, Stats} from "./data/Ships";
 import SquadGenerator from "./components/ai/SquadGenerator";
 
 function App() {
-    const [aiShips, setAiShips] = useState([]);
+    const [aiShips, setAiShips] = useState([Ships.TIEPH.id]);
 
     let newShipOptions = [];
     for (let ship of Object.keys(Ships)){

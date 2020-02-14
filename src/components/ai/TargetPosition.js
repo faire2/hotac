@@ -1,9 +1,10 @@
 import React from "react";
-import ShipManeuverImages from "../../data/hinny/ShipManeuverImages";
+
 import {FgaPositionSelection} from "../../data/fga/FgaPositionSelection";
 import {AI} from "../../data/Ships";
 import {FgaStressedPositionSelection} from "../../data/fga/FgaStressedPositionSelection";
 import {HinnyPositionSelection} from "../../data/hinny/HinnyPositionSelection";
+import TargetPositionDiagram from "../../data/hinny/TargetPositionDiagram";
 
 export function TargetPosition(props) {
     let targetPositionSelection;
@@ -19,7 +20,7 @@ export function TargetPosition(props) {
 
     return (
         <div>
-            <ShipManeuverImages shipType={props.shipType}/>
+            <TargetPositionDiagram shipType={props.shipType}/>
             {targetPositionSelection}
             <div className="d-flex flex-row">
                 <button className="btn btn-danger btn-sm btnRemoveShip"

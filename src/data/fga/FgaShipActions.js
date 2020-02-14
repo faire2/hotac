@@ -42,7 +42,7 @@ const TIEIN = () => (
             className="xwir x-boost"/> to avoid target's arc and still get a shot.
         </li>
         <li><i className="xwi x-boost"/> <i className="xwi x-linked"/><i className="xwir x-barrelroll"/> or <i
-            className="xwi x-barrelroll"/> <i className="xwi x-linked"/><i className="xwir x-boost"/> to get a
+            classNamfe="xwi x-barrelroll"/> <i className="xwi x-linked"/><i className="xwir x-boost"/> to get a
             shot.
         </li>
         <li><i className="xwi x-focus"/> if hou have a shot.</li>

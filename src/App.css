@@ -11,7 +11,7 @@ h1 {
 }
 
 h2 {
-  text-align: center;
+  text-align: left;
   font-size: 1.4em !important;
   padding-top: 15px;
 }
@@ -19,14 +19,11 @@ h2 {
 h3 {
   font-size: 1.2em !important;
   padding-top: 10px;
+  text-align: center;
 }
 
 .shipStats {
   padding-left: 25px;
-}
-
-.shipStats li {
-  margin-left: -25px;
 }
 
 .btnRemoveShip {
@@ -36,7 +33,114 @@ h3 {
   width: 40px;
 }
 
+/************/
+/* CAROUSEL */
+/************/
+
+.carousel {
+  position: relative;
+  vertical-align: middle;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+#carousel-indicators-container {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-arrow {
+  width: 50px;
+  height: 50px;
+  font-size: 36px;
+  color: black;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 5px;
+}
+
+.slide-arrow:hover {
+  background-color: #9f9f9f;
+  opacity: 0.4;
+  color: white;
+  transition: opacity 0.5s;
+  border-radius: 100%;
+}
+
+ul {
+  padding: 0px;
+}
+
+.indicator {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  color: white;
+  background-color: #9f9f9f;
+  transition: all 0.6s ease;
+  margin: 27px 4px 0 4px;
+}
+
+.indicator.active {
+  background-color: #2a8cff;
+}
+
+
+/**************************/
 /* DIAL IMAGE AND BUTTONS */
+/**************************/
+#arcs_container {
+  width: 350px;
+  height: 350px;
+  position: relative;
+  background-color: crimson;
+}
+
+.arc {
+  height: 100%;
+  position:absolute;
+  background-color: crimson;
+}
+
+#bull1 {
+  top: 0px;
+  left: 300px;
+}
+
+#bull2 {
+  top: 400px;
+  left: 0px
+}
+
+#bull3 {
+  top: 800px;
+  left: 0px;
+}
+
+#arc1 {
+  top: 0px;
+  left: 0px
+}
+
+#arc2 {
+  top: 400px;
+  left: 0px
+}
+
+#arc3 {
+  top: 800px;
+  left: 0px;
+}
+
+
 .man_dial_img {
   max-width: 250px;
   margin-top: 10px;
@@ -131,8 +235,9 @@ h3 {
   top: 605px;
 }
 
-
+/*********/
 /* OTHER */
+/*********/
 
 .App-logo {
   height: 40vmin;
