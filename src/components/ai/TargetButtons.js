@@ -4,7 +4,7 @@ import {PSN} from "../../data/Ships";
 
 export const TargetButtons = (props) =>
     <div className="d-button-container">
-        <Button variant="info" onClick={() => props.setTargetPosition(PSN.R4BULL)}
+        {/*<Button variant="info" onClick={() => props.setTargetPosition(PSN.R4BULL)}
                 className="d-button r4-bull"> <i className="xwi x-token-lock-outline"/> </Button>
         <Button variant="info" onClick={() => props.setTargetPosition(PSN.R4FRONT)}
                 className="d-button r4-front"> <i className="xwi x-token-lock-outline"/> </Button>
@@ -35,5 +35,5 @@ export const TargetButtons = (props) =>
         <Button variant="danger" onClick={() => props.setTargetPosition(PSN.R1REARSIDE)}
                 className="d-button r1-rear"> <i className="xwi x-token-lock-outline"/> </Button>
         <Button variant="danger" onClick={() => props.setTargetPosition(PSN.R1REAR)}
-                className="d-button r1-rear-side"> <i className="xwi x-token-lock-outline"/> </Button>
+                className="d-button r1-rear-side"> <i className="xwi x-token-lock-outline"/> </Button>*/}
     </div>;
