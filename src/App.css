@@ -35,7 +35,18 @@ h3 {
 
 .pointer {
   cursor: pointer;
-  background-color: rebeccapurple;
+}
+.segmentOpacity {
+  opacity: 1;
+  transition: opacity 0.7s;
+}
+
+.segmentOpacity:hover {
+  opacity: 0.4;
+}
+
+.active-segment {
+  opacity: 0.4;
 }
 
 /************/
