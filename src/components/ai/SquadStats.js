@@ -14,7 +14,7 @@ export const SquadStats = (props) =>
                 <h3>Agility:</h3>
             </div>
         </div>
-        <div className="row text-center">
+        <div className="row text-center ship-stats">
             <div className="col-4">
                 <div>{Ships[props.shipType][Stats.initiative]}</div>
             </div>

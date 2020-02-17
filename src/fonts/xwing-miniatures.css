@@ -17,6 +17,12 @@ i.xwir {
   font-style: normal;
   font-size: 1.2em; }
 
+i.xwiv {
+  font-family: XWing;
+  color: crimson;
+  font-style: normal;
+}
+
 /* MANEUVERS */
 div.xw-man {
   text-align: center;
