@@ -136,7 +136,7 @@ export default function TargetPositionDiagram(props) {
             const transform = i * 45;
             arcs.push(<path d={getSegment(arc1Width, arc23width + arc4width)} stroke={arc1StrokeColor}
                             strokeWidth={strokeWidth} fill={arc1FillColor} key={"R1" + i}
-                            onClick={() => handleSetPosition(1, i)}
+                            onClick={() => handleSetPosition(1, i)} className="pointer"
                             transform={"rotate(" + transform + ", 0, " + (arc1Width + arc23width + arc4width) + ")"}/>)
         }
 
@@ -144,7 +144,7 @@ export default function TargetPositionDiagram(props) {
             const transform = i * 45;
             arcs.push(<path d={getArc(arc23width, arc1Width, arc4width)} stroke={arc1StrokeColor}
                             strokeWidth={strokeWidth} fill={arc23FillColor} key={"R23" + i}
-                            onClick={() => handleSetPosition(2, i)}
+                            onClick={() => handleSetPosition(2, i)} className="pointer"
                             transform={"rotate(" + transform + ", 0, " + (arc1Width + arc23width + arc4width) + ")"}/>)
         }
 
@@ -152,7 +152,7 @@ export default function TargetPositionDiagram(props) {
             const transform = i * 45;
             arcs.push(<path d={getArc(arc4width, arc1Width + arc23width, 0)} stroke={arc1StrokeColor}
                             strokeWidth={strokeWidth} fill={arc4FillColor} key={"R4" + i}
-                            onClick={() => handleSetPosition(4, i)}
+                            onClick={() => handleSetPosition(4, i)} className="pointer"
                             transform={"rotate(" + transform + ", 0, " + (arc1Width + arc23width + arc4width) + ")"}/>)
         }
         return arcs;
@@ -160,8 +160,8 @@ export default function TargetPositionDiagram(props) {
 
 
     return (
-        <div id="arcs_container">
-            <svg width={bullsEyeWidth} height={2 * (arc1Width + arc23width + arc4width)}>
+        <div>
+            <svg width={bullsEyeWidth} height={(arc1Width + arc23width + arc4width)} className="pointer align-top">
                 <rect x="0" y={arc23width + arc4width} width={bullsEyeWidth} height={arc1Width} fill={arc1FillColor}
                       stroke={arc1StrokeColor}
                       strokeWidth={strokeWidth} onClick={() => handleSetPosition(1, "B")}/>

@@ -33,6 +33,11 @@ h3 {
   width: 30px;
 }
 
+.pointer {
+  cursor: pointer;
+  background-color: rebeccapurple;
+}
+
 /************/
 /* CAROUSEL */
 /************/
@@ -98,6 +103,7 @@ ul {
 /* TARGET POSITION PICKER */
 /**************************/
 #arcs_container {
+  cursor: pointer;
 }
 
 /*********/
