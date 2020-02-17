@@ -7,7 +7,6 @@ export default function SquadManeuver(props) {
     const shipType = props.shipType;
     const aiEngine = props.aiEngine;
 
-
     let aiValues = [];
     for (let ai of Ships[shipType][Stats.ai]) {
         aiValues.push({value: ai, label: ai});

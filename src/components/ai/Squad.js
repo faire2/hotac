@@ -5,7 +5,7 @@ import {ShipsVariables} from "./ShipsVariables"
 import {SquadStats} from "./SquadStats";
 import Select from "react-select";
 import {PSN} from "../../data/Maneuvers";
-import ActionsCarousel from "./ActionsCarousel";
+import SquadActionsCarousel from "./SquadActionsCarousel";
 import {TargetPosition} from "./TargetPosition";
 
 export function Squad(props) {
@@ -35,25 +35,32 @@ export function Squad(props) {
     }
 
     return (
-        <div>
+        <div className="squadContainer">
             <div className="row">
-                <div className="col-5"><h2>Squadron designation:</h2></div>
-                <div className="col-5"><h3><Select options={squadNames}/></h3></div>
+                <div className="col-8">
+                    <h3>Ship type: {Ships[shipType][Stats.name]}</h3>
+                </div>
+                <div className="col-4">
+                    <Select options={squadNames}
+                            defaultValue={{value: "Squadron designation", label: "Squadron designation"}}/>
+                </div>
             </div>
             <div className="row">
                 <div className="col-8">
                     <SquadStats shipType={shipType}/>
-                    <ShipsVariables maxHull={Ships[shipType][Stats.hull]} maxShield={Ships[shipType][Stats.shields]}/>
+                    <ShipsVariables maxHull={Ships[shipType][Stats.hull]} maxShield={Ships[shipType][Stats.shields]}
+                                    handleShipRemoval={props.handleShipRemoval}/>
 
                     <h2>Ship actions:</h2>
-                    <ActionsCarousel aiEngine={aiEngine} shipType={shipType} position={targetPosition}
-                                     randNum={randNum} stressed={stressed} setAiEngine={setAiEngine}
-                                     handleStress={handleStress}/>
+                    <SquadActionsCarousel aiEngine={aiEngine} shipType={shipType} position={targetPosition}
+                                          randNum={randNum} stressed={stressed} setAiEngine={setAiEngine}
+                                          handleStress={handleStress}/>
                 </div>
                 <div className="col-4">
                     <TargetPosition shipType={shipType} setTargetPosition={handleSetTargetPosition}
-                                    handleShipRemoval={props.handleShipRemoval} squadId={props.squadId}
-                                    aiEngine={aiEngine} stressed={stressed}/>
+                                    setAiEngine={setAiEngine}
+                                    squadId={props.squadId} aiEngine={aiEngine} stressed={stressed} randNum={randNum}
+                                    position={targetPosition}/>
                 </div>
             </div>
         </div>

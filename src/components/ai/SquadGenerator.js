@@ -9,7 +9,7 @@ export default function SquadGenerator(props) {
             {props.aiShips.map(function (shipType) {
                 squadId = i;
                 i++;
-                return <div key={i} className="col-l-6">
+                return <div key={i} className="col-l-4 col-md-4">
                     <Squad shipType={shipType} squadId={squadId} handleShipRemoval={props.handleShipRemoval}/>
                 </div>;
             })

@@ -7,10 +7,10 @@ export const AI = Object.freeze({
 );
 
 export const ATTACKS = Object.freeze({
-    frontArc: <i className="xwir x-frontarc"/>,
-    rearArc: <i className="xwir x-reararc"/>,
-    turret: <i className="xwir x-singleturretarc"/>,
-    doubleturret: <i className="xwir x-doubleturretarc"/>,
+    frontArc: <i className="xwiv x-frontarc"/>,
+    rearArc: <i className="xwiv x-reararc"/>,
+    turret: <i className="xwiv x-singleturretarc"/>,
+    doubleturret: <i className="xwiv x-doubleturretarc"/>,
 });
 
 export const Ships = Object.freeze({
