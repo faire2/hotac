@@ -3,7 +3,6 @@ import {AI} from "../../data/Ships";
 import {PSN} from "../../data/Maneuvers";
 
 export default function TargetPositionDiagram(props) {
-    const [test, setTest] = useState("-");
     const strokeWidth = 2;
 
     /* BULLSEYE */

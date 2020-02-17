@@ -1,13 +1,8 @@
 import React from "react";
 
-import {FgaPositionSelection} from "../../data/fga/FgaPositionSelection";
-import {AI} from "../../data/Ships";
-import {FgaStressedPositionSelection} from "../../data/fga/FgaStressedPositionSelection";
-import {HinnyPositionSelection} from "../../data/hinny/HinnyPositionSelection";
 import TargetPositionDiagram from "./TargetPositionDiagram";
 
 export function TargetPosition(props) {
-    const stressed = props.stressed? true : false;
 
     return (
         <div>
