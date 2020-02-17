@@ -5,7 +5,7 @@ import {ShipsVariables} from "./ShipsVariables"
 import {SquadStats} from "./SquadStats";
 import Select from "react-select";
 import {PSN} from "../../data/Maneuvers";
-import ActionsCarousel from "./ActionsCarousel";
+import SquadActionsCarousel from "./SquadActionsCarousel";
 import {TargetPosition} from "./TargetPosition";
 
 export function Squad(props) {
@@ -43,17 +43,18 @@ export function Squad(props) {
             <div className="row">
                 <div className="col-8">
                     <SquadStats shipType={shipType}/>
-                    <ShipsVariables maxHull={Ships[shipType][Stats.hull]} maxShield={Ships[shipType][Stats.shields]}/>
+                    <ShipsVariables maxHull={Ships[shipType][Stats.hull]} maxShield={Ships[shipType][Stats.shields]}
+                                    handleShipRemoval={props.handleShipRemoval}/>
 
                     <h2>Ship actions:</h2>
-                    <ActionsCarousel aiEngine={aiEngine} shipType={shipType} position={targetPosition}
-                                     randNum={randNum} stressed={stressed} setAiEngine={setAiEngine}
-                                     handleStress={handleStress}/>
+                    <SquadActionsCarousel aiEngine={aiEngine} shipType={shipType} position={targetPosition}
+                                          randNum={randNum} stressed={stressed} setAiEngine={setAiEngine}
+                                          handleStress={handleStress}/>
                 </div>
                 <div className="col-4">
-                    <TargetPosition shipType={shipType} setTargetPosition={handleSetTargetPosition}
-                                    handleShipRemoval={props.handleShipRemoval} squadId={props.squadId}
-                                    aiEngine={aiEngine} stressed={stressed}/>
+                    <TargetPosition shipType={shipType} setTargetPosition={handleSetTargetPosition} setAiEngine={setAiEngine}
+                                    squadId={props.squadId} aiEngine={aiEngine} stressed={stressed} randNum={randNum}
+                                    position={targetPosition}/>
                 </div>
             </div>
         </div>

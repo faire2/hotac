@@ -52,7 +52,11 @@ export function ShipsVariables(props) {
                                handleShipChange={handleShipChange} handleRemoveShip={handleRemoveShip}/>)
             }
             <br/>
-            <button className="btn btn-primary btn-sm" onClick={handleAddShip}>Add a ship to this squadron</button>
+            <button className="btn btn-primary btn-sm" onClick={handleAddShip}>Add a ship to squadron</button>
+            <button className="btn btn-danger btn-sm btnRemoveShip"
+                    onClick={() => props.handleShipRemoval(props.squadId)}>
+                Remove squadron
+            </button>
         </div>
     )
 }

@@ -4,21 +4,18 @@ import SquadTargetSelection from "./SquadTargetSelection";
 import SquadAttack from "./SquadAttack";
 import SquadManeuver from "./SquadManeuver";
 
-export default function ActionsCarousel(props) {
+export default function SquadActionsCarousel(props) {
     const aiEngine = props.aiEngine;
     const shipType = props.shipType;
 
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
     const content = [
         <SquadTargetSelection aiEngine={aiEngine} shipType={shipType}/>,
-        <SquadManeuver aiEngine={aiEngine} shipType={shipType} position={props.position} randNum={props.randNum}
-                       stressed={props.stressed} setAiEngine={props.setAiEngine} handleStress={props.handleStress}/>,
         <SquadActions aiEngine={aiEngine} shipType={shipType}/>,
         <SquadAttack aiEngine={aiEngine} shipType={shipType}/>
     ];
     const headline = [
         <h3>Select target:</h3>,
-        <h3>Perform maneuver:</h3>,
         <h3>Select and perform action:</h3>,
         <h3>Select target and attack:</h3>
     ];
