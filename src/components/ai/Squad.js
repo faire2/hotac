@@ -35,10 +35,15 @@ export function Squad(props) {
     }
 
     return (
-        <div>
+        <div className="squadContainer">
             <div className="row">
-                <div className="col-5"><h2>Squadron designation:</h2></div>
-                <div className="col-5"><h3><Select options={squadNames}/></h3></div>
+                <div className="col-6">
+                    <h3>Ship type: {Ships[shipType][Stats.name]}</h3>
+                </div>
+                <div className="col-6">
+                    <Select options={squadNames}
+                            defaultValue={{value: "Squadron designation", label: "Squadron designation"}}/>
+                </div>
             </div>
             <div className="row">
                 <div className="col-8">
@@ -52,7 +57,8 @@ export function Squad(props) {
                                           handleStress={handleStress}/>
                 </div>
                 <div className="col-4">
-                    <TargetPosition shipType={shipType} setTargetPosition={handleSetTargetPosition} setAiEngine={setAiEngine}
+                    <TargetPosition shipType={shipType} setTargetPosition={handleSetTargetPosition}
+                                    setAiEngine={setAiEngine}
                                     squadId={props.squadId} aiEngine={aiEngine} stressed={stressed} randNum={randNum}
                                     position={targetPosition}/>
                 </div>

@@ -17,6 +17,7 @@ export default function SquadManeuverGenerator(props) {
             console.log("Unknown AI engine in SquadManeuver: " + props.aiEngine)
     }
     // TODO FIX: when FGA maneuver in R4 is selected and engine changed to Hinny crash occurs
+    console.log(("Type, position, number: " + props.shipType + ", "  + props.position + ", "  + props.randNum));
     const maneuver = maneuvers[props.shipType][props.position][props.randNum];
 
     switch (maneuver) {

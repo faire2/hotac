@@ -38,6 +38,10 @@ h3 {
   cursor: pointer;
 }
 
+.squadContainer {
+  max-width: 500px;
+}
+
 /************/
 /* CAROUSEL */
 /************/
