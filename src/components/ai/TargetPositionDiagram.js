@@ -9,7 +9,7 @@ export default function TargetPositionDiagram(props) {
 
 
     /* BULLSEYE */
-    const bullsEyeWidth = 20;
+    let bullsEyeWidth = 20;
 
     /* RANGE 1 */
     let arc1Width = 0;
@@ -28,6 +28,7 @@ export default function TargetPositionDiagram(props) {
     switch (props.aiEngine) {
         case AI.HINNY:
             arc1Width = arc23width = 60;
+            bullsEyeWidth = 0;
             break;
         case AI.FGA:
             if (props.stressed) {
@@ -176,7 +177,7 @@ export default function TargetPositionDiagram(props) {
 
     return (
         <div>
-            <svg width={bullsEyeWidth} height={(arc1Width + arc23width + arc4width)} className="pointer align-top">
+            <svg width={bullsEyeWidth} height={(arc1Width + arc23width + arc4width + strokeWidth)} className="pointer align-top">
                 <rect x="0" y={arc23width + arc4width} width={bullsEyeWidth} height={arc1Width} fill={arc1FillColor}
                       stroke={arc1StrokeColor} id="B1" className={getOpacityClass("B1")}
                       strokeWidth={strokeWidth} onClick={(e) => handleSetPosition(1, "B", props.stressed, e)}/>
@@ -188,7 +189,7 @@ export default function TargetPositionDiagram(props) {
                       className={getOpacityClass("B4")}
                       onClick={(e) => handleSetPosition(4, "B", props.stressed, e)}/>
             </svg>
-            <svg width={arc1Width + arc23width + arc4width} height={(arc1Width + arc23width + arc4width) * 2}>
+            <svg width={arc1Width + arc23width + arc4width} height={(arc1Width + arc23width + arc4width + strokeWidth) * 2}>
                 {generateArcs().map((item) => item)}
             </svg>
         </div>

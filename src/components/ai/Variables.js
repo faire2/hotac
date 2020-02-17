@@ -60,19 +60,19 @@ export default function Variables(props) {
                             size="sm"> +
                     </button>
                 </div>
-                <div className="col-4">
+                <div className="col-4 ">
                     <button className="btn btn-primary btn-increment"
                             onClick={e => handleShipVarChange(Stats.hull, ship.hull - 1)}
                             size="sm"> -
                     </button>
-                    <span className="value"> {ship.hull} </span>
+                    <span className="value">     {ship.hull} </span>
                     <button className="btn btn-primary btn-increment"
                             onClick={e => handleShipVarChange(Stats.hull, ship.hull + 1)}
                             size="sm"> +
                     </button>
                 </div>
                 <div className="col-1">
-                    <button className="btn btn-danger" onClick={() => props.handleRemoveShip(props.keyIndex)}>x
+                    <button id="btn-remove_ship" className="btn btn-danger" onClick={() => props.handleRemoveShip(props.keyIndex)}>x
                     </button>
                 </div>
             </div>

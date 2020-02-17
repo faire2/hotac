@@ -3,6 +3,7 @@
 
 .redBgr {
   background-color: crimson;
+  height: 50px;
 }
 
 h1 {
@@ -30,16 +31,24 @@ h3 {
   float: right;
 }
 
-.btn-increment {
-  width: 30px;
-}
-
 .pointer {
   cursor: pointer;
 }
 
 .squadContainer {
-  max-width: 500px;
+  max-width: 530px;
+}
+
+/*************/
+/* VARIABLES */
+/*************/
+
+.btn-increment {
+  width: 38px;
+}
+
+#btn-remove_ship {
+  margin-left: -10px;
 }
 
 /************/
@@ -106,9 +115,6 @@ ul {
 /**************************/
 /* TARGET POSITION PICKER */
 /**************************/
-#arcs_container {
-  cursor: pointer;
-}
 
 .segmentOpacity {
   opacity: 1;

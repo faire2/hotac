@@ -37,10 +37,10 @@ export function Squad(props) {
     return (
         <div className="squadContainer">
             <div className="row">
-                <div className="col-6">
+                <div className="col-8">
                     <h3>Ship type: {Ships[shipType][Stats.name]}</h3>
                 </div>
-                <div className="col-6">
+                <div className="col-4">
                     <Select options={squadNames}
                             defaultValue={{value: "Squadron designation", label: "Squadron designation"}}/>
                 </div>

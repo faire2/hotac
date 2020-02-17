@@ -4,7 +4,7 @@ import Variables from "./Variables";
 const ShipsHeader = () => (
     <div>
         <div className="row">
-            <div className="col-4">
+            <div className="col-3">
                 <h3>ID:</h3>
             </div>
             <div className="col-4">
@@ -12,6 +12,8 @@ const ShipsHeader = () => (
             </div>
             <div className="col-4">
                 <h3>Hull:</h3>
+            </div>
+            <div className="col-1">
             </div>
         </div>
     </div>
@@ -55,7 +57,7 @@ export function ShipsVariables(props) {
             <button className="btn btn-primary btn-sm" onClick={handleAddShip}>Add a ship to squadron</button>
             <button className="btn btn-danger btn-sm btnRemoveShip"
                     onClick={() => props.handleShipRemoval(props.squadId)}>
-                Remove squadron
+                Remove whole squadron
             </button>
         </div>
     )
