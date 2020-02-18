@@ -51,7 +51,6 @@ export function Squad(props) {
                     <ShipsVariables maxHull={Ships[shipType][Stats.hull]} maxShield={Ships[shipType][Stats.shields]}
                                     handleShipRemoval={props.handleShipRemoval}/>
 
-                    <h2>Ship actions:</h2>
                     <SquadActionsCarousel aiEngine={aiEngine} shipType={shipType} position={targetPosition}
                                           randNum={randNum} stressed={stressed} setAiEngine={setAiEngine}
                                           handleStress={handleStress}/>
