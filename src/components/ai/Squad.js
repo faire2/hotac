@@ -34,6 +34,12 @@ export function Squad(props) {
         setStressed(!stressed);
     }
 
+    function handleSetAi(ai) {
+        setTargetPosition(PSN.R1FRONT);
+        setStressed(false);
+        setAiEngine(ai);
+    }
+
     return (
         <div className="squadContainer">
             <div className="row">
@@ -51,14 +57,11 @@ export function Squad(props) {
                     <ShipsVariables maxHull={Ships[shipType][Stats.hull]} maxShield={Ships[shipType][Stats.shields]}
                                     handleShipRemoval={props.handleShipRemoval}/>
 
-                    <h2>Ship actions:</h2>
-                    <SquadActionsCarousel aiEngine={aiEngine} shipType={shipType} position={targetPosition}
-                                          randNum={randNum} stressed={stressed} setAiEngine={setAiEngine}
-                                          handleStress={handleStress}/>
+                    <SquadActionsCarousel aiEngine={aiEngine} shipType={shipType} />
                 </div>
                 <div className="col-4">
                     <TargetPosition shipType={shipType} setTargetPosition={handleSetTargetPosition}
-                                    setAiEngine={setAiEngine}
+                                    setAiEngine={handleSetAi} handleStress={handleStress}
                                     squadId={props.squadId} aiEngine={aiEngine} stressed={stressed} randNum={randNum}
                                     position={targetPosition}/>
                 </div>

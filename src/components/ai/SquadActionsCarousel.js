@@ -31,23 +31,27 @@ export default function SquadActionsCarousel(props) {
         setCurrentSlideIndex(newIndex);
         console.log("New image index is: " + newIndex);
     }
-    // todo: fix arrows and indicators conflicting with text when it overflows
+
     return (
-        <div className="carousel">
-                {headline[currentSlideIndex]}
-                {content[currentSlideIndex]}
+        <div>
+            {headline[currentSlideIndex]}
             <div id="carousel-indicators-container" className="align-middle">
-                <Arrow direction={DIRECTIONS.LEFT} handleArrowClick={() => handleArrowClick(DIRECTIONS.LEFT)}
-                       glyph="<"/>
                 <ul>
                     {content.map((item, index) => {
                         if (index === currentSlideIndex) return <li key={index} className="indicator active"></li>
                         return <li key={index} className="indicator"></li>
                     })}
                 </ul>
+            </div>
+            <div className="carousel">
+
+                {content[currentSlideIndex]}
+                <Arrow direction={DIRECTIONS.LEFT} handleArrowClick={() => handleArrowClick(DIRECTIONS.LEFT)}
+                       glyph="<"/>
                 <Arrow direction={DIRECTIONS.RIGHT} handleArrowClick={() => handleArrowClick(DIRECTIONS.RIGHT)}
                        glyph=">"/>
             </div>
+
         </div>
     )
 };
