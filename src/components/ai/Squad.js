@@ -58,7 +58,7 @@ export function Squad(props) {
                 </div>
                 <div className="col-4">
                     <TargetPosition shipType={shipType} setTargetPosition={handleSetTargetPosition}
-                                    setAiEngine={setAiEngine}
+                                    setAiEngine={setAiEngine} handleStress={handleStress}
                                     squadId={props.squadId} aiEngine={aiEngine} stressed={stressed} randNum={randNum}
                                     position={targetPosition}/>
                 </div>
