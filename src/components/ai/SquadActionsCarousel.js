@@ -32,7 +32,6 @@ export default function SquadActionsCarousel(props) {
         console.log("New image index is: " + newIndex);
     }
 
-    // todo: fix arrows and indicators conflicting with text when it overflows
     return (
         <div>
             {headline[currentSlideIndex]}
