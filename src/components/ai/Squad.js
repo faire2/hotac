@@ -7,13 +7,22 @@ import Select from "react-select";
 import {PSN} from "../../data/Maneuvers";
 import SquadActionsCarousel from "./SquadActionsCarousel";
 import {TargetPosition} from "./TargetPosition";
+import UpgradesCard from "./UpgradesCard";
+import getHinnyUpgrades from "../../data/hinny/GetHinnyUpgrades";
 
 export function Squad(props) {
-    const shipType = props.shipType;
     const [targetPosition, setTargetPosition] = useState([PSN.R3FRONT]);
-    const [randNum, setRandnum] = useState(1);
+    const [maneuverRandNum, setManeuverRandnum] = useState(1);
     const [aiEngine, setAiEngine] = useState(AI.FGA);
     const [stressed, setStressed] = useState(false);
+    const [upgradeLevel, setUpgradeLevel] = useState(0);
+
+    const shipType = props.shipType;
+    const upgrades = getHinnyUpgrades(shipType);
+    let upgradesOfLevel = [...upgrades];
+    upgradesOfLevel.splice(upgradeLevel + 1, 5 - upgradeLevel);
+    const initiative = upgrades.length === 5 ? upgrades[upgradeLevel][1] : upgrades[0][1];
+    const xp = upgrades.length === 5 ? upgrades[upgradeLevel][2]  : upgrades[0][1];
 
     const squadNames = [
         {value: "Alpha", label: "Alpha"},
@@ -26,7 +35,7 @@ export function Squad(props) {
 
     // number is randomized here to ensure that re-render of SquadManeuvres will be triggered
     function handleSetTargetPosition(position) {
-        setRandnum(Math.floor(Math.random() * 6));
+        setManeuverRandnum(Math.floor(Math.random() * 6));
         setTargetPosition(position);
     }
 
@@ -38,6 +47,15 @@ export function Squad(props) {
         setTargetPosition(PSN.R1FRONT);
         setStressed(false);
         setAiEngine(ai);
+    }
+
+    function handleSetUpgradeLevel(value) {
+        console.log(upgrades);
+        if (upgrades.length === 6)  {
+            console.log("handle level");
+            const tUpgradeLevel = upgradeLevel;
+            setUpgradeLevel(tUpgradeLevel + value)
+        }
     }
 
     return (
@@ -53,16 +71,16 @@ export function Squad(props) {
             </div>
             <div className="row">
                 <div className="col-8">
-                    <SquadStats shipType={shipType}/>
+                    <SquadStats shipType={shipType} iniative={initiative} xp={xp} upgradeLevel={upgradeLevel}/>
                     <ShipsVariables maxHull={Ships[shipType][Stats.hull]} maxShield={Ships[shipType][Stats.shields]}
-                                    handleShipRemoval={props.handleShipRemoval}/>
-
+                                    handleShipRemoval={props.handleShipRemoval}  upgradesOfLevel={upgradesOfLevel}/>
                     <SquadActionsCarousel aiEngine={aiEngine} shipType={shipType} />
+                    <UpgradesCard upgradesOfLevel={upgradesOfLevel} handleSetUpgradeLevel={handleSetUpgradeLevel}/>
                 </div>
                 <div className="col-4">
                     <TargetPosition shipType={shipType} setTargetPosition={handleSetTargetPosition}
-                                    setAiEngine={handleSetAi} handleStress={handleStress}
-                                    squadId={props.squadId} aiEngine={aiEngine} stressed={stressed} randNum={randNum}
+                                    setAiEngine={handleSetAi} handleStress={handleStress} squadId={props.squadId}
+                                    aiEngine={aiEngine} stressed={stressed} randNum={maneuverRandNum}
                                     position={targetPosition}/>
                 </div>
             </div>

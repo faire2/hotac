@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import Variables from "./Variables";
+import {HinnySkills} from "../../data/hinny/HinnyEliteSkills";
 
 const ShipsHeader = () => (
     <div>
@@ -20,15 +21,31 @@ const ShipsHeader = () => (
 );
 
 export function ShipsVariables(props) {
+    const upgradesOfLevel = props.upgradesOfLevel;
+    let hasExtraHull = false;
+    let hasExtraShield = false;
+
+    for (let upgrade of upgradesOfLevel) {
+        if (upgrade[0] === HinnySkills.hullUpgrade) {
+            hasExtraHull = true;
+        }
+        if (upgrade[0] === HinnySkills.shieldUpgrade) {
+            hasExtraShield = true;
+        }
+    }
+
+    const maxHull = hasExtraHull ? props.maxHull + 1 : props.maxHull;
+    const maxShield = hasExtraShield ? props.maxShield +1 : props.maxShield;
+
     const [ships, setShips] = useState([{
         tokenId: 0,
-        hull: props.maxHull,
-        shields: props.maxShield
+        hull: maxHull,
+        shields: maxShield
     }]);
 
     function handleAddShip() {
         const tShipVars = [...ships];
-        tShipVars.push({tokenId: 0, hull: props.maxHull, shields: props.maxShield});
+        tShipVars.push({tokenId: 0, hull: maxHull, shields: maxShield});
         setShips(tShipVars);
     }
 
