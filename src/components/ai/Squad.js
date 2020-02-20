@@ -53,8 +53,11 @@ export function Squad(props) {
         console.log(upgrades);
         if (upgrades.length === 6)  {
             console.log("handle level");
-            const tUpgradeLevel = upgradeLevel;
-            setUpgradeLevel(tUpgradeLevel + value)
+            let tUpgradeLevel = upgradeLevel;
+            tUpgradeLevel += value;
+            if (tUpgradeLevel > -1 && tUpgradeLevel < 6 ) {
+                setUpgradeLevel(tUpgradeLevel)
+            }
         }
     }
 
