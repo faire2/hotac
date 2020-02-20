@@ -6,11 +6,11 @@ export default function SquadGenerator(props) {
     let squadId = 0;
     return (
         <div className="row shipStats">
-            {props.aiShips.map(function (shipType) {
+            {props.aiShips.map(function (ship) {
                 squadId = i;
                 i++;
                 return <div key={i} className="col-l-3 col-m-4">
-                    <Squad shipType={shipType} squadId={squadId} handleShipRemoval={props.handleShipRemoval}/>
+                    <Squad shipType={ship.shipType} squadId={squadId} upgradeRandNum={ship.upgradeRandNum} handleShipRemoval={props.handleShipRemoval}/>
                 </div>;
             })
             }

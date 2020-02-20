@@ -8,7 +8,7 @@ export const MISSILE_RANGE = Object.freeze(
         R23: "2-3"
     });
 
-export default function getHinnyUpgrades(shipType) {
+export default function getHinnyUpgrades(shipType, upgradeRandNum) {
     let shipUpgrades = [];
     console.log("get upgrades: " + shipType);
 
@@ -31,8 +31,9 @@ export default function getHinnyUpgrades(shipType) {
             console.log("Component HinnyShipUpgrades didn't recognize shipType: " + shipType);
     }
 
-    const randNum = Math.floor(Math.random() * shipUpgrades.length);
-    return shipUpgrades[randNum];
+    /* Different ships have different amounts of upgrade levels -> we have to adjust the number */
+    const adjustedRandNum = Math.round(upgradeRandNum / shipUpgrades.length);
+    return shipUpgrades[adjustedRandNum];
 }
 
 /* Fallback in case that selected ship has no defined upgrades. */

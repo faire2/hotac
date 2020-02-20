@@ -18,11 +18,11 @@ export function Squad(props) {
     const [upgradeLevel, setUpgradeLevel] = useState(0);
 
     const shipType = props.shipType;
-    const upgrades = getHinnyUpgrades(shipType);
+    const upgrades = getHinnyUpgrades(shipType, props.upgradeRandNum);
     let upgradesOfLevel = [...upgrades];
     upgradesOfLevel.splice(upgradeLevel + 1, 5 - upgradeLevel);
     const initiative = upgrades.length === 5 ? upgrades[upgradeLevel][1] : upgrades[0][1];
-    const xp = upgrades.length === 5 ? upgrades[upgradeLevel][2]  : upgrades[0][1];
+    const xp = upgrades.length === 5 ? upgrades[upgradeLevel][2] : upgrades[0][1];
 
     const squadNames = [
         {value: "Alpha", label: "Alpha"},
@@ -50,12 +50,10 @@ export function Squad(props) {
     }
 
     function handleSetUpgradeLevel(value) {
-        console.log(upgrades);
-        if (upgrades.length === 6)  {
-            console.log("handle level");
+        if (upgrades.length === 6) {
             let tUpgradeLevel = upgradeLevel;
             tUpgradeLevel += value;
-            if (tUpgradeLevel > -1 && tUpgradeLevel < 6 ) {
+            if (tUpgradeLevel > -1 && tUpgradeLevel < 6) {
                 setUpgradeLevel(tUpgradeLevel)
             }
         }

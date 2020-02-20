@@ -12,21 +12,25 @@ import {Ships, Stats} from "./data/Ships";
 import SquadGenerator from "./components/ai/SquadGenerator";
 
 function App() {
-    const [aiShips, setAiShips] = useState([Ships.TIESA.id]);
+    const [aiShips, setAiShips] = useState([{shipType: Ships.TIESA.id, upgradeRandNum: getRandNum()}]);
+
+    function getRandNum() {
+        return (Math.floor(Math.random() * 10));
+    }
 
     let newShipOptions = [];
-    for (let ship of Object.keys(Ships)){
+    for (let ship of Object.keys(Ships)) {
         newShipOptions.push({value: Ships[ship][Stats.id], label: Ships[ship][Stats.name]})
     }
 
     function handleNewShipSelection(e) {
         const tAiShips = aiShips;
-        tAiShips.push(e.value);
+        tAiShips.push({shipType: e.value, upgradeRandNum: getRandNum()});
         setAiShips([...tAiShips]);
         console.log("Current ships state: ");
         console.log(aiShips);
     }
-    
+
     function handleShipRemoval(index) {
         const tAiShips = aiShips;
         tAiShips.splice(index, 1);
