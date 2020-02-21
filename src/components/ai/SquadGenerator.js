@@ -10,7 +10,7 @@ export default function SquadGenerator(props) {
                 squadId = i;
                 i++;
                 return <div key={i} className="col-l-3 col-m-4">
-                    <Squad shipType={shipType} squadId={squadId} handleShipRemoval={props.handleShipRemoval}/>
+                    <Squad shipType={shipType} squadId={squadId} />
                 </div>;
             })
             }

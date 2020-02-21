@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 
 export default function UpgradesCard(props) {
+
     // skills is an array with following structure: skill description, initiative, xps, optional object with additional information
     return (
         <div>
             <div id="changeUpgradeLevelButtton" onClick={() => props.handleSetUpgradeLevel(-1)}>-</div>
-            {props.upgradesOfLevel.map((skill, i) =>
+            {props.upgrades.map((skill, i) =>
                 <Skill skill={skill} key={i}/>
             )}
             <div id="changeUpgradeLevelButtton" onClick={() => props.handleSetUpgradeLevel(1)}>+</div>

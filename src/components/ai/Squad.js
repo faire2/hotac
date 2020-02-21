@@ -1,28 +1,31 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 
-import {AI, Ships, Stats} from "../../data/Ships";
-import {ShipsVariables} from "./ShipsVariables"
+import {AI, Ships, Stats, UPGRADES} from "../../data/Ships";
+import {ShipsVariables} from "./variables/ShipsVariables"
 import {SquadStats} from "./SquadStats";
 import Select from "react-select";
 import {PSN} from "../../data/Maneuvers";
-import SquadActionsCarousel from "./SquadActionsCarousel";
+import SquadActionsCarousel from "./actionsCarousel/SquadActionsCarousel";
 import {TargetPosition} from "./TargetPosition";
 import UpgradesCard from "./UpgradesCard";
-import getHinnyUpgrades from "../../data/hinny/GetHinnyUpgrades";
+import getUpgrades from "./UpgradesGenerator'";
+import {GlobalAiValuesContext, TargetPositionContext} from "../../context/Contexts";
 
 export function Squad(props) {
+    const shipType = props.shipType;
+    const globalAiValues = useContext(GlobalAiValuesContext);
+
+    /* TARGET POSITION STATE */
     const [targetPosition, setTargetPosition] = useState([PSN.R3FRONT]);
     const [maneuverRandNum, setManeuverRandnum] = useState(1);
     const [aiEngine, setAiEngine] = useState(AI.FGA);
     const [stressed, setStressed] = useState(false);
-    const [upgradeLevel, setUpgradeLevel] = useState(0);
 
-    const shipType = props.shipType;
-    const upgrades = getHinnyUpgrades(shipType);
-    let upgradesOfLevel = [...upgrades];
-    upgradesOfLevel.splice(upgradeLevel + 1, 5 - upgradeLevel);
-    const initiative = upgrades.length === 5 ? upgrades[upgradeLevel][1] : upgrades[0][1];
-    const xp = upgrades.length === 5 ? upgrades[upgradeLevel][2]  : upgrades[0][1];
+    /* UPGRADES STATE */
+    const [upgradeLevel, setUpgradeLevel] = useState(0);
+    const [upgradesRandNum, setUpgradesRandNum] = useState(Math.floor(Math.random() * 10) + 1);
+    const [upgradesSource, setUpgradesSource] = useState(UPGRADES.HINNY);
+    const [upgrades, setUpgrades] = useState(getUpgrades(shipType, globalAiValues.playersRank, upgradesRandNum, upgradesSource));
 
     const squadNames = [
         {value: "Alpha", label: "Alpha"},
@@ -39,7 +42,7 @@ export function Squad(props) {
         setTargetPosition(position);
     }
 
-    function handleStress(e) {
+    function handleStress() {
         setStressed(!stressed);
     }
 
@@ -49,41 +52,58 @@ export function Squad(props) {
         setAiEngine(ai);
     }
 
+    //todo remove
     function handleSetUpgradeLevel(value) {
-        console.log(upgrades);
-        if (upgrades.length === 6)  {
-            console.log("handle level");
-            const tUpgradeLevel = upgradeLevel;
-            setUpgradeLevel(tUpgradeLevel + value)
+        if (upgrades.length === 6) {
+            let tUpgradeLevel = upgradeLevel;
+            tUpgradeLevel += value;
+            if (tUpgradeLevel > -1 && tUpgradeLevel < 6) {
+                setUpgradeLevel(tUpgradeLevel)
+            }
         }
     }
 
+    function handleChangeOfPlayersRank(rank) {
+        setUpgrades(getUpgrades(shipType, globalAiValues.playersRank, upgradesRandNum, upgradesSource))
+    }
+
+
+
     return (
-        <div className="squadContainer">
-            <div className="row">
-                <div className="col-8">
-                    <h3>Ship type: {Ships[shipType][Stats.name]}</h3>
+        <TargetPositionContext.Provider value={{
+            shipType: shipType,
+            maneuverRandNum: maneuverRandNum,
+            aiEngine: aiEngine,
+            setAiEngine: handleSetAi,
+            targetPosition: targetPosition,
+            setTargetPosition: handleSetTargetPosition,
+            stressed: stressed,
+            handleStress: handleStress
+        }}>
+            <div className="squadContainer">
+                <div className="row">
+                    <div className="col-8">
+                        <h3>Ship type: {Ships[shipType][Stats.name]}</h3>
+                    </div>
+                    <div className="col-4">
+                        <Select options={squadNames}
+                                defaultValue={{value: "Squadron designation", label: "Squadron designation"}}/>
+                    </div>
                 </div>
-                <div className="col-4">
-                    <Select options={squadNames}
-                            defaultValue={{value: "Squadron designation", label: "Squadron designation"}}/>
+                <div className="row">
+                    <div className="col-8">
+                        <SquadStats shipType={shipType} iniative={upgrades[upgrades.length - 1][1]}
+                                    xp={upgrades[upgrades.length - 1][2]}/>
+                        <ShipsVariables maxHull={Ships[shipType][Stats.hull]} maxShield={Ships[shipType][Stats.shields]}
+                                        upgrades={upgrades}/>
+                        <SquadActionsCarousel aiEngine={aiEngine} shipType={shipType}/>
+                        <UpgradesCard upgrades={upgrades} handleSetUpgradeLevel={handleSetUpgradeLevel}/>
+                    </div>
+                    <div className="col-4">
+                        <TargetPosition/>
+                    </div>
                 </div>
             </div>
-            <div className="row">
-                <div className="col-8">
-                    <SquadStats shipType={shipType} iniative={initiative} xp={xp} upgradeLevel={upgradeLevel}/>
-                    <ShipsVariables maxHull={Ships[shipType][Stats.hull]} maxShield={Ships[shipType][Stats.shields]}
-                                    handleShipRemoval={props.handleShipRemoval}  upgradesOfLevel={upgradesOfLevel}/>
-                    <SquadActionsCarousel aiEngine={aiEngine} shipType={shipType} />
-                    <UpgradesCard upgradesOfLevel={upgradesOfLevel} handleSetUpgradeLevel={handleSetUpgradeLevel}/>
-                </div>
-                <div className="col-4">
-                    <TargetPosition shipType={shipType} setTargetPosition={handleSetTargetPosition}
-                                    setAiEngine={handleSetAi} handleStress={handleStress} squadId={props.squadId}
-                                    aiEngine={aiEngine} stressed={stressed} randNum={maneuverRandNum}
-                                    position={targetPosition}/>
-                </div>
-            </div>
-        </div>
+        </TargetPositionContext.Provider>
     )
 }
