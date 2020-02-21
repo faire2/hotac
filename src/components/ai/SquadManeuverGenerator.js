@@ -1,12 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import {AI} from "../../data/Ships";
 import {hinnyManeuvers} from "../../data/hinny/Maneuvers"
 import {fgaManeuvers} from "../../data/fga/Maneuvers"
 import {MVRS} from "../../data/Maneuvers";
+import {TargetPositionContext} from "../../context/targetPositionContext";
 
 export default function SquadManeuverGenerator(props) {
+    const positionContext = useContext(TargetPositionContext);
     let maneuvers;
-    switch (props.aiEngine) {
+    switch (positionContext.aiEngine) {
         case AI.HINNY:
             maneuvers = hinnyManeuvers;
             break;
@@ -14,10 +16,10 @@ export default function SquadManeuverGenerator(props) {
             maneuvers = fgaManeuvers;
             break;
         default:
-            console.log("Unknown AI engine in SquadManeuver: " + props.aiEngine)
+            console.log("Unknown AI engine in SquadManeuver: " + positionContext.aiEngine)
     }
     //console.log(("Type, position, number: " + props.shipType + ", "  + props.position + ", "  + props.randNum));
-    const maneuver = maneuvers[props.shipType][props.position][props.randNum];
+    const maneuver = maneuvers[positionContext.shipType][positionContext.targetPosition][positionContext.maneuverRandNum];
 
     switch (maneuver) {
         case MVRS.STRAIGHT1:
@@ -103,6 +105,6 @@ export default function SquadManeuverGenerator(props) {
         case MVRS.REVERSEBANK2RED:
             return <div className="xw-man">2<i className="xwmr x-reversebankright"/> </div>;
         default:
-            console.log("Component Maneuvers didn't recognize maneuver: " + props.maneuver);
+            console.log("Component Maneuvers didn't recognize maneuver: " + positionContext.maneuver);
     }
 }

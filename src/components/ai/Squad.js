@@ -9,6 +9,7 @@ import SquadActionsCarousel from "./SquadActionsCarousel";
 import {TargetPosition} from "./TargetPosition";
 import UpgradesCard from "./UpgradesCard";
 import getHinnyUpgrades from "../../data/hinny/GetHinnyUpgrades";
+import {TargetPositionContext} from "../../context/targetPositionContext";
 
 export function Squad(props) {
     const [targetPosition, setTargetPosition] = useState([PSN.R3FRONT]);
@@ -34,6 +35,7 @@ export function Squad(props) {
     ];
 
     // number is randomized here to ensure that re-render of SquadManeuvres will be triggered
+    // eslint-disable-next-line no-unused-vars
     function handleSetTargetPosition(position) {
         setManeuverRandnum(Math.floor(Math.random() * 6));
         setTargetPosition(position);
@@ -60,31 +62,39 @@ export function Squad(props) {
     }
 
     return (
-        <div className="squadContainer">
-            <div className="row">
-                <div className="col-8">
-                    <h3>Ship type: {Ships[shipType][Stats.name]}</h3>
+        <TargetPositionContext.Provider value={{
+            shipType: shipType,
+            maneuverRandNum: maneuverRandNum,
+            aiEngine: aiEngine,
+            setAiEngine: handleSetAi,
+            targetPosition: targetPosition,
+            setTargetPosition: handleSetTargetPosition,
+            stressed: stressed,
+            handleStress: handleStress
+        }}>
+            <div className="squadContainer">
+                <div className="row">
+                    <div className="col-8">
+                        <h3>Ship type: {Ships[shipType][Stats.name]}</h3>
+                    </div>
+                    <div className="col-4">
+                        <Select options={squadNames}
+                                defaultValue={{value: "Squadron designation", label: "Squadron designation"}}/>
+                    </div>
                 </div>
-                <div className="col-4">
-                    <Select options={squadNames}
-                            defaultValue={{value: "Squadron designation", label: "Squadron designation"}}/>
+                <div className="row">
+                    <div className="col-8">
+                        <SquadStats shipType={shipType} iniative={initiative} xp={xp} upgradeLevel={upgradeLevel}/>
+                        <ShipsVariables maxHull={Ships[shipType][Stats.hull]} maxShield={Ships[shipType][Stats.shields]}
+                                        handleShipRemoval={props.handleShipRemoval} upgradesOfLevel={upgradesOfLevel}/>
+                        <SquadActionsCarousel aiEngine={aiEngine} shipType={shipType}/>
+                        <UpgradesCard upgradesOfLevel={upgradesOfLevel} handleSetUpgradeLevel={handleSetUpgradeLevel}/>
+                    </div>
+                    <div className="col-4">
+                        <TargetPosition />
+                    </div>
                 </div>
             </div>
-            <div className="row">
-                <div className="col-8">
-                    <SquadStats shipType={shipType} iniative={initiative} xp={xp} upgradeLevel={upgradeLevel}/>
-                    <ShipsVariables maxHull={Ships[shipType][Stats.hull]} maxShield={Ships[shipType][Stats.shields]}
-                                    handleShipRemoval={props.handleShipRemoval}  upgradesOfLevel={upgradesOfLevel}/>
-                    <SquadActionsCarousel aiEngine={aiEngine} shipType={shipType} />
-                    <UpgradesCard upgradesOfLevel={upgradesOfLevel} handleSetUpgradeLevel={handleSetUpgradeLevel}/>
-                </div>
-                <div className="col-4">
-                    <TargetPosition shipType={shipType} setTargetPosition={handleSetTargetPosition}
-                                    setAiEngine={handleSetAi} handleStress={handleStress} squadId={props.squadId}
-                                    aiEngine={aiEngine} stressed={stressed} randNum={maneuverRandNum}
-                                    position={targetPosition}/>
-                </div>
-            </div>
-        </div>
+        </TargetPositionContext.Provider>
     )
 }
