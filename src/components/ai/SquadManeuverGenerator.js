@@ -3,7 +3,7 @@ import {AI} from "../../data/Ships";
 import {hinnyManeuvers} from "../../data/hinny/Maneuvers"
 import {fgaManeuvers} from "../../data/fga/Maneuvers"
 import {MVRS} from "../../data/Maneuvers";
-import {TargetPositionContext} from "../../context/targetPositionContext";
+import {TargetPositionContext} from "../../context/Contexts";
 
 export default function SquadManeuverGenerator(props) {
     const positionContext = useContext(TargetPositionContext);

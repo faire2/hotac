@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import Variables from "./Variables";
-import {HinnySkills} from "../../data/hinny/HinnyEliteSkills";
+import {HinnySkills} from "../../../data/hinny/HinnyEliteSkills";
+import {GlobalAiValuesContext, TargetPositionContext} from "../../../context/Contexts";
 
 const ShipsHeader = () => (
     <div>
@@ -21,11 +22,11 @@ const ShipsHeader = () => (
 );
 
 export function ShipsVariables(props) {
-    const upgradesOfLevel = props.upgradesOfLevel;
+    const upgrades = props.upgrades;
     let hasExtraHull = false;
     let hasExtraShield = false;
 
-    for (let upgrade of upgradesOfLevel) {
+    for (let upgrade of upgrades) {
         if (upgrade[0] === HinnySkills.hullUpgrade) {
             hasExtraHull = true;
         }
@@ -61,6 +62,16 @@ export function ShipsVariables(props) {
         setShips(tShips);
     }
 
+    const RemoveSquadButton = () => {
+        const globalAiValuesContext = useContext(GlobalAiValuesContext);
+        return (
+            <button className="btn btn-danger btn-sm btnRemoveShip"
+                    onClick={() => globalAiValuesContext.handleShipRemoval(props.squadId)}>
+                Remove whole squadron
+            </button>
+        )
+    };
+
     return (
         <div>
             <ShipsHeader/>
@@ -72,10 +83,7 @@ export function ShipsVariables(props) {
             }
             <br/>
             <button className="btn btn-primary btn-sm" onClick={handleAddShip}>Add a ship to squadron</button>
-            <button className="btn btn-danger btn-sm btnRemoveShip"
-                    onClick={() => props.handleShipRemoval(props.squadId)}>
-                Remove whole squadron
-            </button>
+            <RemoveSquadButton />
         </div>
     )
 }

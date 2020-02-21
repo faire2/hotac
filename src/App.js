@@ -10,22 +10,26 @@ import Select from 'react-select';
 
 import {Ships, Stats} from "./data/Ships";
 import SquadGenerator from "./components/ai/SquadGenerator";
+import {GlobalAiValuesContext} from "./context/Contexts";
 
 function App() {
-    const [aiShips, setAiShips] = useState([{shipType: Ships.TIESA.id, upgradeRandNum: getRandNum()}]);
-
-    function getRandNum() {
-        return (Math.floor(Math.random() * 10));
-    }
+    const [aiShips, setAiShips] = useState([Ships.TIESA.id]);
+    const [playersRank, setPlayersRank] = useState(1);
 
     let newShipOptions = [];
     for (let ship of Object.keys(Ships)) {
         newShipOptions.push({value: Ships[ship][Stats.id], label: Ships[ship][Stats.name]})
     }
 
+    let playerRankOptions = [];
+    for (let i = 1; i < 8; i++) {
+        playerRankOptions.push({value: i, label: i});
+    }
+
+
     function handleNewShipSelection(e) {
         const tAiShips = aiShips;
-        tAiShips.push({shipType: e.value, upgradeRandNum: getRandNum()});
+        tAiShips.push(e.value);
         setAiShips([...tAiShips]);
         console.log("Current ships state: ");
         console.log(aiShips);
@@ -41,9 +45,16 @@ function App() {
 
     return (
         <div className="App">
-            <h3>Select a ship to generate a new squadron:</h3>
-            <Select options={newShipOptions} onChange={e => handleNewShipSelection(e)}/>
-            <SquadGenerator aiShips={aiShips} handleShipRemoval={handleShipRemoval}/>
+            <GlobalAiValuesContext.Provider value={{
+                playersRank: playersRank,
+                handleShipRemoval: handleShipRemoval,
+            }}>
+                <h3>Select a ship to generate a new squadron:</h3>
+                {/*todo reset select caption after a choice is made, make a default message*/}
+                <Select options={newShipOptions} onChange={e => handleNewShipSelection(e)}/>
+                <Select options={playerRankOptions} onChange={e => setPlayersRank(e.value)}/>
+                <SquadGenerator aiShips={aiShips}/>
+            </GlobalAiValuesContext.Provider>
         </div>
     );
 }

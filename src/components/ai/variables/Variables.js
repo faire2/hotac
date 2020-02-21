@@ -1,5 +1,5 @@
 import React from "react";
-import {Stats} from "../../data/Ships";
+import {Stats} from "../../../data/Ships";
 import Select from "react-select";
 
 export default function Variables(props) {

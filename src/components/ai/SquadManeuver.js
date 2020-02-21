@@ -2,7 +2,7 @@ import Select from "react-select";
 import {AI, Ships, Stats} from "../../data/Ships";
 import SquadManeuverGenerator from "./SquadManeuverGenerator";
 import React, {useContext} from "react";
-import {TargetPositionContext} from "../../context/targetPositionContext";
+import {TargetPositionContext} from "../../context/Contexts";
 
 export default function SquadManeuver(props) {
     const positionContext = useContext(TargetPositionContext);

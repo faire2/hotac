@@ -8,32 +8,51 @@ export const MISSILE_RANGE = Object.freeze(
         R23: "2-3"
     });
 
-export default function getHinnyUpgrades(shipType, upgradeRandNum) {
-    let shipUpgrades = [];
+export default function getHinnyUpgrades(shipType, upgradeRandNum, playersRank) {
+    let shipTypeUpgrades = [];
     console.log("get upgrades: " + shipType);
 
 
     switch (shipType) {
         case Ships.TIEIN.id:
-            shipUpgrades = TIEIN;
+            shipTypeUpgrades = TIEIN;
             break;
         case Ships.TIELN.id:
-            shipUpgrades = NO_UPGRADE;
+            shipTypeUpgrades = NO_UPGRADE;
             break;
         case Ships.TIESA.id:
-            shipUpgrades = TIESA;
+            shipTypeUpgrades = TIESA;
             break;
         case Ships.VT49.id:
-            shipUpgrades = VT49;
+            shipTypeUpgrades = VT49;
             break;
         default:
-            shipUpgrades = NO_UPGRADE;
+            shipTypeUpgrades = NO_UPGRADE;
             console.log("Component HinnyShipUpgrades didn't recognize shipType: " + shipType);
     }
 
-    /* Different ships have different amounts of upgrade levels -> we have to adjust the number */
-    const adjustedRandNum = Math.round(upgradeRandNum / shipUpgrades.length);
-    return shipUpgrades[adjustedRandNum];
+    /* random number is adjusted to the number of upgrades the shit type has */
+    const adjustedRandNum = Math.round(upgradeRandNum / 10 * shipTypeUpgrades.length);
+    let upgrades = shipTypeUpgrades[adjustedRandNum];
+
+
+    /* only upgrades relevant to the players' rank are returned */
+    console.log("rank");
+    console.log(playersRank);
+    for (let upgradess of upgrades) {
+        console.log(upgradess);
+    }
+    upgrades.splice(playersRank + 1, 5 - playersRank);
+    console.log("spliced");
+
+
+    for (let upgradess of upgrades) {
+        console.log(upgradess);
+    }
+
+
+
+    return upgrades;
 }
 
 /* Fallback in case that selected ship has no defined upgrades. */
