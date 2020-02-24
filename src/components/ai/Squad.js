@@ -15,7 +15,10 @@ export function Squad(props) {
     const globalSquadValues = useContext(GlobalSquadsValuesContext);
     const upgrades = [...globalSquadValues.upgrades[props.squadId]];
 
-    //console.log("*** SQUAD ***");
+    console.log("*** SQUAD ***");
+    for (let upgrade of upgrades) {
+        console.log("upgrade: " + upgrade[0]["skillName"]);
+    }
 
     /* TARGET POSITION STATE */
     const [targetPosition, setTargetPosition] = useState([PSN.R3FRONT]);

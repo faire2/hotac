@@ -1,12 +1,10 @@
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 import {GlobalSquadsValuesContext} from "../../context/Contexts";
 
 export default function UpgradesCard(props) {
     const globalValues = useContext(GlobalSquadsValuesContext);
     const isElite = globalValues.isElite[props.squadId];
-    const nonEliteUpgrade = [...props.upgrades];
-    nonEliteUpgrade.length = 1;
-    const upgrades = isElite ? props.upgrades : nonEliteUpgrade;
+    const upgrades = props.upgrades;
 
     // skills is an array with following structure: skill description, initiative, xps, optional object with additional information
     return (

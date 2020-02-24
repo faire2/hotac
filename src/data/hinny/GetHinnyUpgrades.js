@@ -12,6 +12,7 @@ export const MISSILE_RANGE = Object.freeze(
 export default function getHinnyUpgrades(shipType, playersIni, upgradeRandNum, isElite) {
     let shipTypeUpgrades = [];
     console.log("*** getting upgrades for ship type: " + shipType + " ***");
+    console.log(isElite);
 
     switch (shipType) {
         case Ships.TIEIN.id:
@@ -31,19 +32,25 @@ export default function getHinnyUpgrades(shipType, playersIni, upgradeRandNum, i
             console.log("Component HinnyShipUpgrades didn't recognize shipType: " + shipType);
     }
 
-    /* random number is adjusted to the number of upgrades the shit type has */
+    /* random number is adjusted to the number of upgrades the ship type has */
     let adjustedRandNum = Math.round(upgradeRandNum / 10 * shipTypeUpgrades.length) - 1;
-    if (adjustedRandNum < 0) {adjustedRandNum = 0};
-    const upgrades = shipTypeUpgrades !== NO_UPGRADE ? [...shipTypeUpgrades[adjustedRandNum]] : NO_UPGRADE;
 
+    /* some numbers may be rounded down to - 1 (todo rewrite) */
+    if (adjustedRandNum < 0) {adjustedRandNum = 0}
+
+    const upgrades = shipTypeUpgrades !== NO_UPGRADE ? [...shipTypeUpgrades[adjustedRandNum]] : NO_UPGRADE;
     /* only upgrades relevant to the players' rank are returned */
     if (playersIni <= upgrades.length) {
         upgrades.length = (playersIni === 1 ? 2 : playersIni);
     }
-    /*console.log(upgrades);
+    /* if ship is not elite, only basic upgrade is returned */
+    if (!isElite) {
+        upgrades.length = 1;
+    }
+    console.log(upgrades);
     for (let upgrade of upgrades) {
-        console.log("upgrade: " + upgrade[0]["skillName"]);
-    }*/
+        console.log("upgrades after changes: " + upgrade[0]["skillName"]);
+    }
     return upgrades;
 }
 

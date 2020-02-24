@@ -23,6 +23,9 @@ const ShipsHeader = () => (
 
 export function ShipsVariables(props) {
     const upgrades = props.upgrades;
+    for (let upgrade of upgrades) {
+        console.log(upgrade[0]["skillName"]);
+    }
     let hasExtraHull = false;
     let hasExtraShield = false;
 

@@ -17,9 +17,8 @@ function App() {
     const [squadrons, setSquadrons] = useState([Ships.TIEIN.id]);
     const [playersRank, setPlayersRank] = useState(5);
     const [upgradesSource, setUpgradesSource] = useState([UPGRADES.HINNY]);
-    console.log("Upgrades source: " + upgradesSource);
-    const [upgrades, setUpgrades] = useState([getUpgrades(squadrons[0], playersRank, upgradesSource[0], IS ELITE!!!)]); // TODO  <------
     const [isElite, setIsElite] = useState([false]);
+    const [upgrades, setUpgrades] = useState([getUpgrades(squadrons[0], playersRank, upgradesSource[0], isElite[0])]);
 
 
     let newSquadShipOptions = [];
@@ -42,13 +41,13 @@ function App() {
         const i = tUpgradesSoure.length - 1;
         setUpgradesSource(tUpgradesSoure);
 
-        const tUpgrades = [...upgrades];
-        tUpgrades.push(getUpgrades(e.value, playersRank, tUpgradesSoure[i]));
-        setUpgrades(tUpgrades);
-
         const tIsElite = [...isElite];
         tIsElite.push(false);
         setIsElite(tIsElite);
+
+        const tUpgrades = [...upgrades];
+        tUpgrades.push(getUpgrades(e.value, playersRank, tUpgradesSoure[i], isElite[i]));
+        setUpgrades(tUpgrades);
     }
 
     function handleShipRemoval(index) {
@@ -78,7 +77,7 @@ function App() {
     function handleSetPlayersRank(newRank) {
         let tUpgrades = [...upgrades];
         for (let i = 0; i < tUpgrades.length; i++) {
-            tUpgrades[i] = getUpgrades(squadrons[i], newRank, upgradesSource[i])
+            tUpgrades[i] = getUpgrades(squadrons[i], newRank, upgradesSource[i], isElite[i]);
             console.log(tUpgrades[i])
         }
         setUpgrades(tUpgrades);
@@ -87,8 +86,14 @@ function App() {
 
     function handleSetIsElite(index, value) {
         let tIsElite = [...isElite];
-        tIsElite.splice(index, 1, value)
+        tIsElite.splice(index, 1, value);
         setIsElite(tIsElite);
+
+        const newUpgrades = getUpgrades(squadrons[index], playersRank[index], upgradesSource[index], isElite[index]);
+        const tUpgrades = [...upgrades];
+        tUpgrades.splice(index, 1, newUpgrades);
+        console.log(tUpgrades[index]);
+        setUpgrades(tUpgrades);
     }
 
     return (
