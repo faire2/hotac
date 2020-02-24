@@ -8,17 +8,23 @@ import './fonts/xwing-miniatures-ships.ttf'
 import Select from 'react-select';
 
 
-import {Ships, Stats} from "./data/Ships";
+import {Ships, Stats, UPGRADES} from "./data/Ships";
 import SquadGenerator from "./components/ai/SquadGenerator";
-import {GlobalAiValuesContext} from "./context/Contexts";
+import {GlobalSquadsValuesContext} from "./context/Contexts";
+import getUpgrades from "./components/ai/UpgradesGenerator";
 
 function App() {
-    const [aiShips, setAiShips] = useState([Ships.TIESA.id]);
-    const [playersRank, setPlayersRank] = useState(1);
+    const [squadrons, setSquadrons] = useState([Ships.TIEIN.id]);
+    const [playersRank, setPlayersRank] = useState(5);
+    const [upgradesSource, setUpgradesSource] = useState([UPGRADES.HINNY]);
+    console.log("Upgrades source: " + upgradesSource);
+    const [upgrades, setUpgrades] = useState([getUpgrades(squadrons[0], playersRank, upgradesSource[0], IS ELITE!!!)]); // TODO  <------
+    const [isElite, setIsElite] = useState([false]);
 
-    let newShipOptions = [];
+
+    let newSquadShipOptions = [];
     for (let ship of Object.keys(Ships)) {
-        newShipOptions.push({value: Ships[ship][Stats.id], label: Ships[ship][Stats.name]})
+        newSquadShipOptions.push({value: Ships[ship][Stats.id], label: Ships[ship][Stats.name]})
     }
 
     let playerRankOptions = [];
@@ -26,38 +32,82 @@ function App() {
         playerRankOptions.push({value: i, label: i});
     }
 
-    function handleSetPlayersRank(rank){
-        
-    }
-
     function handleNewShipSelection(e) {
-        const tAiShips = aiShips;
-        tAiShips.push(e.value);
-        setAiShips([...tAiShips]);
-        console.log("Current ships state: ");
-        console.log(aiShips);
+        const tSquadrons = [...squadrons];
+        tSquadrons.push(e.value);
+        setSquadrons(tSquadrons);
+
+        const tUpgradesSoure = [...upgradesSource];
+        tUpgradesSoure.push(UPGRADES.HINNY);
+        const i = tUpgradesSoure.length - 1;
+        setUpgradesSource(tUpgradesSoure);
+
+        const tUpgrades = [...upgrades];
+        tUpgrades.push(getUpgrades(e.value, playersRank, tUpgradesSoure[i]));
+        setUpgrades(tUpgrades);
+
+        const tIsElite = [...isElite];
+        tIsElite.push(false);
+        setIsElite(tIsElite);
     }
 
     function handleShipRemoval(index) {
-        const tAiShips = aiShips;
+        const tAiShips = [...squadrons];
         tAiShips.splice(index, 1);
-        setAiShips([...tAiShips]);
-        console.log("Current ships state: ");
-        console.log(aiShips);
+        setSquadrons(tAiShips);
+
+        const tUpgradesSoure = [...upgradesSource];
+        tUpgradesSoure.splice(index, 1);
+        setUpgradesSource(tUpgradesSoure);
+
+        const tUpgrades = [...upgrades];
+        tUpgrades.splice(index, 1);
+        setUpgrades(tUpgrades);
+
+        const tIsElite = [...isElite];
+        tIsElite.splice(index, 1);
+        setIsElite(tIsElite);
+    }
+
+    function handleSetUpgradesSource(index, upgradesSource) {
+        const tUpgrades = upgrades;
+        tUpgrades.splice(index, 1, upgradesSource);
+        setUpgrades([...tUpgrades]);
+    }
+
+    function handleSetPlayersRank(newRank) {
+        let tUpgrades = [...upgrades];
+        for (let i = 0; i < tUpgrades.length; i++) {
+            tUpgrades[i] = getUpgrades(squadrons[i], newRank, upgradesSource[i])
+            console.log(tUpgrades[i])
+        }
+        setUpgrades(tUpgrades);
+        setPlayersRank(newRank);
+    }
+
+    function handleSetIsElite(index, value) {
+        let tIsElite = [...isElite];
+        tIsElite.splice(index, 1, value)
+        setIsElite(tIsElite);
     }
 
     return (
         <div className="App">
-            <GlobalAiValuesContext.Provider value={{
+            <GlobalSquadsValuesContext.Provider value={{
                 playersRank: playersRank,
+                upgradesSource: upgradesSource,
+                upgrades: upgrades,
+                isElite: isElite,
+                handleSetIsElite: handleSetIsElite,
+                handleSetUpgradesSource: handleSetUpgradesSource,
                 handleShipRemoval: handleShipRemoval,
             }}>
                 <h3>Select a ship to generate a new squadron:</h3>
                 {/*todo reset select caption after a choice is made, make a default message*/}
-                <Select options={newShipOptions} onChange={e => handleNewShipSelection(e)}/>
-                <Select options={playerRankOptions} onChange={e => setPlayersRank(e.value)}/>
-                <SquadGenerator aiShips={aiShips}/>
-            </GlobalAiValuesContext.Provider>
+                <Select options={newSquadShipOptions} onChange={e => handleNewShipSelection(e)}/>
+                <Select options={playerRankOptions} onChange={e => handleSetPlayersRank(e.value)}/>
+                <SquadGenerator squadrons={squadrons}/>
+            </GlobalSquadsValuesContext.Provider>
         </div>
     );
 }

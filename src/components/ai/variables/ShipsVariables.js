@@ -1,7 +1,7 @@
 import React, {useContext, useState} from "react";
 import Variables from "./Variables";
 import {HinnySkills} from "../../../data/hinny/HinnyEliteSkills";
-import {GlobalAiValuesContext, TargetPositionContext} from "../../../context/Contexts";
+import {GlobalSquadsValuesContext} from "../../../context/Contexts";
 
 const ShipsHeader = () => (
     <div>
@@ -63,7 +63,7 @@ export function ShipsVariables(props) {
     }
 
     const RemoveSquadButton = () => {
-        const globalAiValuesContext = useContext(GlobalAiValuesContext);
+        const globalAiValuesContext = useContext(GlobalSquadsValuesContext);
         return (
             <button className="btn btn-danger btn-sm btnRemoveShip"
                     onClick={() => globalAiValuesContext.handleShipRemoval(props.squadId)}>

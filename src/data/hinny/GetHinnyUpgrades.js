@@ -8,10 +8,10 @@ export const MISSILE_RANGE = Object.freeze(
         R23: "2-3"
     });
 
-export default function getHinnyUpgrades(shipType, playersRank, upgradeRandNum) {
+//todo rewrite so that it will return all upgrades only to elite ships
+export default function getHinnyUpgrades(shipType, playersIni, upgradeRandNum, isElite) {
     let shipTypeUpgrades = [];
-    console.log("get upgrades: " + shipType);
-
+    console.log("*** getting upgrades for ship type: " + shipType + " ***");
 
     switch (shipType) {
         case Ships.TIEIN.id:
@@ -32,29 +32,24 @@ export default function getHinnyUpgrades(shipType, playersRank, upgradeRandNum) 
     }
 
     /* random number is adjusted to the number of upgrades the shit type has */
-    const adjustedRandNum = Math.round(upgradeRandNum / 10 * shipTypeUpgrades.length);
-    let upgrades = shipTypeUpgrades[adjustedRandNum];
-
+    let adjustedRandNum = Math.round(upgradeRandNum / 10 * shipTypeUpgrades.length) - 1;
+    if (adjustedRandNum < 0) {adjustedRandNum = 0};
+    const upgrades = shipTypeUpgrades !== NO_UPGRADE ? [...shipTypeUpgrades[adjustedRandNum]] : NO_UPGRADE;
 
     /* only upgrades relevant to the players' rank are returned */
-    console.log("Players rank: " + playersRank);
-    console.log("initial upgrades length: " + upgrades.length);
-    upgrades.splice(playersRank + 1, 5 - playersRank);
-    console.log("spliced length: " + upgrades.length);
-
-
-    for (let upgradess of upgrades) {
-        console.log(upgradess);
+    if (playersIni <= upgrades.length) {
+        upgrades.length = (playersIni === 1 ? 2 : playersIni);
     }
-
-
-
+    /*console.log(upgrades);
+    for (let upgrade of upgrades) {
+        console.log("upgrade: " + upgrade[0]["skillName"]);
+    }*/
     return upgrades;
 }
 
 /* Fallback in case that selected ship has no defined upgrades. */
 const NO_UPGRADE = [
-  [[{skillName: "-", skillDescription: "No upgrade equipped."}, 2, 5, {}]]
+    [{skillName: "-", skillDescription: "No upgrade equipped."}, 2, 5, {CHARGE: null, ATTACK: null}]
 ];
 
 /* Each skill is specified by its description, initiative, XP and optionally charges (number of charges, recharge / round etc) */
@@ -112,68 +107,78 @@ const TIEIN = [
 
 
 const TIESA = [
-        [
-            [HinnySkills.protonBombs, 2, 6, {CHARGE: 2, RECHARGE: 0}],
-            [HinnySkills.clusterMissiles, 3, 12, {ATTACK: 3, RANGE: MISSILE_RANGE.R12, CHARGE: 4}],
-            [HinnySkills.saturationSalvo, 4, 14, {}],
-            [HinnySkills.debrisGambit, 6, 15, {}],
-            [HinnySkills.protonTorpedoes, 6, 18, {ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2}],
-            [HinnySkills.munitionFailsafe, 7, 20, {}]
-        ],
-        [
-            [HinnySkills.plasmaTorpedoes, 2, 6, {ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2}],
-            [HinnySkills.connerNets, 3, 12, {CHARGE: 1}],
-            [HinnySkills.captainJonus, 4, 14, {}],
-            [HinnySkills.shieldUpgrade, 5, 16, {}],
-            [HinnySkills.diamondBoronMissiles, 6, 18, {ATTACK: 3, RANGE: MISSILE_RANGE.R23, CHARGE: 3}],
-            [HinnySkills.swarmTactics, 7, 20, {}]
-        ],
-        [
-            [HinnySkills.protonBombs, 2, 6, {CHARGE: 2}],
-            [HinnySkills.protonTorpedoes, 2, 10, {ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2}],
-            [HinnySkills.deathFire, 2, 10, {}],
-            [HinnySkills.skilledBombardier, 4, 14, {}],
-            [HinnySkills.electroProtonBomb, 4, 15, {CHARGE: 1}],
-            [HinnySkills.ruthless, 6, 17, {}]
-        ],
-        [
-            [HinnySkills.ionTorpedoes, 2, 6, {ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2}],
-            [HinnySkills.proximityMines, 3, 12, {CHARGE: 2}],
-            [HinnySkills.skilledBombardier, 3, 13, {}],
-            [HinnySkills.connerNets, 4, 16, {CHARGE: 1}],
-            [HinnySkills.concussionMissiles, 5, 17, {ATTACK: 3, RANGE: MISSILE_RANGE.R23, CHARGE: 3}],
-            [HinnySkills.elusive, 6, 19, {}]
-        ],
-        [
-            [HinnySkills.clusterMissiles, 2, 6, {ATTACK: 3, RANGE: MISSILE_RANGE.R12, CHARGE: 4}],
-            [HinnySkills.majorRhymer, 3, 12, {}],
-            [HinnySkills.advancedProtonTorpedoes, 3, 13, {ATTACK: 5, RANGE: MISSILE_RANGE.R1, CHARGE: 1}],
-            [HinnySkills.bombletGenerator, 4, 15, {CHARGE: 3, RECHARGE: 1}],
-            [HinnySkills.marksmanship, 5, 17, {}],
-            [HinnySkills.shieldUpgrade, 6, 19, {}]
-        ],
-        [
-            [HinnySkills.barrageMissiles, 2, 6, {ATTACK: 3, RANGE: MISSILE_RANGE.R23, CHARGE: 5}],
-            [HinnySkills.munitionFailsafe, 2, 10, {}],
-            [HinnySkills.swarmTactics, 3, 12, {}],
-            [HinnySkills.advancedProtonTorpedoes, 4, 13, {ATTACK: 5, RANGE: MISSILE_RANGE.R1, CHARGE: 1}],
-            [HinnySkills.proximityMines, 4, 15, {CHARGE: 2}],
-            [HinnySkills.trickShot, 5, 17, {}]
-        ]
-    ];
+    [
+        [HinnySkills.protonBombs, 2, 6, {CHARGE: 2, RECHARGE: 0}],
+        [HinnySkills.clusterMissiles, 3, 12, {ATTACK: 3, RANGE: MISSILE_RANGE.R12, CHARGE: 4}],
+        [HinnySkills.saturationSalvo, 4, 14, {}],
+        [HinnySkills.debrisGambit, 6, 15, {}],
+        [HinnySkills.protonTorpedoes, 6, 18, {ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2}],
+        [HinnySkills.munitionFailsafe, 7, 20, {}]
+    ],
+    [
+        [HinnySkills.plasmaTorpedoes, 2, 6, {ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2}],
+        [HinnySkills.connerNets, 3, 12, {CHARGE: 1}],
+        [HinnySkills.captainJonus, 4, 14, {}],
+        [HinnySkills.shieldUpgrade, 5, 16, {}],
+        [HinnySkills.diamondBoronMissiles, 6, 18, {ATTACK: 3, RANGE: MISSILE_RANGE.R23, CHARGE: 3}],
+        [HinnySkills.swarmTactics, 7, 20, {}]
+    ],
+    [
+        [HinnySkills.protonBombs, 2, 6, {CHARGE: 2}],
+        [HinnySkills.protonTorpedoes, 2, 10, {ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2}],
+        [HinnySkills.deathFire, 2, 10, {}],
+        [HinnySkills.skilledBombardier, 4, 14, {}],
+        [HinnySkills.electroProtonBomb, 4, 15, {CHARGE: 1}],
+        [HinnySkills.ruthless, 6, 17, {}]
+    ],
+    [
+        [HinnySkills.ionTorpedoes, 2, 6, {ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2}],
+        [HinnySkills.proximityMines, 3, 12, {CHARGE: 2}],
+        [HinnySkills.skilledBombardier, 3, 13, {}],
+        [HinnySkills.connerNets, 4, 16, {CHARGE: 1}],
+        [HinnySkills.concussionMissiles, 5, 17, {ATTACK: 3, RANGE: MISSILE_RANGE.R23, CHARGE: 3}],
+        [HinnySkills.elusive, 6, 19, {}]
+    ],
+    [
+        [HinnySkills.clusterMissiles, 2, 6, {ATTACK: 3, RANGE: MISSILE_RANGE.R12, CHARGE: 4}],
+        [HinnySkills.majorRhymer, 3, 12, {}],
+        [HinnySkills.advancedProtonTorpedoes, 3, 13, {ATTACK: 5, RANGE: MISSILE_RANGE.R1, CHARGE: 1}],
+        [HinnySkills.bombletGenerator, 4, 15, {CHARGE: 3, RECHARGE: 1}],
+        [HinnySkills.marksmanship, 5, 17, {}],
+        [HinnySkills.shieldUpgrade, 6, 19, {}]
+    ],
+    [
+        [HinnySkills.barrageMissiles, 2, 6, {ATTACK: 3, RANGE: MISSILE_RANGE.R23, CHARGE: 5}],
+        [HinnySkills.munitionFailsafe, 2, 10, {}],
+        [HinnySkills.swarmTactics, 3, 12, {}],
+        [HinnySkills.advancedProtonTorpedoes, 4, 13, {ATTACK: 5, RANGE: MISSILE_RANGE.R1, CHARGE: 1}],
+        [HinnySkills.proximityMines, 4, 15, {CHARGE: 2}],
+        [HinnySkills.trickShot, 5, 17, {}]
+    ]
+];
 
+//todo Hinny did not list ini and xps for despoiler, the values were eye-balled
 const VT49 = [
-    //todo Hinny did not list ini and xps for despoiler, the valued were eye-balled
-    [HinnySkills.despoiler, 1, 19, {}],
-    [HinnySkills.veteranTurretGunner, 2, 21, {}],
-    [HinnySkills.deathTroopers, 2, 23, {}],
-    [HinnySkills.captainOicunn, 3, 25, {}],
-    [HinnySkills.ruthless, 4, 27, {}],
-    [HinnySkills.protonBombs, 4, 29, {CHARGE: 2}]
+    [
+        [HinnySkills.despoiler, 1, 19, {}],
+        [HinnySkills.veteranTurretGunner, 2, 21, {}],
+        [HinnySkills.deathTroopers, 2, 23, {}],
+        [HinnySkills.captainOicunn, 3, 25, {}],
+        [HinnySkills.ruthless, 4, 27, {}],
+        [HinnySkills.protonBombs, 4, 29, {CHARGE: 2}]
+    ],
+    [
+        [HinnySkills.despoiler, 1, 19, {}],
+        [HinnySkills.veteranTurretGunner, 2, 21, {}],
+        [HinnySkills.deathTroopers, 2, 23, {}],
+        [HinnySkills.captainOicunn, 3, 25, {}],
+        [HinnySkills.ruthless, 4, 27, {}],
+        [HinnySkills.protonBombs, 4, 29, {CHARGE: 2}]
+    ],
 ];
 
 //todo use or remove
-const skillVars = Object.freeze(
+/*const skillVars = Object.freeze(
     {
         CHARGE: "charge",
         RECHARGE: "recharge rate",
@@ -181,5 +186,5 @@ const skillVars = Object.freeze(
         RANGE: "attack range"
 
     }
-);
+);*/
 

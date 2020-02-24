@@ -34,10 +34,7 @@ export const SquadStats = (props) =>
                 <div>{Ships[props.shipType][Stats.agility]}</div>
             </div>
             <div className="col-2">
-                <div>{props.xp}</div>
-            </div>
-            <div className="col-2">
-                <div>{props.upgradeLevel}</div>
+                <div>{props.upgrades[props.upgrades.length - 1][2]}</div>
             </div>
         </div>
     </div>;
