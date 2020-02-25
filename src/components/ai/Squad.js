@@ -6,8 +6,8 @@ import {SquadStats} from "./SquadStats";
 import Select from "react-select";
 import {PSN} from "../../data/Maneuvers";
 import SquadActionsCarousel from "./actionsCarousel/SquadActionsCarousel";
-import {TargetPosition} from "./TargetPosition";
-import UpgradesCard from "./UpgradesCard";
+import {TargetPosition} from "./maneuvers/TargetPosition";
+import UpgradesCard from "./upgrades/UpgradesCard";
 import {GlobalSquadsValuesContext, TargetPositionContext} from "../../context/Contexts";
 
 export function Squad(props) {
@@ -15,10 +15,7 @@ export function Squad(props) {
     const globalSquadValues = useContext(GlobalSquadsValuesContext);
     const upgrades = [...globalSquadValues.upgrades[props.squadId]];
 
-    console.log("*** SQUAD ***");
-    for (let upgrade of upgrades) {
-        console.log("upgrade: " + upgrade[0]["skillName"]);
-    }
+    //console.log("*** SQUAD ***");
 
     /* TARGET POSITION STATE */
     const [targetPosition, setTargetPosition] = useState([PSN.R3FRONT]);

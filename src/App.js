@@ -11,14 +11,14 @@ import Select from 'react-select';
 import {Ships, Stats, UPGRADES} from "./data/Ships";
 import SquadGenerator from "./components/ai/SquadGenerator";
 import {GlobalSquadsValuesContext} from "./context/Contexts";
-import getUpgrades from "./components/ai/UpgradesGenerator";
+import getUpgrades from "./components/ai/upgrades/UpgradesGenerator";
 
 function App() {
     const [squadrons, setSquadrons] = useState([Ships.TIEIN.id]);
     const [playersRank, setPlayersRank] = useState(5);
     const [upgradesSource, setUpgradesSource] = useState([UPGRADES.HINNY]);
     const [isElite, setIsElite] = useState([false]);
-    const [upgrades, setUpgrades] = useState([getUpgrades(squadrons[0], playersRank, upgradesSource[0], isElite[0])]);
+    const [upgrades, setUpgrades] = useState([getUpgrades(squadrons[0], playersRank, upgradesSource[0], isElite)]);
 
 
     let newSquadShipOptions = [];
@@ -78,21 +78,21 @@ function App() {
         let tUpgrades = [...upgrades];
         for (let i = 0; i < tUpgrades.length; i++) {
             tUpgrades[i] = getUpgrades(squadrons[i], newRank, upgradesSource[i], isElite[i]);
-            console.log(tUpgrades[i])
         }
         setUpgrades(tUpgrades);
         setPlayersRank(newRank);
     }
 
     function handleSetIsElite(index, value) {
+        console.log("* HANDLE SET IS ELITE *");
         let tIsElite = [...isElite];
         tIsElite.splice(index, 1, value);
         setIsElite(tIsElite);
 
-        const newUpgrades = getUpgrades(squadrons[index], playersRank[index], upgradesSource[index], isElite[index]);
         const tUpgrades = [...upgrades];
+        const newUpgrades = getUpgrades(squadrons[index], playersRank, upgradesSource[index], value);
+        console.log("upgrades loaded")
         tUpgrades.splice(index, 1, newUpgrades);
-        console.log(tUpgrades[index]);
         setUpgrades(tUpgrades);
     }
 
