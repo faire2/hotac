@@ -8,6 +8,7 @@ export const AI = Object.freeze({
 
 export const UPGRADES = Object.freeze({
     HINNY: "Hinny upgrades",
+    COMMUNITY: "Community version upgrades",
     FGA: "FGA version upgrades",
 });
 

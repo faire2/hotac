@@ -1,13 +1,13 @@
 import React from "react";
 
-export const HinnySkills = {
+export const HinnyUpgrades = Object.freeze({
     hullUpgrade: {
         skillName: "Hull Upgrade", skillDescription:
-            <div>Already included in ships hull value.</div>
+            <div>Increases your hull by 1. Already included in ships hull value.</div>
     },
     shieldUpgrade: {
         skillName: "Shield Upgrade", skillDescription:
-            <div>Already included in ships shields value.</div>
+            <div>Increases your shields by 1. Already included in ships shields value.</div>
     },
     outmaneuver: {
         skillName: "Outmaneuver", skillDescription:
@@ -133,7 +133,7 @@ export const HinnySkills = {
                 enemy ship.
             </div>
     },
-//todo Attack should be in capitals, see the cards
+//todo Attack key word should always be in capitals, see the cards
     clusterMissiles: {
         skillName: "Cluster Missiles", skillDescription:
             <div>
@@ -370,5 +370,5 @@ export const HinnySkills = {
             <div>
                 You can perform primary attacks at range 0.
             </div>
-    }
-};
+    },
+});

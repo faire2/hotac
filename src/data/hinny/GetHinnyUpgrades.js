@@ -1,5 +1,5 @@
 import {Ships} from "../Ships";
-import {HinnySkills} from "./HinnyEliteSkills";
+import {HinnyUpgrades} from "./HinnyUpgrades";
 
 export const MISSILE_RANGE = Object.freeze(
     {
@@ -8,7 +8,6 @@ export const MISSILE_RANGE = Object.freeze(
         R23: "2-3"
     });
 
-//todo rewrite so that it will return all upgrades only to elite ships
 export default function getHinnyUpgrades(shipType, playersIni, upgradeRandNum, isElite) {
     let shipTypeUpgrades = [];
     console.log("*** GET HINNY UPGRADES: " + shipType + " ***");
@@ -65,124 +64,124 @@ const NO_UPGRADE = [
 /* HinnySkills.Skill, Initiative, Xp, {OptionalParameter: value...}*/
 const TIEIN = [
     [
-        [HinnySkills.hullUpgrade, 2, 6, {}],
-        [HinnySkills.outmaneuver, 3, 12, {}],
-        [HinnySkills.shieldUpgrade, 4, 14, {}],
-        [HinnySkills.turrPhennir, 5, 16, {}],
-        [HinnySkills.marksmanship, 6, 18, {}],
-        [HinnySkills.gideonHask, 7, 20, {}]
+        [HinnyUpgrades.hullUpgrade, 2, 6, {}],
+        [HinnyUpgrades.outmaneuver, 3, 12, {}],
+        [HinnyUpgrades.shieldUpgrade, 4, 14, {}],
+        [HinnyUpgrades.turrPhennir, 5, 16, {}],
+        [HinnyUpgrades.marksmanship, 6, 18, {}],
+        [HinnyUpgrades.gideonHask, 7, 20, {}]
     ],
     [
-        [HinnySkills.crackShot, 1, 5, {CHARGE: 1, RECHARGE: 0}],
-        [HinnySkills.hullUpgrade, 2, 10, {}],
-        [HinnySkills.daredevil, 3, 12, {}],
-        [HinnySkills.trickShot, 4, 14, {}],
-        [HinnySkills.staticDischargeVanes, 5, 16, {}],
-        [HinnySkills.mauler, 6, 18, {}]
+        [HinnyUpgrades.crackShot, 1, 5, {CHARGE: 1, RECHARGE: 0}],
+        [HinnyUpgrades.hullUpgrade, 2, 10, {}],
+        [HinnyUpgrades.daredevil, 3, 12, {}],
+        [HinnyUpgrades.trickShot, 4, 14, {}],
+        [HinnyUpgrades.staticDischargeVanes, 5, 16, {}],
+        [HinnyUpgrades.mauler, 6, 18, {}]
     ],
     [
-        [HinnySkills.hullUpgrade, 1, 5, {}],
-        [HinnySkills.wampa, 2, 10, {CHARGE: 1, RECHARGE: 1}],
-        [HinnySkills.ruthless, 3, 12, {}],
-        [HinnySkills.nightBeast, 4, 14, {}],
-        [HinnySkills.shieldUpgrade, 5, 16, {}],
-        [HinnySkills.juke, 6, 18, {}]
+        [HinnyUpgrades.hullUpgrade, 1, 5, {}],
+        [HinnyUpgrades.wampa, 2, 10, {CHARGE: 1, RECHARGE: 1}],
+        [HinnyUpgrades.ruthless, 3, 12, {}],
+        [HinnyUpgrades.nightBeast, 4, 14, {}],
+        [HinnyUpgrades.shieldUpgrade, 5, 16, {}],
+        [HinnyUpgrades.juke, 6, 18, {}]
     ],
     [
-        [HinnySkills.crackShot, 2, 6, {CHARGE: 1, RECHARGE: 0}],
-        [HinnySkills.shieldUpgrade, 3, 12, {}],
-        [HinnySkills.predator, 4, 14, {}],
-        [HinnySkills.afterburners, 5, 16, {}],
-        [HinnySkills.juke, 6, 18, {}],
-        [HinnySkills.soontirFel, 7, 20, {}]
+        [HinnyUpgrades.crackShot, 2, 6, {CHARGE: 1, RECHARGE: 0}],
+        [HinnyUpgrades.shieldUpgrade, 3, 12, {}],
+        [HinnyUpgrades.predator, 4, 14, {}],
+        [HinnyUpgrades.afterburners, 5, 16, {}],
+        [HinnyUpgrades.juke, 6, 18, {}],
+        [HinnyUpgrades.soontirFel, 7, 20, {}]
     ],
     [
-        [HinnySkills.stealthDevice, 2, 6, {CHARGE: 1}],
-        [HinnySkills.ruthless, 3, 12, {}],
-        [HinnySkills.valenRudor, 4, 14, {}],
-        [HinnySkills.hullUpgrade, 5, 16, {}],
-        [HinnySkills.outmaneuver, 6, 18, {}],
-        [HinnySkills.scourgeSkutu, 5, 20, {}]
+        [HinnyUpgrades.stealthDevice, 2, 6, {CHARGE: 1}],
+        [HinnyUpgrades.ruthless, 3, 12, {}],
+        [HinnyUpgrades.valenRudor, 4, 14, {}],
+        [HinnyUpgrades.hullUpgrade, 5, 16, {}],
+        [HinnyUpgrades.outmaneuver, 6, 18, {}],
+        [HinnyUpgrades.scourgeSkutu, 5, 20, {}]
     ],
     [
-        [HinnySkills.stealthDevice, 1, 5, {CHARGE: 1}],
-        [HinnySkills.afterburners, 2, 10, {}],
-        [HinnySkills.loneWolf, 3, 12, {}],
-        [HinnySkills.elusive, 4, 14, {CHARGE: 2, RECHARGE: 1}],
-        [HinnySkills.marksmanship, 5, 16, {}],
-        [HinnySkills.seynMarana, 6, 18, {}]
+        [HinnyUpgrades.stealthDevice, 1, 5, {CHARGE: 1}],
+        [HinnyUpgrades.afterburners, 2, 10, {}],
+        [HinnyUpgrades.loneWolf, 3, 12, {}],
+        [HinnyUpgrades.elusive, 4, 14, {CHARGE: 2, RECHARGE: 1}],
+        [HinnyUpgrades.marksmanship, 5, 16, {}],
+        [HinnyUpgrades.seynMarana, 6, 18, {}]
     ]
 ];
 
 
 const TIESA = [
     [
-        [HinnySkills.protonBombs, 2, 6, {CHARGE: 2, RECHARGE: 0}],
-        [HinnySkills.clusterMissiles, 3, 12, {ATTACK: 3, RANGE: MISSILE_RANGE.R12, CHARGE: 4}],
-        [HinnySkills.saturationSalvo, 4, 14, {}],
-        [HinnySkills.debrisGambit, 6, 15, {}],
-        [HinnySkills.protonTorpedoes, 6, 18, {ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2}],
-        [HinnySkills.munitionFailsafe, 7, 20, {}]
+        [HinnyUpgrades.protonBombs, 2, 6, {CHARGE: 2, RECHARGE: 0}],
+        [HinnyUpgrades.clusterMissiles, 3, 12, {ATTACK: 3, RANGE: MISSILE_RANGE.R12, CHARGE: 4}],
+        [HinnyUpgrades.saturationSalvo, 4, 14, {}],
+        [HinnyUpgrades.debrisGambit, 6, 15, {}],
+        [HinnyUpgrades.protonTorpedoes, 6, 18, {ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2}],
+        [HinnyUpgrades.munitionFailsafe, 7, 20, {}]
     ],
     [
-        [HinnySkills.plasmaTorpedoes, 2, 6, {ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2}],
-        [HinnySkills.connerNets, 3, 12, {CHARGE: 1}],
-        [HinnySkills.captainJonus, 4, 14, {}],
-        [HinnySkills.shieldUpgrade, 5, 16, {}],
-        [HinnySkills.diamondBoronMissiles, 6, 18, {ATTACK: 3, RANGE: MISSILE_RANGE.R23, CHARGE: 3}],
-        [HinnySkills.swarmTactics, 7, 20, {}]
+        [HinnyUpgrades.plasmaTorpedoes, 2, 6, {ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2}],
+        [HinnyUpgrades.connerNets, 3, 12, {CHARGE: 1}],
+        [HinnyUpgrades.captainJonus, 4, 14, {}],
+        [HinnyUpgrades.shieldUpgrade, 5, 16, {}],
+        [HinnyUpgrades.diamondBoronMissiles, 6, 18, {ATTACK: 3, RANGE: MISSILE_RANGE.R23, CHARGE: 3}],
+        [HinnyUpgrades.swarmTactics, 7, 20, {}]
     ],
     [
-        [HinnySkills.protonBombs, 2, 6, {CHARGE: 2}],
-        [HinnySkills.protonTorpedoes, 2, 10, {ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2}],
-        [HinnySkills.deathFire, 2, 10, {}],
-        [HinnySkills.skilledBombardier, 4, 14, {}],
-        [HinnySkills.electroProtonBomb, 4, 15, {CHARGE: 1}],
-        [HinnySkills.ruthless, 6, 17, {}]
+        [HinnyUpgrades.protonBombs, 2, 6, {CHARGE: 2}],
+        [HinnyUpgrades.protonTorpedoes, 2, 10, {ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2}],
+        [HinnyUpgrades.deathFire, 2, 10, {}],
+        [HinnyUpgrades.skilledBombardier, 4, 14, {}],
+        [HinnyUpgrades.electroProtonBomb, 4, 15, {CHARGE: 1}],
+        [HinnyUpgrades.ruthless, 6, 17, {}]
     ],
     [
-        [HinnySkills.ionTorpedoes, 2, 6, {ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2}],
-        [HinnySkills.proximityMines, 3, 12, {CHARGE: 2}],
-        [HinnySkills.skilledBombardier, 3, 13, {}],
-        [HinnySkills.connerNets, 4, 16, {CHARGE: 1}],
-        [HinnySkills.concussionMissiles, 5, 17, {ATTACK: 3, RANGE: MISSILE_RANGE.R23, CHARGE: 3}],
-        [HinnySkills.elusive, 6, 19, {}]
+        [HinnyUpgrades.ionTorpedoes, 2, 6, {ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2}],
+        [HinnyUpgrades.proximityMines, 3, 12, {CHARGE: 2}],
+        [HinnyUpgrades.skilledBombardier, 3, 13, {}],
+        [HinnyUpgrades.connerNets, 4, 16, {CHARGE: 1}],
+        [HinnyUpgrades.concussionMissiles, 5, 17, {ATTACK: 3, RANGE: MISSILE_RANGE.R23, CHARGE: 3}],
+        [HinnyUpgrades.elusive, 6, 19, {}]
     ],
     [
-        [HinnySkills.clusterMissiles, 2, 6, {ATTACK: 3, RANGE: MISSILE_RANGE.R12, CHARGE: 4}],
-        [HinnySkills.majorRhymer, 3, 12, {}],
-        [HinnySkills.advancedProtonTorpedoes, 3, 13, {ATTACK: 5, RANGE: MISSILE_RANGE.R1, CHARGE: 1}],
-        [HinnySkills.bombletGenerator, 4, 15, {CHARGE: 3, RECHARGE: 1}],
-        [HinnySkills.marksmanship, 5, 17, {}],
-        [HinnySkills.shieldUpgrade, 6, 19, {}]
+        [HinnyUpgrades.clusterMissiles, 2, 6, {ATTACK: 3, RANGE: MISSILE_RANGE.R12, CHARGE: 4}],
+        [HinnyUpgrades.majorRhymer, 3, 12, {}],
+        [HinnyUpgrades.advancedProtonTorpedoes, 3, 13, {ATTACK: 5, RANGE: MISSILE_RANGE.R1, CHARGE: 1}],
+        [HinnyUpgrades.bombletGenerator, 4, 15, {CHARGE: 3, RECHARGE: 1}],
+        [HinnyUpgrades.marksmanship, 5, 17, {}],
+        [HinnyUpgrades.shieldUpgrade, 6, 19, {}]
     ],
     [
-        [HinnySkills.barrageMissiles, 2, 6, {ATTACK: 3, RANGE: MISSILE_RANGE.R23, CHARGE: 5}],
-        [HinnySkills.munitionFailsafe, 2, 10, {}],
-        [HinnySkills.swarmTactics, 3, 12, {}],
-        [HinnySkills.advancedProtonTorpedoes, 4, 13, {ATTACK: 5, RANGE: MISSILE_RANGE.R1, CHARGE: 1}],
-        [HinnySkills.proximityMines, 4, 15, {CHARGE: 2}],
-        [HinnySkills.trickShot, 5, 17, {}]
+        [HinnyUpgrades.barrageMissiles, 2, 6, {ATTACK: 3, RANGE: MISSILE_RANGE.R23, CHARGE: 5}],
+        [HinnyUpgrades.munitionFailsafe, 2, 10, {}],
+        [HinnyUpgrades.swarmTactics, 3, 12, {}],
+        [HinnyUpgrades.advancedProtonTorpedoes, 4, 13, {ATTACK: 5, RANGE: MISSILE_RANGE.R1, CHARGE: 1}],
+        [HinnyUpgrades.proximityMines, 4, 15, {CHARGE: 2}],
+        [HinnyUpgrades.trickShot, 5, 17, {}]
     ]
 ];
 
 //todo Hinny did not list ini and xps for despoiler, the values were eye-balled
 const VT49 = [
     [
-        [HinnySkills.despoiler, 1, 19, {}],
-        [HinnySkills.veteranTurretGunner, 2, 21, {}],
-        [HinnySkills.deathTroopers, 2, 23, {}],
-        [HinnySkills.captainOicunn, 3, 25, {}],
-        [HinnySkills.ruthless, 4, 27, {}],
-        [HinnySkills.protonBombs, 4, 29, {CHARGE: 2}]
+        [HinnyUpgrades.despoiler, 1, 19, {}],
+        [HinnyUpgrades.veteranTurretGunner, 2, 21, {}],
+        [HinnyUpgrades.deathTroopers, 2, 23, {}],
+        [HinnyUpgrades.captainOicunn, 3, 25, {}],
+        [HinnyUpgrades.ruthless, 4, 27, {}],
+        [HinnyUpgrades.protonBombs, 4, 29, {CHARGE: 2}]
     ],
     [
-        [HinnySkills.despoiler, 1, 19, {}],
-        [HinnySkills.veteranTurretGunner, 2, 21, {}],
-        [HinnySkills.deathTroopers, 2, 23, {}],
-        [HinnySkills.captainOicunn, 3, 25, {}],
-        [HinnySkills.ruthless, 4, 27, {}],
-        [HinnySkills.protonBombs, 4, 29, {CHARGE: 2}]
+        [HinnyUpgrades.despoiler, 1, 19, {}],
+        [HinnyUpgrades.veteranTurretGunner, 2, 21, {}],
+        [HinnyUpgrades.deathTroopers, 2, 23, {}],
+        [HinnyUpgrades.captainOicunn, 3, 25, {}],
+        [HinnyUpgrades.ruthless, 4, 27, {}],
+        [HinnyUpgrades.protonBombs, 4, 29, {CHARGE: 2}]
     ],
 ];
 
