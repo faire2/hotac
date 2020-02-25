@@ -6,8 +6,8 @@ import {SquadStats} from "./SquadStats";
 import Select from "react-select";
 import {PSN} from "../../data/Maneuvers";
 import SquadActionsCarousel from "./actionsCarousel/SquadActionsCarousel";
-import {TargetPosition} from "./TargetPosition";
-import UpgradesCard from "./UpgradesCard";
+import {TargetPosition} from "./maneuvers/TargetPosition";
+import UpgradesCard from "./upgrades/UpgradesCard";
 import {GlobalSquadsValuesContext, TargetPositionContext} from "../../context/Contexts";
 
 export function Squad(props) {

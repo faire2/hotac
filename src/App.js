@@ -11,7 +11,7 @@ import Select from 'react-select';
 import {Ships, Stats, UPGRADES} from "./data/Ships";
 import SquadGenerator from "./components/ai/SquadGenerator";
 import {GlobalSquadsValuesContext} from "./context/Contexts";
-import getUpgrades from "./components/ai/UpgradesGenerator";
+import getUpgrades from "./components/ai/upgrades/UpgradesGenerator";
 
 function App() {
     const [squadrons, setSquadrons] = useState([Ships.TIEIN.id]);

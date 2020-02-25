@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {GlobalSquadsValuesContext} from "../../context/Contexts";
+import {GlobalSquadsValuesContext} from "../../../context/Contexts";
 
 export default function UpgradesCard(props) {
     const globalValues = useContext(GlobalSquadsValuesContext);

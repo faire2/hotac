@@ -1,5 +1,5 @@
-import getHinnyUpgrades from "../../data/hinny/GetHinnyUpgrades";
-import {UPGRADES} from "../../data/Ships";
+import getHinnyUpgrades from "../../../data/hinny/GetHinnyUpgrades";
+import {UPGRADES} from "../../../data/Ships";
 
 export default function getUpgrades(shipType, playersRank, upgradeSource, isElite) {
     let upgrades = [];
