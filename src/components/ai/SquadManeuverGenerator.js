@@ -14,11 +14,12 @@ export default function SquadManeuverGenerator(props) {
             break;
         case AI.FGA:
             maneuvers = fgaManeuvers;
+            console.log("fga maneuvers");
             break;
         default:
             console.log("Unknown AI engine in SquadManeuver: " + positionContext.aiEngine)
     }
-    //console.log(("Type, position, number: " + props.shipType + ", "  + props.position + ", "  + props.randNum));
+    console.log(("Type, position, number: " + positionContext.shipType + ", "  + positionContext.targetPosition + ", "  + positionContext.maneuverRandNum));
     const maneuver = maneuvers[positionContext.shipType][positionContext.targetPosition][positionContext.maneuverRandNum];
 
     switch (maneuver) {
@@ -36,6 +37,8 @@ export default function SquadManeuverGenerator(props) {
             return <div className="xw-man">3<i className="xwmb x-straight"/></div>;
         case MVRS.STRAIGHT4:
             return <div className="xw-man">4<i className="xwm x-straight"/></div>;
+        case MVRS.STRAIGHT4BLUE:
+            return <div className="xw-man">4<i className="xwmb x-straight"/></div>;
         case MVRS.STRAIGHT5:
             return <div className="xw-man">5<i className="xwm x-straight"/></div>;
         case MVRS.STRAIGHT5BLUE:
