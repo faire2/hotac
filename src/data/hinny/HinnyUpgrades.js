@@ -1,10 +1,11 @@
 import React from "react";
 
-export const MISSILE_RANGE = Object.freeze(
+export const WEAPON_RANGE = Object.freeze(
     {
         R1: "1",
         R12: "1-2",
-        R23: "2-3"
+        R23: "2-3",
+        R13: "1-3"
     });
 
 export const HinnyUpgrades = Object.freeze({
@@ -151,7 +152,7 @@ export const HinnyUpgrades = Object.freeze({
                 perform this attack as a bonus attack against a different target at range 0-1 of the defender, ignoring
                 the <i className="xwi x-lock"/> requirement.
             </div>,
-        CHARGE: 4, ATTACK: 3, RANGE: MISSILE_RANGE.R12
+        CHARGE: 4, ATTACK: 3, RANGE: WEAPON_RANGE.R12
     },
     saturationSalvo: {
         skillName: "Saturation Salvo", skillDescription:
@@ -174,7 +175,7 @@ export const HinnyUpgrades = Object.freeze({
                 className="xwi x-lock"/>): Spend 1 <i className="xwi x-charge"/>. Change 1 <i
                 className="xwi x-hit"/> to a <i className="xwi x-crit"/> result.
             </div>,
-        ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2
+        ATTACK: 4, RANGE: WEAPON_RANGE.R23, CHARGE: 2
     },
     munitionFailsafe: {
         skillName: "Munition Failsafe", skillDescription:
@@ -191,7 +192,7 @@ export const HinnyUpgrades = Object.freeze({
                 className="xwi x-hit"/> results. After
                 this attack hits, the defender loses 1 shield.
             </div>,
-        ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2
+        ATTACK: 4, RANGE: WEAPON_RANGE.R23, CHARGE: 2
 
     },
     connerNets: {
@@ -221,7 +222,7 @@ export const HinnyUpgrades = Object.freeze({
                 ship at range 0-1 of the defender with agility equal or less than the defender's rolls 1 attack die and
                 suffers 1 <i className="xwi x-hit"/>/<i className="xwi x-crit"/> damage for a matching result.
             </div>,
-        ATTACK: 3, RANGE: MISSILE_RANGE.R23, CHARGE: 3
+        ATTACK: 3, RANGE: WEAPON_RANGE.R23, CHARGE: 3
     },
     swarmTactics: {
         skillName: "Swarm Tactics", skillDescription:
@@ -270,7 +271,7 @@ export const HinnyUpgrades = Object.freeze({
                 className="xwi x-crit"/> results
                 inflict ion tokens instead of damage.
             </div>,
-        ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2
+        ATTACK: 4, RANGE: WEAPON_RANGE.R23, CHARGE: 2
     },
     proximityMines: {
         skillName: "Proximity Mines", skillDescription:
@@ -289,7 +290,7 @@ export const HinnyUpgrades = Object.freeze({
                 Attack (<i className="xwi x-lock"/>): Spend 1 <i className="xwi x-charge"/>. After this attack, each
                 ship at range 0-1 of the defender exposes 1 of its damage cards.
             </div>,
-        ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 3
+        ATTACK: 4, RANGE: WEAPON_RANGE.R23, CHARGE: 3
     },
     elusive: {
         skillName: "Elusive", skillDescription:
@@ -347,7 +348,7 @@ export const HinnyUpgrades = Object.freeze({
                 Attack (<i className="xwi x-lock"/>): Spend 1 <i className="xwi x-charge"/>. Change 1 <i
                 className="xwi x-hit"/> result to a <i className="xwi x-crit"/> result.
             </div>,
-        ATTACK: 5, RANGE: MISSILE_RANGE.R1, CHARGE: 1
+        ATTACK: 5, RANGE: WEAPON_RANGE.R1, CHARGE: 1
     },
     bombletGenerator: {
         skillName: "Bomblet Generator", skillDescription:
@@ -369,7 +370,7 @@ export const HinnyUpgrades = Object.freeze({
                 your <i className="xwi x-bullseyearc"/>, you may spend 1 or more <i className="xwi x-charge"/> to reroll
                 that many attack dice.
             </div>,
-        ATTACK: 3, RANGE: MISSILE_RANGE.R23, CHARGE: 5
+        ATTACK: 3, RANGE: WEAPON_RANGE.R23, CHARGE: 5
     },
     despoiler: {
         skillName: "Despoiler", skillDescription:

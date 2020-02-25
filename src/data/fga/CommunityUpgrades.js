@@ -1,4 +1,5 @@
 import React from "react";
+import {WEAPON_RANGE} from "../hinny/HinnyUpgrades";
 
 export const communityUprades = Object.freeze({
 
@@ -100,9 +101,10 @@ export const communityUprades = Object.freeze({
                 Attack (<i className="xwi x-focus"/>): Spend 1 <i className="xwi x-charge"/>. After you declare the
                 defender, the defender may choose to suffer 1 <i className="xwi x-hit"/>. If it does, skip the Attack
                 and Defense Dice steps and the attack is treated as hitting.
-            </div>
+            </div>,
+        ATTACK: 4, RANGE: WEAPON_RANGE.R23, CHARGE: 1
     },
-    // todo raise all charges automatically!
+    // todo raise all charges of the ship automatically!
     extraMunitions: {
         skillName: "Extra Munitions", skillDescription:
             <div>Add one <i className="xwi charge"/> to any equipped ordnance.</div>
@@ -124,7 +126,8 @@ export const communityUprades = Object.freeze({
                 Attack (<i className="xwi x-lock"/>): Spend 1 <i className="xwi x-charge"/>. After this attack, you may
                 perform this attack as a bonus attack against a different target at range 0-1 of the defender, ignoring
                 the <i className="xwi x-lock"/> requirement.
-            </div>
+            </div>,
+        ATTACK: 3, RANGE: WEAPON_RANGE.R12, CHARGE: 1
     },
     marksmanship: {
         skillName: "Marksmanship", skillDescription:
@@ -197,7 +200,8 @@ export const communityUprades = Object.freeze({
                 1 <i className="xwi x-crit"/> or <i className="xwi x-hit"/> result to cause the defender to suffer 1 <i
                 className="xwi x-hit"/> damage. All remaing <i className="xwi x-crit"/>/<i
                 className="xwi x-hit"/> results inflict ion tokens instead of damage.
-            </div>
+            </div>,
+        ATTACK: 3, RANGE: WEAPON_RANGE.R23, CHARGE: 1
     },
     howlrunner:
         {
@@ -210,7 +214,8 @@ export const communityUprades = Object.freeze({
             <div>
                 Attack (<i className="xwi x-lock"/>): Spend 1 <i className="xwi x-charge"/>. Change 1 <i
                 className="xwi x-hit"/> result to a <i className="xwi x-crit"/> result.
-            </div>
+            </div>,
+        ATTACK: 5, RANGE: WEAPON_RANGE.R1, CHARGE: 1
     },
     protonTorpedoes: {
         skillName: "Proton Torpedoes", skillDescription:
@@ -218,7 +223,8 @@ export const communityUprades = Object.freeze({
                 Attack (<i
                 className="xwi x-lock"/>): Spend 1 <i className="xwi x-charge"/>. Change 1 <i
                 className="xwi x-hit"/> to a <i className="xwi x-crit"/> result.
-            </div>
+            </div>,
+        ATTACK: 4, RANGE: WEAPON_RANGE.R23, CHARGE: 1
     },
     nightBeast:
         {
@@ -273,7 +279,8 @@ export const communityUprades = Object.freeze({
         skillName: "Proton Rockets", skillDescription:
             <div>
                 Attack (<i className="xwi x-focus"/>): Spend 1 <i className="xwi x-charge"/>.
-            </div>
+            </div>,
+        ATTACK: 5, RANGE: WEAPON_RANGE.R12, CHARGE: 1
     },
     intimidation:
         {
@@ -292,13 +299,15 @@ export const communityUprades = Object.freeze({
                     cause the defender to suffer 1 <i className="xwi x-hit"/>. All remaing <i
                         className="xwi x-crit"/>/<i
                         className="xwi x-hit"/> results inflict ion tokens instead of damage.
-                </div>
+                </div>,
+            ATTACK: 3, RANGE: WEAPON_RANGE.R13, BULLSEYE: true
         },
     heavyLaserCannon:
         {
             skillName: "Heavy Laser Cannon", skillDescription:
                 <div>When attacking, after the Modify Attack Dice step, change all <i className="xwi x-crit"/> results
-                    to <i className="xwi x-hit"/> results.</div>
+                    to <i className="xwi x-hit"/> results.</div>,
+            ATTACK: 4, RANGE: WEAPON_RANGE.R23, BULLSEYE: true
         },
     kirKanos:
         {
