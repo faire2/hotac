@@ -33,14 +33,15 @@ function Skill(props) {
                     {skill[0].skillDescription}
                 </div>
                 <div className="variables d-flex flex-column justify-content-center">
-                    {skill[3].CHARGE != null && <Charges charges={skill[3].CHARGE} recharge={skill[3].RECHARGE} />}
-                    {skill[3].ATTACK != null && <Attack attack={skill[3].ATTACK} range={skill[3].RANGE} />}
+                    {skill[0].CHARGE !== undefined && <Charges charges={skill[0].CHARGE} recharge={skill[0].RECHARGE} />}
+                    {skill[0].ATTACK !== undefined && <Attack attack={skill[0].ATTACK} range={skill[0].RANGE} />}
                 </div>
             </div>
         </div>
     )
 }
 
+//todo: buttons for changing number of charges
 const Charges = (props) =>
     <div className="charge">
         <i className="xwi x-charge"/>{props.charges}

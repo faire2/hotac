@@ -1,5 +1,12 @@
 import React from "react";
 
+export const MISSILE_RANGE = Object.freeze(
+    {
+        R1: "1",
+        R12: "1-2",
+        R23: "2-3"
+    });
+
 export const HinnyUpgrades = Object.freeze({
     hullUpgrade: {
         skillName: "Hull Upgrade", skillDescription:
@@ -40,7 +47,8 @@ export const HinnyUpgrades = Object.freeze({
                 While you perform a primary attack, if the defender is in your <i className="xwi x-bullseyearc"/>,
                 before Neutralize Results step, spend 1 <i className="xwi x-charge"/> to cancel 1 <i
                 className="xwi x-evade"/> result.
-            </div>
+            </div>,
+        CHARGE: 1
     },
     daredevil: {
         skillName: "Daredevil", skillDescription:
@@ -72,7 +80,8 @@ export const HinnyUpgrades = Object.freeze({
             <div>
                 While you perform an attack, spend 1 <i className="xwi x-charge"/> to roll 1 additional die. After
                 defending, lose 1 <i className="xwi x-charge"/>.
-            </div>
+            </div>,
+        CHARGE: 1, RECHARGE: 1
     },
     ruthless: {
         skillName: "Ruthless", skillDescription:
@@ -131,7 +140,8 @@ export const HinnyUpgrades = Object.freeze({
                 [1 <i className="xwi x-turnright"/>] template, depending on which template drops the device closest to
                 an
                 enemy ship.
-            </div>
+            </div>,
+        CHARGE: 2
     },
 //todo Attack key word should always be in capitals, see the cards
     clusterMissiles: {
@@ -140,7 +150,8 @@ export const HinnyUpgrades = Object.freeze({
                 Attack (<i className="xwi x-lock"/>): Spend 1 <i className="xwi x-charge"/>. After this attack, you may
                 perform this attack as a bonus attack against a different target at range 0-1 of the defender, ignoring
                 the <i className="xwi x-lock"/> requirement.
-            </div>
+            </div>,
+        CHARGE: 4, ATTACK: 3, RANGE: MISSILE_RANGE.R12
     },
     saturationSalvo: {
         skillName: "Saturation Salvo", skillDescription:
@@ -162,7 +173,8 @@ export const HinnyUpgrades = Object.freeze({
                 Attack (<i
                 className="xwi x-lock"/>): Spend 1 <i className="xwi x-charge"/>. Change 1 <i
                 className="xwi x-hit"/> to a <i className="xwi x-crit"/> result.
-            </div>
+            </div>,
+        ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2
     },
     munitionFailsafe: {
         skillName: "Munition Failsafe", skillDescription:
@@ -178,7 +190,9 @@ export const HinnyUpgrades = Object.freeze({
                 Results step, <i className="xwi x-crit"/> results are cancelled before <i
                 className="xwi x-hit"/> results. After
                 this attack hits, the defender loses 1 shield.
-            </div>
+            </div>,
+        ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2
+
     },
     connerNets: {
         skillName: "Conner Nets", skillDescription:
@@ -189,7 +203,8 @@ export const HinnyUpgrades = Object.freeze({
                 [1 <i className="xwi x-turnright"/>] template, depending on which template drops the device closest to
                 an
                 enemy ship.
-            </div>
+            </div>,
+        CHARGE: 1
     },
     captainJonus: {
         skillName: "Captain Jonus", skillDescription:
@@ -205,7 +220,8 @@ export const HinnyUpgrades = Object.freeze({
                 each
                 ship at range 0-1 of the defender with agility equal or less than the defender's rolls 1 attack die and
                 suffers 1 <i className="xwi x-hit"/>/<i className="xwi x-crit"/> damage for a matching result.
-            </div>
+            </div>,
+        ATTACK: 3, RANGE: MISSILE_RANGE.R23, CHARGE: 3
     },
     swarmTactics: {
         skillName: "Swarm Tactics", skillDescription:
@@ -241,7 +257,8 @@ export const HinnyUpgrades = Object.freeze({
                 to an enemy ship. Then place 1 fuse marker on that device. This card's <i
                 className="xwi x-charge"/> cannot be
                 recovered.
-            </div>
+            </div>,
+        CHARGE: 1
     },
     ionTorpedoes: {
         skillName: "Ion Torpedoes", skillDescription:
@@ -252,7 +269,8 @@ export const HinnyUpgrades = Object.freeze({
                 className="xwi x-hit"/> danage. All remaining <i className="xwi x-hit"/>/<i
                 className="xwi x-crit"/> results
                 inflict ion tokens instead of damage.
-            </div>
+            </div>,
+        ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 2
     },
     proximityMines: {
         skillName: "Proximity Mines", skillDescription:
@@ -262,27 +280,31 @@ export const HinnyUpgrades = Object.freeze({
                 or
                 [1 <i className="xwi x-turnright"/>] template, depending on which template drops the device closest to
                 an enemy ship.
-            </div>
+            </div>,
+        CHARGE: 2
     },
     concussionMissiles: {
         skillName: "Concussion Missiles", skillDescription:
             <div>
                 Attack (<i className="xwi x-lock"/>): Spend 1 <i className="xwi x-charge"/>. After this attack, each
                 ship at range 0-1 of the defender exposes 1 of its damage cards.
-            </div>
+            </div>,
+        ATTACK: 4, RANGE: MISSILE_RANGE.R23, CHARGE: 3
     },
     elusive: {
         skillName: "Elusive", skillDescription:
             <div>
                 While you defend, you may spend 2 <i className="xwi x-charge"/> to reroll 1 defense die.
-            </div>
+            </div>,
+        CHARGE: 2, RECHARGE: 1
     },
     stealthDevice: {
         skillName: "Stealth Device", skillDescription:
             <div>
                 While you defend, if your <i className="xwi x-charge"/> is active, roll 1 additional defense die. After
                 you suffer damage, lose 1 <i className="xwi x-charge"/>.
-            </div>
+            </div>,
+        CHARGE: 1
     },
     valenRudor: {
         skillName: "Valen Rudor", skillDescription:
@@ -324,7 +346,8 @@ export const HinnyUpgrades = Object.freeze({
             <div>
                 Attack (<i className="xwi x-lock"/>): Spend 1 <i className="xwi x-charge"/>. Change 1 <i
                 className="xwi x-hit"/> result to a <i className="xwi x-crit"/> result.
-            </div>
+            </div>,
+        ATTACK: 5, RANGE: MISSILE_RANGE.R1, CHARGE: 1
     },
     bombletGenerator: {
         skillName: "Bomblet Generator", skillDescription:
@@ -335,7 +358,8 @@ export const HinnyUpgrades = Object.freeze({
                 [1 <i className="xwi x-turnright"/>] template, depending on which template drops the device closest to
                 an
                 enemy ship.
-            </div>
+            </div>,
+        CHARGE: 3, RECHARGE: 1
     },
     // todo they depend on focus, but the bomber will almost never have a focus and attack...
     barrageMissiles: {
@@ -344,7 +368,8 @@ export const HinnyUpgrades = Object.freeze({
                 Attack (<i className="xwi x-focus"/>): Spend 1 <i className="xwi x-charge"/>. If the defender is in
                 your <i className="xwi x-bullseyearc"/>, you may spend 1 or more <i className="xwi x-charge"/> to reroll
                 that many attack dice.
-            </div>
+            </div>,
+        ATTACK: 3, RANGE: MISSILE_RANGE.R23, CHARGE: 5
     },
     despoiler: {
         skillName: "Despoiler", skillDescription:

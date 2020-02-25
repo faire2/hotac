@@ -9,7 +9,7 @@ export default function getUpgrades(shipType, playersRank, upgradeSource, isElit
         case UPGRADES.HINNY:
             return getHinnyUpgrades(shipType, playersRank, upgradeRandNum, isElite);
         case UPGRADES.COMMUNITY:
-            return getCommunityUpgrades(shipType, playersRank, upgradeRandNum, isElite);
+            /*return getCommunityUpgrades(shipType, playersRank, upgradeRandNum, isElite);*/
         default:
             console.log("Function getUpgrades didn't recognize upgrades source: " + upgradeSource);
     }
