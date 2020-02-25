@@ -7,8 +7,8 @@ export const AI = Object.freeze({
 );
 
 export const UPGRADES = Object.freeze({
-    HINNY: "Hinny AI",
-    FGA: "FGA version AI",
+    HINNY: "Hinny upgrades",
+    FGA: "FGA version upgrades",
 });
 
 export const ATTACKS = Object.freeze({

@@ -1,15 +1,21 @@
-import React, {useState} from "react";
+import React, {useContext} from "react";
+import {GlobalSquadsValuesContext} from "../../context/Contexts";
 
 export default function UpgradesCard(props) {
+    const globalValues = useContext(GlobalSquadsValuesContext);
+    const isElite = globalValues.isElite[props.squadId];
+    const upgrades = props.upgrades;
 
     // skills is an array with following structure: skill description, initiative, xps, optional object with additional information
     return (
         <div>
-            <div id="changeUpgradeLevelButtton" onClick={() => props.handleSetUpgradeLevel(-1)}>-</div>
-            {props.upgrades.map((skill, i) =>
+            <label>
+                <input type="checkbox" value={isElite} onChange={() => globalValues.handleSetIsElite(props.squadId, !isElite)}/>
+                Is ship elite?
+            </label>
+            {upgrades.map((skill, i) =>
                 <Skill skill={skill} key={i}/>
             )}
-            <div id="changeUpgradeLevelButtton" onClick={() => props.handleSetUpgradeLevel(1)}>+</div>
         </div>
     )
 
@@ -27,7 +33,7 @@ function Skill(props) {
                     {skill[0].skillDescription}
                 </div>
                 <div className="variables d-flex flex-column justify-content-center">
-                    {skill[3].CHARGE > 0 && <Charges charges={skill[3].CHARGE} recharge={skill[3].RECHARGE} />}
+                    {skill[3].CHARGE != null && <Charges charges={skill[3].CHARGE} recharge={skill[3].RECHARGE} />}
                     {skill[3].ATTACK != null && <Attack attack={skill[3].ATTACK} range={skill[3].RANGE} />}
                 </div>
             </div>

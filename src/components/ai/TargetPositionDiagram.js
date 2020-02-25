@@ -183,10 +183,10 @@ export default function TargetPositionDiagram(props) {
                  className="pointer align-top">
                 <rect x="0" y={arc23width + arc4width} width={bullsEyeWidth} height={arc1Width} fill={arc1FillColor}
                       stroke={arc1StrokeColor} id="B1" className={getOpacityClass("B1")}
-                      strokeWidth={strokeWidth} onClick={(e) => handleSetPosition(1, "B", props.stressed, e)}/>
+                      strokeWidth={strokeWidth} onClick={(e) => handleSetPosition(1, "B", positionContext.stressed, e)}/>
                 <rect x="0" y={arc4width} width={bullsEyeWidth} height={arc23width} fill={arc23FillColor}
                       stroke={arc1StrokeColor} id="B3" className={getOpacityClass("B3")}
-                      strokeWidth={strokeWidth} onClick={(e) => handleSetPosition(3, "B", props.stressed, e)}/>
+                      strokeWidth={strokeWidth} onClick={(e) => handleSetPosition(3, "B", positionContext.stressed, e)}/>
                 <rect x="0" y="0" width={bullsEyeWidth} height={arc4width} fill={arc4FillColor}
                       stroke={arc1StrokeColor} strokeWidth={strokeWidth} id="B4"
                       className={getOpacityClass("B4")}

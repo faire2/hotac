@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
 
-import {AI, Ships, Stats, UPGRADES} from "../../data/Ships";
+import {AI, Ships, Stats} from "../../data/Ships";
 import {ShipsVariables} from "./variables/ShipsVariables"
 import {SquadStats} from "./SquadStats";
 import Select from "react-select";
@@ -8,24 +8,20 @@ import {PSN} from "../../data/Maneuvers";
 import SquadActionsCarousel from "./actionsCarousel/SquadActionsCarousel";
 import {TargetPosition} from "./TargetPosition";
 import UpgradesCard from "./UpgradesCard";
-import getUpgrades from "./UpgradesGenerator'";
-import {GlobalAiValuesContext, TargetPositionContext} from "../../context/Contexts";
+import {GlobalSquadsValuesContext, TargetPositionContext} from "../../context/Contexts";
 
 export function Squad(props) {
     const shipType = props.shipType;
-    const globalAiValues = useContext(GlobalAiValuesContext);
+    const globalSquadValues = useContext(GlobalSquadsValuesContext);
+    const upgrades = [...globalSquadValues.upgrades[props.squadId]];
+
+    //console.log("*** SQUAD ***");
 
     /* TARGET POSITION STATE */
     const [targetPosition, setTargetPosition] = useState([PSN.R3FRONT]);
     const [maneuverRandNum, setManeuverRandnum] = useState(1);
     const [aiEngine, setAiEngine] = useState(AI.FGA);
     const [stressed, setStressed] = useState(false);
-
-    /* UPGRADES STATE */
-    const [upgradeLevel, setUpgradeLevel] = useState(0);
-    const [upgradesRandNum, setUpgradesRandNum] = useState(Math.floor(Math.random() * 10) + 1);
-    const [upgradesSource, setUpgradesSource] = useState(UPGRADES.HINNY);
-    const [upgrades, setUpgrades] = useState(getUpgrades(shipType, upgradesRandNum, globalAiValues.playersRank, upgradesSource));
 
     const squadNames = [
         {value: "Alpha", label: "Alpha"},
@@ -37,7 +33,6 @@ export function Squad(props) {
     ];
 
     // number is randomized here to ensure that re-render of SquadManeuvres will be triggered
-    // eslint-disable-next-line no-unused-vars
     function handleSetTargetPosition(position) {
         setManeuverRandnum(Math.floor(Math.random() * 6));
         setTargetPosition(position);
@@ -52,18 +47,6 @@ export function Squad(props) {
         setStressed(false);
         setAiEngine(ai);
     }
-
-    function handleSetUpgradeLevel(value) {
-        if (upgrades.length === 6) {
-            let tUpgradeLevel = upgradeLevel;
-            tUpgradeLevel += value;
-            if (tUpgradeLevel > -1 && tUpgradeLevel < 6) {
-                setUpgradeLevel(tUpgradeLevel)
-            }
-        }
-    }
-
-
 
     return (
         <TargetPositionContext.Provider value={{
@@ -88,12 +71,11 @@ export function Squad(props) {
                 </div>
                 <div className="row">
                     <div className="col-8">
-                        <SquadStats shipType={shipType} iniative={upgrades[upgrades.length - 1][1]}
-                                    xp={upgrades[upgrades.length - 1][2]}/>
+                        <SquadStats shipType={shipType} upgrades={upgrades}/>
                         <ShipsVariables maxHull={Ships[shipType][Stats.hull]} maxShield={Ships[shipType][Stats.shields]}
                                         upgrades={upgrades}/>
                         <SquadActionsCarousel aiEngine={aiEngine} shipType={shipType}/>
-                        <UpgradesCard upgrades={upgrades} handleSetUpgradeLevel={handleSetUpgradeLevel}/>
+                        <UpgradesCard upgrades={upgrades} squadId={props.squadId}/>
                     </div>
                     <div className="col-4">
                         <TargetPosition/>
