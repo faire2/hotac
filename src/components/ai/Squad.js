@@ -13,6 +13,7 @@ import {GlobalSquadsValuesContext, TargetPositionContext} from "../../context/Co
 export function Squad(props) {
     const shipType = props.shipType;
     const globalSquadValues = useContext(GlobalSquadsValuesContext);
+    console.log(globalSquadValues.upgrades);
     const upgrades = [...globalSquadValues.upgrades[props.squadId]];
 
     /* TARGET POSITION STATE */

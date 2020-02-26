@@ -10,6 +10,8 @@ export default function getUpgrades(shipType, playersIni, upgradesSource, isElit
     let shipTypeUpgrades = getShipTypeUpgrades(shipType, upgradesSource);
     let adjustedRandNum = getAdjustedRandomNumber(shipTypeUpgrades.length);
     const upgrades = [...shipTypeUpgrades[adjustedRandNum]];
+    console.log("Upgrades: ");
+    console.log(upgrades);
 
     /* if ship is not elite, it will only get basic upgrade */
     if (isElite !== true) {

@@ -69,18 +69,22 @@ function App() {
     }
 
     function handleSetUpgradesSource(index, upgradesSource) {
-        const tUpgrades = upgrades;
-        tUpgrades.splice(index, 1, upgradesSource);
-        setUpgrades([...tUpgrades]);
+        let tUpgradesSource = [...upgradesSource];
+        tUpgradesSource[index] = upgradesSource;
+        setUpgradesSource(tUpgradesSource);
+
+        let tUpgrades = [...upgrades];
+        tUpgrades[index] = getUpgrades(squadrons[index], playersIni, upgradesSource, isElite[index]);
+        setUpgrades(tUpgrades);
     }
 
-    function handleSetPlayersRank(newRank) {
+    function handleSetPlayersRank(newPlayersInitiative) {
         let tUpgrades = [...upgrades];
         for (let i = 0; i < tUpgrades.length; i++) {
-            tUpgrades[i] = getUpgrades(squadrons[i], newRank, upgradesSource[i], isElite[i]);
+            tUpgrades[i] = getUpgrades(squadrons[i], newPlayersInitiative, upgradesSource[i], isElite[i]);
         }
         setUpgrades(tUpgrades);
-        setPlayersIni(newRank);
+        setPlayersIni(newPlayersInitiative);
     }
 
     function handleSetIsElite(index, value) {
