@@ -15,10 +15,10 @@ import getUpgrades from "./components/ai/upgrades/UpgradesGenerator";
 
 function App() {
     const [squadrons, setSquadrons] = useState([Ships.TIEIN.id]);
-    const [playersRank, setPlayersRank] = useState(5);
+    const [playersIni, setPlayersIni] = useState(5);
     const [upgradesSource, setUpgradesSource] = useState([UPGRADES.HINNY]);
     const [isElite, setIsElite] = useState([false]);
-    const [upgrades, setUpgrades] = useState([getUpgrades(squadrons[0], playersRank, upgradesSource[0], isElite)]);
+    const [upgrades, setUpgrades] = useState([getUpgrades(squadrons[0], playersIni, upgradesSource[0], isElite[0])]);
 
 
     let newSquadShipOptions = [];
@@ -46,7 +46,7 @@ function App() {
         setIsElite(tIsElite);
 
         const tUpgrades = [...upgrades];
-        tUpgrades.push(getUpgrades(e.value, playersRank, tUpgradesSoure[i], isElite[i]));
+        tUpgrades.push(getUpgrades(e.value, playersIni, tUpgradesSoure[i], isElite[i]));
         setUpgrades(tUpgrades);
     }
 
@@ -80,7 +80,7 @@ function App() {
             tUpgrades[i] = getUpgrades(squadrons[i], newRank, upgradesSource[i], isElite[i]);
         }
         setUpgrades(tUpgrades);
-        setPlayersRank(newRank);
+        setPlayersIni(newRank);
     }
 
     function handleSetIsElite(index, value) {
@@ -90,8 +90,8 @@ function App() {
         setIsElite(tIsElite);
 
         const tUpgrades = [...upgrades];
-        const newUpgrades = getUpgrades(squadrons[index], playersRank, upgradesSource[index], value);
-        console.log("upgrades loaded")
+        const newUpgrades = getUpgrades(squadrons[index], playersIni, upgradesSource[index], value);
+        console.log("upgrades loaded");
         tUpgrades.splice(index, 1, newUpgrades);
         setUpgrades(tUpgrades);
     }
@@ -99,7 +99,7 @@ function App() {
     return (
         <div className="App">
             <GlobalSquadsValuesContext.Provider value={{
-                playersRank: playersRank,
+                playersRank: playersIni,
                 upgradesSource: upgradesSource,
                 upgrades: upgrades,
                 isElite: isElite,

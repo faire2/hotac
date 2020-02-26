@@ -2,6 +2,7 @@ import React, {useContext, useState} from "react";
 import Variables from "./Variables";
 import {HinnyUpgrades} from "../../../data/hinny/HinnyUpgrades";
 import {GlobalSquadsValuesContext} from "../../../context/Contexts";
+import {CommunityUpgrades} from "../../../data/fga/CommunityUpgrades";
 
 const ShipsHeader = () => (
     <div>
@@ -27,10 +28,10 @@ export function ShipsVariables(props) {
     let hasExtraShield = false;
 
     for (let upgrade of upgrades) {
-        if (upgrade[0] === HinnyUpgrades.hullUpgrade) {
+        if (upgrade[0] === HinnyUpgrades.hullUpgrade || CommunityUpgrades.hullUpgrade) {
             hasExtraHull = true;
         }
-        if (upgrade[0] === HinnyUpgrades.shieldUpgrade) {
+        if (upgrade[0] === HinnyUpgrades.shieldUpgrade || CommunityUpgrades.shieldUpgrade) {
             hasExtraShield = true;
         }
     }

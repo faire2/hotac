@@ -1,7 +1,7 @@
 import React from "react";
 import {WEAPON_RANGE} from "../hinny/HinnyUpgrades";
 
-export const communityUprades = Object.freeze({
+export const CommunityUpgrades = Object.freeze({
 
     autothrusters: {
         skillName: "Autothrusters", skillDescription:
@@ -402,4 +402,16 @@ export const communityUprades = Object.freeze({
                 <div>You may maintain 2 Target Locks (only 1 per enemy ship). When you acquire a Target Lock, lock onto
                     the two nearest enemy ships.</div>
         },
+    redline:
+        {
+            skillName: "Redline", skillDescription:
+                <div>You may maintain 2 Target Locks. When you acquire a Target Lock, you may acquire a second lock on a
+                    target within range 1 of the original target.</div>
+        },
+    fireControlSystem:
+        {
+            skillName: "Fire Control System", skillDescription:
+                <div>After you perform an attack, acquire a Target Lock on the defender (do not spend this Target
+                    Lock). Next round, treat the enemy you have Target Locked as your target priority.</div>
+        }
 });
