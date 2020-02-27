@@ -4,7 +4,7 @@ import Select from "react-select";
 
 export default function Variables(props) {
     let ship = props.ship;
-
+    const squadId = props.squadId;
 
     const idOptions = [
         {value: 0, label: 0},
@@ -40,13 +40,13 @@ export default function Variables(props) {
             default:
                 console.log("Function handleShipVarChange in Variables didn't recognize variable: " + variable);
         }
-        props.handleShipChange(tShip, props.keyIndex);
+        props.handleShipChange(tShip, props.keyIndex, squadId);
     }
 
     return (
         <div>
             <div className="row">
-                <div className="col-3" >
+                <div className="col-3">
                     <Select options={idOptions} onChange={e => handleShipVarChange(Stats.tokenId, e.value)}
                             value={{label: props.ship.tokenId, value: props.ship.tokenId}}/>
                 </div>
@@ -73,7 +73,8 @@ export default function Variables(props) {
                     </button>
                 </div>
                 <div className="col-1">
-                    <button id="btn-remove_ship" className="btn btn-danger" onClick={() => props.handleRemoveShip(props.keyIndex)}>x
+                    <button id="btn-remove_ship" className="btn btn-danger"
+                            onClick={() => props.handleShipRemoval(props.keyIndex, squadId)}>x
                     </button>
                 </div>
             </div>

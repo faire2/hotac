@@ -10,12 +10,14 @@ import Select from 'react-select';
 
 import {Ships, Stats, UPGRADES} from "./data/Ships";
 import SquadGenerator from "./components/ai/SquadGenerator";
-import {GlobalSquadsValuesContext} from "./context/Contexts";
+import {GlobalSquadsValuesContext, ShipHandlingContext} from "./context/Contexts";
 import getUpgrades from "./components/ai/upgrades/UpgradesGenerator";
+import {HinnyUpgrades} from "./data/hinny/HinnyUpgrades";
+import {CommunityUpgrades} from "./data/fga/CommunityUpgrades";
 
 function App() {
     const [squadrons, setSquadrons] = useState([]);
-    const [playersRank, setPlayersIni] = useState(5);
+    const [playersRank, setPlayersRank] = useState(5);
 
 
     let newSquadShipOptions = [];
@@ -28,22 +30,30 @@ function App() {
         playerRankOptions.push({value: i, label: i});
     }
 
-    function handleNewShipSelection(e) {
+    function handleNewShipSelection(value) {
         const tSquadrons = [...squadrons];
+        const shipType = Ships[value].id;
+        const upgrades = getUpgrades(shipType, playersRank, UPGRADES.FGA, false);
+        const maxShieldAndHull = getMaxHullAndShield(upgrades, shipType);
         let newSquad = {
-            shipType: e.value,
+            shipType: shipType,
             isElite: false,
             upgradesSource: UPGRADES.FGA,
-            upgrades: getUpgrades(e.value, playersRank, UPGRADES.FGA, false)
+            upgrades: upgrades,
+            ships: [{
+                tokenId: 0,
+                hull: maxShieldAndHull.maxHull,
+                shields: maxShieldAndHull.maxShields
+            }]
         };
         tSquadrons.push(newSquad);
         setSquadrons(tSquadrons);
     }
 
-    function handleShipRemoval(index) {
-        const tAiShips = [...squadrons];
-        tAiShips.splice(index, 1);
-        setSquadrons(tAiShips);
+    function handleSquadRemoval(index) {
+        const tSquads = [...squadrons];
+        tSquads.splice(index, 1);
+        setSquadrons(tSquads);
     }
 
     function handleSetUpgradesSource(index, upgradesSource) {
@@ -62,6 +72,7 @@ function App() {
             squad.upgrades = getUpgrades(squad.shipType, newPlayersRank, squad.upgradesSource, squad.isElite)
         }
         setSquadrons(tSquadrons);
+        setPlayersRank(newPlayersRank);
     }
 
     function handleSetIsElite(index, isElite) {
@@ -72,6 +83,30 @@ function App() {
         setSquadrons(tSquadrons);
     }
 
+    /* handlers for state of individual ships in squadron */
+    function handleAddShip(squadId) {
+        let tSquadrons = [...squadrons];
+        const squadron = tSquadrons[squadId];
+        let ships = tSquadrons[squadId].ships;
+        const maxShieldAndHull = getMaxHullAndShield(squadron.upgrades, squadron.shipType);
+        ships.push({tokenId: 0, hull: maxShieldAndHull.maxHull, shields: maxShieldAndHull.maxShields});
+        setSquadrons(tSquadrons);
+    }
+
+    function handleRemoveShip(index, squadId) {
+        let tSquadrons = [...squadrons];
+        let tShips = tSquadrons[squadId];
+        tShips.splice(index, 1);
+        setSquadrons(tSquadrons);
+    }
+
+    function handleShipChange(ship, index, squadId) {
+        let tSquadrons = [...squadrons];
+        let tShips = tSquadrons[squadId];
+        tShips.splice(index, 1, ship);
+        setSquadrons(tSquadrons);
+    }
+
     return (
         <div className="App">
             <GlobalSquadsValuesContext.Provider value={{
@@ -79,16 +114,42 @@ function App() {
                 squadrons: squadrons,
                 handleSetIsElite: handleSetIsElite,
                 handleSetUpgradesSource: handleSetUpgradesSource,
-                handleShipRemoval: handleShipRemoval,
+                handleSquadRemoval: handleSquadRemoval,
             }}>
-                <h3>Select a ship to generate a new squadron:</h3>
-                {/*todo reset select caption after a choice is made, make a default message*/}
-                <Select options={newSquadShipOptions} onChange={e => handleNewShipSelection(e)}/>
-                <Select options={playerRankOptions} onChange={e => handleSetPlayersRank(e.value)}/>
-                <SquadGenerator squadrons={squadrons}/>
+                <ShipHandlingContext.Provider value={{
+                    squadrons: squadrons,
+                    handleAddShip: handleAddShip,
+                    handleShipRemoval: handleRemoveShip,
+                    handleShipChange: handleShipChange
+                }}>
+                    <h3>Select a ship to generate a new squadron:</h3>
+                    {/*todo reset select caption after a choice is made, make a default message*/}
+            <Select options={newSquadShipOptions} onChange={e => handleNewShipSelection(e.value)}/>
+            <Select options={playerRankOptions} onChange={e => handleSetPlayersRank(e.value)}/>
+                    <SquadGenerator squadrons={squadrons}/>
+                </ShipHandlingContext.Provider>
             </GlobalSquadsValuesContext.Provider>
         </div>
     );
+}
+
+function getMaxHullAndShield(upgrades, shipType) {
+    let extraHull = 0;
+    let extraShield = 0;
+
+    for (let upgrade of upgrades) {
+        if (upgrade[0] === HinnyUpgrades.hullUpgrade || upgrade[0] === CommunityUpgrades.hullUpgrade) {
+            extraHull += 1;
+        }
+        if (upgrade[0] === HinnyUpgrades.shieldUpgrade || upgrade[0] === CommunityUpgrades.shieldUpgrade) {
+            extraShield += 1;
+        }
+    }
+
+    const maxHull = Ships[shipType].hull + extraHull;
+    const maxShields = Ships[shipType].shields + extraShield;
+    console.log("get max hull and shield: " + maxHull + ", " + maxShields);
+    return {maxHull: maxHull, maxShields: maxShields}
 }
 
 export default App;

@@ -9,12 +9,11 @@ import SquadActionsCarousel from "./actionsCarousel/SquadActionsCarousel";
 import {TargetPosition} from "./maneuvers/TargetPosition";
 import UpgradesCard from "./upgrades/UpgradesCard";
 import {GlobalSquadsValuesContext, TargetPositionContext} from "../../context/Contexts";
-import {HinnyUpgrades} from "../../data/hinny/HinnyUpgrades";
-import {CommunityUpgrades} from "../../data/fga/CommunityUpgrades";
 
 export function Squad(props) {
-    const shipType = props.ship.shipType;
-    const globalSquadValues = useContext(GlobalSquadsValuesContext);
+    const squad = props.squad;
+    const shipType = props.squad.shipType;
+    const squadId = props.squadId;
 
     /* TARGET POSITION STATE */
     const [targetPosition, setTargetPosition] = useState([PSN.R3FRONT]);
@@ -29,35 +28,6 @@ export function Squad(props) {
         {value: "Epsilon", label: "Epsilon"},
         {value: "Omega", label: "Omega"},
     ];
-
-    const upgrades = props.ship.upgrades;
-    const [maxShieldAndHull, setMaxShieldAndHull] = useState(getMaxHullAndShield(upgrades, shipType));
-
-    console.log("Max shield and hull in squad: ");
-    console.log(maxShieldAndHull);
-    const [ships, setShips] = useState([{
-        tokenId: 0,
-        hull: maxShieldAndHull.maxHull,
-        shields: maxShieldAndHull.maxShields
-    }]);
-
-    function handleAddShip() {
-        const tShipVars = [...ships];
-        tShipVars.push({tokenId: 0, hull: maxShieldAndHull.maxHull, shields: maxShieldAndHull.maxShields});
-        setShips(tShipVars);
-    }
-
-    function handleRemoveShip(index) {
-        const tShips = [...ships];
-        tShips.splice(index, 1);
-        setShips(tShips);
-    }
-
-    function handleShipChange(ship, index) {
-        const tShips = [...ships];
-        tShips.splice(index, 1, ship);
-        setShips(tShips);
-    }
 
     // number is randomized here to ensure that re-render of SquadManeuvres will be triggered
     function handleSetTargetPosition(position) {
@@ -98,12 +68,10 @@ export function Squad(props) {
                 </div>
                 <div className="row">
                     <div className="col-8">
-                        <SquadStats shipType={shipType} upgrades={upgrades}/>
-                        <ShipsVariables ships={ships} handleAddShip={handleAddShip} handleRemoveShip={handleRemoveShip}
-                                        handleShipChange={handleShipChange} maxShieldAndHull={maxShieldAndHull}/>
+                        <SquadStats shipType={shipType} upgrades={squad.upgrades}/>
+                        <ShipsVariables squadId={squadId}/>
                         <SquadActionsCarousel aiEngine={aiEngine} shipType={shipType}/>
-                        <UpgradesCard upgrades={upgrades} squadId={props.squadId} setShips={setShips} ships={ships}
-                                      maxShieldAndHull={maxShieldAndHull} setMaxShieldAndHull={setMaxShieldAndHull} shipType={shipType} getMaxShieldAndHull={getMaxHullAndShield}/>
+                        <UpgradesCard squadId={props.squadId} />
                     </div>
                     <div className="col-4">
                         <TargetPosition/>
@@ -112,23 +80,4 @@ export function Squad(props) {
             </div>
         </TargetPositionContext.Provider>
     )
-}
-
-function getMaxHullAndShield(upgrades, shipType) {
-    let extraHull = 0;
-    let extraShield = 0;
-
-    for (let upgrade of upgrades) {
-        if (upgrade[0] === HinnyUpgrades.hullUpgrade || upgrade[0] === CommunityUpgrades.hullUpgrade) {
-            extraHull += 1;
-        }
-        if (upgrade[0] === HinnyUpgrades.shieldUpgrade || upgrade[0] === CommunityUpgrades.shieldUpgrade) {
-            extraShield += 1;
-        }
-    }
-
-    const maxHull = Ships[shipType].hull + extraHull;
-    const maxShields = Ships[shipType].shields + extraShield;
-    console.log("get max hull and shield: " + maxHull + ", " + maxShields);
-    return {maxHull: maxHull, maxShields: maxShields}
 }

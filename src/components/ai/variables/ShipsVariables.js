@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import Variables from "./Variables";
-import {GlobalSquadsValuesContext} from "../../../context/Contexts";
+import {GlobalSquadsValuesContext, ShipHandlingContext} from "../../../context/Contexts";
 
 const ShipsHeader = () => (
     <div>
@@ -21,7 +21,9 @@ const ShipsHeader = () => (
 );
 
 export function ShipsVariables(props) {
-    const ships = props.ships;
+    const squadId = props.squadId;
+    const shipHandlingContext = useContext(ShipHandlingContext);
+    const ships = shipHandlingContext.squadrons[squadId].ships;
 
     for (let ship of ships) {
         console.log("Ships shields, hull: " + ship.shields + ", " + ship.hull);
@@ -31,7 +33,7 @@ export function ShipsVariables(props) {
         const globalAiValuesContext = useContext(GlobalSquadsValuesContext);
         return (
             <button className="btn btn-danger btn-sm btnRemoveShip"
-                    onClick={() => globalAiValuesContext.handleShipRemoval(props.squadId)}>
+                    onClick={() => globalAiValuesContext.handleSquadRemoval(squadId)}>
                 Remove whole squadron
             </button>
         )
@@ -42,11 +44,14 @@ export function ShipsVariables(props) {
             <ShipsHeader/>
             {
                 ships.map((ship, keyIndex) =>
-                    <Variables key={keyIndex} keyIndex={keyIndex} ship={ship} maxShieldAndHull={props.maxShieldAndHull}
-                               handleShipChange={props.handleShipChange} handleRemoveShip={props.handleRemoveShip}/>)
+                    <Variables key={keyIndex} keyIndex={keyIndex} ship={ship} squadId={squadId}
+                               handleShipChange={shipHandlingContext.handleShipChange} handleShipRemoval={shipHandlingContext.handleShipRemoval}
+                    />)
             }
             <br/>
-            <button className="btn btn-primary btn-sm" onClick={props.handleAddShip}>Add a ship to squadron</button>
+            <button className="btn btn-primary btn-sm" onClick={() => shipHandlingContext.handleAddShip(squadId)}>Add a ship
+                to squadron
+            </button>
             <RemoveSquadButton/>
         </div>
     )
