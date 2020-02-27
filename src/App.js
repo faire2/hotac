@@ -14,11 +14,11 @@ import {GlobalSquadsValuesContext} from "./context/Contexts";
 import getUpgrades from "./components/ai/upgrades/UpgradesGenerator";
 
 function App() {
-    const [squadrons, setSquadrons] = useState([Ships.TIEIN.id]);
+    const [squadrons, setSquadrons] = useState([]);
     const [playersIni, setPlayersIni] = useState(5);
     const [upgradesSource, setUpgradesSource] = useState([UPGRADES.HINNY]);
     const [isElite, setIsElite] = useState([false]);
-    const [upgrades, setUpgrades] = useState([getUpgrades(squadrons[0], playersIni, upgradesSource[0], isElite[0])]);
+    const [upgrades, setUpgrades] = useState([]);
 
 
     let newSquadShipOptions = [];
@@ -71,6 +71,7 @@ function App() {
     function handleSetUpgradesSource(index, upgradesSource) {
         let tUpgradesSource = [...upgradesSource];
         tUpgradesSource[index] = upgradesSource;
+        console.log("Upgrades source updated:" + tUpgradesSource[index]);
         setUpgradesSource(tUpgradesSource);
 
         let tUpgrades = [...upgrades];
@@ -88,7 +89,6 @@ function App() {
     }
 
     function handleSetIsElite(index, value) {
-        console.log("* HANDLE SET IS ELITE *");
         let tIsElite = [...isElite];
         tIsElite.splice(index, 1, value);
         setIsElite(tIsElite);

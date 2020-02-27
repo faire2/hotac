@@ -8,6 +8,7 @@ export const WEAPON_RANGE = Object.freeze(
         R13: "1-3"
     });
 
+/* todo Vader crew originally it uses force, check with Claes what the correct ruling is */
 export const HinnyUpgrades = Object.freeze({
     hullUpgrade: {
         skillName: "Hull Upgrade", skillDescription:
@@ -119,17 +120,14 @@ export const HinnyUpgrades = Object.freeze({
         skillName: "Afterburners: ", skillDescription:
             <div>
                 After you fully execute a speed 3-5 maneuver, perform a <i className="xwi x-boost"/> action to get
-                target in
-                your firing arc or improve attack, even while stressed.
+                target in your firing arc or improve attack, even while stressed.
             </div>
     },
     soontirFel: {
         skillName: "Soontir Fel", skillDescription:
             <div>
                 At the start of the Engagement Phase, it there is an enemy ship in your <i
-                className="xwi x-bullseyearc"/>,
-                gain
-                1 focus token.
+                className="xwi x-bullseyearc"/>, gain 1 focus token.
             </div>
     },
     protonBombs: {
@@ -265,11 +263,9 @@ export const HinnyUpgrades = Object.freeze({
         skillName: "Ion Torpedoes", skillDescription:
             <div>
                 Attack (<i className="xwi x-lock"/>): Spend 1 <i className="xwi x-charge"/>. If this attack hits, spend
-                ! <i
-                className="xwi hit"/> or <i className="xwi x-crit"/> result to cause the defender to suffer 1 <i
+                1 <i className="xwi hit"/> or <i className="xwi x-crit"/> result to cause the defender to suffer 1 <i
                 className="xwi x-hit"/> danage. All remaining <i className="xwi x-hit"/>/<i
-                className="xwi x-crit"/> results
-                inflict ion tokens instead of damage.
+                className="xwi x-crit"/> results inflict ion tokens instead of damage.
             </div>,
         ATTACK: 4, RANGE: WEAPON_RANGE.R23, CHARGE: 2
     },
@@ -397,4 +393,166 @@ export const HinnyUpgrades = Object.freeze({
                 You can perform primary attacks at range 0.
             </div>
     },
+    whisper: {
+        skillName: "Whisper", skillDescription:
+            <div>
+                After you perform an attack that hits, gain 1 evade token.
+            </div>
+    },
+    maulerMithel: {
+        skillName: "Mauler Mithel", skillDescription:
+            <div>
+                While you perform an attack at attack range 1, roll 1 additional attack die.
+            </div>
+    },
+    pureSabaac: {
+        skillName: "Pure Sabaac", skillDescription:
+            <div>
+                While you perform an attack, if you have 1 or fewer damage cards, you may roll 1 additional attack.
+            </div>
+    },
+    intimidation: {
+        skillName: "Intimidation", skillDescription:
+            <div>
+                While an enemy shipt at range 0 defends, it rolls 1 fewer defense die.
+            </div>
+    },
+    marekSteele: {
+        skillName: "Marek Steele", skillDescription:
+            <div>
+                While you perform an attack, if the defender would be dealt a faceup damage card, instead draw 3 damage
+                cards, choose 1, and discard the rest.
+            </div>
+    },
+    fireControlSystem: {
+        skillName: "Fire Control System", skillDescription:
+            <div>
+                While you perform an attack, if you have a lock on the defender, you may reroll 1 attack die. If you do,
+                you cannot spend your lock during this attack.
+            </div>
+    },
+    zertikStrom: {
+        skillName: "Zertik Strom", skillDescription:
+            <div>
+                During the End Phase, you may spend a lock you have on an enemy ship to expose 1 of that ship's damage
+                cards.
+            </div>
+    },
+    ionMissiles: {
+        skillName: "Ion Missiles", skillDescription:
+            <div>
+                Attack (<i className="xwi x-lock"/>): Spend 1 <i className="xwi x-charge"/>. If this attack hits, spend
+                1 <i className="xwi hit"/> or <i className="xwi x-crit"/> result to cause the defender to suffer 1 <i
+                className="xwi x-hit"/> danage. All remaining <i className="xwi x-hit"/>/<i
+                className="xwi x-crit"/> results inflict ion tokens instead of damage.
+            </div>,
+        ATTACK: 3, RANGE: WEAPON_RANGE.R23, CHARGE: 3
+    },
+    heavyLaserCannor: {
+        skillName: "Heavy Laser Cannor", skillDescription:
+            <div>
+                Attack: After the Modify Attack Dice step, change all <i className="xwi x-crit"/> results to <i
+                className="xwi x-hit"/> results.
+            </div>,
+        ATTACK: 4, RANGE: WEAPON_RANGE.R23, BULLSEYE: true
+    },
+    rexlerBrath: {
+        skillName: "Rexler Brath", skillDescription:
+            <div>
+                After you perform an attack that hits, if you are evading, expose 1 of the defender's damage cards.
+            </div>
+    },
+    collisionDetector: {
+        skillName: "Collision Detector", skillDescription:
+            <div>
+                While you boost or barrel roll, you can move through and overlap obstacles. After you move through or
+                overlap an obstacle, you may spend <i className="xwi x-charge"/> to ignore its effects until the end of
+                the round.
+            </div>,
+        CHARGE: 2
+    },
+    echo: {
+        skillName: "Echo", skillDescription:
+            <div>
+                While you roll to decloak, use the (2
+                {(Math.round(Math.random()) === 0 ? <i className="xwi x-bankleft"/> : <i className="xwi x-bankright"/>)}
+                ) template.</div>
+    },
+    advancedSensors: {
+        skillName: "Advanced Sensors", skillDescription:
+            <div>
+                If performing maneuver would cause you to lose your action, perform an action following Action Selection
+                based on your final ship position, ignoring Barell Roll actions.
+            </div>
+    },
+    captainFeroph: {
+        skillName: "Captain Feroph", skillDescription:
+            <div>
+                While you defend, if the attacker does not have any green tokens, you may change 1 of your <i
+                className="xwi focus"/> / blank results to an <i className="xwi x-evade"/> result.
+            </div>
+    },
+    darthVader: {
+        skillName: "Darth Vader", skillDescription:
+            <div>
+                At the start of the Engagement Phase, you may choose 1 ship in your firing arc at range 0-2 and spend
+                1 <i className="xwi charge"/>. If you do, that ship suffers 1 <i className="xwi x-hit"/> damage unless
+                it chooses to remove 1 green token. Target priority: Attack target, if it has a green token, or nearest
+                enemy in your arc.
+            </div>
+    },
+    majorVermeil: {
+        skillName: "Major Vermeil", skillDescription:
+            <div>
+                While you perform an attack, if the defender does not have any green tokens, you may change 1 of your
+                blank results to a <i className="xwi hit"/> result.
+            </div>
+    },
+    perceptiveCopilot: {
+        skillName: "Perceptive Copilot", skillDescription:
+            <div>
+                After you perform a <i className="xwi x-focus"/> action, gain 1 focus token.
+            </div>
+    },
+    electronicBaffle: {
+        skillName: "Electronic Baffle", skillDescription:
+            <div>
+                During the End Phase, you may suffer 1 <i className="xwi x-hit"/> damage to remove 1 red token.
+            </div>
+    },
+    admiralSloane: {
+        skillName: "Admiral Sloane", skillDescription:
+            <div>
+                After another friendly ship at range 0-3 defends, if it is destroyed, the attacker gains 2 stress
+                tokens.
+                While a friendly ship at range 0-3 performs an attack against a stressed ship, it may reroll 1 attack
+                die.
+            </div>
+    },
+    howlRunner: {
+        skillName: "Howl Runner", skillDescription:
+            <div>
+                When a friendly ship at range 0-1 performs a primary attack, that ship may reroll one attack die.
+            </div>
+    },
+    tacticalScrambler: {
+        skillName: "Tactical Scrambler", skillDescription:
+            <div>
+                While you obstruct an enemy ship's attack, the defender rolls 1 additional defense die.
+            </div>
+    },
+    /* some FGA ships only raise initiative on specific threat levels */
+    initiative: {
+        skillName: "Initiative upgrade", skillDescription:
+        <div>Upgrade of ship's initiative.</div>
+    },
+    noUpgrade: {
+        skillName: "No Upgrade", skillDescription:
+        <div>This ship has no upgrades.</div>
+    },
+    shieldRegeneration: {
+        skillName: "Shield Regeneration", skillDescription:
+        <div>At the end of each turn, you recover 1 <i className="xwi x-shield"/>.</div>
+    }
+
 });

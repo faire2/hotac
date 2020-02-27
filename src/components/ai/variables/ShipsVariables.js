@@ -24,26 +24,33 @@ const ShipsHeader = () => (
 
 export function ShipsVariables(props) {
     const upgrades = props.upgrades;
-    let hasExtraHull = false;
-    let hasExtraShield = false;
+    let hasExtraHull = 0;
+    let hasExtraShield = 0;
 
     for (let upgrade of upgrades) {
-        if (upgrade[0] === HinnyUpgrades.hullUpgrade || CommunityUpgrades.hullUpgrade) {
-            hasExtraHull = true;
+        if (upgrade[0] === HinnyUpgrades.hullUpgrade || upgrade[0] ===  CommunityUpgrades.hullUpgrade) {
+            hasExtraHull += 1;
+            console.log(hasExtraHull);
         }
-        if (upgrade[0] === HinnyUpgrades.shieldUpgrade || CommunityUpgrades.shieldUpgrade) {
-            hasExtraShield = true;
+        if (upgrade[0] === HinnyUpgrades.shieldUpgrade || upgrade[0] === CommunityUpgrades.shieldUpgrade) {
+            hasExtraShield += 1;
+            console.log(hasExtraShield);
         }
     }
 
-    const maxHull = hasExtraHull ? props.maxHull + 1 : props.maxHull;
-    const maxShield = hasExtraShield ? props.maxShield +1 : props.maxShield;
+    const maxHull = props.maxHull + hasExtraHull;
+    const maxShield = props.maxShield + hasExtraShield;
+
 
     const [ships, setShips] = useState([{
         tokenId: 0,
         hull: maxHull,
         shields: maxShield
     }]);
+
+    for (let ship of ships) {
+        console.log("Ships shields, hull: " + ship.shields + ", " + ship.hull);
+    }
 
     function handleAddShip() {
         const tShipVars = [...ships];
@@ -78,8 +85,8 @@ export function ShipsVariables(props) {
             <ShipsHeader/>
             {
                 ships.map((ship, keyIndex) =>
-                    <Variables key={keyIndex} keyIndex={keyIndex} ship={ship} maxHull={props.maxHull}
-                               maxShield={props.maxShield}
+                    <Variables key={keyIndex} keyIndex={keyIndex} ship={ship} maxHull={maxHull}
+                               maxShield={maxShield}
                                handleShipChange={handleShipChange} handleRemoveShip={handleRemoveShip}/>)
             }
             <br/>

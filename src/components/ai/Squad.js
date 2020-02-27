@@ -21,7 +21,6 @@ export function Squad(props) {
     const [maneuverRandNum, setManeuverRandnum] = useState(1);
     const [aiEngine, setAiEngine] = useState(AI.FGA);
     const [stressed, setStressed] = useState(false);
-
     const squadNames = [
         {value: "Alpha", label: "Alpha"},
         {value: "Beta", label: "Beta"},

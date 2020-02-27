@@ -4,14 +4,13 @@ import {CommunityUpgrades} from "../../../data/fga/CommunityUpgrades";
 
 export default function getUpgrades(shipType, playersIni, upgradesSource, isElite) {
     console.log("*** GET UPGRADES: ***");
-    console.log("shipType, playersIni, isElite, upgradesSource: ");
-    console.log(shipType + ", " + playersIni + ", " + upgradesSource + ", " + isElite.log);
+    console.log("shipType, playersIni, upgradesSource, isElite: ");
+    console.log(shipType + ", " + playersIni + ", " + upgradesSource + ", " + isElite);
 
-    let shipTypeUpgrades = getShipTypeUpgrades(shipType, upgradesSource);
-    let adjustedRandNum = getAdjustedRandomNumber(shipTypeUpgrades.length);
-    const upgrades = [...shipTypeUpgrades[adjustedRandNum]];
+    const shipTypeUpgrades = getShipTypeUpgrades(shipType, upgradesSource);
+    const adjustedRandNum = getAdjustedRandomNumber(shipTypeUpgrades.length);
+    let upgrades = [...shipTypeUpgrades[adjustedRandNum]];
     console.log("Upgrades: ");
-    console.log(upgrades);
 
     /* if ship is not elite, it will only get basic upgrade */
     if (isElite !== true) {
@@ -19,9 +18,72 @@ export default function getUpgrades(shipType, playersIni, upgradesSource, isElit
     }
 
     /* only upgrades relevant to the players' rank are returned */
-    if (playersIni <= upgrades.length) {
-        upgrades.length = (playersIni === 1 ? 2 : playersIni);
+
+    /* Hinny's ypgrades */
+    if (upgradesSource === UPGRADES.HINNY) {
+        if (isElite !== true) {
+            upgrades.length = 1;
+        } else if (playersIni <= upgrades.length) {
+            upgrades.length = (playersIni === 1 ? 2 : playersIni);
+        }
     }
+
+    /* Community upgrades */
+    if (upgradesSource === UPGRADES.COMMUNITY) {
+        if (isElite !== true || shipType === Ships.TIELN.id) {
+            upgrades.length = 1;
+        } else if (playersIni <= upgrades.length) {
+            upgrades.length = (playersIni < 3 ? 3 : playersIni + 1);
+        }
+    }
+
+    /* FGA upgrades - relatively complex, table can be found above const fgaUpgrades */
+    if (upgradesSource === UPGRADES.FGA) {
+        if (shipType === Ships.TIELN.id) {
+            if (playersIni < 7) {
+                upgrades[0] = [HinnyUpgrades.noUpgrade, 1, 0];
+                upgrades.length = 1;
+            }
+            if (playersIni > 5) {
+                upgrades.unshift([HinnyUpgrades.shieldUpgrade, 1, 0])
+            }
+        } else {
+            if (playersIni < 2) {
+                if (isElite !== true) {
+                    upgrades[0] = [HinnyUpgrades.noUpgrade, 1, 0];
+                    upgrades.length = 1;
+                } else {
+                    upgrades = getFgaUpgrades(2, upgrades);
+                }
+            } else if (playersIni < 5) {
+                if (isElite !== true) {
+                    upgrades = getFgaUpgrades(1, upgrades);
+                } else {
+                    upgrades = getFgaUpgrades(2, upgrades);
+                }
+            } else if (playersIni < 6) {
+                if (isElite !== true) {
+                    upgrades = getFgaUpgrades(1, upgrades);
+                } else {
+                    upgrades = getFgaUpgrades(3, upgrades);
+                }
+            } else {
+                if (isElite !== true) {
+                    upgrades = getFgaUpgrades(2, upgrades);
+                } else {
+                    upgrades = getFgaUpgrades(3, upgrades);
+                }
+            }
+        }
+        if (playersIni > 6) {
+            upgrades.unshift([HinnyUpgrades.shieldRegeneration, 1, 0])
+        }
+    }
+
+    for (const upgrade of upgrades) {
+        console.log(upgrade[0]["skillName"]);
+    }
+
     return upgrades;
 }
 
@@ -34,7 +96,7 @@ function getShipTypeUpgrades(shipType, upgradesSource) {
                     shipTypeUpgrades = hinnyUpgrades.TIEIN;
                     break;
                 case Ships.TIELN.id:
-                    shipTypeUpgrades = hinnyUpgrades.NO_UPGRADE;
+                    shipTypeUpgrades = hinnyUpgrades.TIELN;
                     break;
                 case Ships.TIESA.id:
                     shipTypeUpgrades = hinnyUpgrades.TIESA;
@@ -53,16 +115,56 @@ function getShipTypeUpgrades(shipType, upgradesSource) {
                     shipTypeUpgrades = communityUpgrades.TIEIN;
                     break;
                 case Ships.TIELN.id:
-                    shipTypeUpgrades = communityUpgrades.NO_UPGRADE;
+                    shipTypeUpgrades = communityUpgrades.TIELN;
                     break;
                 case Ships.TIESA.id:
                     shipTypeUpgrades = communityUpgrades.TIESA;
                     break;
-                case Ships.VT49.id:
-                    shipTypeUpgrades = communityUpgrades.VT49;
+                case Ships.TIEADVX.id:
+                    shipTypeUpgrades = communityUpgrades.TIEADVX;
+                    break;
+                case Ships.TIEDEF.id:
+                    shipTypeUpgrades = communityUpgrades.TIEDEF;
+                    break;
+                case Ships.TIEPH.id:
+                    shipTypeUpgrades = communityUpgrades.TIEPH;
+                    break;
+                case Ships.LAMBDA.id:
+                    shipTypeUpgrades = communityUpgrades.LAMBDA;
                     break;
                 default:
                     shipTypeUpgrades = communityUpgrades.NO_UPGRADE;
+                    console.log("CommunityUpgrades didn't recognize shipType: " + shipType);
+            }
+            break;
+        case UPGRADES.FGA:
+            switch (shipType) {
+                case Ships.TIEIN.id:
+                    shipTypeUpgrades = fgaUpgrades.TIEIN;
+                    break;
+                case Ships.TIELN.id:
+                    shipTypeUpgrades = fgaUpgrades.TIELN;
+                    break;
+                case Ships.TIESA.id:
+                    shipTypeUpgrades = fgaUpgrades.TIESA;
+                    break;
+                case Ships.TIEADVX.id:
+                    shipTypeUpgrades = fgaUpgrades.TIEADVX;
+                    break;
+                case Ships.TIEDEF.id:
+                    shipTypeUpgrades = fgaUpgrades.TIEDEF;
+                    break;
+                case Ships.TIEPH.id:
+                    shipTypeUpgrades = fgaUpgrades.TIEPH;
+                    break;
+                case Ships.LAMBDA.id:
+                    shipTypeUpgrades = fgaUpgrades.LAMBDA;
+                    break;
+                case Ships.VT49.id:
+                    shipTypeUpgrades = fgaUpgrades.VT49;
+                    break;
+                default:
+                    shipTypeUpgrades = fgaUpgrades.NO_UPGRADE;
                     console.log("CommunityUpgrades didn't recognize shipType: " + shipType);
             }
             break;
@@ -75,6 +177,12 @@ function getShipTypeUpgrades(shipType, upgradesSource) {
 
 /* Each skill is specified by its description, initiative and XP. */
 const hinnyUpgrades = Object.freeze({
+    TIELN:
+        [
+            [
+                [{skillName: "-", skillDescription: "No upgrade equipped."}, 1, 3]
+            ]
+        ],
     TIEIN:
         [
             [
@@ -197,16 +305,15 @@ const hinnyUpgrades = Object.freeze({
                 [HinnyUpgrades.protonBombs, 4, 29]
             ],
         ],
-    /* Fallback in case that selected ship has no defined upgrades. */
-    NO_UPGRADE:
-        [
-            [
-                [{skillName: "-", skillDescription: "No upgrade equipped."}, 2, 5, {CHARGE: null, ATTACK: null}]
-            ]
-        ]
 });
 
 const communityUpgrades = Object.freeze({
+    TIELN:
+        [
+            [
+                [{skillName: "-", skillDescription: "No upgrade equipped."}, 1, 2]
+            ]
+        ],
     TIEIN:
         [
             [
@@ -309,7 +416,7 @@ const communityUpgrades = Object.freeze({
                 [CommunityUpgrades.kathScarlet, 6, 6],
             ],
         ],
-    TIEADV:
+    TIEADVX:
         [
             [
                 [CommunityUpgrades.advancedTargetingComputer, 1, 4],
@@ -451,6 +558,297 @@ const communityUpgrades = Object.freeze({
         ]
 });
 
+/*
+XPs: 2xp / threat level (TL), which roughly corresponds to the players' initiative
+NES = non-elite SHIP, ES = elite ship, LN = tie-fighter, PC = pilot card, UL = upgrade level
+TL1: LN without PC, NES no PC, ES UL = lowest + 1
+TL2-4: LN without PC, NES UL = lowest, ES UL = lowest + 1
+TL5: LN without PC, NES UL = lowest, ES UL = lowest + 2
+TL6: LN without PC, NES UL = lowest + 1, ES UL = lowest + 2, TIELN have Shield Upgrade
+7+: LN UL = lowest, NES UL = lowest + 1, ES UL = lowest + 2, TIELN have Shield Upgrade and Shield Regenerator
+*/
+//todo no xp for TIE/ln without PC!
+const fgaUpgrades = Object.freeze({
+    TIELN:
+        [
+            [
+                [HinnyUpgrades.nightBeast, 2, 2],
+                [HinnyUpgrades.predator, 2, 2],
+                [HinnyUpgrades.shieldUpgrade, 2, 2],
+                [HinnyUpgrades.hullUpgrade, 2, 2]
+            ],
+            [
+                [HinnyUpgrades.outmaneuver, 3, 2],
+                [HinnyUpgrades.shieldUpgrade, 3, 2],
+                [HinnyUpgrades.hullUpgrade, 3, 2]
+            ],
+        ],
+    TIEIN:
+        [
+            [
+                [HinnyUpgrades.shieldUpgrade, 1, 2],
+                [HinnyUpgrades.hullUpgrade, 1, 2],
+                [HinnyUpgrades.soontirFel, 6, 4],
+                [HinnyUpgrades.outmaneuver, 6, 4],
+                [HinnyUpgrades.whisper, 7, 6],
+                [HinnyUpgrades.stealthDevice, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.shieldUpgrade, 1, 2],
+                [HinnyUpgrades.hullUpgrade, 1, 2],
+                [HinnyUpgrades.shieldUpgrade, 4, 4],
+                [HinnyUpgrades.outmaneuver, 4, 4],
+                [HinnyUpgrades.gideonHask, 7, 6],
+                [HinnyUpgrades.shieldUpgrade, 7, 6],
+                [HinnyUpgrades.hullUpgrade, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.shieldUpgrade, 1, 2],
+                [HinnyUpgrades.stealthDevice, 1, 2],
+                [HinnyUpgrades.soontirFel, 6, 4],
+                [HinnyUpgrades.hullUpgrade, 6, 4],
+                [HinnyUpgrades.scourgeSkutu, 7, 6],
+                [HinnyUpgrades.shieldUpgrade, 7, 6],
+                [HinnyUpgrades.predator, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.shieldUpgrade, 1, 2],
+                [HinnyUpgrades.stealthDevice, 1, 2],
+                [HinnyUpgrades.nightBeast, 5, 4],
+                [HinnyUpgrades.hullUpgrade, 5, 4],
+                [HinnyUpgrades.shieldUpgrade, 5, 4],
+                [HinnyUpgrades.maulerMithel, 7, 6],
+                [HinnyUpgrades.stealthDevice, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.hullUpgrade, 1, 2],
+                [HinnyUpgrades.stealthDevice, 1, 2],
+                [HinnyUpgrades.pureSabaac, 5, 4],
+                [HinnyUpgrades.shieldUpgrade, 5, 4],
+                [HinnyUpgrades.nightBeast, 7, 6],
+                [HinnyUpgrades.shieldUpgrade, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.hullUpgrade, 1, 2],
+                [HinnyUpgrades.stealthDevice, 1, 2],
+                [HinnyUpgrades.captainOicunn, 5, 4],
+                [HinnyUpgrades.shieldUpgrade, 5, 4],
+                [HinnyUpgrades.intimidation, 7, 6],
+                [HinnyUpgrades.shieldUpgrade, 7, 6],
+            ],
+        ],
+    TIEADVX:
+        [
+            [
+                [HinnyUpgrades.concussionMissiles, 1, 2],
+                [HinnyUpgrades.marekSteele, 5, 4],
+                [HinnyUpgrades.outmaneuver, 5, 4],
+                [HinnyUpgrades.shieldUpgrade, 5, 4],
+                [HinnyUpgrades.fireControlSystem, 5, 4],
+                [HinnyUpgrades.soontirFel, 7, 6],
+                [HinnyUpgrades.outmaneuver, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.fireControlSystem, 3, 2],
+                [HinnyUpgrades.zertikStrom, 3, 4],
+                [HinnyUpgrades.outmaneuver, 3, 4],
+                [HinnyUpgrades.shieldUpgrade, 3, 4],
+                [HinnyUpgrades.clusterMissiles, 3, 4],
+                [HinnyUpgrades.maulerMithel, 7, 6],
+                [HinnyUpgrades.hullUpgrade, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.clusterMissiles, 1, 2],
+                [HinnyUpgrades.munitionFailsafe, 1, 2],
+                [HinnyUpgrades.marekSteele, 5, 4],
+                [HinnyUpgrades.hullUpgrade, 5, 4],
+                [HinnyUpgrades.whisper, 7, 6],
+                [HinnyUpgrades.shieldUpgrade, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.fireControlSystem, 3, 2],
+                [HinnyUpgrades.gideonHask, 5, 4],
+                [HinnyUpgrades.shieldUpgrade, 5, 4],
+                [HinnyUpgrades.clusterMissiles, 5, 4],
+                [HinnyUpgrades.hullUpgrade, 7, 6],
+                [HinnyUpgrades.outmaneuver, 7, 6],
+                [HinnyUpgrades.predator, 7, 6],
+            ],
+        ],
+    TIESA:
+        [
+            [
+                [HinnyUpgrades.protonTorpedoes, 1, 2],
+                [HinnyUpgrades.clusterMissiles, 1, 2],
+                [HinnyUpgrades.shieldUpgrade, 1, 2],
+                [HinnyUpgrades.captainJonus, 4, 4],
+                [HinnyUpgrades.clusterMissiles, 4, 4],
+                [HinnyUpgrades.shieldUpgrade, 4, 4],
+                [HinnyUpgrades.munitionFailsafe, 4, 4],
+                [HinnyUpgrades.maulerMithel, 7, 6],
+                [HinnyUpgrades.shieldUpgrade, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.advancedProtonTorpedoes, 1, 2],
+                [HinnyUpgrades.concussionMissiles, 1, 2],
+                [HinnyUpgrades.shieldUpgrade, 1, 2],
+                [HinnyUpgrades.gideonHask, 5, 4],
+                [HinnyUpgrades.shieldUpgrade, 5, 4],
+                [HinnyUpgrades.shieldUpgrade, 5, 4],
+                [HinnyUpgrades.predator, 7, 6],
+                [HinnyUpgrades.shieldUpgrade, 7, 6],
+                [HinnyUpgrades.hullUpgrade, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.protonTorpedoes, 1, 2],
+                [HinnyUpgrades.ionMissiles, 1, 2],
+                [HinnyUpgrades.shieldUpgrade, 1, 2],
+                [HinnyUpgrades.majorRhymer, 4, 4],
+                [HinnyUpgrades.intimidation, 4, 4],
+                [HinnyUpgrades.shieldUpgrade, 4, 4],
+                [HinnyUpgrades.hullUpgrade, 4, 4],
+                [HinnyUpgrades.shieldUpgrade, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.protonTorpedoes, 1, 2],
+                [HinnyUpgrades.concussionMissiles, 1, 2],
+                [HinnyUpgrades.shieldUpgrade, 1, 2],
+                [HinnyUpgrades.whisper, 5, 4],
+                [HinnyUpgrades.shieldUpgrade, 5, 4],
+                [HinnyUpgrades.shieldUpgrade, 5, 4],
+                [HinnyUpgrades.soontirFel, 7, 6],
+                [HinnyUpgrades.hullUpgrade, 7, 6],
+            ],
+        ],
+    TIEDEF:
+        [
+            [
+                [HinnyUpgrades.heavyLaserCannor, 1, 2],
+                [HinnyUpgrades.rexlerBrath, 7, 4],
+                [HinnyUpgrades.captainOicunn, 7, 6],
+                [HinnyUpgrades.fireControlSystem, 7, 6],
+                [HinnyUpgrades.concussionMissiles, 7, 6],
+                [HinnyUpgrades.munitionFailsafe, 7, 6],
+                [HinnyUpgrades.stealthDevice, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.fireControlSystem, 3, 2],
+                [HinnyUpgrades.nightBeast, 7, 4],
+                [HinnyUpgrades.maulerMithel, 7, 6],
+                [HinnyUpgrades.clusterMissiles, 7, 6],
+                [HinnyUpgrades.munitionFailsafe, 7, 6],
+                [HinnyUpgrades.stealthDevice, 7, 6],
+                [HinnyUpgrades.hullUpgrade, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.concussionMissiles, 1, 2],
+                [HinnyUpgrades.gideonHask, 7, 4],
+                [HinnyUpgrades.fireControlSystem, 7, 6],
+                [HinnyUpgrades.hullUpgrade, 7, 6],
+                [HinnyUpgrades.shieldUpgrade, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.clusterMissiles, 1, 2],
+                [HinnyUpgrades.pureSabaac, 6, 4],
+                [HinnyUpgrades.predator, 6, 4],
+                [HinnyUpgrades.fireControlSystem, 7, 6],
+                [HinnyUpgrades.shieldUpgrade, 7, 6],
+                [HinnyUpgrades.stealthDevice, 7, 6],
+            ],
+        ],
+    TIEPH:
+        [
+            [
+                [HinnyUpgrades.collisionDetector, 1, 2],
+                [HinnyUpgrades.echo, 4, 4],
+                [HinnyUpgrades.outmaneuver, 4, 4],
+                [HinnyUpgrades.stealthDevice, 4, 4],
+                [HinnyUpgrades.shieldUpgrade, 4, 4],
+                [HinnyUpgrades.pureSabaac, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.advancedSensors, 1, 2],
+                [HinnyUpgrades.whisper, 5, 4],
+                [HinnyUpgrades.juke, 5, 4],
+                [HinnyUpgrades.hullUpgrade, 5, 4],
+                [HinnyUpgrades.rexlerBrath, 7, 6],
+                [HinnyUpgrades.stealthDevice, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.advancedSensors, 1, 2],
+                [HinnyUpgrades.captainOicunn, 5, 4],
+                [HinnyUpgrades.intimidation, 5, 4],
+                [HinnyUpgrades.hullUpgrade, 5, 4],
+                [HinnyUpgrades.maulerMithel, 7, 6],
+                [HinnyUpgrades.shieldUpgrade, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.initiative, 4, 2],
+                [HinnyUpgrades.captainFeroph, 4, 4],
+                [HinnyUpgrades.darthVader, 4, 4],
+                [HinnyUpgrades.collisionDetector, 4, 4],
+                [HinnyUpgrades.juke, 4, 4],
+                [HinnyUpgrades.majorRhymer, 7, 6],
+                [HinnyUpgrades.hullUpgrade, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.fireControlSystem, 1, 2],
+                [HinnyUpgrades.echo, 4, 4],
+                [HinnyUpgrades.stealthDevice, 4, 4],
+                [HinnyUpgrades.perceptiveCopilot, 4, 4],
+                [HinnyUpgrades.captainFeroph, 7, 6],
+                [HinnyUpgrades.hullUpgrade, 7, 6],
+            ],
+            [
+                [HinnyUpgrades.initiative, 4, 2],
+                [HinnyUpgrades.whisper, 5, 4],
+                [HinnyUpgrades.fireControlSystem, 5, 4],
+                [HinnyUpgrades.juke, 5, 4],
+                [HinnyUpgrades.shieldUpgrade, 5, 4],
+                [HinnyUpgrades.shieldUpgrade, 5, 4],
+                [HinnyUpgrades.gideonHask, 7, 6],
+                [HinnyUpgrades.stealthDevice, 7, 6],
+            ],
+        ],
+    LAMBDA:
+        [
+            [
+                [HinnyUpgrades.heavyLaserCannor, 1, 2],
+                [HinnyUpgrades.electronicBaffle, 1, 2],
+                [HinnyUpgrades.captainOicunn, 4, 4],
+                [HinnyUpgrades.admiralSloane, 4, 4],
+                [HinnyUpgrades.hullUpgrade, 4, 4],
+            ],
+            [
+                [HinnyUpgrades.perceptiveCopilot, 1, 2],
+                [HinnyUpgrades.howlRunner, 4, 4],
+                [HinnyUpgrades.heavyLaserCannor, 4, 4],
+                [HinnyUpgrades.hullUpgrade, 4, 4],
+            ],
+        ],
+    VT49:
+        [
+            [
+                [HinnyUpgrades.veteranTurretGunner, 1, 2],
+                [HinnyUpgrades.advancedProtonTorpedoes, 1, 2],
+                [HinnyUpgrades.captainOicunn, 3, 4],
+                [HinnyUpgrades.admiralSloane, 3, 4],
+                [HinnyUpgrades.perceptiveCopilot, 3, 4],
+                [HinnyUpgrades.tacticalScrambler, 3, 4],
+                [HinnyUpgrades.ruthless, 3, 4],
+                [HinnyUpgrades.whisper, 3, 4],
+            ],
+            [
+                [HinnyUpgrades.captainOicunn, 3, 2],
+                [HinnyUpgrades.veteranTurretGunner, 3, 2],
+                [HinnyUpgrades.hullUpgrade, 5, 4],
+                [HinnyUpgrades.howlRunner, 5, 4],
+                [HinnyUpgrades.protonTorpedoes, 5, 4],
+                [HinnyUpgrades.munitionFailsafe, 5, 4],
+                [HinnyUpgrades.admiralSloane, 5, 4],
+            ],
+        ]
+});
 
 //todo use or remove
 /*const skillVars = Object.freeze(
@@ -474,4 +872,22 @@ export function getAdjustedRandomNumber(upgradesLength) {
         adjustedRandNum = 0
     }
     return adjustedRandNum;
+}
+
+function getFgaUpgrades(xpLevel, upgrades) {
+    if (xpLevel === 1) {
+        // eslint-disable-next-line no-unused-vars
+        for (const upgrade of upgrades) {
+            return upgrades.filter(upgrade => upgrade[2] < 4)
+        }
+    } else if (xpLevel === 2) {
+        // eslint-disable-next-line no-unused-vars
+        for (const upgrade of upgrades) {
+            return upgrades.filter(upgrade => upgrade[2] < 6)
+        }
+    } else if (xpLevel === 3) {
+        return upgrades
+    } else {
+        console.log("Function getFgaUpgrades received unacceptable parameter xpLevel: " + xpLevel)
+    }
 }

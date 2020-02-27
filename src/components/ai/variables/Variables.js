@@ -4,6 +4,9 @@ import Select from "react-select";
 
 export default function Variables(props) {
     let ship = props.ship;
+    console.log("Max shield and hull");
+    console.log(props.maxShield);
+    console.log(props.maxHull);
 
     const idOptions = [
         {value: 0, label: 0},
@@ -51,23 +54,23 @@ export default function Variables(props) {
                 </div>
                 <div className="col-4">
                     <button className="btn btn-primary btn-increment"
-                            onClick={e => handleShipVarChange(Stats.shields, ship.shields - 1)}
+                            onClick={() => handleShipVarChange(Stats.shields, ship.shields - 1)}
                             size="sm"> -
                     </button>
                     <span className="value"> {ship.shields} </span>
                     <button className="btn btn-primary btn-increment"
-                            onClick={e => handleShipVarChange(Stats.shields, ship.shields + 1)}
+                            onClick={() => handleShipVarChange(Stats.shields, ship.shields + 1)}
                             size="sm"> +
                     </button>
                 </div>
                 <div className="col-4 ">
                     <button className="btn btn-primary btn-increment"
-                            onClick={e => handleShipVarChange(Stats.hull, ship.hull - 1)}
+                            onClick={() => handleShipVarChange(Stats.hull, ship.hull - 1)}
                             size="sm"> -
                     </button>
                     <span className="value">     {ship.hull} </span>
                     <button className="btn btn-primary btn-increment"
-                            onClick={e => handleShipVarChange(Stats.hull, ship.hull + 1)}
+                            onClick={() => handleShipVarChange(Stats.hull, ship.hull + 1)}
                             size="sm"> +
                     </button>
                 </div>
