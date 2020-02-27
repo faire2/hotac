@@ -2,10 +2,10 @@ import {Ships, UPGRADES} from "../../../data/Ships";
 import {HinnyUpgrades} from "../../../data/hinny/HinnyUpgrades";
 import {CommunityUpgrades} from "../../../data/fga/CommunityUpgrades";
 
-export default function getUpgrades(shipType, playersIni, upgradesSource, isElite) {
+export default function getUpgrades(shipType, playersRank, upgradesSource, isElite) {
     console.log("*** GET UPGRADES: ***");
     console.log("shipType, playersIni, upgradesSource, isElite: ");
-    console.log(shipType + ", " + playersIni + ", " + upgradesSource + ", " + isElite);
+    console.log(shipType + ", " + playersRank + ", " + upgradesSource + ", " + isElite);
 
     const shipTypeUpgrades = getShipTypeUpgrades(shipType, upgradesSource);
     const adjustedRandNum = getAdjustedRandomNumber(shipTypeUpgrades.length);
@@ -23,8 +23,8 @@ export default function getUpgrades(shipType, playersIni, upgradesSource, isElit
     if (upgradesSource === UPGRADES.HINNY) {
         if (isElite !== true) {
             upgrades.length = 1;
-        } else if (playersIni <= upgrades.length) {
-            upgrades.length = (playersIni === 1 ? 2 : playersIni);
+        } else if (playersRank <= upgrades.length) {
+            upgrades.length = (playersRank === 1 ? 2 : playersRank);
         }
     }
 
@@ -32,36 +32,36 @@ export default function getUpgrades(shipType, playersIni, upgradesSource, isElit
     if (upgradesSource === UPGRADES.COMMUNITY) {
         if (isElite !== true || shipType === Ships.TIELN.id) {
             upgrades.length = 1;
-        } else if (playersIni <= upgrades.length) {
-            upgrades.length = (playersIni < 3 ? 3 : playersIni + 1);
+        } else if (playersRank <= upgrades.length) {
+            upgrades.length = (playersRank < 3 ? 3 : playersRank + 1);
         }
     }
 
     /* FGA upgrades - relatively complex, table can be found above const fgaUpgrades */
     if (upgradesSource === UPGRADES.FGA) {
         if (shipType === Ships.TIELN.id) {
-            if (playersIni < 7) {
+            if (playersRank < 7) {
                 upgrades[0] = [HinnyUpgrades.noUpgrade, 1, 0];
                 upgrades.length = 1;
             }
-            if (playersIni > 5) {
+            if (playersRank > 5) {
                 upgrades.unshift([HinnyUpgrades.shieldUpgrade, 1, 0])
             }
         } else {
-            if (playersIni < 2) {
+            if (playersRank < 2) {
                 if (isElite !== true) {
                     upgrades[0] = [HinnyUpgrades.noUpgrade, 1, 0];
                     upgrades.length = 1;
                 } else {
                     upgrades = getFgaUpgrades(2, upgrades);
                 }
-            } else if (playersIni < 5) {
+            } else if (playersRank < 5) {
                 if (isElite !== true) {
                     upgrades = getFgaUpgrades(1, upgrades);
                 } else {
                     upgrades = getFgaUpgrades(2, upgrades);
                 }
-            } else if (playersIni < 6) {
+            } else if (playersRank < 6) {
                 if (isElite !== true) {
                     upgrades = getFgaUpgrades(1, upgrades);
                 } else {
@@ -75,7 +75,7 @@ export default function getUpgrades(shipType, playersIni, upgradesSource, isElit
                 }
             }
         }
-        if (playersIni > 6) {
+        if (playersRank > 6) {
             upgrades.unshift([HinnyUpgrades.shieldRegeneration, 1, 0])
         }
     }

@@ -15,10 +15,7 @@ import getUpgrades from "./components/ai/upgrades/UpgradesGenerator";
 
 function App() {
     const [squadrons, setSquadrons] = useState([]);
-    const [playersIni, setPlayersIni] = useState(5);
-    const [upgradesSource, setUpgradesSource] = useState([UPGRADES.HINNY]);
-    const [isElite, setIsElite] = useState([false]);
-    const [upgrades, setUpgrades] = useState([]);
+    const [playersRank, setPlayersIni] = useState(5);
 
 
     let newSquadShipOptions = [];
@@ -33,80 +30,53 @@ function App() {
 
     function handleNewShipSelection(e) {
         const tSquadrons = [...squadrons];
-        tSquadrons.push(e.value);
+        let newSquad = {
+            shipType: e.value,
+            isElite: false,
+            upgradesSource: UPGRADES.FGA,
+            upgrades: getUpgrades(e.value, playersRank, UPGRADES.FGA, false)
+        };
+        tSquadrons.push(newSquad);
         setSquadrons(tSquadrons);
-
-        const tUpgradesSoure = [...upgradesSource];
-        tUpgradesSoure.push(UPGRADES.HINNY);
-        const i = tUpgradesSoure.length - 1;
-        setUpgradesSource(tUpgradesSoure);
-
-        const tIsElite = [...isElite];
-        tIsElite.push(false);
-        setIsElite(tIsElite);
-
-        const tUpgrades = [...upgrades];
-        tUpgrades.push(getUpgrades(e.value, playersIni, tUpgradesSoure[i], isElite[i]));
-        setUpgrades(tUpgrades);
     }
 
     function handleShipRemoval(index) {
         const tAiShips = [...squadrons];
         tAiShips.splice(index, 1);
         setSquadrons(tAiShips);
-
-        const tUpgradesSoure = [...upgradesSource];
-        tUpgradesSoure.splice(index, 1);
-        setUpgradesSource(tUpgradesSoure);
-
-        const tUpgrades = [...upgrades];
-        tUpgrades.splice(index, 1);
-        setUpgrades(tUpgrades);
-
-        const tIsElite = [...isElite];
-        tIsElite.splice(index, 1);
-        setIsElite(tIsElite);
     }
 
     function handleSetUpgradesSource(index, upgradesSource) {
-        let tUpgradesSource = [...upgradesSource];
-        tUpgradesSource[index] = upgradesSource;
-        console.log("Upgrades source updated:" + tUpgradesSource[index]);
-        setUpgradesSource(tUpgradesSource);
-
-        let tUpgrades = [...upgrades];
-        tUpgrades[index] = getUpgrades(squadrons[index], playersIni, upgradesSource, isElite[index]);
-        setUpgrades(tUpgrades);
+        console.log("*** Setting upgrades source... ***");
+        let tSquadrons = [...squadrons];
+        const squadron = tSquadrons[index];
+        squadron.upgradesSource = upgradesSource;
+        console.log(squadron);
+        squadron.upgrades = getUpgrades(squadron.shipType, playersRank, upgradesSource, squadron.isElite);
+        setSquadrons(tSquadrons);
     }
 
-    function handleSetPlayersRank(newPlayersInitiative) {
-        let tUpgrades = [...upgrades];
-        for (let i = 0; i < tUpgrades.length; i++) {
-            tUpgrades[i] = getUpgrades(squadrons[i], newPlayersInitiative, upgradesSource[i], isElite[i]);
+    function handleSetPlayersRank(newPlayersRank) {
+        let tSquadrons = [...squadrons];
+        for (let squad of tSquadrons) {
+            squad.upgrades = getUpgrades(squad.shipType, newPlayersRank, squad.upgradesSource, squad.isElite)
         }
-        setUpgrades(tUpgrades);
-        setPlayersIni(newPlayersInitiative);
+        setSquadrons(tSquadrons);
     }
 
-    function handleSetIsElite(index, value) {
-        let tIsElite = [...isElite];
-        tIsElite.splice(index, 1, value);
-        setIsElite(tIsElite);
-
-        const tUpgrades = [...upgrades];
-        const newUpgrades = getUpgrades(squadrons[index], playersIni, upgradesSource[index], value);
-        console.log("upgrades loaded");
-        tUpgrades.splice(index, 1, newUpgrades);
-        setUpgrades(tUpgrades);
+    function handleSetIsElite(index, isElite) {
+        let tSquadrons = [...squadrons];
+        const squadron = tSquadrons[index];
+        squadron.isElite = isElite;
+        squadron.upgrades = getUpgrades(squadron.shipType, playersRank, squadron.upgradesSource, isElite);
+        setSquadrons(tSquadrons);
     }
 
     return (
         <div className="App">
             <GlobalSquadsValuesContext.Provider value={{
-                playersRank: playersIni,
-                upgradesSource: upgradesSource,
-                upgrades: upgrades,
-                isElite: isElite,
+                playersRank: playersRank,
+                squadrons: squadrons,
                 handleSetIsElite: handleSetIsElite,
                 handleSetUpgradesSource: handleSetUpgradesSource,
                 handleShipRemoval: handleShipRemoval,

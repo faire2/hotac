@@ -3,21 +3,27 @@ import {GlobalSquadsValuesContext} from "../../../context/Contexts";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import {UPGRADES} from "../../../data/Ships";
+import getUpgrades from "./UpgradesGenerator";
 
 export default function UpgradesCard(props) {
     const globalValues = useContext(GlobalSquadsValuesContext);
     const squadId = props.squadId;
-    const isElite = globalValues.isElite[squadId];
-    const upgrades = props.upgrades;
+    const squadron = globalValues.squadrons[squadId];
+    const isElite = squadron.isElite;
+    const upgrades = squadron.upgrades;
+
+    function handleChangeElite(isElite) {
+        globalValues.handleSetIsElite(squadId, !isElite)
+    }
 
     // skills is an array with following structure: skill description, initiative, xps, optional object with additional information
     return (
         <div>
             <label>
                 <input type="checkbox" value={isElite}
-                       onChange={() => globalValues.handleSetIsElite(squadId, !isElite)}/>
+                       onChange={() => handleChangeElite()}/>
                 Is ship elite?
-                <ToggleButtonGroup type="radio" name="radio" value={globalValues.upgradesSource[squadId]}
+                <ToggleButtonGroup type="radio" name="radio" value={squadron.upgradesSource}
                                    onChange={e => globalValues.handleSetUpgradesSource(squadId, e)}>
                     <ToggleButton value={UPGRADES.COMMUNITY}>{UPGRADES.COMMUNITY}</ToggleButton>
                     <ToggleButton value={UPGRADES.HINNY}>{UPGRADES.HINNY}</ToggleButton>

@@ -4,9 +4,7 @@ import Select from "react-select";
 
 export default function Variables(props) {
     let ship = props.ship;
-    console.log("Max shield and hull");
-    console.log(props.maxShield);
-    console.log(props.maxHull);
+
 
     const idOptions = [
         {value: 0, label: 0},
@@ -27,12 +25,12 @@ export default function Variables(props) {
 
         switch (variable) {
             case Stats.shields:
-                if (value >= 0 && value <= props.maxShield) {
+                if (value >= 0 && value <= props.maxShieldAndHull.maxShields) {
                     tShip.shields = value;
                 }
                 break;
             case Stats.hull:
-                if (value >= 0 && value <= props.maxHull) {
+                if (value >= 0 && value <= props.maxShieldAndHull.maxHull) {
                     tShip.hull = value;
                 }
                 break;
