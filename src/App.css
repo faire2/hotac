@@ -63,6 +63,10 @@ h3 {
   font-size: 50%;
 }
 
+.columns2 {
+  column-count: 2;
+}
+
 /*************/
 /* VARIABLES */
 /*************/
@@ -175,11 +179,9 @@ ul {
 }
 
 .content {
-  width: 80%;
 }
 
 .variables {
-  width: 20%;
   font-size: 28px;
   padding-left: 10px;
   padding-bottom: 10px;

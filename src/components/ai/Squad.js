@@ -71,10 +71,14 @@ export function Squad(props) {
                         <SquadStats shipType={shipType} upgrades={squad.upgrades}/>
                         <ShipsVariables squadId={squadId}/>
                         <SquadActionsCarousel aiEngine={aiEngine} shipType={shipType}/>
-                        <UpgradesCard squadId={props.squadId} />
                     </div>
                     <div className="col-4">
                         <TargetPosition />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-12">
+                        <UpgradesCard squadId={props.squadId} />
                     </div>
                 </div>
             </div>
