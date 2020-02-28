@@ -82,7 +82,7 @@ h3 {
 .carousel {
   position: relative;
   vertical-align: middle;
-  height: 300px;
+  max-height: 300px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -143,6 +143,10 @@ ul {
 /**************************/
 /* TARGET POSITION PICKER */
 /**************************/
+
+#svg_container {
+  padding-top: 5px;
+}
 
 .segmentOpacity {
   opacity: 1;

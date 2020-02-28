@@ -35,6 +35,7 @@ export default function SquadActionsCarousel(props) {
     return (
         <div>
             {headline[currentSlideIndex]}
+            <div className="carousel">
             <div id="carousel-indicators-container" className="align-middle">
                 <ul>
                     {content.map((item, index) => {
@@ -43,7 +44,6 @@ export default function SquadActionsCarousel(props) {
                     })}
                 </ul>
             </div>
-            <div className="carousel">
 
                 {content[currentSlideIndex]}
                 <Arrow direction={DIRECTIONS.LEFT} handleArrowClick={() => handleArrowClick(DIRECTIONS.LEFT)}

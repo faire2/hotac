@@ -74,7 +74,7 @@ export function Squad(props) {
                         <UpgradesCard squadId={props.squadId} />
                     </div>
                     <div className="col-4">
-                        <TargetPosition/>
+                        <TargetPosition />
                     </div>
                 </div>
             </div>

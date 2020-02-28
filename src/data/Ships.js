@@ -1,8 +1,8 @@
 import React from "react";
 
 export const AI = Object.freeze({
-    HINNY: "Hinny AI",
-    FGA: "FGA version AI",
+    HINNY: "Hinny's",
+    FGA: "FGA",
     }
 );
 
