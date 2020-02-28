@@ -9,7 +9,7 @@ export default function SquadGenerator(props) {
             {props.squadrons.map(function (squad) {
                 squadId = i;
                 i++;
-                return <div key={i} className="col-l-3 col-m-4">
+                return <div key={i} className="col-l-3 col-m-4 pl-5">
                     <Squad squad={squad} squadId={squadId} />
                 </div>;
             })

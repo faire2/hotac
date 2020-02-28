@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useState} from "react";
 
 import {AI, Ships, Stats} from "../../data/Ships";
 import {ShipsVariables} from "./variables/ShipsVariables"
@@ -8,7 +8,7 @@ import {PSN} from "../../data/Maneuvers";
 import SquadActionsCarousel from "./actionsCarousel/SquadActionsCarousel";
 import {TargetPosition} from "./maneuvers/TargetPosition";
 import UpgradesCard from "./upgrades/UpgradesCard";
-import {GlobalSquadsValuesContext, TargetPositionContext} from "../../context/Contexts";
+import {TargetPositionContext} from "../../context/Contexts";
 
 export function Squad(props) {
     const squad = props.squad;
@@ -60,19 +60,13 @@ export function Squad(props) {
                 <div className="row">
                     <div className="col-8">
                         <h3>Ship type: {Ships[shipType][Stats.name]}</h3>
-                    </div>
-                    <div className="col-4">
-                        <Select options={squadNames}
-                                defaultValue={{value: "Squadron designation", label: "Squadron designation"}}/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-8">
                         <SquadStats shipType={shipType} upgrades={squad.upgrades}/>
                         <ShipsVariables squadId={squadId}/>
                         <SquadActionsCarousel aiEngine={aiEngine} shipType={shipType}/>
                     </div>
                     <div className="col-4">
+                        <Select options={squadNames}
+                                defaultValue={{value: "Squadron designation", label: "Squadron designation"}}/>
                         <TargetPosition />
                     </div>
                 </div>

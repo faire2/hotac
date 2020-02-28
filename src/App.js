@@ -5,19 +5,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './fonts/xwing-miniatures.css';
 import './fonts/xwing-miniatures.ttf';
 import './fonts/xwing-miniatures-ships.ttf'
+
 import Select from 'react-select';
-
-
 import {Ships, Stats, UPGRADES} from "./data/Ships";
 import SquadGenerator from "./components/ai/SquadGenerator";
 import {GlobalSquadsValuesContext, ShipHandlingContext} from "./context/Contexts";
 import getUpgrades from "./components/ai/upgrades/UpgradesGenerator";
 import {HinnyUpgrades} from "./data/hinny/HinnyUpgrades";
 import {CommunityUpgrades} from "./data/fga/CommunityUpgrades";
+import ToggleButton from "react-bootstrap/ToggleButton";
+import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 
 function App() {
     const [squadrons, setSquadrons] = useState([]);
-    const [playersRank, setPlayersRank] = useState(5);
+    const [playersRank, setPlayersRank] = useState(2);
 
 
     let newSquadShipOptions = [];
@@ -27,7 +28,7 @@ function App() {
 
     let playerRankOptions = [];
     for (let i = 1; i < 8; i++) {
-        playerRankOptions.push({value: i, label: i});
+        playerRankOptions.push(i);
     }
 
     function handleNewShipSelection(value) {
@@ -137,10 +138,19 @@ function App() {
                     handleShipRemoval: handleRemoveShip,
                     handleShipChange: handleShipChange
                 }}>
-                    <h3>Select a ship to generate a new squadron:</h3>
-                    {/*todo reset select caption after a choice is made, make a default message*/}
-                    <Select options={newSquadShipOptions} onChange={e => handleNewShipSelection(e.value)}/>
-                    <Select options={playerRankOptions} onChange={e => handleSetPlayersRank(e.value)}/>
+                    <div className="row menu d-flex align-items-center">
+                        <div className="col-2"><h3>New squadron:</h3></div>
+                        <div className="col-5 d-inline-block blackFontColor">
+                            <Select options={newSquadShipOptions}
+                                    onChange={e => handleNewShipSelection(e.value)}/>
+                        </div>
+                        <div className="col-2">Set players' rank:</div>
+                        <ToggleButtonGroup type="radio" name="radio" value={playersRank}
+                                           onChange={e => handleSetPlayersRank(e)}>
+                            {playerRankOptions.map((number) => <ToggleButton value={number}>{number}</ToggleButton> )}
+                        </ToggleButtonGroup>
+                    </div>
+
                     <SquadGenerator squadrons={squadrons}/>
                 </ShipHandlingContext.Provider>
             </GlobalSquadsValuesContext.Provider>

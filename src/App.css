@@ -23,8 +23,25 @@ h3 {
   text-align: center;
 }
 
+.menu {
+  background-color: #007bff;
+  padding-left: 10px;
+  color: white;
+  height: 50px;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 2;
+}
+
 .red {
   color: crimson;
+}
+
+.backgroundBlue {
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
 }
 
 .shipStats {
