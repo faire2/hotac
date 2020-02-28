@@ -11,16 +11,12 @@ export default function UpgradesCard(props) {
     const isElite = squad.isElite;
     const upgrades = squad.upgrades;
 
-    function handleChangeElite(isElite) {
-        globalValues.handleSetIsElite(squadId, !isElite)
-    }
-
     // skills is an array with following structure: skill description, initiative, xps, optional object with additional information
     return (
         <div>
             <label>
                 <input type="checkbox" value={isElite}
-                       onChange={() => handleChangeElite()}/>
+                       onChange={() => globalValues.handleSetIsElite(squadId, !isElite)}/>
                 Is ship elite?
                 <ToggleButtonGroup type="radio" name="radio" value={squad.upgradesSource}
                                    onChange={e => globalValues.handleSetUpgradesSource(squadId, e)}>
