@@ -72,7 +72,9 @@ function App() {
     function handleSetPlayersRank(newPlayersRank) {
         let tSquadrons = [...squadrons];
         for (let squad of tSquadrons) {
-            squad.upgrades = getUpgrades(squad.shipType, newPlayersRank, squad.upgradesSource, squad.isElite)
+            const newUpgrades = getUpgrades(squad.shipType, newPlayersRank, squad.upgradesSource, squad.isElite);
+            squad.ships = resetShipsextraHullAndShield(squad.upgrades, newUpgrades, squad.shipType, squad.ships);
+            squad.upgrades = newUpgrades;
         }
         setSquadrons(tSquadrons);
         setPlayersRank(newPlayersRank);
