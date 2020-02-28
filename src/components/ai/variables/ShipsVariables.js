@@ -44,12 +44,11 @@ export function ShipsVariables(props) {
             <ShipsHeader/>
             {
                 ships.map((ship, keyIndex) =>
-                    <Variables key={keyIndex} keyIndex={keyIndex} ship={ship} squadId={squadId}
-                               handleShipChange={shipHandlingContext.handleShipChange} handleShipRemoval={shipHandlingContext.handleShipRemoval}
-                    />)
+                    <Variables key={keyIndex} keyIndex={keyIndex} ship={ship} squadId={squadId}/>)
             }
             <br/>
-            <button className="btn btn-primary btn-sm" onClick={() => shipHandlingContext.handleAddShip(squadId)}>Add a ship
+            <button className="btn btn-primary btn-sm" onClick={() => shipHandlingContext.handleAddShip(squadId)}>Add a
+                ship
                 to squadron
             </button>
             <RemoveSquadButton/>

@@ -104,14 +104,14 @@ function App() {
 
     function handleRemoveShip(index, squadId) {
         let tSquadrons = [...squadrons];
-        let tShips = tSquadrons[squadId];
+        let tShips = tSquadrons[squadId].ships;
         tShips.splice(index, 1);
         setSquadrons(tSquadrons);
     }
 
     function handleShipChange(ship, index, squadId) {
         let tSquadrons = [...squadrons];
-        let tShips = tSquadrons[squadId];
+        let tShips = tSquadrons[squadId].ships;
         tShips.splice(index, 1, ship);
         setSquadrons(tSquadrons);
     }
@@ -153,7 +153,7 @@ function resetShipsextraHullAndShield(previousUpgrades, newUpgrades, shipType, s
     return ships
 }
 
-function countExtraHullAndShield(upgrades) {
+export function countExtraHullAndShield(upgrades) {
     let extraHull = 0;
     let extraShield = 0;
 
