@@ -99,8 +99,12 @@ function App() {
         let tSquadrons = [...squadrons];
         const squadron = tSquadrons[squadId];
         let ships = tSquadrons[squadId].ships;
-        const maxShieldAndHull = resetShipsextraHullAndShield(squadron.upgrades, squadron.shipType);
-        ships.push({tokenId: 0, hull: maxShieldAndHull.extraHull, shields: maxShieldAndHull.extraShield});
+        let extraHullAndShield = countExtraHullAndShield(squadron.upgrades);
+        ships.push({
+            tokenId: 0,
+            hull: Ships[squadron.shipType].hull + extraHullAndShield.extraHull,
+            shields: Ships[squadron.shipType].shields + extraHullAndShield.extraShield
+        });
         setSquadrons(tSquadrons);
     }
 

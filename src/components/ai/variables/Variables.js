@@ -6,8 +6,6 @@ import {ShipHandlingContext} from "../../../context/Contexts";
 
 export default function Variables(props) {
     let ship = props.ship;
-    console.log("* entering ship *");
-    console.log(ship);
     const squadId = props.squadId;
     const shipHandlingContext = useContext(ShipHandlingContext);
     const shipType = shipHandlingContext.squadrons[squadId].shipType;
