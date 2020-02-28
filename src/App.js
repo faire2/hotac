@@ -34,7 +34,7 @@ function App() {
         const tSquadrons = [...squadrons];
         const shipType = Ships[value].id;
         const upgrades = getUpgrades(shipType, playersRank, UPGRADES.FGA, false);
-        const maxShieldAndHull = getMaxHullAndShield(upgrades, shipType);
+        const extraHullAndShield = countExtraHullAndShield(upgrades);
         let newSquad = {
             shipType: shipType,
             isElite: false,
@@ -42,8 +42,8 @@ function App() {
             upgrades: upgrades,
             ships: [{
                 tokenId: 0,
-                hull: maxShieldAndHull.maxHull,
-                shields: maxShieldAndHull.maxShields
+                hull: Ships[shipType].hull + extraHullAndShield.extraHull,
+                shields: Ships[shipType].shields + extraHullAndShield.extraShield
             }]
         };
         tSquadrons.push(newSquad);
@@ -61,8 +61,11 @@ function App() {
         let tSquadrons = [...squadrons];
         const squadron = tSquadrons[index];
         squadron.upgradesSource = upgradesSource;
-        console.log(squadron);
-        squadron.upgrades = getUpgrades(squadron.shipType, playersRank, upgradesSource, squadron.isElite);
+
+        const previousUpgrades = squadron.upgrades;
+        const newUpgrades = getUpgrades(squadron.shipType, playersRank, upgradesSource, squadron.isElite);
+        squadron.ships = resetShipsextraHullAndShield(previousUpgrades, newUpgrades, squadron.shipType, squadron.ships);
+        squadron.upgrades = newUpgrades;
         setSquadrons(tSquadrons);
     }
 
@@ -79,7 +82,13 @@ function App() {
         let tSquadrons = [...squadrons];
         const squadron = tSquadrons[index];
         squadron.isElite = isElite;
-        squadron.upgrades = getUpgrades(squadron.shipType, playersRank, squadron.upgradesSource, isElite);
+
+        const previousUpgrades = squadron.upgrades;
+        const newUpgrades = getUpgrades(squadron.shipType, playersRank, squadron.upgradesSource, isElite);
+        squadron.ships = resetShipsextraHullAndShield(previousUpgrades, newUpgrades, squadron.shipType, squadron.ships);
+        squadron.upgrades = newUpgrades;
+        setSquadrons(tSquadrons);
+
         setSquadrons(tSquadrons);
     }
 
@@ -88,8 +97,8 @@ function App() {
         let tSquadrons = [...squadrons];
         const squadron = tSquadrons[squadId];
         let ships = tSquadrons[squadId].ships;
-        const maxShieldAndHull = getMaxHullAndShield(squadron.upgrades, squadron.shipType);
-        ships.push({tokenId: 0, hull: maxShieldAndHull.maxHull, shields: maxShieldAndHull.maxShields});
+        const maxShieldAndHull = resetShipsextraHullAndShield(squadron.upgrades, squadron.shipType);
+        ships.push({tokenId: 0, hull: maxShieldAndHull.extraHull, shields: maxShieldAndHull.extraShield});
         setSquadrons(tSquadrons);
     }
 
@@ -124,8 +133,8 @@ function App() {
                 }}>
                     <h3>Select a ship to generate a new squadron:</h3>
                     {/*todo reset select caption after a choice is made, make a default message*/}
-            <Select options={newSquadShipOptions} onChange={e => handleNewShipSelection(e.value)}/>
-            <Select options={playerRankOptions} onChange={e => handleSetPlayersRank(e.value)}/>
+                    <Select options={newSquadShipOptions} onChange={e => handleNewShipSelection(e.value)}/>
+                    <Select options={playerRankOptions} onChange={e => handleSetPlayersRank(e.value)}/>
                     <SquadGenerator squadrons={squadrons}/>
                 </ShipHandlingContext.Provider>
             </GlobalSquadsValuesContext.Provider>
@@ -133,7 +142,18 @@ function App() {
     );
 }
 
-function getMaxHullAndShield(upgrades, shipType) {
+function resetShipsextraHullAndShield(previousUpgrades, newUpgrades, shipType, ships) {
+    const previousExtras = countExtraHullAndShield(previousUpgrades);
+    const newExtras = countExtraHullAndShield(newUpgrades);
+
+    for (const ship of ships) {
+        ship.hull = ship.hull + newExtras.extraHull - previousExtras.extraHull;
+        ship.shields = ship.shields + newExtras.extraShield - previousExtras.extraShield;
+    }
+    return ships
+}
+
+function countExtraHullAndShield(upgrades) {
     let extraHull = 0;
     let extraShield = 0;
 
@@ -145,11 +165,7 @@ function getMaxHullAndShield(upgrades, shipType) {
             extraShield += 1;
         }
     }
-
-    const maxHull = Ships[shipType].hull + extraHull;
-    const maxShields = Ships[shipType].shields + extraShield;
-    console.log("get max hull and shield: " + maxHull + ", " + maxShields);
-    return {maxHull: maxHull, maxShields: maxShields}
+    return {extraHull: extraHull, extraShield: extraShield}
 }
 
 export default App;
