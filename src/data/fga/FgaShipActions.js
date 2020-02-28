@@ -90,10 +90,10 @@ const TIEADVX = () => (
         <li>Resolve <i className="xwi x-crit"/>.</li>
         <li>If target has not moved yer, <i className="xwi x-lock"/> target if not in any enemy's arc.</li>
         <li>If target has already moved, <i className="xwi x-lock"/> target.</li>
-        <li>If target has already moved, <i className="xwir x-focus"/> <i className="xwi x-linked"/><i
+        <li>If target has already moved, <i className="xwi x-focus"/> <i className="xwi x-linked"/><i
             className="xwir x-barrelroll"/> to avoid target's arc and still get a shot.
         </li>
-        <li>If target has already moved, <i className="xwir x-focus"/> <i className="xwi x-linked"/><i
+        <li>If target has already moved, <i className="xwi x-focus"/> <i className="xwi x-linked"/><i
             className="xwir x-barrelroll"/> to get a shot.
         </li>
         <li><i className="xwi x-barrelroll"/> to avoid target's arc.</li>

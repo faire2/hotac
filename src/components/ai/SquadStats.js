@@ -3,8 +3,8 @@ import React from "react";
 
 export const SquadStats = (props) =>
     <div>
-        <div className="row">
-            <div className="col-2">
+        <div className="row backgroundBlue">
+            <div className="col-3">
                 <h3>Init.:</h3>
             </div>
             <div className="col-3">
@@ -13,16 +13,13 @@ export const SquadStats = (props) =>
             <div className="col-3">
                 <h3>Agility:</h3>
             </div>
-            <div className="col-2">
+            <div className="col-3">
                 <h3>XP:</h3>
-            </div>
-            <div className="col-2">
-                <h3>Level:</h3>
             </div>
         </div>
         <div className="row text-center ship-stats">
-            <div className="col-2">
-                <div>{props.iniative}</div>
+            <div className="col-3">
+                <div>{props.upgrades[props.upgrades.length -1][1]}</div>
             </div>
             <div className="col-3">
                 {Ships[props.shipType][Stats.attack].map((a, index) =>
@@ -33,7 +30,7 @@ export const SquadStats = (props) =>
             <div className="col-3">
                 <div>{Ships[props.shipType][Stats.agility]}</div>
             </div>
-            <div className="col-2">
+            <div className="col-3">
                 <div>{props.upgrades[props.upgrades.length - 1][2]}</div>
             </div>
         </div>

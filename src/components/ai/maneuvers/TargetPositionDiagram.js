@@ -178,9 +178,9 @@ export default function TargetPositionDiagram(props) {
 
 
     return (
-        <div>
+        <div id="svg_container">
             <svg width={bullsEyeWidth} height={(arc1Width + arc23width + arc4width + strokeWidth)}
-                 className="pointer align-top">
+                 className="align-top">
                 <rect x="0" y={arc23width + arc4width} width={bullsEyeWidth} height={arc1Width} fill={arc1FillColor}
                       stroke={arc1StrokeColor} id="B1" className={getOpacityClass("B1")}
                       strokeWidth={strokeWidth} onClick={(e) => handleSetPosition(1, "B", positionContext.stressed, e)}/>

@@ -1,8 +1,6 @@
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 import Variables from "./Variables";
-import {HinnyUpgrades} from "../../../data/hinny/HinnyUpgrades";
-import {GlobalSquadsValuesContext} from "../../../context/Contexts";
-import {CommunityUpgrades} from "../../../data/fga/CommunityUpgrades";
+import {GlobalSquadsValuesContext, ShipHandlingContext} from "../../../context/Contexts";
 
 const ShipsHeader = () => (
     <div>
@@ -23,51 +21,19 @@ const ShipsHeader = () => (
 );
 
 export function ShipsVariables(props) {
-    const upgrades = props.upgrades;
-    let hasExtraHull = false;
-    let hasExtraShield = false;
+    const squadId = props.squadId;
+    const shipHandlingContext = useContext(ShipHandlingContext);
+    const ships = shipHandlingContext.squadrons[squadId].ships;
 
-    for (let upgrade of upgrades) {
-        if (upgrade[0] === HinnyUpgrades.hullUpgrade || CommunityUpgrades.hullUpgrade) {
-            hasExtraHull = true;
-        }
-        if (upgrade[0] === HinnyUpgrades.shieldUpgrade || CommunityUpgrades.shieldUpgrade) {
-            hasExtraShield = true;
-        }
-    }
-
-    const maxHull = hasExtraHull ? props.maxHull + 1 : props.maxHull;
-    const maxShield = hasExtraShield ? props.maxShield +1 : props.maxShield;
-
-    const [ships, setShips] = useState([{
-        tokenId: 0,
-        hull: maxHull,
-        shields: maxShield
-    }]);
-
-    function handleAddShip() {
-        const tShipVars = [...ships];
-        tShipVars.push({tokenId: 0, hull: maxHull, shields: maxShield});
-        setShips(tShipVars);
-    }
-
-    function handleRemoveShip(index) {
-        const tShips = [...ships];
-        tShips.splice(index, 1);
-        setShips(tShips);
-    }
-
-    function handleShipChange(ship, index) {
-        const tShips = [...ships];
-        tShips.splice(index, 1, ship);
-        setShips(tShips);
+    for (let ship of ships) {
+        console.log("Ships shields, hull: " + ship.shields + ", " + ship.hull);
     }
 
     const RemoveSquadButton = () => {
         const globalAiValuesContext = useContext(GlobalSquadsValuesContext);
         return (
             <button className="btn btn-danger btn-sm btnRemoveShip"
-                    onClick={() => globalAiValuesContext.handleShipRemoval(props.squadId)}>
+                    onClick={() => globalAiValuesContext.handleSquadRemoval(squadId)}>
                 Remove whole squadron
             </button>
         )
@@ -78,13 +44,14 @@ export function ShipsVariables(props) {
             <ShipsHeader/>
             {
                 ships.map((ship, keyIndex) =>
-                    <Variables key={keyIndex} keyIndex={keyIndex} ship={ship} maxHull={props.maxHull}
-                               maxShield={props.maxShield}
-                               handleShipChange={handleShipChange} handleRemoveShip={handleRemoveShip}/>)
+                    <Variables key={keyIndex} keyIndex={keyIndex} ship={ship} squadId={squadId}/>)
             }
             <br/>
-            <button className="btn btn-primary btn-sm" onClick={handleAddShip}>Add a ship to squadron</button>
-            <RemoveSquadButton />
+            <button className="btn btn-primary btn-sm" onClick={() => shipHandlingContext.handleAddShip(squadId)}>Add a
+                ship
+                to squadron
+            </button>
+            <RemoveSquadButton/>
         </div>
     )
 }

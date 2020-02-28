@@ -1,9 +1,14 @@
-import React from "react";
-import {Stats} from "../../../data/Ships";
+import React, {useContext} from "react";
+import {Ships, Stats} from "../../../data/Ships";
 import Select from "react-select";
+import {countExtraHullAndShield} from "../../../App";
+import {ShipHandlingContext} from "../../../context/Contexts";
 
 export default function Variables(props) {
     let ship = props.ship;
+    const squadId = props.squadId;
+    const shipHandlingContext = useContext(ShipHandlingContext);
+    const shipType = shipHandlingContext.squadrons[squadId].shipType;
 
     const idOptions = [
         {value: 0, label: 0},
@@ -21,15 +26,16 @@ export default function Variables(props) {
 
     function handleShipVarChange(variable, value) {
         const tShip = {...props.ship};
+        const extraHullAndShield = countExtraHullAndShield(shipHandlingContext.squadrons[squadId].upgrades);
 
         switch (variable) {
             case Stats.shields:
-                if (value >= 0 && value <= props.maxShield) {
+                if (value >= 0 && value <= Ships[shipType].shields + extraHullAndShield.extraShield) {
                     tShip.shields = value;
                 }
                 break;
             case Stats.hull:
-                if (value >= 0 && value <= props.maxHull) {
+                if (value >= 0 && value <= Ships[shipType].hull + extraHullAndShield.extraHull) {
                     tShip.hull = value;
                 }
                 break;
@@ -39,40 +45,41 @@ export default function Variables(props) {
             default:
                 console.log("Function handleShipVarChange in Variables didn't recognize variable: " + variable);
         }
-        props.handleShipChange(tShip, props.keyIndex);
+        shipHandlingContext.handleShipChange(tShip, props.keyIndex, squadId);
     }
 
     return (
         <div>
             <div className="row">
-                <div className="col-3" >
+                <div className="col-3">
                     <Select options={idOptions} onChange={e => handleShipVarChange(Stats.tokenId, e.value)}
                             value={{label: props.ship.tokenId, value: props.ship.tokenId}}/>
                 </div>
                 <div className="col-4">
                     <button className="btn btn-primary btn-increment"
-                            onClick={e => handleShipVarChange(Stats.shields, ship.shields - 1)}
+                            onClick={() => handleShipVarChange(Stats.shields, ship.shields - 1)}
                             size="sm"> -
                     </button>
                     <span className="value"> {ship.shields} </span>
                     <button className="btn btn-primary btn-increment"
-                            onClick={e => handleShipVarChange(Stats.shields, ship.shields + 1)}
+                            onClick={() => handleShipVarChange(Stats.shields, ship.shields + 1)}
                             size="sm"> +
                     </button>
                 </div>
                 <div className="col-4 ">
                     <button className="btn btn-primary btn-increment"
-                            onClick={e => handleShipVarChange(Stats.hull, ship.hull - 1)}
+                            onClick={() => handleShipVarChange(Stats.hull, ship.hull - 1)}
                             size="sm"> -
                     </button>
                     <span className="value">     {ship.hull} </span>
                     <button className="btn btn-primary btn-increment"
-                            onClick={e => handleShipVarChange(Stats.hull, ship.hull + 1)}
+                            onClick={() => handleShipVarChange(Stats.hull, ship.hull + 1)}
                             size="sm"> +
                     </button>
                 </div>
                 <div className="col-1">
-                    <button id="btn-remove_ship" className="btn btn-danger" onClick={() => props.handleRemoveShip(props.keyIndex)}>x
+                    <button id="btn-remove_ship" className="btn btn-danger"
+                            onClick={() => shipHandlingContext.handleShipRemoval(props.keyIndex, squadId)}>x
                     </button>
                 </div>
             </div>

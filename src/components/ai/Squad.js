@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useState} from "react";
 
 import {AI, Ships, Stats} from "../../data/Ships";
 import {ShipsVariables} from "./variables/ShipsVariables"
@@ -8,21 +8,18 @@ import {PSN} from "../../data/Maneuvers";
 import SquadActionsCarousel from "./actionsCarousel/SquadActionsCarousel";
 import {TargetPosition} from "./maneuvers/TargetPosition";
 import UpgradesCard from "./upgrades/UpgradesCard";
-import {GlobalSquadsValuesContext, TargetPositionContext} from "../../context/Contexts";
+import {TargetPositionContext} from "../../context/Contexts";
 
 export function Squad(props) {
-    const shipType = props.shipType;
-    const globalSquadValues = useContext(GlobalSquadsValuesContext);
-    const upgrades = [...globalSquadValues.upgrades[props.squadId]];
-
-    //console.log("*** SQUAD ***");
+    const squad = props.squad;
+    const shipType = props.squad.shipType;
+    const squadId = props.squadId;
 
     /* TARGET POSITION STATE */
     const [targetPosition, setTargetPosition] = useState([PSN.R3FRONT]);
     const [maneuverRandNum, setManeuverRandnum] = useState(1);
     const [aiEngine, setAiEngine] = useState(AI.FGA);
     const [stressed, setStressed] = useState(false);
-
     const squadNames = [
         {value: "Alpha", label: "Alpha"},
         {value: "Beta", label: "Beta"},
@@ -63,22 +60,19 @@ export function Squad(props) {
                 <div className="row">
                     <div className="col-8">
                         <h3>Ship type: {Ships[shipType][Stats.name]}</h3>
+                        <SquadStats shipType={shipType} upgrades={squad.upgrades}/>
+                        <ShipsVariables squadId={squadId}/>
+                        <SquadActionsCarousel aiEngine={aiEngine} shipType={shipType}/>
                     </div>
                     <div className="col-4">
                         <Select options={squadNames}
                                 defaultValue={{value: "Squadron designation", label: "Squadron designation"}}/>
+                        <TargetPosition />
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-8">
-                        <SquadStats shipType={shipType} upgrades={upgrades}/>
-                        <ShipsVariables maxHull={Ships[shipType][Stats.hull]} maxShield={Ships[shipType][Stats.shields]}
-                                        upgrades={upgrades}/>
-                        <SquadActionsCarousel aiEngine={aiEngine} shipType={shipType}/>
-                        <UpgradesCard upgrades={upgrades} squadId={props.squadId}/>
-                    </div>
-                    <div className="col-4">
-                        <TargetPosition/>
+                    <div className="col-12">
+                        <UpgradesCard squadId={props.squadId} />
                     </div>
                 </div>
             </div>

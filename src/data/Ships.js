@@ -1,14 +1,15 @@
 import React from "react";
 
 export const AI = Object.freeze({
-    HINNY: "Hinny AI",
-    FGA: "FGA version AI",
+    HINNY: "Hinny's",
+    FGA: "FGA",
     }
 );
 
 export const UPGRADES = Object.freeze({
-    HINNY: "Hinny upgrades",
-    FGA: "FGA version upgrades",
+    HINNY: "Hinny's upg.",
+    COMMUNITY: "Community upg.",
+    FGA: "FGA upg.",
 });
 
 export const ATTACKS = Object.freeze({
@@ -81,7 +82,7 @@ export const Ships = Object.freeze({
         hull: 3,
         attack: [{attack: ATTACKS.frontArc, damage: 2}],
         agility: 3,
-        id: "TIEADVX",
+        id: "TIEDEF",
         ai: [AI.FGA],
         upgrades: [UPGRADES.FGA],
     },

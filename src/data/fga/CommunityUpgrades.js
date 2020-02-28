@@ -107,7 +107,7 @@ export const CommunityUpgrades = Object.freeze({
     // todo raise all charges of the ship automatically!
     extraMunitions: {
         skillName: "Extra Munitions", skillDescription:
-            <div>Add one <i className="xwi charge"/> to any equipped ordnance.</div>
+            <div>Add one <i className="xwi x-charge"/> to any equipped ordnance.</div>
     },
     calculation: {
         skillName: "Calculation", skillDescription:
