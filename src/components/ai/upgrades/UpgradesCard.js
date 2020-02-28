@@ -2,7 +2,7 @@ import React, {useContext, useState} from "react";
 import {GlobalSquadsValuesContext} from "../../../context/Contexts";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
-import {Stats, UPGRADES} from "../../../data/Ships";
+import {Ships, Stats, UPGRADES} from "../../../data/Ships";
 
 export default function UpgradesCard(props) {
     const globalValues = useContext(GlobalSquadsValuesContext);
@@ -15,12 +15,15 @@ export default function UpgradesCard(props) {
     return (
         <div>
             <div className="d-flex justify-content-center">
-            <ToggleButtonGroup type="radio" name="radio" value={squad.upgradesSource}
-                               onChange={e => globalValues.handleSetUpgradesSource(squadId, e)}>
-                <ToggleButton  value={UPGRADES.COMMUNITY}>{UPGRADES.COMMUNITY}</ToggleButton>
-                <ToggleButton  value={UPGRADES.HINNY}>{UPGRADES.HINNY}</ToggleButton>
-                <ToggleButton  value={UPGRADES.FGA}>{UPGRADES.FGA}</ToggleButton>
-            </ToggleButtonGroup>
+                <ToggleButtonGroup type="radio" name="radio" value={squad.upgradesSource}
+                                   onChange={e => globalValues.handleSetUpgradesSource(squadId, e)}>
+                    {Ships[squad.shipType].upgrades.includes(UPGRADES.COMMUNITY) ?
+                        <ToggleButton value={UPGRADES.COMMUNITY}>{UPGRADES.COMMUNITY}</ToggleButton> : ""}
+                    {Ships[squad.shipType].upgrades.includes(UPGRADES.HINNY) ?
+                        <ToggleButton value={UPGRADES.HINNY}>{UPGRADES.HINNY}</ToggleButton> : ""}
+                    {Ships[squad.shipType].upgrades.includes(UPGRADES.COMMUNITY) ?
+                        <ToggleButton value={UPGRADES.FGA}>{UPGRADES.FGA}</ToggleButton> : ""}
+                </ToggleButtonGroup>
             </div>
             <label>
                 <input type="checkbox" value={isElite}
@@ -61,6 +64,7 @@ function Skill(props) {
 //todo: buttons for changing number of charges
 function Charges(props) {
     const [charges, setCharges] = useState(props.charges);
+
     function handleChangeCharges(value) {
         if (value >= 0 && value <= props.charges) {
             setCharges(value)

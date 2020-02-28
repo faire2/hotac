@@ -29,7 +29,7 @@ export const Ships = Object.freeze({
         agility: 3,
         id: "TIELN",
         ai: [AI.HINNY, AI.FGA],
-        upgrades: [UPGRADES.FGA],
+        upgrades: [UPGRADES.FGA, UPGRADES.HINNY, UPGRADES.COMMUNITY],
     },
     TIEIN: {
         name: "TIE/in Interceptor",
@@ -40,7 +40,7 @@ export const Ships = Object.freeze({
         agility: 3,
         id: "TIEIN",
         ai: [AI.HINNY, AI.FGA],
-        upgrades: [UPGRADES.HINNY, UPGRADES.FGA],
+        upgrades: [UPGRADES.FGA, UPGRADES.HINNY, UPGRADES.COMMUNITY],
     },
     TIESA: {
         name: "TIE/sa Bomber",
@@ -51,7 +51,7 @@ export const Ships = Object.freeze({
         agility: 2,
         id: "TIESA",
         ai: [AI.HINNY, AI.FGA],
-        upgrades: [UPGRADES.HINNY, UPGRADES.FGA],
+        upgrades: [UPGRADES.FGA, UPGRADES.HINNY, UPGRADES.COMMUNITY],
     },
     VT49: {
         name: "VT-49",
@@ -73,7 +73,7 @@ export const Ships = Object.freeze({
         agility: 3,
         id: "TIEADVX",
         ai: [AI.FGA],
-        upgrades: [UPGRADES.FGA],
+        upgrades: [UPGRADES.FGA, UPGRADES.COMMUNITY],
     },
     TIEDEF: {
         name: "TIE/D Defender",
@@ -84,7 +84,7 @@ export const Ships = Object.freeze({
         agility: 3,
         id: "TIEDEF",
         ai: [AI.FGA],
-        upgrades: [UPGRADES.FGA],
+        upgrades: [UPGRADES.FGA, UPGRADES.COMMUNITY],
     },
     TIEPH: { // todo has a system phase and an end phase  - it should be noted here and then rendered as an optional component
         name: "TIE/PH Phantom",
@@ -95,7 +95,7 @@ export const Ships = Object.freeze({
         agility: 2,
         id: "TIEPH",
         ai: [AI.FGA],
-        upgrades: [UPGRADES.FGA],
+        upgrades: [UPGRADES.FGA, UPGRADES.COMMUNITY],
     },
     LAMBDA: {
         name: "Lambda-class T-4A Shuttle",
@@ -106,7 +106,7 @@ export const Ships = Object.freeze({
         agility: 1,
         id: "LAMBDA",
         ai: [AI.FGA],
-        upgrades: [UPGRADES.FGA],
+        upgrades: [UPGRADES.FGA, UPGRADES.COMMUNITY],
     },
 });
 
