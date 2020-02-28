@@ -6,6 +6,7 @@ import {AI} from "../../../data/Ships";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import {TargetPositionContext} from "../../../context/Contexts";
 import SquadManeuverGenerator from "./SquadManeuverGenerator";
+import {Ships} from "../src/data/Ships";
 
 export function TargetPosition(props) {
     const positionContext = useContext(TargetPositionContext);
@@ -14,8 +15,9 @@ export function TargetPosition(props) {
             <h3>Maneuvers:</h3>
             <ToggleButtonGroup type="radio" name="radio" value={positionContext.aiEngine}
                                onChange={e => positionContext.setAiEngine(e)}>
-                <ToggleButton value={AI.FGA}>{AI.FGA}</ToggleButton>
-                <ToggleButton value={AI.HINNY}>{AI.HINNY}</ToggleButton>
+                    <ToggleButton value={AI.FGA}>{AI.FGA}</ToggleButton>
+                {Ships[positionContext.shipType].ai.includes(AI.HINNY) ?
+                <ToggleButton value={AI.HINNY}>{AI.HINNY}</ToggleButton> : ""}
             </ToggleButtonGroup>
             {/*  Handles visibility of the check-box according to selected Ai engine */
                 positionContext.aiEngine === AI.FGA &&
@@ -25,7 +27,7 @@ export function TargetPosition(props) {
                     Is ship stressed?
                 </label>}
             <TargetPositionDiagram/>
-            <SquadManeuverGenerator />
+            <SquadManeuverGenerator/>
         </div>
     )
 }
