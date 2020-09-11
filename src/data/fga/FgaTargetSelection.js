@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {Ships} from "../Ships";
 
 export default function fgaTargetSelection(props) {

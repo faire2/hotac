@@ -1,8 +1,8 @@
 import React, {useContext} from "react";
-import {Ships, Stats} from "../../../data/Ships";
+import {Ships, Stats} from "../../data/Ships";
 import Select from "react-select";
-import {countExtraHullAndShield} from "../../../App";
-import {ShipHandlingContext} from "../../../context/Contexts";
+import {countExtraHullAndShield} from "../../App";
+import {ShipHandlingContext} from "../../context/Contexts";
 
 export default function Variables(props) {
     let ship = props.ship;

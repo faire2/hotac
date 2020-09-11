@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import Variables from "./Variables";
-import {GlobalSquadsValuesContext, ShipHandlingContext} from "../../../context/Contexts";
+import {GlobalSquadsValuesContext, ShipHandlingContext} from "../../context/Contexts";
 
 const ShipsHeader = () => (
     <div>

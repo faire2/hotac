@@ -1,6 +1,6 @@
-import {AI} from "../../../data/Ships";
-import hinnyTargetSelection from "../../../data/hinny/HinnyTargetSelection";
-import fgaTargetSelection from "../../../data/fga/FgaTargetSelection";
+import {AI} from "../../data/Ships";
+import hinnyTargetSelection from "../../data/hinny/HinnyTargetSelection";
+import fgaTargetSelection from "../../data/fga/FgaTargetSelection";
 
 export default function SquadTargetSelection(props) {
     switch (props.aiEngine) {

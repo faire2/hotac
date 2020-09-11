@@ -6,7 +6,7 @@ export const CommunityUpgrades = Object.freeze({
     autothrusters: {
         skillName: "Autothrusters", skillDescription:
             <div>
-                When you are defending, when you are beyond range 2 or outside the attacker's primary arc, change 1 of
+                When you are defending, when you are beyond range 2 or outside the attacker"s primary arc, change 1 of
                 your blank results to a <i className="xwi x-evade"/> result.
             </div>
     },
@@ -151,14 +151,14 @@ export const CommunityUpgrades = Object.freeze({
     outmaneuver: {
         skillName: "Outmaneuver", skillDescription:
             <div>
-                While perform a <i className="xwi x-frontarc"/> attack, if you are not in defender's firing arc,
+                While perform a <i className="xwi x-frontarc"/> attack, if you are not in defender"s firing arc,
                 the defender rolls 1 fewer defense die. <span className="red">Prioritise targets that trigger this ability.</span>
             </div>
     },
     backstabber:
         {
             skillName: "Backstabber", skillDescription:
-                <div>When attacking from outside the defender's primary arc, roll 1 additional attack die. <span
+                <div>When attacking from outside the defender"s primary arc, roll 1 additional attack die. <span
                     className="red">Prioritise targets that trigger this ability.</span></div>
         },
     rearAdmiralChiraneau:
@@ -260,7 +260,7 @@ export const CommunityUpgrades = Object.freeze({
     sensorJammer:
         {
             skillName: "Sensor Jammer", skillDescription:
-                <div>When defending, change 1 of the attacker's <i className="xwi x-hit"/> results to a <i
+                <div>When defending, change 1 of the attacker"s <i className="xwi x-hit"/> results to a <i
                     className="xwi x-focus"/> result. The attacker cannot reroll the die with the changed result.</div>
         },
     carnorJax:
@@ -364,7 +364,7 @@ export const CommunityUpgrades = Object.freeze({
     flightInstructor:
         {
             skillName: "Flight Instructor", skillDescription:
-                <div>When defending, you may reroll + of your <i className="xwi x-focus"/> results. If the attacker's
+                <div>When defending, you may reroll + of your <i className="xwi x-focus"/> results. If the attacker"s
                     pilot initiative is 2 or lower, you may reroll 1 of your blank results instead.</div>
         },
     drawTheirFire:

@@ -1,16 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState} from "react";
+import styled from "styled-components";
 
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './fonts/xwing-miniatures.css';
-import './fonts/xwing-miniatures.ttf';
-import './fonts/xwing-miniatures-ships.ttf'
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./fonts/xwing-miniatures.css";
+import "./fonts/xwing-miniatures.ttf";
+import "./fonts/xwing-miniatures-ships.ttf"
 
-import Select from 'react-select';
+import Select from "react-select";
 import {Ships, Stats, UPGRADES} from "./data/Ships";
-import SquadGenerator from "./components/ai/SquadGenerator";
+import SquadGenerator from "./components/SquadGenerator";
 import {GlobalSquadsValuesContext, ShipHandlingContext} from "./context/Contexts";
-import getUpgrades from "./components/ai/upgrades/UpgradesGenerator";
+import getUpgrades from "./components/upgrades/UpgradesGenerator";
 import {HinnyUpgrades} from "./data/hinny/HinnyUpgrades";
 import {CommunityUpgrades} from "./data/fga/CommunityUpgrades";
 import ToggleButton from "react-bootstrap/ToggleButton";
@@ -138,18 +139,18 @@ function App() {
                     handleShipRemoval: handleRemoveShip,
                     handleShipChange: handleShipChange
                 }}>
-                    <div className="row menu d-flex align-items-center">
+                    <Menu>
                         <div className="col-2"><h3>New squadron:</h3></div>
                         <div className="col-5 d-inline-block blackFontColor">
                             <Select options={newSquadShipOptions}
                                     onChange={e => handleNewShipSelection(e.value)}/>
                         </div>
-                        <div className="col-2">Set players' rank:</div>
+                        <div className="col-2">Set players" rank:</div>
                         <ToggleButtonGroup type="radio" name="radio" value={playersRank}
                                            onChange={e => handleSetPlayersRank(e)}>
                             {playerRankOptions.map((number) => <ToggleButton value={number}>{number}</ToggleButton> )}
                         </ToggleButtonGroup>
-                    </div>
+                    </Menu>
 
                     <SquadGenerator squadrons={squadrons}/>
                 </ShipHandlingContext.Provider>
@@ -157,6 +158,19 @@ function App() {
         </div>
     );
 }
+
+const Menu = styled.div`
+  display: flex;
+  align-items: center;
+  position: sticky;
+  position: -webkit-sticky;
+  background-color: #007bff;
+  padding-left: 10px;
+  color: white;
+  height: 50px;
+  top: 0;
+  z-index: 2;
+`;
 
 function resetShipsextraHullAndShield(previousUpgrades, newUpgrades, shipType, ships) {
     const previousExtras = countExtraHullAndShield(previousUpgrades);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {Ships} from "../Ships";
 
 export default function hinnyShipActions(props) {
@@ -19,12 +19,12 @@ export default function hinnyShipActions(props) {
 const TIELN = () => (
     <ol>
         <li>Remove 1 stress token or take <i className="xwi xwing-miniatures-font-crit"/> action.</li>
-        <li><i className="xwi x-barrelroll"/> to avoid target's firing arc and
+        <li><i className="xwi x-barrelroll"/> to avoid target"s firing arc and
             still have it in your firing arc.
         </li>
         <li><i className="xwi x-barrelroll"/> to get target in your firing arc.</li>
         <li><i className="xwi x-focus"/> if you have target in your firing arc.</li>
-        <li><i className="xwi x-barrelroll"/> to avoid target's firing arc.</li>
+        <li><i className="xwi x-barrelroll"/> to avoid target"s firing arc.</li>
         <li><i className="xwi x-evade"/></li>
     </ol>
 );
@@ -33,10 +33,10 @@ const TIEIN = () => (
     <ol>
         <li>Remove 1 stress token or take <i className="xwi xwing-miniatures-font-crit"/> action.</li>
         <li><i className="xwi x-focus"/> <i className="xwi x-linked"/><i className="xwi x-barrelroll"/> to avoid
-            target's
+            target"s
             firing arc and still have it in your firing arc.
         </li>
-        <li><i className="xwi x-focus"/> <i className="xwi x-linked"/><i className="xwi x-boost"/> to avoid target's
+        <li><i className="xwi x-focus"/> <i className="xwi x-linked"/><i className="xwi x-boost"/> to avoid target"s
             firing arc and still have it in your firing arc
         </li>
         <li><i className="xwi x-focus"/> <i className="xwi x-linked"/><i className="xwi x-barrelroll"/> to get target in
@@ -53,9 +53,9 @@ const TIEIN = () => (
         </li>
         <li><i className="xwi x-focus"/> if you have target in the target arc</li>
         <li><i className="xwi x-evade"/> <i className="xwi x-linked"/><i className="xwi x-barrelroll"/> to avoid your
-            target's firing arc.
+            target"s firing arc.
         </li>
-        <li><i className="xwi x-evade"/> <i className="xwi x-linked"/><i className="xwi x-boost"/> to avoid your target's
+        <li><i className="xwi x-evade"/> <i className="xwi x-linked"/><i className="xwi x-boost"/> to avoid your target"s
             firing arc.
         </li>
         <li><i className="xwi x-evade"/>.</li>
@@ -68,14 +68,14 @@ const TIESA = () => (
         <li><i className="xwi x-reload"></i> if there are no charges on your <i className="xwi x-torpedo"></i> or
             <i className="xwi x-missile"></i>.</li>
         <li><i className="xwi x-barrelroll"/> <i className="xwi x-linked"/><i className="xwi x-lock"/> target, to avoid
-            target's firing arc and still get it in your firing arc.
+            target"s firing arc and still get it in your firing arc.
         </li>
         <li><i className="xwi x-barrelroll"/> <i className="xwi x-linked"/><i className="xwi x-lock"/> target, to get
             target in your firing arc.
         </li>
         <li><i className="xwi x-lock"/> target if it is in your firing arc.</li>
         <li><i className="xwi x-barrelroll"/> <i className="xwi x-linked"/><i className="xwi x-lock"/> target, to avoid
-            target's firing arc.
+            target"s firing arc.
         </li>
         <li><i className="xwi x-reload"></i> if there are inactive charges on <i className="xwi x-torpedo"></i> or
             <i className="xwi x-missile"></i>.</li>

@@ -2,9 +2,9 @@ import React, {useContext} from "react";
 
 import TargetPositionDiagram from "./TargetPositionDiagram";
 import ToggleButton from "react-bootstrap/ToggleButton";
-import {AI} from "../../../data/Ships";
+import {AI} from "../../data/Ships";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
-import {TargetPositionContext} from "../../../context/Contexts";
+import {TargetPositionContext} from "../../context/Contexts";
 import SquadManeuverGenerator from "./SquadManeuverGenerator";
 
 export function TargetPosition(props) {

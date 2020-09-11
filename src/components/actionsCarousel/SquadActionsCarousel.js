@@ -1,7 +1,9 @@
 import React, {useState} from "react";
+import styled from "styled-components";
 import SquadActions from "./SquadActions";
 import SquadTargetSelection from "./SquadTargetSelection";
 import SquadAttack from "./SquadAttack";
+import {CarouselArrow, DIRECTIONS} from "./CarouselArrow";
 
 export default function SquadActionsCarousel(props) {
     const aiEngine = props.aiEngine;
@@ -35,35 +37,43 @@ export default function SquadActionsCarousel(props) {
     return (
         <div>
             {headline[currentSlideIndex]}
-            <div className="carousel">
-            <div id="carousel-indicators-container" className="align-middle">
+            <Carousel>
+            <IndicatorsContainer>
                 <ul>
                     {content.map((item, index) => {
                         if (index === currentSlideIndex) return <li key={index} className="indicator active"></li>
                         return <li key={index} className="indicator"></li>
                     })}
                 </ul>
-            </div>
+            </IndicatorsContainer>
 
                 {content[currentSlideIndex]}
-                <Arrow direction={DIRECTIONS.LEFT} handleArrowClick={() => handleArrowClick(DIRECTIONS.LEFT)}
+                <CarouselArrow direction={DIRECTIONS.LEFT} handleArrowClick={() => handleArrowClick(DIRECTIONS.LEFT)}
                        glyph="<"/>
-                <Arrow direction={DIRECTIONS.RIGHT} handleArrowClick={() => handleArrowClick(DIRECTIONS.RIGHT)}
+                <CarouselArrow direction={DIRECTIONS.RIGHT} handleArrowClick={() => handleArrowClick(DIRECTIONS.RIGHT)}
                        glyph=">"/>
-            </div>
+            </Carousel>
 
         </div>
     )
 };
 
-const Arrow = ({direction, handleArrowClick, glyph}) => (
-    <div className={"slide-arrow " + direction} onClick={() => handleArrowClick(direction)}>
-        {glyph}
-    </div>
-);
+const Carousel = styled.div`
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 300px;
+    width: 100%;
+    overflow-y: auto;
+`;
 
-const DIRECTIONS = Object.freeze({
-        LEFT: "left",
-        RIGHT: "right",
-    }
-);
+const IndicatorsContainer = styled.div`
+    width: 100%;
+    height: 25px;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`

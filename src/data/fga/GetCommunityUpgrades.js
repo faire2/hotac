@@ -1,6 +1,6 @@
 import {Ships} from "../Ships";
 import {CommunityUpgrades} from "./CommunityUpgrades";
-import {getAdjustedRandomNumber} from "../../components/ai/upgrades/UpgradesGenerator";
+import {getAdjustedRandomNumber} from "../../components/upgrades/UpgradesGenerator";
 
 export default function getCommunityUpgrades(shipType, playersIni, upgradeRandNum, isElite) {
     let shipTypeUpgrades = [];
@@ -34,8 +34,8 @@ export default function getCommunityUpgrades(shipType, playersIni, upgradeRandNu
         upgrades.length = 1
     }
 
-    /* only upgrades relevant to the players' rank are returned */
-    /* elite ships always get first two upgrades and then possibly other upgrades accordign to Players' initiative */
+    /* only upgrades relevant to the players" rank are returned */
+    /* elite ships always get first two upgrades and then possibly other upgrades accordign to Players" initiative */
     if (playersIni <= upgrades.length) {
         upgrades.length = (playersIni < 3 ? 3 : playersIni + 1);
     }

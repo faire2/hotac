@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {Ships} from "../Ships";
 
 export default function fgaShipActions(props) {
@@ -27,10 +27,10 @@ export default function fgaShipActions(props) {
 const TIELN = () => (
     <ol>
         <li>Resolve <i className="xwi x-crit"/>.</li>
-        <li><i className="xwi x-barrelroll"/> to avoid target's arc and still get a shot.</li>
+        <li><i className="xwi x-barrelroll"/> to avoid target"s arc and still get a shot.</li>
         <li><i className="xwi x-barrelroll"/> to get a shot.</li>
         <li><i className="xwi x-focus"/> if you have a shot.</li>
-        <li><i className="xwi x-barrelroll"/> to avoid target's arc.</li>
+        <li><i className="xwi x-barrelroll"/> to avoid target"s arc.</li>
         <li><i className="xwi x-evade"/>.</li>
     </ol>
 );
@@ -39,7 +39,7 @@ const TIEIN = () => (
     <ol>
         <li>Resolve <i className="xwi x-crit"/>.</li>
         <li><i className="xwi x-focus"/> <i className="xwi x-linked"/><i className="xwir x-barrelroll"/>/<i
-            className="xwir x-boost"/> to avoid target's arc and still get a shot.
+            className="xwir x-boost"/> to avoid target"s arc and still get a shot.
         </li>
         <li><i className="xwi x-boost"/> <i className="xwi x-linked"/><i className="xwir x-barrelroll"/> or <i
             className="xwi x-barrelroll"/> <i className="xwi x-linked"/><i className="xwir x-boost"/> to get a
@@ -48,7 +48,7 @@ const TIEIN = () => (
         <li><i className="xwi x-focus"/> if hou have a shot.</li>
         <li><i className="xwi x-boost"/> <i className="xwi x-linked"/><i className="xwir x-barrelroll"/> or <i
             className="xwi x-barrelroll"/> <i className="xwi x-linked"/><i className="xwir x-boost"/> to avoid
-            target's arc.
+            target"s arc.
         </li>
         <li><i className="xwi x-evade"/>.</li>
     </ol>
@@ -61,13 +61,13 @@ const TIESA = () => (
             className="xwi x-torpedo"/>.
         </li>
         <li><i className="xwi x-barrelroll"/> (<i className="xwi x-linked"/><i className="xwir x-lock"/>) to avoid
-            target's arc and still get a shot.
+            target"s arc and still get a shot.
         </li>
         <li><i className="xwi x-barrelroll"/> (<i className="xwi x-linked"/><i className="xwir x-lock"/>) to get a
             shot.
         </li>
         <li><i className="xwi x-lock"/>.</li>
-        <li><i className="xwi x-barrelroll"/> to avoid target's arc.</li>
+        <li><i className="xwi x-barrelroll"/> to avoid target"s arc.</li>
         <li><i className="xwi x-focus"/>.</li>
     </ol>
 );
@@ -88,15 +88,15 @@ const VT49 = () => (
 const TIEADVX = () => (
     <ol>
         <li>Resolve <i className="xwi x-crit"/>.</li>
-        <li>If target has not moved yer, <i className="xwi x-lock"/> target if not in any enemy's arc.</li>
+        <li>If target has not moved yer, <i className="xwi x-lock"/> target if not in any enemy"s arc.</li>
         <li>If target has already moved, <i className="xwi x-lock"/> target.</li>
         <li>If target has already moved, <i className="xwi x-focus"/> <i className="xwi x-linked"/><i
-            className="xwir x-barrelroll"/> to avoid target's arc and still get a shot.
+            className="xwir x-barrelroll"/> to avoid target"s arc and still get a shot.
         </li>
         <li>If target has already moved, <i className="xwi x-focus"/> <i className="xwi x-linked"/><i
             className="xwir x-barrelroll"/> to get a shot.
         </li>
-        <li><i className="xwi x-barrelroll"/> to avoid target's arc.</li>
+        <li><i className="xwi x-barrelroll"/> to avoid target"s arc.</li>
         <li><i className="xwi x-focus"/>.</li>
     </ol>
 );
@@ -111,7 +111,7 @@ const TIEDEF = () => (
         <li>If target has already moved, <i className="xwi x-barrelroll"/> or <i className="xwi x-boost"/> to get in
             range 1 and still get a shot.
         </li>
-        <li><i className="xwi x-barrelroll"/> or <i className="xwi x-boost"/> to avoid target's arc.</li>
+        <li><i className="xwi x-barrelroll"/> or <i className="xwi x-boost"/> to avoid target"s arc.</li>
         <li><i className="xwi x-evade"/> if ship is not already evading.</li>
         <li><i className="xwi x-focus"/>.</li>
     </ol>
@@ -120,9 +120,9 @@ const TIEDEF = () => (
 const TIEPH = () => (
     <ol>
         <li>Resolve <i className="xwi x-crit"/>.</li>
-        <li><i className="xwi x-cloak"/> if you don't have a shot.</li>
+        <li><i className="xwi x-cloak"/> if you don"t have a shot.</li>
         <li><i className="xwi x-evade"/> if ship is not already evading.</li>
-        <li><i className="xwir x-barrelroll"/> to avoid target's arc and still get a shot.
+        <li><i className="xwir x-barrelroll"/> to avoid target"s arc and still get a shot.
         </li>
         <li><i className="xwi x-focus"/> if you have a shot.</li>
     </ol>

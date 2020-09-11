@@ -1,6 +1,6 @@
-import {Ships, UPGRADES} from "../../../data/Ships";
-import {HinnyUpgrades} from "../../../data/hinny/HinnyUpgrades";
-import {CommunityUpgrades} from "../../../data/fga/CommunityUpgrades";
+import {Ships, UPGRADES} from "../../data/Ships";
+import {HinnyUpgrades} from "../../data/hinny/HinnyUpgrades";
+import {CommunityUpgrades} from "../../data/fga/CommunityUpgrades";
 
 export default function getUpgrades(shipType, playersRank, upgradesSource, isElite) {
     console.log("*** GET UPGRADES: ***");
@@ -17,9 +17,9 @@ export default function getUpgrades(shipType, playersRank, upgradesSource, isEli
         upgrades.length = 1
     }
 
-    /* only upgrades relevant to the players' rank are returned */
+    /* only upgrades relevant to the players" rank are returned */
 
-    /* Hinny's ypgrades */
+    /* Hinny"s ypgrades */
     if (upgradesSource === UPGRADES.HINNY) {
         if (isElite !== true) {
             upgrades.length = 1;
@@ -559,7 +559,7 @@ const communityUpgrades = Object.freeze({
 });
 
 /*
-XPs: 2xp / threat level (TL), which roughly corresponds to the players' initiative
+XPs: 2xp / threat level (TL), which roughly corresponds to the players" initiative
 NES = non-elite SHIP, ES = elite ship, LN = tie-fighter, PC = pilot card, UL = upgrade level
 TL1: LN without PC, NES no PC, ES UL = lowest + 1
 TL2-4: LN without PC, NES UL = lowest, ES UL = lowest + 1
@@ -867,7 +867,7 @@ export function getAdjustedRandomNumber(upgradesLength) {
     /* random number is adjusted to the number of upgrades the ship type has */
     let adjustedRandNum = Math.round(upgradeRandNum / 10 * upgradesLength) - 1;
 
-    /* some numbers may be rounded down to - 1 (todo rewrite) */
+    /* some numbers may be rounded down to - 1 (todo rewrite function to Math.floor) */
     if (adjustedRandNum < 0) {
         adjustedRandNum = 0
     }

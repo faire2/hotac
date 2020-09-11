@@ -1,8 +1,8 @@
 import React, {useContext, useState} from "react";
-import {GlobalSquadsValuesContext} from "../../../context/Contexts";
+import {GlobalSquadsValuesContext} from "../../context/Contexts";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
-import {Ships, Stats, UPGRADES} from "../../../data/Ships";
+import {Ships, UPGRADES} from "../../data/Ships";
 
 export default function UpgradesCard(props) {
     const globalValues = useContext(GlobalSquadsValuesContext);

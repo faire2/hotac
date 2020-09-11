@@ -21,7 +21,7 @@ export const HinnyUpgrades = Object.freeze({
     outmaneuver: {
         skillName: "Outmaneuver", skillDescription:
             <div>
-                While perfrorm a <i className="xwi x-frontarc"/> attack, if you are not in defender's firing arc,
+                While perfrorm a <i className="xwi x-frontarc"/> attack, if you are not in defender"s firing arc,
                 the defender rolls 1 fewer defense die.
             </div>
     },
@@ -101,7 +101,7 @@ export const HinnyUpgrades = Object.freeze({
     juke: {
         skillName: "Juke", skillDescription:
             <div>
-                While you perform an attack, if you are evading, change 1 of the defender's <i
+                While you perform an attack, if you are evading, change 1 of the defender"s <i
                 className="xwi x-evade"/> results to a <i className="xwi focus"/> result. When Selecting Action,
                 choose <i
                 className="xwi x-evade"/> instead of <i
@@ -217,7 +217,7 @@ export const HinnyUpgrades = Object.freeze({
             <div>
                 Attack (<i className="xwi x-lock"/>): Spend 1 <i className="xwi x-charge"/>. After this attack hits,
                 each
-                ship at range 0-1 of the defender with agility equal or less than the defender's rolls 1 attack die and
+                ship at range 0-1 of the defender with agility equal or less than the defender"s rolls 1 attack die and
                 suffers 1 <i className="xwi x-hit"/>/<i className="xwi x-crit"/> damage for a matching result.
             </div>,
         ATTACK: 3, RANGE: WEAPON_RANGE.R23, CHARGE: 3
@@ -253,7 +253,7 @@ export const HinnyUpgrades = Object.freeze({
                 drop an Electro-Proton Bomb, using the [1 <i className="xwi x-straight"/>], [1 <i
                 className="xwi x-turnleft"/>]
                 or [1 <i className="xwi x-turnright"/>] template, depending on which template drops the device closest
-                to an enemy ship. Then place 1 fuse marker on that device. This card's <i
+                to an enemy ship. Then place 1 fuse marker on that device. This card"s <i
                 className="xwi x-charge"/> cannot be
                 recovered.
             </div>,
@@ -434,7 +434,7 @@ export const HinnyUpgrades = Object.freeze({
     zertikStrom: {
         skillName: "Zertik Strom", skillDescription:
             <div>
-                During the End Phase, you may spend a lock you have on an enemy ship to expose 1 of that ship's damage
+                During the End Phase, you may spend a lock you have on an enemy ship to expose 1 of that ship"s damage
                 cards.
             </div>
     },
@@ -459,7 +459,7 @@ export const HinnyUpgrades = Object.freeze({
     rexlerBrath: {
         skillName: "Rexler Brath", skillDescription:
             <div>
-                After you perform an attack that hits, if you are evading, expose 1 of the defender's damage cards.
+                After you perform an attack that hits, if you are evading, expose 1 of the defender"s damage cards.
             </div>
     },
     collisionDetector: {
@@ -538,13 +538,13 @@ export const HinnyUpgrades = Object.freeze({
     tacticalScrambler: {
         skillName: "Tactical Scrambler", skillDescription:
             <div>
-                While you obstruct an enemy ship's attack, the defender rolls 1 additional defense die.
+                While you obstruct an enemy ship"s attack, the defender rolls 1 additional defense die.
             </div>
     },
     /* some FGA ships only raise initiative on specific threat levels */
     initiative: {
         skillName: "Initiative upgrade", skillDescription:
-        <div>Upgrade of ship's initiative.</div>
+        <div>Upgrade of ship"s initiative.</div>
     },
     noUpgrade: {
         skillName: "No Upgrade", skillDescription:

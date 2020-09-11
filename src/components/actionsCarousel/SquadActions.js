@@ -1,6 +1,6 @@
-import {AI} from "../../../data/Ships";
-import hinnyShipActions from "../../../data/hinny/HinnyShipActions";
-import fgaShipActions from "../../../data/fga/FgaShipActions";
+import {AI} from "../../data/Ships";
+import hinnyShipActions from "../../data/hinny/HinnyShipActions";
+import fgaShipActions from "../../data/fga/FgaShipActions";
 
 export default function SquadActions(props) {
     switch (props.aiEngine) {

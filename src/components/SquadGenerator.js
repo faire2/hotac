@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {Squad} from "./Squad";
 
 export default function SquadGenerator(props) {

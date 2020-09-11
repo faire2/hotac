@@ -1,4 +1,4 @@
-import {Ships, Stats} from "../../data/Ships";
+import {Ships, Stats} from "../data/Ships";
 import React from "react";
 
 export const SquadStats = (props) =>

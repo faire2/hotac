@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {Ships} from "../Ships";
 
 export default function hinnyAttack(props) {
@@ -18,28 +18,28 @@ export default function hinnyAttack(props) {
 
 const TIELN = () => (
     <ol>
-        <li>Attack nearest enemy in ship's arc.</li>
-        <li>Attack nearest enemy remote in ship's arc.</li>
+        <li>Attack nearest enemy in ship"s arc.</li>
+        <li>Attack nearest enemy remote in ship"s arc.</li>
     </ol>
 );
 
 const TIEIN = () => (
     <ol>
-        <li>Attack nearest enemy in ship's arc.</li>
-        <li>Attack nearest enemy remote in ship's arc.</li>
+        <li>Attack nearest enemy in ship"s arc.</li>
+        <li>Attack nearest enemy remote in ship"s arc.</li>
     </ol>
 );
 
 const TIESA = () => (
     <ol>
-        <li>Attack nearest enemy in ship's arc.</li>
-        <li>Attack nearest enemy remote in ship's arc.</li>
+        <li>Attack nearest enemy in ship"s arc.</li>
+        <li>Attack nearest enemy remote in ship"s arc.</li>
     </ol>
 );
 
 const VT49 = () => (
     <ol>
-        <li>Attack nearest enemy in ship's arc.</li>
-        <li>Attack nearest enemy remote in ship's arc.</li>
+        <li>Attack nearest enemy in ship"s arc.</li>
+        <li>Attack nearest enemy remote in ship"s arc.</li>
     </ol>
 );
