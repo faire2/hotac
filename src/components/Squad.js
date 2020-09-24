@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import styled from "styled-components";
 
 import {AI, Ships, Stats} from "../data/Ships";
 import {ShipsVariables} from "./variables/ShipsVariables"
@@ -56,7 +57,7 @@ export function Squad(props) {
             setTargetPosition: handleSetTargetPosition,
             handleStress: handleStress
         }}>
-            <div className="squadContainer">
+            <Container>
                 <div className="row">
                     <div className="col-8">
                         <h3>Ship type: {Ships[shipType][Stats.name]}</h3>
@@ -75,7 +76,11 @@ export function Squad(props) {
                         <UpgradesCard squadId={props.squadId} />
                     </div>
                 </div>
-            </div>
+            </Container>
         </TargetPositionContext.Provider>
     )
 }
+
+const Container = styled.div`
+    max-width: 530px;    
+`;

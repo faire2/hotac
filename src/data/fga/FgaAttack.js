@@ -20,7 +20,7 @@ export default function fgaAttack(props) {
         case Ships.VT49.id:
             return <VT49/>;
         default:
-            console.log("Component Attack didn't recognize shipType: " + props.shipType);
+            console.log("Component AttackType didn't recognize shipType: " + props.shipType);
     }
 }
 

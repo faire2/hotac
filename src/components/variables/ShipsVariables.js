@@ -1,24 +1,9 @@
 import React, {useContext} from "react";
+import styled from "styled-components";
 import Variables from "./Variables";
 import {GlobalSquadsValuesContext, ShipHandlingContext} from "../../context/Contexts";
-
-const ShipsHeader = () => (
-    <div>
-        <div className="row">
-            <div className="col-3">
-                <h3>ID:</h3>
-            </div>
-            <div className="col-4">
-                <h3>Shields:</h3>
-            </div>
-            <div className="col-4">
-                <h3>Hull:</h3>
-            </div>
-            <div className="col-1">
-            </div>
-        </div>
-    </div>
-);
+import {VariablesHeader} from "./VariablesHeader";
+import {Row} from "../../styled";
 
 export function ShipsVariables(props) {
     const squadId = props.squadId;
@@ -29,29 +14,35 @@ export function ShipsVariables(props) {
         console.log("Ships shields, hull: " + ship.shields + ", " + ship.hull);
     }
 
-    const RemoveSquadButton = () => {
-        const globalAiValuesContext = useContext(GlobalSquadsValuesContext);
-        return (
-            <button className="btn btn-danger btn-sm btnRemoveShip"
-                    onClick={() => globalAiValuesContext.handleSquadRemoval(squadId)}>
-                Remove whole squadron
-            </button>
-        )
-    };
-
     return (
-        <div>
-            <ShipsHeader/>
+        <Container>
+            <VariablesHeader/>
             {
                 ships.map((ship, keyIndex) =>
                     <Variables key={keyIndex} keyIndex={keyIndex} ship={ship} squadId={squadId}/>)
             }
             <br/>
-            <button className="btn btn-primary btn-sm" onClick={() => shipHandlingContext.handleAddShip(squadId)}>Add a
-                ship
-                to squadron
+            <Row>
+                <button className="btn btn-primary btn-sm" onClick={() => shipHandlingContext.handleAddShip(squadId)}>
+                    Add a ship to squadron
             </button>
-            <RemoveSquadButton/>
-        </div>
+                <RemoveSquadButton squadId={squadId}/>
+            </Row>
+        </Container>
     )
 }
+
+const RemoveSquadButton = (squadId) => {
+    const globalAiValuesContext = useContext(GlobalSquadsValuesContext);
+    return (
+        <button className="btn btn-danger btn-sm"
+                onClick={() => globalAiValuesContext.handleSquadRemoval(squadId)}>
+            Remove whole squadron
+        </button>
+    )
+};
+
+const Container = styled.div`
+    width: 90%;
+    overflow: visible;
+`;

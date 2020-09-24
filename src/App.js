@@ -8,7 +8,7 @@ import "./fonts/xwing-miniatures.ttf";
 import "./fonts/xwing-miniatures-ships.ttf"
 
 import Select from "react-select";
-import {Ships, Stats, UPGRADES} from "./data/Ships";
+import {Ships, Stats, UpgradesSource} from "./data/Ships";
 import SquadGenerator from "./components/SquadGenerator";
 import {GlobalSquadsValuesContext, ShipHandlingContext} from "./context/Contexts";
 import getUpgrades from "./components/upgrades/UpgradesGenerator";
@@ -18,7 +18,8 @@ import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 
 function App() {
-    const [squadrons, setSquadrons] = useState([]);
+    //const [squadrons, setSquadrons] = useState([]);
+    const [squadrons, setSquadrons] = useState([{shipType: Ships.TIELN.id, isElite: false, upgrades: [[{skillName: "Upgrade"}, 1 , 2]], ships: [{tokenId: 0, hull: 3, shields: 1}], }]);
     const [playersRank, setPlayersRank] = useState(2);
 
 
@@ -35,12 +36,12 @@ function App() {
     function handleNewShipSelection(value) {
         const tSquadrons = [...squadrons];
         const shipType = Ships[value].id;
-        const upgrades = getUpgrades(shipType, playersRank, UPGRADES.FGA, false);
+        const upgrades = getUpgrades(shipType, playersRank, UpgradesSource.FGA, false);
         const extraHullAndShield = countExtraHullAndShield(upgrades);
         let newSquad = {
             shipType: shipType,
             isElite: false,
-            upgradesSource: UPGRADES.FGA,
+            upgradesSource: UpgradesSource.FGA,
             upgrades: upgrades,
             ships: [{
                 tokenId: 0,
@@ -139,18 +140,18 @@ function App() {
                     handleShipRemoval: handleRemoveShip,
                     handleShipChange: handleShipChange
                 }}>
-                    <Menu>
-                        <div className="col-2"><h3>New squadron:</h3></div>
-                        <div className="col-5 d-inline-block blackFontColor">
-                            <Select options={newSquadShipOptions}
+                    <TopMenu>
+                        <TopMenuItem><h3>New squadron:</h3></TopMenuItem>
+                        <TopMenuItem>
+                            <TopMenuSelect options={newSquadShipOptions}
                                     onChange={e => handleNewShipSelection(e.value)}/>
-                        </div>
-                        <div className="col-2">Set players" rank:</div>
+                        </TopMenuItem>
+                        <TopMenuItem>Set players' rank:</TopMenuItem>
                         <ToggleButtonGroup type="radio" name="radio" value={playersRank}
                                            onChange={e => handleSetPlayersRank(e)}>
                             {playerRankOptions.map((number) => <ToggleButton value={number}>{number}</ToggleButton> )}
                         </ToggleButtonGroup>
-                    </Menu>
+                    </TopMenu>
 
                     <SquadGenerator squadrons={squadrons}/>
                 </ShipHandlingContext.Provider>
@@ -159,17 +160,26 @@ function App() {
     );
 }
 
-const Menu = styled.div`
-  display: flex;
-  align-items: center;
-  position: sticky;
-  position: -webkit-sticky;
-  background-color: #007bff;
-  padding-left: 10px;
-  color: white;
-  height: 50px;
-  top: 0;
-  z-index: 2;
+const TopMenu = styled.div`
+    display: flex;
+    align-items: center;
+    position: sticky;
+    position: -webkit-sticky;
+    background-color: #007bff;
+    padding-left: 10px;
+    color: white;
+    height: 50px;
+    top: 0;
+z-index: 2;
+`;
+
+const TopMenuItem = styled.div`
+    margin-right: 10px;
+`;
+
+const TopMenuSelect = styled(Select)`
+    width: 200px;
+    color: black;
 `;
 
 function resetShipsextraHullAndShield(previousUpgrades, newUpgrades, shipType, ships) {

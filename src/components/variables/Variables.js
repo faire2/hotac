@@ -1,8 +1,10 @@
 import React, {useContext} from "react";
+import styled from "styled-components"
 import {Ships, Stats} from "../../data/Ships";
 import Select from "react-select";
 import {countExtraHullAndShield} from "../../App";
 import {ShipHandlingContext} from "../../context/Contexts";
+import {colors, FlexItem, RoundButton} from "../../styled";
 
 export default function Variables(props) {
     let ship = props.ship;
@@ -49,40 +51,48 @@ export default function Variables(props) {
     }
 
     return (
-        <div>
-            <div className="row">
-                <div className="col-3">
+        <Container>
+            <FlexItem>
                     <Select options={idOptions} onChange={e => handleShipVarChange(Stats.tokenId, e.value)}
                             value={{label: props.ship.tokenId, value: props.ship.tokenId}}/>
-                </div>
-                <div className="col-4">
-                    <button className="btn btn-primary btn-increment"
-                            onClick={() => handleShipVarChange(Stats.shields, ship.shields - 1)}
-                            size="sm"> -
-                    </button>
-                    <span className="value"> {ship.shields} </span>
-                    <button className="btn btn-primary btn-increment"
-                            onClick={() => handleShipVarChange(Stats.shields, ship.shields + 1)}
-                            size="sm"> +
-                    </button>
-                </div>
-                <div className="col-4 ">
-                    <button className="btn btn-primary btn-increment"
-                            onClick={() => handleShipVarChange(Stats.hull, ship.hull - 1)}
-                            size="sm"> -
-                    </button>
-                    <span className="value">     {ship.hull} </span>
-                    <button className="btn btn-primary btn-increment"
-                            onClick={() => handleShipVarChange(Stats.hull, ship.hull + 1)}
-                            size="sm"> +
-                    </button>
-                </div>
-                <div className="col-1">
-                    <button id="btn-remove_ship" className="btn btn-danger"
+            </FlexItem>
+            <FlexItem>
+                <RoundButton color={colors.LIGHT_BLUE}
+                             onClick={() => handleShipVarChange(Stats.shields, ship.shields - 1)}>
+                    -
+                </RoundButton>
+                {ship.shields}
+                <RoundButton color={colors.LIGHT_BLUE} className="btn btn-primary btn-increment"
+                        onClick={() => handleShipVarChange(Stats.shields, ship.shields + 1)}>
+                    +
+                </RoundButton>
+            </FlexItem>
+            <FlexItem>
+                <RoundButton color={colors.LIGHT_BLUE}
+                        onClick={() => handleShipVarChange(Stats.hull, ship.hull - 1)}>
+                    -
+                </RoundButton>
+                {ship.hull}
+                <RoundButton color={colors.LIGHT_BLUE} onClick={() => handleShipVarChange(Stats.hull, ship.hull + 1)}>
+                    +
+                </RoundButton>
+            </FlexItem>
+
+            <AbsoluteButton id="btn-remove_ship" color={colors.RED}
                             onClick={() => shipHandlingContext.handleShipRemoval(props.keyIndex, squadId)}>x
-                    </button>
-                </div>
-            </div>
-        </div>
+            </AbsoluteButton>
+        </Container>
     )
 }
+
+const Container = styled.div`
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+`;
+
+// button is put outside of container flow to allow for proper column alignment
+const AbsoluteButton = styled(RoundButton)`
+    position: absolute;
+    right: 10px;
+`;

@@ -142,7 +142,7 @@ export const HinnyUpgrades = Object.freeze({
             </div>,
         CHARGE: 2
     },
-//todo Attack key word should always be in capitals, see the cards
+//todo AttackType key word should always be in capitals, see the cards
     clusterMissiles: {
         skillName: "Cluster Missiles", skillDescription:
             <div>
@@ -496,7 +496,7 @@ export const HinnyUpgrades = Object.freeze({
         skillName: "Darth Vader", skillDescription:
             <div>
                 At the start of the Engagement Phase, you may choose 1 ship in your firing arc at range 0-2 and spend
-                1 <i className="xwi charge"/>. If you do, that ship suffers 1 <i className="xwi x-hit"/> damage unless
+                1 <i className="xwi x-charge"/>. If you do, that ship suffers 1 <i className="xwi x-hit"/> damage unless
                 it chooses to remove 1 green token. Target priority: Attack target, if it has a green token, or nearest
                 enemy in your arc.
             </div>

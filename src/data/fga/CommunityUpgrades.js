@@ -1,8 +1,13 @@
 import React from "react";
+import styled from "styled-components";
 import {WEAPON_RANGE} from "../hinny/HinnyUpgrades";
+import {colors} from "../../styled";
+
+const RedColor = styled.span`
+    color: ${colors.RED};
+`;
 
 export const CommunityUpgrades = Object.freeze({
-
     autothrusters: {
         skillName: "Autothrusters", skillDescription:
             <div>
@@ -33,7 +38,6 @@ export const CommunityUpgrades = Object.freeze({
             <div>When defending, ships attacking you cannot spend <i className="xwi x-focus"/> tokens or reroll attack
                 dice.</div>
     },
-    // todo check functionality
     hullUpgrade: {
         skillName: "Hull Upgrade", skillDescription:
             <div>Increases your hull by 1. Already included in ships hull value.</div>
@@ -44,7 +48,7 @@ export const CommunityUpgrades = Object.freeze({
     },
     expose: {
         skillName: "Expose", skillDescription:
-            <div><span className="red"> Replaces Focus Action</span>. Action: Until the end of the round, increase your
+            <div><RedColor> Replaces Focus Action</RedColor>. Action: Until the end of the round, increase your
                 primary attack value by 1 and
                 decrease your agility by 1.</div>
     },
@@ -56,7 +60,7 @@ export const CommunityUpgrades = Object.freeze({
     opportunist: {
         skillName: "Opportunist", skillDescription:
             <div>When attacking, if you are not stressed and if the defender does not have any Focus or Evade tokens,
-                roll 1 additional attack die. <span className="red">Prioritise targets that trigger this ability</span>.
+                roll 1 additional attack die. <RedColor>Prioritise targets that trigger this ability</RedColor>.
             </div>
     },
     turrPhennir: {
@@ -152,14 +156,13 @@ export const CommunityUpgrades = Object.freeze({
         skillName: "Outmaneuver", skillDescription:
             <div>
                 While perform a <i className="xwi x-frontarc"/> attack, if you are not in defender"s firing arc,
-                the defender rolls 1 fewer defense die. <span className="red">Prioritise targets that trigger this ability.</span>
+                the defender rolls 1 fewer defense die. <RedColor>Prioritise targets that trigger this ability.</RedColor>
             </div>
     },
     backstabber:
         {
             skillName: "Backstabber", skillDescription:
-                <div>When attacking from outside the defender"s primary arc, roll 1 additional attack die. <span
-                    className="red">Prioritise targets that trigger this ability.</span></div>
+                <div>When attacking from outside the defender"s primary arc, roll 1 additional attack die. <RedColor>Prioritise targets that trigger this ability.</RedColor></div>
         },
     rearAdmiralChiraneau:
         {
@@ -172,7 +175,7 @@ export const CommunityUpgrades = Object.freeze({
     squadLeader:
         {
             skillName: "Squad Leader", skillDescription:
-                <div><span className="red">Replaces Focus Action.</span> Action[<i className="xwi x-coordinate"/>]:
+                <div><RedColor>Replaces Focus Action.</RedColor> Action[<i className="xwi x-coordinate"/>]:
                     Select the friendly ship at range 1-2 with the highest pilot initiative. That ship performs a free
                     action chosen from the available actions on your action bar. </div>
         },
@@ -340,14 +343,14 @@ export const CommunityUpgrades = Object.freeze({
     gunner:
         {
             skillName: "Gunner", skillDescription:
-                <div>After you perform an attack that does not hit, immediately perform a primary weapon attack.<span
-                    className="red">You cannot perform another attack this round.</span></div>
+                <div>After you perform an attack that does not hit, immediately perform a primary weapon attack.
+                    <RedColor>You cannot perform another attack this round.</RedColor></div>
         },
     tactician:
         {
             skillName: "Tactician", skillDescription:
                 <div>After you perform an attack against a ship inside your firing arc at range 2, that ship gains 1
-                    Stress token.<span className="red">Prioritise targets that trigger this ability.</span></div>
+                    Stress token.<RedColor>Prioritise targets that trigger this ability.</RedColor></div>
         },
     antiPursuitLasers:
         {
@@ -382,7 +385,7 @@ export const CommunityUpgrades = Object.freeze({
     fleetOfficer:
         {
             skillName: "Fleet Officer", skillDescription:
-                <div><span className="red">Replaces Focus Action.</span> Action: The 2 nearest friendly ships at range
+                <div><RedColor>Replaces Focus Action.</RedColor> Action: The 2 nearest friendly ships at range
                     1-2 each gain a Focus token. If there are 0 or 1 friendly ship in range, this ships gains a Focus
                     token as well.</div>
         },

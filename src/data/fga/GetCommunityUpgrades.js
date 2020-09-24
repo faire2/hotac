@@ -4,7 +4,7 @@ import {getAdjustedRandomNumber} from "../../components/upgrades/UpgradesGenerat
 
 export default function getCommunityUpgrades(shipType, playersIni, upgradeRandNum, isElite) {
     let shipTypeUpgrades = [];
-    console.log("*** GET COMMUNITY UPGRADES: " + shipType + " ***");
+    console.log("*** GET COMMUNITY UpgradesSource: " + shipType + " ***");
 
     switch (shipType) {
         case Ships.TIEIN.id:

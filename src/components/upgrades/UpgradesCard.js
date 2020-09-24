@@ -1,8 +1,9 @@
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 import {GlobalSquadsValuesContext} from "../../context/Contexts";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
-import {Ships, UPGRADES} from "../../data/Ships";
+import {Ships, UpgradesSource} from "../../data/Ships";
+import {Skill} from "./Skill";
 
 export default function UpgradesCard(props) {
     const globalValues = useContext(GlobalSquadsValuesContext);
@@ -17,17 +18,16 @@ export default function UpgradesCard(props) {
             <div className="d-flex justify-content-center">
                 <ToggleButtonGroup type="radio" name="radio" value={squad.upgradesSource}
                                    onChange={e => globalValues.handleSetUpgradesSource(squadId, e)}>
-                    {Ships[squad.shipType].upgrades.includes(UPGRADES.COMMUNITY) ?
-                        <ToggleButton value={UPGRADES.COMMUNITY}>{UPGRADES.COMMUNITY}</ToggleButton> : ""}
-                    {Ships[squad.shipType].upgrades.includes(UPGRADES.HINNY) ?
-                        <ToggleButton value={UPGRADES.HINNY}>{UPGRADES.HINNY}</ToggleButton> : ""}
-                    {Ships[squad.shipType].upgrades.includes(UPGRADES.COMMUNITY) ?
-                        <ToggleButton value={UPGRADES.FGA}>{UPGRADES.FGA}</ToggleButton> : ""}
+                    {Ships[squad.shipType].upgrades.includes(UpgradesSource.COMMUNITY) ?
+                        <ToggleButton value={UpgradesSource.COMMUNITY}>{UpgradesSource.COMMUNITY}</ToggleButton> : ""}
+                    {Ships[squad.shipType].upgrades.includes(UpgradesSource.HINNY) ?
+                        <ToggleButton value={UpgradesSource.HINNY}>{UpgradesSource.HINNY}</ToggleButton> : ""}
+                    {Ships[squad.shipType].upgrades.includes(UpgradesSource.COMMUNITY) ?
+                        <ToggleButton value={UpgradesSource.FGA}>{UpgradesSource.FGA}</ToggleButton> : ""}
                 </ToggleButtonGroup>
             </div>
             <label>
-                <input type="checkbox" value={isElite}
-                       onChange={() => globalValues.handleSetIsElite(squadId, !isElite)}/>
+                <input type="checkbox" value={isElite} onChange={() => globalValues.handleSetIsElite(squadId, !isElite)}/>
                 Is ship elite?
             </label>
             <div className={columns}>
@@ -40,60 +40,3 @@ export default function UpgradesCard(props) {
     )
 }
 
-function Skill(props) {
-    const skill = props.skill;
-    return (
-        <div className="skillContainer ">
-            <div className="headline text-center">
-                {skill[0].skillName}
-            </div>
-            <div className="d-flex flex-column">
-                <div className="content">
-                    {skill[0].skillDescription}
-                </div>
-                <div className="variables d-flex flex-row justify-content-around">
-                    {skill[0].CHARGE !== undefined && <Charges charges={skill[0].CHARGE} recharge={skill[0].RECHARGE}/>}
-                    {skill[0].ATTACK !== undefined &&
-                    <Attack attack={skill[0].ATTACK} range={skill[0].RANGE} bullsEye={skill[0].BULLSEYE}/>}
-                </div>
-            </div>
-        </div>
-    )
-}
-
-//todo: buttons for changing number of charges
-function Charges(props) {
-    const [charges, setCharges] = useState(props.charges);
-
-    function handleChangeCharges(value) {
-        if (value >= 0 && value <= props.charges) {
-            setCharges(value)
-        }
-    }
-
-    return (
-        <div className="charge">
-            <button className="btn btn-outline-warning btn-increment" size="sm"
-                    onClick={() => handleChangeCharges(charges - 1)}
-            > -
-            </button>
-            <i className="xwi x-charge"/>{charges}
-            {props.recharge === 1 && <i className="xwi x-recurring"/>}
-            {props.recharge === 2 && <i className="xwi x-doublerecurring"/>}
-            <button className="btn btn-outline-warning btn-increment" size="sm"
-                    onClick={() => handleChangeCharges(charges + 1)}
-            > +
-            </button>
-        </div>
-    )
-}
-
-const Attack = (props) =>
-    <div className="attack d-flex flex-row">
-        <div>
-            {props.bullsEye ? <i className="xwi x-bullseyearc"/> : <i className="xwi x-frontarc"/>}{props.attack}
-        </div>
-        <div className="range">
-            <i className="xwi x-rangebonusindicator"/><span className="blackFontColor"> {props.range}</span>
-        </div>
-    </div>;

@@ -1,9 +1,10 @@
 import React from "react";
+import styled from "styled-components"
 
 export const CarouselArrow = ({direction, handleArrowClick, glyph}) => (
-    <div className={"slide-arrow " + direction} onClick={() => handleArrowClick(direction)}>
+    <SlideArrow className={"slide-arrow " + direction} onClick={() => handleArrowClick(direction)}>
         {glyph}
-    </div>
+    </SlideArrow>
 );
 
 export const DIRECTIONS = Object.freeze({
@@ -11,3 +12,14 @@ export const DIRECTIONS = Object.freeze({
         RIGHT: "right",
     }
 );
+
+const SlideArrow = styled.div`
+    font-size: 0px;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    height: 100%;
+    user-select: none;
+    display: flex;
+`;

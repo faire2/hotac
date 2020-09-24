@@ -1,9 +1,9 @@
-import {Ships, UPGRADES} from "../../data/Ships";
+import {Ships, UpgradesSource} from "../../data/Ships";
 import {HinnyUpgrades} from "../../data/hinny/HinnyUpgrades";
 import {CommunityUpgrades} from "../../data/fga/CommunityUpgrades";
 
 export default function getUpgrades(shipType, playersRank, upgradesSource, isElite) {
-    console.log("*** GET UPGRADES: ***");
+    console.log("*** GET UpgradesSource: ***");
     console.log("shipType, playersIni, upgradesSource, isElite: ");
     console.log(shipType + ", " + playersRank + ", " + upgradesSource + ", " + isElite);
 
@@ -20,7 +20,7 @@ export default function getUpgrades(shipType, playersRank, upgradesSource, isEli
     /* only upgrades relevant to the players" rank are returned */
 
     /* Hinny"s ypgrades */
-    if (upgradesSource === UPGRADES.HINNY) {
+    if (upgradesSource === UpgradesSource.HINNY) {
         if (isElite !== true) {
             upgrades.length = 1;
         } else if (playersRank <= upgrades.length) {
@@ -29,7 +29,7 @@ export default function getUpgrades(shipType, playersRank, upgradesSource, isEli
     }
 
     /* Community upgrades */
-    if (upgradesSource === UPGRADES.COMMUNITY) {
+    if (upgradesSource === UpgradesSource.COMMUNITY) {
         if (isElite !== true || shipType === Ships.TIELN.id) {
             upgrades.length = 1;
         } else if (playersRank <= upgrades.length) {
@@ -38,7 +38,7 @@ export default function getUpgrades(shipType, playersRank, upgradesSource, isEli
     }
 
     /* FGA upgrades - relatively complex, table can be found above const fgaUpgrades */
-    if (upgradesSource === UPGRADES.FGA) {
+    if (upgradesSource === UpgradesSource.FGA) {
         if (shipType === Ships.TIELN.id) {
             if (playersRank < 7) {
                 upgrades[0] = [HinnyUpgrades.noUpgrade, 1, 0];
@@ -90,7 +90,7 @@ export default function getUpgrades(shipType, playersRank, upgradesSource, isEli
 function getShipTypeUpgrades(shipType, upgradesSource) {
     let shipTypeUpgrades = [];
     switch (upgradesSource) {
-        case UPGRADES.HINNY:
+        case UpgradesSource.HINNY:
             switch (shipType) {
                 case Ships.TIEIN.id:
                     shipTypeUpgrades = hinnyUpgrades.TIEIN;
@@ -109,7 +109,7 @@ function getShipTypeUpgrades(shipType, upgradesSource) {
                     console.log("HinnyShipUpgrades didn't recognize shipType: " + shipType);
             }
             break;
-        case UPGRADES.COMMUNITY:
+        case UpgradesSource.COMMUNITY:
             switch (shipType) {
                 case Ships.TIEIN.id:
                     shipTypeUpgrades = communityUpgrades.TIEIN;
@@ -137,7 +137,7 @@ function getShipTypeUpgrades(shipType, upgradesSource) {
                     console.log("CommunityUpgrades didn't recognize shipType: " + shipType);
             }
             break;
-        case UPGRADES.FGA:
+        case UpgradesSource.FGA:
             switch (shipType) {
                 case Ships.TIEIN.id:
                     shipTypeUpgrades = fgaUpgrades.TIEIN;

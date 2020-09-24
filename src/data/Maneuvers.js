@@ -21,7 +21,7 @@ export const PSN = Object.freeze({
     STRSREAR: "stressed rear"
 });
 
-export const MVRS = Object.freeze({
+export const mvrs = Object.freeze({
     STRAIGHT1: "straight 1",
     STRAIGHT1BLUE: "blue straight 1",
     STRAIGHT2: "straight 2",

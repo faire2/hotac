@@ -4,6 +4,7 @@ import SquadActions from "./SquadActions";
 import SquadTargetSelection from "./SquadTargetSelection";
 import SquadAttack from "./SquadAttack";
 import {CarouselArrow, DIRECTIONS} from "./CarouselArrow";
+import {Indicator} from "./Indicator";
 
 export default function SquadActionsCarousel(props) {
     const aiEngine = props.aiEngine;
@@ -41,17 +42,19 @@ export default function SquadActionsCarousel(props) {
             <IndicatorsContainer>
                 <ul>
                     {content.map((item, index) => {
-                        if (index === currentSlideIndex) return <li key={index} className="indicator active"></li>
-                        return <li key={index} className="indicator"></li>
+                        if (index === currentSlideIndex) return <Indicator key={index} active/>;
+                        return <Indicator key={index}/>
                     })}
                 </ul>
             </IndicatorsContainer>
 
                 {content[currentSlideIndex]}
-                <CarouselArrow direction={DIRECTIONS.LEFT} handleArrowClick={() => handleArrowClick(DIRECTIONS.LEFT)}
-                       glyph="<"/>
-                <CarouselArrow direction={DIRECTIONS.RIGHT} handleArrowClick={() => handleArrowClick(DIRECTIONS.RIGHT)}
-                       glyph=">"/>
+                <ArrowsContainer>
+                    <CarouselArrow direction={DIRECTIONS.LEFT} handleArrowClick={() => handleArrowClick(DIRECTIONS.LEFT)}
+                                   glyph="<"/>
+                    <CarouselArrow direction={DIRECTIONS.RIGHT} handleArrowClick={() => handleArrowClick(DIRECTIONS.RIGHT)}
+                                   glyph=">"/>
+                </ArrowsContainer>
             </Carousel>
 
         </div>
@@ -62,9 +65,7 @@ const Carousel = styled.div`
     position: relative;
     display: flex;
     flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    max-height: 300px;
+    height: 300px;
     width: 100%;
     overflow-y: auto;
 `;
@@ -76,4 +77,10 @@ const IndicatorsContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-`
+`;
+
+const ArrowsContainer = styled.div`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+`;
