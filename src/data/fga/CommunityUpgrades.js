@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {WEAPON_RANGE} from "../hinny/HinnyUpgrades";
+import {WEAPON_RANGE} from "../hinny/HinnyUpgradesList";
 import {colors} from "../../styled";
 
 const RedColor = styled.span`

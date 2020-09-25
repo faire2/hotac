@@ -9,7 +9,7 @@ export const WEAPON_RANGE = Object.freeze(
     });
 
 /* todo Vader crew originally it uses force, check with Claes what the correct ruling is */
-export const HinnyUpgrades = Object.freeze({
+export const HinnyUpgradesList = Object.freeze({
     hullUpgrade: {
         skillName: "Hull Upgrade", skillDescription:
             <div>Increases your hull by 1. Already included in ships hull value.</div>

@@ -1,6 +1,6 @@
 import {Ships} from "../Ships";
 import {CommunityUpgrades} from "./CommunityUpgrades";
-import {getAdjustedRandomNumber} from "../../components/upgrades/UpgradesGenerator";
+import {getAdjustedRandomNumber} from "../../components/upgrades/upgradesFunctins";
 
 export default function getCommunityUpgrades(shipType, playersIni, upgradeRandNum, isElite) {
     let shipTypeUpgrades = [];

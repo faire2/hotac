@@ -12,7 +12,7 @@ import {Ships, Stats, UpgradesSource} from "./data/Ships";
 import SquadGenerator from "./components/SquadGenerator";
 import {GlobalSquadsValuesContext, ShipHandlingContext} from "./context/Contexts";
 import getUpgrades from "./components/upgrades/UpgradesGenerator";
-import {HinnyUpgrades} from "./data/hinny/HinnyUpgrades";
+import {HinnyUpgradesList} from "./data/hinny/HinnyUpgradesList";
 import {CommunityUpgrades} from "./data/fga/CommunityUpgrades";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
@@ -198,10 +198,10 @@ export function countExtraHullAndShield(upgrades) {
     let extraShield = 0;
 
     for (let upgrade of upgrades) {
-        if (upgrade[0] === HinnyUpgrades.hullUpgrade || upgrade[0] === CommunityUpgrades.hullUpgrade) {
+        if (upgrade[0] === HinnyUpgradesList.hullUpgrade || upgrade[0] === CommunityUpgrades.hullUpgrade) {
             extraHull += 1;
         }
-        if (upgrade[0] === HinnyUpgrades.shieldUpgrade || upgrade[0] === CommunityUpgrades.shieldUpgrade) {
+        if (upgrade[0] === HinnyUpgradesList.shieldUpgrade || upgrade[0] === CommunityUpgrades.shieldUpgrade) {
             extraShield += 1;
         }
     }
