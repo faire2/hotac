@@ -25,8 +25,9 @@ function App() {
 
     let newSquadShipOptions = [];
     for (let ship of Object.keys(Ships)) {
-        newSquadShipOptions.push({value: Ships[ship][Stats.id], label: Ships[ship][Stats.name]})
+        newSquadShipOptions.push({value: Ships[ship][Stats.id], label: Ships[ship][Stats.name]});
     }
+    newSquadShipOptions.sort((a, b) => a.label.localeCompare(b.label));
 
     let playerRankOptions = [];
     for (let i = 1; i < 8; i++) {
