@@ -8,7 +8,7 @@ import "./fonts/xwing-miniatures.ttf";
 import "./fonts/xwing-miniatures-ships.ttf"
 
 import Select from "react-select";
-import {Ships, Stats, UpgradesSource} from "./data/Ships";
+import {Ships, Stats} from "./data/Ships";
 import SquadGenerator from "./components/SquadGenerator";
 import {GlobalSquadsValuesContext, ShipHandlingContext} from "./context/Contexts";
 import getUpgrades from "./components/upgrades/UpgradesGenerator";
@@ -16,6 +16,7 @@ import {HinnyUpgradesList} from "./data/hinny/HinnyUpgradesList";
 import {CommunityUpgrades} from "./data/fga/CommunityUpgrades";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
+import {UpgradesSource} from "./enums";
 
 function App() {
     //const [squadrons, setSquadrons] = useState([]);
@@ -37,12 +38,13 @@ function App() {
     function handleNewShipSelection(value) {
         const tSquadrons = [...squadrons];
         const shipType = Ships[value].id;
-        const upgrades = getUpgrades(shipType, playersRank, UpgradesSource.FGA, false);
+        const upgradesSource = Ships[shipType].upgrades[0];
+        const upgrades = getUpgrades(shipType, playersRank, upgradesSource, false);
         const extraHullAndShield = countExtraHullAndShield(upgrades);
         let newSquad = {
             shipType: shipType,
             isElite: false,
-            upgradesSource: UpgradesSource.FGA,
+            upgradesSource: upgradesSource,
             upgrades: upgrades,
             ships: [{
                 tokenId: 0,

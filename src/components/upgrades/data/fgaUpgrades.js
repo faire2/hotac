@@ -289,5 +289,9 @@ export const fgaUpgrades = Object.freeze({
                 [HinnyUpgradesList.munitionFailsafe, 5, 4],
                 [HinnyUpgradesList.admiralSloane, 5, 4],
             ],
+        ],
+    VULTURE:
+        [
+            []
         ]
 });

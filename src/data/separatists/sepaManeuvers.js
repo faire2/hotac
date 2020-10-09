@@ -1,0 +1,32 @@
+import {Ships} from "../Ships";
+import {mvrs, PSN} from "../Maneuvers";
+
+
+/* MANEUVERS are kept as arrays so that random number can be used as the array index */
+export const sepaManeuvers = Object.freeze({
+    [Ships.TIELN.id]: {
+        [PSN.R4BULL]: [mvrs.STRAIGHT4BLUE, mvrs.STRAIGHT5, mvrs.STRAIGHT5, mvrs.STRAIGHT5, mvrs.STRAIGHT5, mvrs.STRAIGHT5,],
+        [PSN.R4FRONT]: [mvrs.BANK2, mvrs.BANK3RED, mvrs.BANK3RED, mvrs.STRAIGHT4BLUE, mvrs.STRAIGHT5, mvrs.STRAIGHT5],
+        [PSN.R4FRONTSIDE]: [mvrs.BANK2, mvrs.BANK3RED, mvrs.BANK3RED, mvrs.STRAIGHT4BLUE, mvrs.STRAIGHT5, mvrs.STRAIGHT5],
+        [PSN.R4REARSIDE]: [mvrs.TURN2BLUE, mvrs.TURN2BLUE, mvrs.TURN2BLUE, mvrs.TURN3, mvrs.TURN3, mvrs.TURN3],
+        [PSN.R4REAR]: [mvrs.TALLON2REDOPPOSITE, mvrs.TALLON2RED, mvrs.TALLON2RED, mvrs.TALLON2RED, mvrs.KOIOGRAN1RED, mvrs.KOIOGRAN1RED],
+        [PSN.R3BULL]:  [mvrs.STRAIGHT2BLUE, mvrs.BANK2OPPOSITE, mvrs.BANK2, mvrs.STRAIGHT3BLUE, mvrs.STRAIGHT3BLUE, mvrs.STRAIGHT4BLUE],
+        [PSN.R3FRONT]: [mvrs.STRAIGHT2BLUE, mvrs.BANK2, mvrs.BANK2, mvrs.BANK2, mvrs.BANK2, mvrs.TURN2BLUE],
+        [PSN.R3FRONTSIDE]: [mvrs.TURN1, mvrs.TURN1, mvrs.TURN2BLUE, mvrs.TURN2BLUE, mvrs.TURN2BLUE, mvrs.TURN3],
+        [PSN.R3REARSIDE]: [mvrs.TURN1, mvrs.TURN1, mvrs.TURN1, mvrs.TURN2BLUE, mvrs.TURN2BLUE, mvrs.TURN2BLUE],
+        [PSN.R3REAR]: [mvrs.TALLON2REDOPPOSITE, mvrs.TALLON2RED, mvrs.TALLON2RED, mvrs.TALLON2RED, mvrs.KOIOGRAN1RED, mvrs.KOIOGRAN1RED],
+        [PSN.R1BULL]: [mvrs.STRAIGHT2BLUE, mvrs.STRAIGHT2BLUE, mvrs.STRAIGHT2BLUE, mvrs.STRAIGHT2BLUE, mvrs.BANK2OPPOSITE, mvrs.BANK2],
+        [PSN.R1FRONT]: [mvrs.TURN1, mvrs.STRAIGHT2BLUE, mvrs.BANK2, mvrs.BANK2, mvrs.BANK2, mvrs.TURN2BLUE],
+        [PSN.R1FRONTSIDE]: [mvrs.TURN1, mvrs.TURN1, mvrs.TURN1, mvrs.TURN1, mvrs.TURN2BLUE, mvrs.TALLON2RED],
+        [PSN.R1REARSIDE]: [mvrs.TURN1, mvrs.TURN1, mvrs.KOIOGRAN1RED, mvrs.TALLON2RED, mvrs.TALLON2RED, mvrs.TALLON2RED],
+        [PSN.R1REAR]: [mvrs.TALLON2REDOPPOSITE, mvrs.TALLON2RED, mvrs.TALLON2RED, mvrs.TALLON2RED, mvrs.KOIOGRAN1RED, mvrs.KOIOGRAN1RED],
+        [PSN.STRSBULL]: [mvrs.STRAIGHT2BLUE, mvrs.STRAIGHT2BLUE, mvrs.STRAIGHT2BLUE, mvrs.STRAIGHT3BLUE, mvrs.STRAIGHT3BLUE, mvrs.STRAIGHT4BLUE,],
+        [PSN.STRSFRONT]: [mvrs.STRAIGHT2BLUE, mvrs.STRAIGHT2BLUE, mvrs.STRAIGHT3BLUE, mvrs.STRAIGHT4BLUE, mvrs.TURN2BLUE, mvrs.TURN2BLUE],
+        [PSN.STRSFRONTSIDE]: [mvrs.TURN2BLUE, mvrs.TURN2BLUE, mvrs.TURN2BLUE, mvrs.TURN2BLUE, mvrs.TURN2BLUE, mvrs.TURN2BLUE],
+        [PSN.STRSREARSIDE]: [mvrs.TURN2BLUE, mvrs.TURN2BLUE, mvrs.TURN2BLUE, mvrs.TURN2BLUE, mvrs.TURN2BLUE, mvrs.TURN2BLUE],
+        [PSN.STRSREAR]: [mvrs.STRAIGHT2BLUE, mvrs.STRAIGHT3BLUE, mvrs.STRAIGHT4BLUE, mvrs.TURN2BLUEOPPOSITE, mvrs.TURN2BLUE, mvrs.TURN2BLUE]
+    },
+});
+
+
+

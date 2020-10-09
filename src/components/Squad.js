@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 
-import {AI, Ships, Stats} from "../data/Ships";
+import {Ships, Stats} from "../data/Ships";
 import {ShipsVariables} from "./variables/ShipsVariables"
 import {SquadStats} from "./SquadStats";
 import Select from "react-select";
@@ -19,7 +19,7 @@ export function Squad(props) {
     /* TARGET POSITION STATE */
     const [targetPosition, setTargetPosition] = useState([PSN.R3FRONT]);
     const [maneuverRandNum, setManeuverRandnum] = useState(1);
-    const [aiEngine, setAiEngine] = useState(AI.FGA);
+    const [aiEngine, setAiEngine] = useState(Ships[shipType].ai[0]);
     const [stressed, setStressed] = useState(false);
     const squadNames = [
         {value: "Alpha", label: "Alpha"},

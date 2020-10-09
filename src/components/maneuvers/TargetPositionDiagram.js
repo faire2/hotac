@@ -1,7 +1,7 @@
 import React, {useContext, useState} from "react";
-import {AI} from "../../data/Ships";
 import {PSN} from "../../data/Maneuvers";
 import {TargetPositionContext} from "../../context/Contexts";
+import {AI} from "../../enums";
 
 export default function TargetPositionDiagram() {
     const positionContext = useContext(TargetPositionContext);

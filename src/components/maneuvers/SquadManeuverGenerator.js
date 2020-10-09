@@ -1,9 +1,10 @@
 import React, {useContext} from "react";
-import {AI} from "../../data/Ships";
 import {hinnyManeuvers} from "../../data/hinny/Maneuvers"
 import {fgaManeuvers} from "../../data/fga/Maneuvers"
 import {mvrs} from "../../data/Maneuvers";
 import {TargetPositionContext} from "../../context/Contexts";
+import {AI} from "../../enums";
+import {sepaManeuvers} from "../../data/separatists/sepaManeuvers";
 
 export default function SquadManeuverGenerator() {
     const positionContext = useContext(TargetPositionContext);
@@ -14,7 +15,9 @@ export default function SquadManeuverGenerator() {
             break;
         case AI.FGA:
             maneuvers = fgaManeuvers;
-            console.log("fga maneuvers");
+            break;
+        case AI.SEPARATISTS:
+            maneuvers = sepaManeuvers;
             break;
         default:
             console.log("Unknown AI engine in SquadManeuver: " + positionContext.aiEngine)
@@ -87,10 +90,16 @@ export default function SquadManeuverGenerator() {
             return <div className="xw-man">3<i className="xwmr x-sloopright"/> </div>;
         case mvrs.SEGNOR3REDOPPOSITE:
             return <div className="xw-man">3<i className="xwmr x-sloopleft"/> </div>;
+        case mvrs.TALLON2RED:
+            return <div className="xw-man">2<i className="xwmr x-trollright"/> </div>;
+        case mvrs.TALLON2REDOPPOSITE:
+            return <div className="xw-man">2<i className="xwmr x-trollleft"/> </div>;
         case mvrs.TALLON3RED:
-            return <div className="xw-man">3<i className="xwmr x-trollright"/> </div>;
+            return <div className="xw-man">2<i className="xwmr x-trollright"/> </div>;
         case mvrs.TALLON3REDOPPOSITE:
             return <div className="xw-man">3<i className="xwmr x-trollleft"/> </div>;
+        case mvrs.KOIOGRAN1RED:
+            return <div className="xw-man">1<i className="xwmr x-kturn"/> </div>;
         case mvrs.KOIOGRAN3RED:
             return <div className="xw-man">3<i className="xwmr x-kturn"/> </div>;
         case mvrs.KOIOGRAN4:

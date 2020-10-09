@@ -1,23 +1,5 @@
 import React from "react";
-
-export const AI = Object.freeze({
-    HINNY: "Hinny's",
-    FGA: "FGA",
-    }
-);
-
-export const UpgradesSource = Object.freeze({
-    HINNY: "Hinny's upg.",
-    COMMUNITY: "Community upg.",
-    FGA: "FGA upg.",
-});
-
-export const AttackType = Object.freeze({
-    frontArc: <i className="xwiv x-frontarc"/>,
-    rearArc: <i className="xwiv x-reararc"/>,
-    turret: <i className="xwiv x-singleturretarc"/>,
-    doubleturret: <i className="xwiv x-doubleturretarc"/>,
-});
+import {AI, AttackType, UpgradesSource} from "../enums";
 
 export const Ships = Object.freeze({
     TIELN: {
@@ -107,6 +89,17 @@ export const Ships = Object.freeze({
         id: "LAMBDA",
         ai: [AI.FGA],
         upgrades: [UpgradesSource.FGA, UpgradesSource.COMMUNITY],
+    },
+    VULTURE: {
+        name: "Vulture Droid Fighter",
+        initiative: 1,
+        shields: 0,
+        hull: 3,
+        attack: [{attack: AttackType.frontArc, damage: 2}],
+        agility: 2,
+        id: "VULTURE",
+        ai: [AI.SEPARATISTS],
+        upgrades: [UpgradesSource.SEPARATIST],
     },
 });
 

@@ -1,9 +1,11 @@
-import {Ships, UpgradesSource} from "../../data/Ships";
+import {Ships} from "../../data/Ships";
 import {HinnyUpgradesList} from "../../data/hinny/HinnyUpgradesList";
 import {getAdjustedRandomNumber, getFgaUpgrades} from "./upgradesFunctins";
 import {fgaUpgrades} from "./data/fgaUpgrades";
 import {hinnyUpgrades} from "./data/hinnyUpgrades";
 import {communityUpgrades} from "./data/communityUpgrades";
+import {UpgradesSource} from "../../enums";
+import {sepaUpgrades} from "./data/sepaUpgrades";
 
 export default function getUpgrades(shipType, playersRank, upgradesSource, isElite) {
     console.log("*** GET UpgradesSource: ***");
@@ -101,6 +103,9 @@ function getShipTypeUpgrades(shipType, upgradesSource) {
             break;
         case UpgradesSource.FGA:
             shipTypeUpgrades = fgaUpgrades[shipType];
+            break;
+        case UpgradesSource.SEPARATIST:
+            shipTypeUpgrades = sepaUpgrades[shipType];
             break;
         default:
             shipTypeUpgrades = [[]];
