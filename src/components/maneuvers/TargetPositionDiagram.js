@@ -33,6 +33,7 @@ export default function TargetPositionDiagram() {
             bullsEyeWidth = 0;
             break;
         case AI.FGA:
+        case AI.SEPARATISTS:
             if (positionContext.stressed) {
                 arc1Width = 120;
             } else {

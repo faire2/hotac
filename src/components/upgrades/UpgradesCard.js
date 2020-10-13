@@ -19,12 +19,14 @@ export default function UpgradesCard(props) {
             <div className="d-flex justify-content-center">
                 <ToggleButtonGroup type="radio" name="radio" value={squad.upgradesSource}
                                    onChange={e => globalValues.handleSetUpgradesSource(squadId, e)}>
-                    {Ships[squad.shipType].upgrades.includes(UpgradesSource.COMMUNITY) ?
-                        <ToggleButton value={UpgradesSource.COMMUNITY}>{UpgradesSource.COMMUNITY}</ToggleButton> : ""}
-                    {Ships[squad.shipType].upgrades.includes(UpgradesSource.HINNY) ?
-                        <ToggleButton value={UpgradesSource.HINNY}>{UpgradesSource.HINNY}</ToggleButton> : ""}
-                    {Ships[squad.shipType].upgrades.includes(UpgradesSource.COMMUNITY) ?
-                        <ToggleButton value={UpgradesSource.FGA}>{UpgradesSource.FGA}</ToggleButton> : ""}
+                    {Ships[squad.shipType].upgrades.includes(UpgradesSource.COMMUNITY) &&
+                        <ToggleButton value={UpgradesSource.COMMUNITY}>{UpgradesSource.COMMUNITY}</ToggleButton>}
+                    {Ships[squad.shipType].upgrades.includes(UpgradesSource.HINNY) &&
+                        <ToggleButton value={UpgradesSource.HINNY}>{UpgradesSource.HINNY}</ToggleButton>}
+                    {Ships[squad.shipType].upgrades.includes(UpgradesSource.FGA) &&
+                        <ToggleButton value={UpgradesSource.FGA}>{UpgradesSource.FGA}</ToggleButton>}
+                    {Ships[squad.shipType].upgrades.includes(UpgradesSource.SEPARATIST) &&
+                        <ToggleButton value={UpgradesSource.SEPARATIST}>{UpgradesSource.SEPARATIST}</ToggleButton>}
                 </ToggleButtonGroup>
             </div>
             <label>

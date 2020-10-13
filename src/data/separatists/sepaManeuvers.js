@@ -4,7 +4,7 @@ import {mvrs, PSN} from "../Maneuvers";
 
 /* MANEUVERS are kept as arrays so that random number can be used as the array index */
 export const sepaManeuvers = Object.freeze({
-    [Ships.TIELN.id]: {
+    [Ships.VULTURE.id]: {
         [PSN.R4BULL]: [mvrs.STRAIGHT4BLUE, mvrs.STRAIGHT5, mvrs.STRAIGHT5, mvrs.STRAIGHT5, mvrs.STRAIGHT5, mvrs.STRAIGHT5,],
         [PSN.R4FRONT]: [mvrs.BANK2, mvrs.BANK3RED, mvrs.BANK3RED, mvrs.STRAIGHT4BLUE, mvrs.STRAIGHT5, mvrs.STRAIGHT5],
         [PSN.R4FRONTSIDE]: [mvrs.BANK2, mvrs.BANK3RED, mvrs.BANK3RED, mvrs.STRAIGHT4BLUE, mvrs.STRAIGHT5, mvrs.STRAIGHT5],

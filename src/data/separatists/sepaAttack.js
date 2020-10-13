@@ -12,9 +12,8 @@ export default function sepaAttack(props) {
 
 const VULTURE = () => (
     <ol>
-        <li>Locked enemy in ship's arc.</li>
-        <li>Nearest enemy in ship's arc with lowest initiative.</li>
-        <li>Nearest enemy in ship's arc.</li>
-        <li>Nearest enemy.</li>
+        Use missiles when able to.
+        <li>Nearest locked enemy in <i className="xwi x-frontarc"/></li>
+        <li>Nearest enemy in <i className="xwi x-frontarc"/></li>
     </ol>
 );
