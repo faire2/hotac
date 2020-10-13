@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {GlobalSquadsValuesContext} from "../../context/Contexts";
+import {GlobalContext} from "../../context/Contexts";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import {Ships} from "../../data/Ships";
@@ -7,7 +7,7 @@ import {Skill} from "./Skill";
 import {UpgradesSource} from "../../enums";
 
 export default function UpgradesCard(props) {
-    const globalValues = useContext(GlobalSquadsValuesContext);
+    const globalValues = useContext(GlobalContext);
     const squadId = props.squadId;
     const squad = globalValues.squadrons[squadId];
     const isElite = squad.isElite;

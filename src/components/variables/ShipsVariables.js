@@ -1,13 +1,13 @@
 import React, {useContext} from "react";
 import styled from "styled-components";
 import Variables from "./Variables";
-import {GlobalSquadsValuesContext, ShipHandlingContext} from "../../context/Contexts";
+import {GlobalContext, SquadContext} from "../../context/Contexts";
 import {VariablesHeader} from "./VariablesHeader";
 import {Row} from "../../styled";
 
 export function ShipsVariables(props) {
     const squadId = props.squadId;
-    const shipHandlingContext = useContext(ShipHandlingContext);
+    const shipHandlingContext = useContext(SquadContext);
     const ships = shipHandlingContext.squadrons[squadId].ships;
 
     for (let ship of ships) {
@@ -33,7 +33,7 @@ export function ShipsVariables(props) {
 }
 
 const RemoveSquadButton = (squadId) => {
-    const globalAiValuesContext = useContext(GlobalSquadsValuesContext);
+    const globalAiValuesContext = useContext(GlobalContext);
     return (
         <button className="btn btn-danger btn-sm"
                 onClick={() => globalAiValuesContext.handleSquadRemoval(squadId)}>

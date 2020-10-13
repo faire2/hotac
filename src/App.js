@@ -1,59 +1,23 @@
 import React, {useState} from "react";
-import styled from "styled-components";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./fonts/xwing-miniatures.css";
 import "./fonts/xwing-miniatures.ttf";
 import "./fonts/xwing-miniatures-ships.ttf"
-
-import Select from "react-select";
-import {Ships, Stats} from "./data/Ships";
+import {Ships} from "./data/Ships";
 import Squadrons from "./components/Squadrons";
-import {GlobalSquadsValuesContext, ShipHandlingContext} from "./context/Contexts";
+import {GlobalContext, SquadContext} from "./context/Contexts";
 import getUpgrades from "./components/upgrades/UpgradesGenerator";
 import {HinnyUpgradesList} from "./data/hinny/HinnyUpgradesList";
 import {CommunityUpgrades} from "./data/fga/CommunityUpgrades";
-import ToggleButton from "react-bootstrap/ToggleButton";
-import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
+import {TopMenu} from "./components/menus/TopMenu";
 
 function App() {
     //const [squadrons, setSquadrons] = useState([]);
     const [squadrons, setSquadrons] = useState([]);
     const [playersRank, setPlayersRank] = useState(2);
 
-
-    let newSquadShipOptions = [];
-    for (let ship of Object.keys(Ships)) {
-        newSquadShipOptions.push({value: Ships[ship][Stats.id], label: Ships[ship][Stats.name]});
-    }
-    newSquadShipOptions.sort((a, b) => a.label.localeCompare(b.label));
-
-    let playerRankOptions = [];
-    for (let i = 1; i < 8; i++) {
-        playerRankOptions.push(i);
-    }
-
-    function handleNewShipSelection(value) {
-        const tSquadrons = [...squadrons];
-        const shipType = Ships[value].id;
-        const upgradesSource = Ships[shipType].upgrades[0];
-        const upgrades = getUpgrades(shipType, playersRank, upgradesSource, false);
-        const extraHullAndShield = countExtraHullAndShield(upgrades);
-        let newSquad = {
-            shipType: shipType,
-            isElite: false,
-            upgradesSource: upgradesSource,
-            upgrades: upgrades,
-            ships: [{
-                tokenId: 0,
-                hull: Ships[shipType].hull + extraHullAndShield.extraHull,
-                shields: Ships[shipType].shields + extraHullAndShield.extraShield
-            }]
-        };
-        tSquadrons.push(newSquad);
-        setSquadrons(tSquadrons);
-    }
 
     function handleSquadRemoval(index) {
         const tSquads = [...squadrons];
@@ -83,6 +47,27 @@ function App() {
         }
         setSquadrons(tSquadrons);
         setPlayersRank(newPlayersRank);
+    }
+
+    function handleNewShipSelection(value) {
+        const tSquadrons = [...squadrons];
+        const shipType = Ships[value].id;
+        const upgradesSource = Ships[shipType].upgrades[0];
+        const upgrades = getUpgrades(shipType, playersRank, upgradesSource, false);
+        const extraHullAndShield = countExtraHullAndShield(upgrades);
+        let newSquad = {
+            shipType: shipType,
+            isElite: false,
+            upgradesSource: upgradesSource,
+            upgrades: upgrades,
+            ships: [{
+                tokenId: 0,
+                hull: Ships[shipType].hull + extraHullAndShield.extraHull,
+                shields: Ships[shipType].shields + extraHullAndShield.extraShield
+            }]
+        };
+        tSquadrons.push(newSquad);
+        setSquadrons(tSquadrons);
     }
 
     function handleSetIsElite(index, isElite) {
@@ -127,61 +112,36 @@ function App() {
         setSquadrons(tSquadrons);
     }
 
+    const globalContextValues = {
+        playersRank: playersRank,
+        squadrons: squadrons,
+        handleSetIsElite: handleSetIsElite,
+        handleSetUpgradesSource: handleSetUpgradesSource,
+        handleSquadRemoval: handleSquadRemoval,
+        handleNewShipSelection: handleNewShipSelection,
+        handleSetPlayersRank: handleSetPlayersRank,
+    };
+
+    const squadContextValues = {
+        squadrons: squadrons,
+        handleAddShip: handleAddShip,
+        handleShipRemoval: handleRemoveShip,
+        handleShipChange: handleShipChange
+    };
+
     return (
         <div className="App">
-            <GlobalSquadsValuesContext.Provider value={{
-                playersRank: playersRank,
-                squadrons: squadrons,
-                handleSetIsElite: handleSetIsElite,
-                handleSetUpgradesSource: handleSetUpgradesSource,
-                handleSquadRemoval: handleSquadRemoval,
-            }}>
-                <ShipHandlingContext.Provider value={{
-                    squadrons: squadrons,
-                    handleAddShip: handleAddShip,
-                    handleShipRemoval: handleRemoveShip,
-                    handleShipChange: handleShipChange
-                }}>
-                    <TopMenu>
-                        <TopMenuItem><h3>New squadron:</h3></TopMenuItem>
-                        <TopMenuItem>
-                            <TopMenuSelect options={newSquadShipOptions}
-                                    onChange={e => handleNewShipSelection(e.value)}/>
-                        </TopMenuItem>
-                        <TopMenuItem>Set players' rank:</TopMenuItem>
-                        <ToggleButtonGroup type="radio" name="radio" value={playersRank}
-                                           onChange={e => handleSetPlayersRank(e)}>
-                            {playerRankOptions.map((number) => <ToggleButton value={number}>{number}</ToggleButton> )}
-                        </ToggleButtonGroup>
-                    </TopMenu>
-
+            <GlobalContext.Provider value={globalContextValues}>
+                <SquadContext.Provider value={squadContextValues}>
+                    <TopMenu />
                     <Squadrons squadrons={squadrons}/>
-                </ShipHandlingContext.Provider>
-            </GlobalSquadsValuesContext.Provider>
+                </SquadContext.Provider>
+            </GlobalContext.Provider>
         </div>
     );
 }
 
-const TopMenu = styled.div`
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    background-color: #007bff;
-    padding-left: 10px;
-    color: white;
-    height: 50px;
-    top: 0;
-    z-index: 2;
-`;
 
-const TopMenuItem = styled.div`
-    margin-right: 10px;
-`;
-
-const TopMenuSelect = styled(Select)`
-    width: 200px;
-    color: black;
-`;
 
 function resetShipsextraHullAndShield(previousUpgrades, newUpgrades, shipType, ships) {
     const previousExtras = countExtraHullAndShield(previousUpgrades);

@@ -3,13 +3,13 @@ import styled from "styled-components"
 import {Ships, Stats} from "../../data/Ships";
 import Select from "react-select";
 import {countExtraHullAndShield} from "../../App";
-import {ShipHandlingContext} from "../../context/Contexts";
+import {SquadContext} from "../../context/Contexts";
 import {colors, FlexItem, RoundButton} from "../../styled";
 
 export default function Variables(props) {
     let ship = props.ship;
     const squadId = props.squadId;
-    const shipHandlingContext = useContext(ShipHandlingContext);
+    const shipHandlingContext = useContext(SquadContext);
     const shipType = shipHandlingContext.squadrons[squadId].shipType;
 
     const idOptions = [
