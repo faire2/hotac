@@ -1,7 +1,7 @@
 import React from "react";
 import {Squad} from "./Squad";
 
-export default function SquadGenerator(props) {
+export default function Squadrons(props) {
     let i = 0;
     let squadId = 0;
     return (

@@ -9,18 +9,17 @@ import "./fonts/xwing-miniatures-ships.ttf"
 
 import Select from "react-select";
 import {Ships, Stats} from "./data/Ships";
-import SquadGenerator from "./components/SquadGenerator";
+import Squadrons from "./components/Squadrons";
 import {GlobalSquadsValuesContext, ShipHandlingContext} from "./context/Contexts";
 import getUpgrades from "./components/upgrades/UpgradesGenerator";
 import {HinnyUpgradesList} from "./data/hinny/HinnyUpgradesList";
 import {CommunityUpgrades} from "./data/fga/CommunityUpgrades";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
-import {UpgradesSource} from "./enums";
 
 function App() {
     //const [squadrons, setSquadrons] = useState([]);
-    const [squadrons, setSquadrons] = useState([{shipType: Ships.TIELN.id, isElite: false, upgrades: [[{skillName: "Upgrade"}, 1 , 2]], ships: [{tokenId: 0, hull: 3, shields: 1}], }]);
+    const [squadrons, setSquadrons] = useState([]);
     const [playersRank, setPlayersRank] = useState(2);
 
 
@@ -156,7 +155,7 @@ function App() {
                         </ToggleButtonGroup>
                     </TopMenu>
 
-                    <SquadGenerator squadrons={squadrons}/>
+                    <Squadrons squadrons={squadrons}/>
                 </ShipHandlingContext.Provider>
             </GlobalSquadsValuesContext.Provider>
         </div>
@@ -166,14 +165,13 @@ function App() {
 const TopMenu = styled.div`
     display: flex;
     align-items: center;
-    position: sticky;
-    position: -webkit-sticky;
+    flex-wrap: wrap;
     background-color: #007bff;
     padding-left: 10px;
     color: white;
     height: 50px;
     top: 0;
-z-index: 2;
+    z-index: 2;
 `;
 
 const TopMenuItem = styled.div`

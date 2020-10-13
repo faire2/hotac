@@ -86,7 +86,7 @@ export default function getUpgrades(shipType, playersRank, upgradesSource, isEli
     }
 
     for (const upgrade of upgrades) {
-        console.log(upgrade[0]["skillName"]);
+        console.log(upgrade[0].skillName);
     }
 
     return upgrades;

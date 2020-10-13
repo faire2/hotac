@@ -1,4 +1,3 @@
-import React from "react";
 import {AI, AttackType, UpgradesSource} from "../enums";
 
 export const Ships = Object.freeze({
