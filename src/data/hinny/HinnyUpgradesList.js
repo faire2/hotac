@@ -449,7 +449,7 @@ export const HinnyUpgradesList = Object.freeze({
         ATTACK: 3, RANGE: WEAPON_RANGE.R23, CHARGE: 3
     },
     heavyLaserCannor: {
-        skillName: "Heavy Laser Cannor", skillDescription:
+        skillName: "Heavy Laser Cannon", skillDescription:
             <div>
                 Attack: After the Modify Attack Dice step, change all <i className="xwi x-crit"/> results to <i
                 className="xwi x-hit"/> results.

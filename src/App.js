@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {Provider} from "react-redux";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -6,12 +7,15 @@ import "./fonts/xwing-miniatures.css";
 import "./fonts/xwing-miniatures.ttf";
 import "./fonts/xwing-miniatures-ships.ttf"
 import {Ships} from "./data/Ships";
-import Squadrons from "./components/Squadrons";
 import {GlobalContext, SquadContext} from "./context/Contexts";
 import getUpgrades from "./components/upgrades/UpgradesGenerator";
 import {HinnyUpgradesList} from "./data/hinny/HinnyUpgradesList";
 import {CommunityUpgrades} from "./data/fga/CommunityUpgrades";
-import {TopMenu} from "./components/menus/TopMenu";
+import {SquadView} from "./components/SquadView";
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import {store} from "./store/store";
+import {CampaignSettings} from "./components/campaign/CampaignSettings";
+import {Locations} from "./enums";
 
 function App() {
     //const [squadrons, setSquadrons] = useState([]);
@@ -131,12 +135,17 @@ function App() {
 
     return (
         <div className="App">
-            <GlobalContext.Provider value={globalContextValues}>
-                <SquadContext.Provider value={squadContextValues}>
-                    <TopMenu />
-                    <Squadrons squadrons={squadrons}/>
-                </SquadContext.Provider>
-            </GlobalContext.Provider>
+            <Provider store={store}>
+                <GlobalContext.Provider value={globalContextValues}>
+                    <SquadContext.Provider value={squadContextValues}>
+                        <Router>
+                            <Route path={Locations.SQUADRONS} exact component={SquadView}/>
+                            <Route path={Locations.CAMPAIGN_SETTINGS} exact component={CampaignSettings}/>
+                            <Route path="/" exact component={SquadView}/>
+                        </Router>
+                    </SquadContext.Provider>
+                </GlobalContext.Provider>
+            </Provider>
         </div>
     );
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import {Ships, Stats} from "../data/Ships";
-import {BlueRow, FlexItem} from "../styled";
+import {Ships, Stats} from "../../data/Ships";
+import {BlueRow, FlexItem} from "../../styled";
 
 export const SquadStats = (props) =>
     <Container>

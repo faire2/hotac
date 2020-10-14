@@ -1,5 +1,5 @@
 import React from "react";
-import {Squad} from "./Squad";
+import {Squad} from "../squadron/Squad";
 
 export default function Squadrons(props) {
     let i = 0;

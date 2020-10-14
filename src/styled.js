@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 export const colors = Object.freeze({
     LIGHT_BLUE: "#007bff",
@@ -46,6 +47,32 @@ export const RoundButton = styled.div`
     transition: 0.3s;
     
     &:hover {
+        opacity: 0.6;
+    }
+`;
+
+export const Button = styled.div`
+    background-color: ${colors.LIGHT_BLUE};
+    color: white;
+    border-radius: 3px;
+    padding: 10px;
+    transition: 0.3s;
+    
+     &:hover {
+        opacity: 0.6;
+    }
+`;
+
+export const ButtonLink = styled(Link)`
+    background-color: ${colors.LIGHT_BLUE};
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 3px;
+    padding: 10px;
+    margin: 10px;
+    transition: 0.3s;
+    
+     &:hover {
         opacity: 0.6;
     }
 `;

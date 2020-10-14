@@ -1,15 +1,15 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 
-import {Ships, Stats} from "../data/Ships";
-import {ShipsVariables} from "./variables/ShipsVariables"
+import {Ships, Stats} from "../../data/Ships";
+import {ShipsVariables} from "../variables/ShipsVariables"
 import {SquadStats} from "./SquadStats";
 import Select from "react-select";
-import {PSN} from "../data/Maneuvers";
-import SquadActionsCarousel from "./actionsCarousel/SquadActionsCarousel";
-import {TargetPosition} from "./maneuvers/TargetPosition";
-import UpgradesCard from "./upgrades/UpgradesCard";
-import {TargetPositionContext} from "../context/Contexts";
+import {PSN} from "../../data/Maneuvers";
+import SquadActionsCarousel from "../actionsCarousel/SquadActionsCarousel";
+import {TargetPosition} from "../maneuvers/TargetPosition";
+import UpgradesCard from "../upgrades/UpgradesCard";
+import {TargetPositionContext} from "../../context/Contexts";
 
 export function Squad(props) {
     const squad = props.squad;
