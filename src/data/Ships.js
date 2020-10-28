@@ -100,6 +100,17 @@ export const Ships = Object.freeze({
         ai: [AI.SEPARATISTS],
         upgrades: [UpgradesSource.SEPARATIST],
     },
+    BELBULLAB: {
+        name: "Belbullab-22 Starfighter",
+        initiative: 3,
+        shields: 2,
+        hull: 3,
+        attack: [{attack: AttackType.frontArc, damage: 3}],
+        agility: 2,
+        id: "BELBULLAB",
+        ai: [AI.SEPARATISTS],
+        upgrades: [UpgradesSource.SEPARATIST],
+    }
 });
 
 export const Stats = Object.freeze({

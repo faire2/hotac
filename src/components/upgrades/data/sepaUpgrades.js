@@ -17,4 +17,10 @@ export const sepaUpgrades = Object.freeze({
                 [HinnyUpgradesList.noUpgrade, 2, 2],
             ],
         ],
+    BELBULLAB:
+        [
+            [
+                [HinnyUpgradesList.noUpgrade, 2, 2],
+            ]
+        ],
 });

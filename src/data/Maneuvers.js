@@ -50,6 +50,7 @@ export const mvrs = Object.freeze({
     TURN2BLUE: "blue turn 2",
     TURN2BLUEOPPOSITE: "opposite blue turn 2",
     TURN3: "turn 3",
+    TURN3RED: "turn 3 red",
     TURN2OPPOSITE: "opposite turn 2",
     TURN3OPPOSITE: "opposite turn 3",
     SEGNOR3RED: "segnor 3",

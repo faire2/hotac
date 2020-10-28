@@ -23,7 +23,7 @@ export function TargetPosition() {
             </ToggleButtonGroup>
 
             {/*  Handles visibility of the check-box according to selected Ai engine */
-                positionContext.aiEngine === AI.FGA &&
+                positionContext.aiEngine !== AI.HINNY &&
                 <label>
                     <input type="checkbox" value={positionContext.stressed}
                            onChange={e => positionContext.handleStress(e)}/>

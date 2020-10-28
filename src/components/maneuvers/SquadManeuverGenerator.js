@@ -82,6 +82,8 @@ export default function SquadManeuverGenerator() {
             return <div className="xw-man">2<i className="xwmb x-turnleft"/></div>;
         case mvrs.TURN3:
             return <div className="xw-man">3<i className="xwm x-turnright"/></div>;
+        case mvrs.TURN3RED:
+            return <div className="xw-man">3<i className="xwmr x-turnright"/></div>;
         case mvrs.TURN2OPPOSITE:
             return <div className="xw-man">2<i className="xwm x-turnleft"/> </div>;
         case mvrs.TURN3OPPOSITE:

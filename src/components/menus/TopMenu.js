@@ -28,7 +28,7 @@ export const TopMenu = () => {
         <TopMenuItem>Set players' rank:</TopMenuItem>
         <ToggleButtonGroup type="radio" name="radio" value={globalContext.playersRank}
                            onChange={e => globalContext.handleSetPlayersRank(e)}>
-            {playerRankOptions.map((number) => <ToggleButton value={number}>{number}</ToggleButton> )}
+            {playerRankOptions.map((number, i) => <ToggleButton value={number} key={i}>{number}</ToggleButton> )}
         </ToggleButtonGroup>
     </Container>
     )
